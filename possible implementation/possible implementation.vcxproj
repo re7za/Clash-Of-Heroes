@@ -19,8 +19,36 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="generalDef.h" />
-    <ClInclude Include="Hero.h" />
+    <ClCompile Include="Heros\AlphaMan.cpp" />
+    <ClCompile Include="Heros\Commander.cpp" />
+    <ClCompile Include="Heros\DrMarry.cpp" />
+    <ClCompile Include="Heros\Giant.cpp" />
+    <ClCompile Include="Heros\Hero.cpp" />
+    <ClCompile Include="Heros\Kratos.cpp" />
+    <ClCompile Include="Heros\Leon.cpp" />
+    <ClCompile Include="Heros\MrsGhost.cpp" />
+    <ClCompile Include="Heros\Professor.cpp" />
+    <ClCompile Include="Heros\RickKhonsari.cpp" />
+    <ClCompile Include="Heros\ROBI.cpp" />
+    <ClCompile Include="Heros\Sniper.cpp" />
+    <ClCompile Include="Heros\Sybil.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Heros\AlphaMan.h" />
+    <ClInclude Include="Heros\Commander.h" />
+    <ClInclude Include="Heros\DrMarry.h" />
+    <ClInclude Include="Heros\generalDef.h" />
+    <ClInclude Include="Heros\Giant.h" />
+    <ClInclude Include="Heros\Hero.h" />
+    <ClInclude Include="Heros\Kratos.h" />
+    <ClInclude Include="Heros\Leon.h" />
+    <ClInclude Include="Heros\MrsGhost.h" />
+    <ClInclude Include="Heros\Professor.h" />
+    <ClInclude Include="Heros\RickKhonsari.h" />
+    <ClInclude Include="Heros\ROBI.h" />
+    <ClInclude Include="Heros\Sniper.h" />
+    <ClInclude Include="Heros\Sybil.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

@@ -15,10 +15,90 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="generalDef.h">
+    <ClCompile Include="Heros\AlphaMan.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Heros\Commander.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Heros\DrMarry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Heros\Giant.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Heros\Hero.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Heros\Kratos.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Heros\Leon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Heros\MrsGhost.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Heros\Professor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Heros\ROBI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Heros\Sniper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Heros\RickKhonsari.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Heros\Sybil.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Heros\AlphaMan.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Hero.h">
+    <ClInclude Include="Heros\Commander.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Heros\DrMarry.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Heros\generalDef.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Heros\Giant.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Heros\Hero.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Heros\Kratos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Heros\Leon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Heros\Professor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Heros\MrsGhost.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Heros\ROBI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Heros\Sniper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Heros\RickKhonsari.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Heros\Sybil.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

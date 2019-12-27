@@ -2,6 +2,18 @@
 
 #include "Hero.h"
 
+
+Hero::~Hero() {}
+
+const us Hero::getId()
+{
+	return this->heroId;
+}
+const us Hero::getDamage()
+{
+	return this->damage;
+}
+
 void Hero::decreaseHealth(us damage)
 {
 	if (this->health <= maxHealth)
@@ -9,10 +21,6 @@ void Hero::decreaseHealth(us damage)
 		this->health -= damage;
 		checkAliveness();
 	}
-}
-us Hero::getDamage()
-{
-	return this->damage;
 }
 us Hero::getHealth()
 {
