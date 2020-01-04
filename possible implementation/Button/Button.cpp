@@ -3,7 +3,7 @@
 
 Button::Button()
 {
-	btnFont.loadFromFile("Font/Anger Management.otf");
+	btnFont.loadFromFile("Font/Button.otf");
 	btnTxt.setFont(btnFont);
 	btnTxt.setFillColor(sf::Color(230, 230, 230, 200));
 	this->setCharacterSize(50);
@@ -18,9 +18,9 @@ void Button::draw(sf::RenderWindow* window)
 void Button::onMouseOver()
 {
 	if (sf::Mouse::getPosition().x > btnTxt.getPosition().x
-		&& sf::Mouse::getPosition().x < btnTxt.getPosition().x + btnTxt.getGlobalBounds().width
+		&& sf::Mouse::getPosition().x < btnTxt.getPosition().x + btnTxt.getLocalBounds().width
 		&& sf::Mouse::getPosition().y > btnTxt.getPosition().y
-		&& sf::Mouse::getPosition().y < btnTxt.getPosition().y + btnTxt.getGlobalBounds().height)
+		&& sf::Mouse::getPosition().y < btnTxt.getPosition().y + btnTxt.getLocalBounds().height)
 	{
 		btnTxt.setFillColor(sf::Color::White);
 	}
@@ -59,3 +59,4 @@ unsigned short Button::getCharacterSize()
 {
 	return btnTxt.getCharacterSize();
 }
+

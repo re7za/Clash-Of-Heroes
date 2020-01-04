@@ -18,8 +18,6 @@ public:
 	Players getTheTurn();
 	void displayPlayerInfo(sf::RenderWindow*, MenuManager&);
 
-
-
 private:
 	// difine two player
 	Player player1;

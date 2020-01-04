@@ -18,18 +18,26 @@ int main()
 	sf::Event evnt;
 	while (window.isOpen())
 	{
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+			menuManager.rightClickPos(sf::Mouse::getPosition());
+
 		while (window.pollEvent(evnt))
 		{
 			if (evnt.type == sf::Event::EventType::Closed
 				|| evnt.key.code == sf::Keyboard::Escape)
 				window.close();
+
+			//if (evnt.type == sf::Event::TextEntered)
+				
+
+
 		}
 		
 		window.clear(sf::Color::White);
-		//////////draw
+		//////////draw your trashes here
 		menuManager.displayCurrentMenu(&window);
 		playerManager.displayPlayerInfo(&window, menuManager);
-		//////////////
+		////////////////////////////////
 		window.display();
 
 

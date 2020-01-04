@@ -12,7 +12,7 @@ class Player
 public:
 	Player();
 	void display(sf::RenderWindow*, MenuManager&);
-
+	
 
 private:
 

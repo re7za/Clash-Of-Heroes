@@ -17,6 +17,7 @@ public:
 
 	menuType getCurrentMenu();
 	void setCurrentMenu(menuType);
+	void rightClickPos(sf::Vector2i);
 
 private:
 	menuType currentMenu;

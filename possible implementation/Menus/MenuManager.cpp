@@ -22,7 +22,6 @@ void MenuManager::displayCurrentMenu(sf::RenderWindow* window)
 		}
 }
 
-
 menuType MenuManager::getCurrentMenu()
 {
 	return currentMenu;
@@ -31,4 +30,14 @@ menuType MenuManager::getCurrentMenu()
 void MenuManager::setCurrentMenu(menuType newCurrentMenu)
 {
 	currentMenu = newCurrentMenu;
+}
+
+void MenuManager::rightClickPos(sf::Vector2i pos)
+{
+	for (Menu* menu : menuVec)
+		if (menu->getMenuName() == currentMenu)
+		{
+			menu->rightClick(pos);
+			break;
+		}
 }

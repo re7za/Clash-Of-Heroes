@@ -43,6 +43,12 @@
     <Filter Include="Source Files\Player">
       <UniqueIdentifier>{be627253-fd91-490b-be8b-9be91f82366c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Textbox">
+      <UniqueIdentifier>{665c6c7f-2f6e-4370-9cce-915324bee3cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Textbox">
+      <UniqueIdentifier>{d1ff38c9-512a-4506-bf9e-4807bdbf31aa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ClashOfBasu.cpp">
@@ -108,6 +114,9 @@
     <ClCompile Include="Player\PlayerManager.cpp">
       <Filter>Source Files\Player</Filter>
     </ClCompile>
+    <ClCompile Include="Textbox\Textbox.cpp">
+      <Filter>Source Files\Textbox</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Menus\Menu.h">
@@ -172,6 +181,9 @@
     </ClInclude>
     <ClInclude Include="Player\PlayerManager.h">
       <Filter>Header Files\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Textbox\Textbox.h">
+      <Filter>Header Files\Textbox</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -23,18 +23,69 @@ HeroSelectionMenu::HeroSelectionMenu()
 	// back button
 	backBtn.setString("back");
 	backBtn.setPosition(sf::Vector2f(sf::VideoMode::getDesktopMode().width - 150, 20));
+
+	// name box
+	nameRect.setFillColor(sf::Color(20, 20, 20, 200));
+	nameRect.setSize(sf::Vector2f(nameRectWidth, nameRectHeight));
+	nameRect.setPosition(sf::Vector2f(nameRectLeft, nameRectTop));
+	nameBox.setCharacterSize(37);
+	nameBox.setPosition(sf::Vector2f(nameRectLeft, nameRectTop));
+	nameBox.setSelected(false);
+
+	// name input label
+	nameInputLabelRect.setFillColor(sf::Color(5, 5, 5, 200));
+	nameInputLabelRect.setSize(sf::Vector2f(nameRectWidth , nameRectHeight));
+	nameInputLabelRect.setPosition(sf::Vector2f(nameRectLeft - nameRectWidth, nameRectTop));
+	if (!nameInputLabelFont.loadFromFile("Font/Button.otf"))
+		std::cout << "fuuuuuuuuck" << std::endl;
+	
+	nameInputLabelText.setString("Enter your name");
+	nameInputLabelText.setCharacterSize(38);
+	nameInputLabelText.setFont(nameInputLabelFont);
+	nameInputLabelText.setFillColor(sf::Color::White);
+	nameInputLabelText.setPosition(sf::Vector2f(nameInputLabelRect.getPosition().x + 25,
+		nameInputLabelRect.getPosition().y + 10));
+
+	
 }
 
 void HeroSelectionMenu::display(sf::RenderWindow* window)
 {
-	mouseHover(window);
-
 	window->draw(menuSpr);
+	//////////////////////
 	window->draw(gamelabel);
 	backBtn.draw(window);
+	mouseHover(window);
+
+	// input name
+	window->draw(nameRect);
+	window->draw(nameInputLabelRect);
+	window->draw(nameInputLabelText);
+	window->draw(nameRect);
 }
 
 void HeroSelectionMenu::mouseHover(sf::RenderWindow* window)
 {
 	backBtn.onMouseOver();
+}
+
+void HeroSelectionMenu::rightClick(sf::Vector2i pos)
+{
+	if (pos.x >= nameRectLeft - nameRectWidth && pos.x <= nameRectLeft + nameRectWidth
+		&& pos.y >= nameRectTop && pos.y <= nameRectTop + nameRectHeight)
+	{
+		if (!nameBox.isItSelected())
+		{
+			std::cout << "in" << std::endl;
+			nameBox.setSelected(true);
+		}
+	}
+	else
+	{
+		if (nameBox.isItSelected())
+		{
+			std::cout << "out" << std::endl;
+			nameBox.setSelected(false);
+		}
+	}
 }

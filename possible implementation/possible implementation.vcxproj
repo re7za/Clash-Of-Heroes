@@ -40,6 +40,7 @@
     <ClCompile Include="Menus\MenuManager.cpp" />
     <ClCompile Include="Player\Player.cpp" />
     <ClCompile Include="Player\PlayerManager.cpp" />
+    <ClCompile Include="Textbox\Textbox.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button\Button.h" />
@@ -63,6 +64,7 @@
     <ClInclude Include="Menus\MenuManager.h" />
     <ClInclude Include="Player\Player.h" />
     <ClInclude Include="Player\PlayerManager.h" />
+    <ClInclude Include="Textbox\Textbox.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
