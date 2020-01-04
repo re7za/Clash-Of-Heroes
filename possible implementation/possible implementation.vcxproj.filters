@@ -13,93 +13,165 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\menus">
+      <UniqueIdentifier>{c76130f6-0727-464c-9e02-cdca21fcefb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\heros">
+      <UniqueIdentifier>{09a79b8c-0840-49a8-9c09-3e77bc57b7fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\heros">
+      <UniqueIdentifier>{f4fcbba6-e59d-45c9-b493-76f148650b7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\menus">
+      <UniqueIdentifier>{599ea573-ca8f-4199-87b0-0cbf7fed666c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Grid">
+      <UniqueIdentifier>{d21b66e2-dee0-45f2-83ae-3efc783a0a19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Grid">
+      <UniqueIdentifier>{05ad07a6-5225-488f-8165-b706439434ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\button">
+      <UniqueIdentifier>{41f1691b-7086-4099-b3f6-3024d658b0b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\button">
+      <UniqueIdentifier>{b80eb3bc-c8fa-45ac-bab8-c85ee470dcd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Player">
+      <UniqueIdentifier>{4113a3a6-6592-4bb0-821c-99c246a1dd11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Player">
+      <UniqueIdentifier>{be627253-fd91-490b-be8b-9be91f82366c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Heros\AlphaMan.cpp">
+    <ClCompile Include="ClashOfBasu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Heros\Commander.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Heros\AlphaMan.cpp">
+      <Filter>Source Files\heros</Filter>
     </ClCompile>
     <ClCompile Include="Heros\DrMarry.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\heros</Filter>
+    </ClCompile>
+    <ClCompile Include="Heros\Commander.cpp">
+      <Filter>Source Files\heros</Filter>
     </ClCompile>
     <ClCompile Include="Heros\Giant.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\heros</Filter>
     </ClCompile>
     <ClCompile Include="Heros\Hero.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\heros</Filter>
     </ClCompile>
     <ClCompile Include="Heros\Kratos.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\heros</Filter>
     </ClCompile>
     <ClCompile Include="Heros\Leon.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\heros</Filter>
     </ClCompile>
     <ClCompile Include="Heros\MrsGhost.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\heros</Filter>
     </ClCompile>
     <ClCompile Include="Heros\Professor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Heros\ROBI.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Heros\Sniper.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\heros</Filter>
     </ClCompile>
     <ClCompile Include="Heros\RickKhonsari.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\heros</Filter>
+    </ClCompile>
+    <ClCompile Include="Heros\ROBI.cpp">
+      <Filter>Source Files\heros</Filter>
+    </ClCompile>
+    <ClCompile Include="Heros\Sniper.cpp">
+      <Filter>Source Files\heros</Filter>
     </ClCompile>
     <ClCompile Include="Heros\Sybil.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\heros</Filter>
+    </ClCompile>
+    <ClCompile Include="Menus\MenuManager.cpp">
+      <Filter>Source Files\menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Menus\HeroSelectionMenu.cpp">
+      <Filter>Source Files\menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Menus\Menu.cpp">
+      <Filter>Source Files\menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Grid\Grid.cpp">
+      <Filter>Source Files\Grid</Filter>
+    </ClCompile>
+    <ClCompile Include="Button\Button.cpp">
+      <Filter>Source Files\button</Filter>
+    </ClCompile>
+    <ClCompile Include="Player\Player.cpp">
+      <Filter>Source Files\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Player\PlayerManager.cpp">
+      <Filter>Source Files\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Menus\Menu.h">
+      <Filter>Header Files\menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Menus\MenuManager.h">
+      <Filter>Header Files\menus</Filter>
+    </ClInclude>
     <ClInclude Include="Heros\AlphaMan.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\heros</Filter>
     </ClInclude>
     <ClInclude Include="Heros\Commander.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\heros</Filter>
     </ClInclude>
     <ClInclude Include="Heros\DrMarry.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Heros\generalDef.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\heros</Filter>
     </ClInclude>
     <ClInclude Include="Heros\Giant.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\heros</Filter>
     </ClInclude>
     <ClInclude Include="Heros\Hero.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\heros</Filter>
     </ClInclude>
     <ClInclude Include="Heros\Kratos.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\heros</Filter>
     </ClInclude>
     <ClInclude Include="Heros\Leon.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Heros\Professor.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\heros</Filter>
     </ClInclude>
     <ClInclude Include="Heros\MrsGhost.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\heros</Filter>
     </ClInclude>
-    <ClInclude Include="Heros\ROBI.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Heros\Sniper.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Heros\Professor.h">
+      <Filter>Header Files\heros</Filter>
     </ClInclude>
     <ClInclude Include="Heros\RickKhonsari.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\heros</Filter>
+    </ClInclude>
+    <ClInclude Include="Heros\ROBI.h">
+      <Filter>Header Files\heros</Filter>
+    </ClInclude>
+    <ClInclude Include="Heros\Sniper.h">
+      <Filter>Header Files\heros</Filter>
     </ClInclude>
     <ClInclude Include="Heros\Sybil.h">
+      <Filter>Header Files\heros</Filter>
+    </ClInclude>
+    <ClInclude Include="Menus\HeroSelectionMenu.h">
+      <Filter>Header Files\menus</Filter>
+    </ClInclude>
+    <ClInclude Include="generalDef.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Grid\Grid.h">
+      <Filter>Header Files\Grid</Filter>
+    </ClInclude>
+    <ClInclude Include="Button\Button.h">
+      <Filter>Header Files\button</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\Player.h">
+      <Filter>Header Files\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\PlayerManager.h">
+      <Filter>Header Files\Player</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
