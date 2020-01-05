@@ -49,6 +49,12 @@
     <Filter Include="Header Files\Textbox">
       <UniqueIdentifier>{d1ff38c9-512a-4506-bf9e-4807bdbf31aa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Heros Card">
+      <UniqueIdentifier>{268d4be9-b740-4014-b85b-f68518aa1bab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Heros Card">
+      <UniqueIdentifier>{68555a64-f97c-4b6d-b80a-793469f2bd09}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ClashOfBasu.cpp">
@@ -117,6 +123,45 @@
     <ClCompile Include="Textbox\Textbox.cpp">
       <Filter>Source Files\Textbox</Filter>
     </ClCompile>
+    <ClCompile Include="Heros Card\HerosCard.cpp">
+      <Filter>Source Files\Heros Card</Filter>
+    </ClCompile>
+    <ClCompile Include="Heros Card\AlphaMan Card.cpp">
+      <Filter>Source Files\Heros Card</Filter>
+    </ClCompile>
+    <ClCompile Include="Heros Card\Commander Card.cpp">
+      <Filter>Source Files\Heros Card</Filter>
+    </ClCompile>
+    <ClCompile Include="Heros Card\DrMarry Card.cpp">
+      <Filter>Source Files\Heros Card</Filter>
+    </ClCompile>
+    <ClCompile Include="Heros Card\Giant Card.cpp">
+      <Filter>Source Files\Heros Card</Filter>
+    </ClCompile>
+    <ClCompile Include="Heros Card\Leon Card.cpp">
+      <Filter>Source Files\Heros Card</Filter>
+    </ClCompile>
+    <ClCompile Include="Heros Card\Kratos Card.cpp">
+      <Filter>Source Files\Heros Card</Filter>
+    </ClCompile>
+    <ClCompile Include="Heros Card\MrsGhost Card.cpp">
+      <Filter>Source Files\Heros Card</Filter>
+    </ClCompile>
+    <ClCompile Include="Heros Card\Professor Card.cpp">
+      <Filter>Source Files\Heros Card</Filter>
+    </ClCompile>
+    <ClCompile Include="Heros Card\RickKhonsari Card.cpp">
+      <Filter>Source Files\Heros Card</Filter>
+    </ClCompile>
+    <ClCompile Include="Heros Card\ROBI Card.cpp">
+      <Filter>Source Files\Heros Card</Filter>
+    </ClCompile>
+    <ClCompile Include="Heros Card\Sniper Card.cpp">
+      <Filter>Source Files\Heros Card</Filter>
+    </ClCompile>
+    <ClCompile Include="Heros Card\Sybil.cpp">
+      <Filter>Source Files\Heros Card</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Menus\Menu.h">
@@ -184,6 +229,45 @@
     </ClInclude>
     <ClInclude Include="Textbox\Textbox.h">
       <Filter>Header Files\Textbox</Filter>
+    </ClInclude>
+    <ClInclude Include="Heros Card\HerosCard.h">
+      <Filter>Header Files\Heros Card</Filter>
+    </ClInclude>
+    <ClInclude Include="Heros Card\AlphaMan Card.h">
+      <Filter>Header Files\Heros Card</Filter>
+    </ClInclude>
+    <ClInclude Include="Heros Card\Commander Card.h">
+      <Filter>Header Files\Heros Card</Filter>
+    </ClInclude>
+    <ClInclude Include="Heros Card\DrMarry Card.h">
+      <Filter>Header Files\Heros Card</Filter>
+    </ClInclude>
+    <ClInclude Include="Heros Card\Giant Card.h">
+      <Filter>Header Files\Heros Card</Filter>
+    </ClInclude>
+    <ClInclude Include="Heros Card\Leon Card.h">
+      <Filter>Header Files\Heros Card</Filter>
+    </ClInclude>
+    <ClInclude Include="Heros Card\Kratos Card.h">
+      <Filter>Header Files\Heros Card</Filter>
+    </ClInclude>
+    <ClInclude Include="Heros Card\MrsGhost Card.h">
+      <Filter>Header Files\Heros Card</Filter>
+    </ClInclude>
+    <ClInclude Include="Heros Card\Professor Card.h">
+      <Filter>Header Files\Heros Card</Filter>
+    </ClInclude>
+    <ClInclude Include="Heros Card\RickKhonsari Card.h">
+      <Filter>Header Files\Heros Card</Filter>
+    </ClInclude>
+    <ClInclude Include="Heros Card\ROBI Card.h">
+      <Filter>Header Files\Heros Card</Filter>
+    </ClInclude>
+    <ClInclude Include="Heros Card\Sniper Card.h">
+      <Filter>Header Files\Heros Card</Filter>
+    </ClInclude>
+    <ClInclude Include="Heros Card\Sybil Card.h">
+      <Filter>Header Files\Heros Card</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

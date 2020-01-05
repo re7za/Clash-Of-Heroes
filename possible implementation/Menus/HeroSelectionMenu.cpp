@@ -62,6 +62,9 @@ void HeroSelectionMenu::display(sf::RenderWindow* window)
 	window->draw(nameInputLabelRect);
 	window->draw(nameInputLabelText);
 	window->draw(nameRect);
+
+	// hreos card
+	drawHerosCard(window);
 }
 
 void HeroSelectionMenu::mouseHover(sf::RenderWindow* window)
@@ -76,7 +79,7 @@ void HeroSelectionMenu::rightClick(sf::Vector2i pos)
 	{
 		if (!nameBox.isItSelected())
 		{
-			std::cout << "in" << std::endl;
+			nameRect.setFillColor(sf::Color(50, 50, 50, 230));
 			nameBox.setSelected(true);
 		}
 	}
@@ -84,8 +87,24 @@ void HeroSelectionMenu::rightClick(sf::Vector2i pos)
 	{
 		if (nameBox.isItSelected())
 		{
-			std::cout << "out" << std::endl;
+			nameRect.setFillColor(sf::Color(20, 20, 20, 200));
 			nameBox.setSelected(false);
 		}
 	}
+}
+
+void HeroSelectionMenu::drawHerosCard(sf::RenderWindow* window)
+{
+	alphaManCard.draw(window);
+	commanderCard.draw(window);
+	drMarryCard.draw(window);
+	giantCard.draw(window);
+	kratosCard.draw(window);
+	leonCard.draw(window);
+	mrsGhostCard.draw(window);
+	professorCard.draw(window);
+	rickKhonsariCard.draw(window);
+	ROBICard.draw(window);
+	sniperCard.draw(window);
+	sybilCard.draw(window);
 }
