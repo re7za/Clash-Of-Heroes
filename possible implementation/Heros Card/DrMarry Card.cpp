@@ -3,6 +3,9 @@
 
 DrMarryCard::DrMarryCard()
 {
+	cardName = heros::drMarry;
+
+	// cardSpr
 	setCardSpr();
 	setDefaulProperties();
 	SprOrginalColor = heroCardSpr.getColor();

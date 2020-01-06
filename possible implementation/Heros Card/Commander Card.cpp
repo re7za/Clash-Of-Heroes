@@ -3,6 +3,9 @@
 
 CommanderCard::CommanderCard()
 {
+	cardName = heros::commander;
+
+	// cardSpr
 	setCardSpr();
 	setDefaulProperties();
 	SprOrginalColor = heroCardSpr.getColor();

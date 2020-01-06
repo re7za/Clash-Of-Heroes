@@ -3,6 +3,9 @@
 
 AlphaManCard::AlphaManCard()
 {
+	cardName = heros::alphaMan;
+
+	// cardSpr
 	setCardSpr();
 	setDefaulProperties();
 	SprOrginalColor = heroCardSpr.getColor();

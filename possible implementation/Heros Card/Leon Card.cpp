@@ -3,6 +3,9 @@
 
 LeonCard::LeonCard()
 {
+	cardName = heros::leon;
+
+	// cardSpr
 	setCardSpr();
 	setDefaulProperties();
 	SprOrginalColor = heroCardSpr.getColor();

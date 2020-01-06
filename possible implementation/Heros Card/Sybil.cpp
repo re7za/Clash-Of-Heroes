@@ -3,6 +3,9 @@
 
 SybilCard::SybilCard()
 {
+	cardName = heros::sybil;
+
+	// cardSpr
 	setCardSpr();
 	setDefaulProperties();
 	SprOrginalColor = heroCardSpr.getColor();

@@ -3,6 +3,9 @@
 
 RickKhonsariCard::RickKhonsariCard()
 {
+	cardName = heros::rickKhonsari;
+
+	// cardSpr
 	setCardSpr();
 	setDefaulProperties();
 	SprOrginalColor = heroCardSpr.getColor();

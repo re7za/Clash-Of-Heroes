@@ -125,8 +125,8 @@ void HeroSelectionMenu::rightClickHeroEachCard(sf::Vector2i pos)
 			if (!card->isCardSelected())
 			{
 				card->setCardSelection(true);
-				card->setColor(sf::Color(card->getSprOrginalColor().r + 40, card->getSprOrginalColor().g + 30,
-					card->getSprOrginalColor().b + 30, 255));
+				card->setColor(sf::Color(card->getSprOrginalColor().r + 40, card->getSprOrginalColor().g + 20,
+					card->getSprOrginalColor().b + 20, 255));
 			}
 		}
 		else

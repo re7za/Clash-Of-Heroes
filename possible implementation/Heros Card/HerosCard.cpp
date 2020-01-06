@@ -39,12 +39,7 @@ sf::Color HerosCard::getSprOrginalColor()
 	return SprOrginalColor;
 }
 
-void HerosCard::setCardName(std::string cardName)
-{
-	this->cardName = cardName;
-}
-
-std::string HerosCard::getCardName()
+heros HerosCard::getCardName()
 {
 	return cardName;
 }

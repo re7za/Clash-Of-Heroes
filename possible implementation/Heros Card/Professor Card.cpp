@@ -3,6 +3,9 @@
 
 ProfessorCard::ProfessorCard()
 {
+	cardName = heros::professor;
+
+	// cardSpr
 	setCardSpr();
 	setDefaulProperties();
 	SprOrginalColor = heroCardSpr.getColor();

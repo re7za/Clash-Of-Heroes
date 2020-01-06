@@ -3,6 +3,9 @@
 
 GiantCard::GiantCard()
 {
+	cardName = heros::giant;
+
+	// cardSpr
 	setCardSpr();
 	setDefaulProperties();
 	SprOrginalColor = heroCardSpr.getColor();

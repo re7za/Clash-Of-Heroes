@@ -4,6 +4,7 @@
 #define HEROSCARD_H
 
 #include "SFML/Graphics.hpp"
+#include "../generalDef.h"
 
 class HerosCard
 {
@@ -13,8 +14,7 @@ public:
 	void setColor(sf::Color);
 	sf::Color getSprOrginalColor();
 	
-	void setCardName(std::string);
-	std::string getCardName();
+	heros getCardName();
 	sf::Vector2f getPosition();
 	sf::FloatRect getGlobalBound();
 	void setCardSelection(bool);
@@ -23,7 +23,7 @@ public:
 protected:
 	void setDefaulProperties();
 
-	std::string cardName;
+	heros cardName;
 
 	sf::Texture heroCardTex;
 	sf::Sprite heroCardSpr;

@@ -3,6 +3,9 @@
 
 MrsGhostCard::MrsGhostCard()
 {
+	cardName = heros::mrsGhost;
+
+	// cardSpr
 	setCardSpr();
 	setDefaulProperties();
 	SprOrginalColor = heroCardSpr.getColor();

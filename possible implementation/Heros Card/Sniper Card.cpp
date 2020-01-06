@@ -3,6 +3,9 @@
 
 SniperCard::SniperCard()
 {
+	cardName = heros::sniper;
+
+	// cardSpr
 	setCardSpr();
 	setDefaulProperties();
 	SprOrginalColor = heroCardSpr.getColor();

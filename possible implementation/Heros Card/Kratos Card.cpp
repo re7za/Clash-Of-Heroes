@@ -3,6 +3,9 @@
 
 KratosCard::KratosCard()
 {
+	cardName = heros::kratos;
+
+	// cardSpr
 	setCardSpr();
 	setDefaulProperties();
 	SprOrginalColor = heroCardSpr.getColor();

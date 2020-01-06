@@ -3,6 +3,9 @@
 
 ROBICard::ROBICard()
 {
+	cardName = heros::robi;
+
+	// cardSpr
 	setCardSpr();
 	setDefaulProperties();
 	SprOrginalColor = heroCardSpr.getColor();
