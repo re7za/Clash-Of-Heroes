@@ -18,6 +18,8 @@ int main()
 	sf::Event evnt;
 	while (window.isOpen())
 	{
+		// sending the mouse events and positions to menuManager
+		menuManager.getMousePosition(sf::Mouse::getPosition());
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
 			menuManager.rightClickPos(sf::Mouse::getPosition());
 

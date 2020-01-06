@@ -80,12 +80,11 @@ void HeroSelectionMenu::display(sf::RenderWindow* window)
 	drawHerosCard(window);
 }
 
-void HeroSelectionMenu::mouseHover(sf::RenderWindow* window)
+// mouse events and positions
+void HeroSelectionMenu::mousePosition(sf::Vector2i pos)
 {
-	backBtn.onMouseOver();
-
+	
 }
-
 void HeroSelectionMenu::rightClick(sf::Vector2i pos)
 {
 	// back button
@@ -95,6 +94,11 @@ void HeroSelectionMenu::rightClick(sf::Vector2i pos)
 	rightClickHeroEachCard(pos);
 }
 
+// utility functions of mouse envents and positions
+void HeroSelectionMenu::mouseHover(sf::RenderWindow* window)
+{
+	backBtn.onMouseOver();
+}
 void HeroSelectionMenu::rightClickBackBtn(sf::Vector2i pos)
 {
 	if (pos.x >= nameRectLeft - nameRectWidth && pos.x <= nameRectLeft + nameRectWidth
@@ -115,7 +119,6 @@ void HeroSelectionMenu::rightClickBackBtn(sf::Vector2i pos)
 		}
 	}
 }
-
 void HeroSelectionMenu::rightClickHeroEachCard(sf::Vector2i pos)
 {
 	for (HerosCard* card : heroCardVec)

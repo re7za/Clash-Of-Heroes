@@ -10,6 +10,26 @@ MenuManager::MenuManager()
 	menuVec.push_back(&heroSelectionMenu);
 }
 
+void MenuManager::getMousePosition(sf::Vector2i pos)
+{
+	for (Menu* menu : menuVec)
+		if (menu->getMenuName() == currentMenu)
+		{
+			menu->mousePosition(pos);
+			break;
+		}
+}
+void MenuManager::rightClickPos(sf::Vector2i pos)
+{
+	for (Menu* menu : menuVec)
+		if (menu->getMenuName() == currentMenu)
+		{
+			menu->rightClick(pos);
+			break;
+		}
+}
+
+
 void MenuManager::displayCurrentMenu(sf::RenderWindow* window)
 {
 	// frame refreshing
@@ -30,14 +50,4 @@ menuType MenuManager::getCurrentMenu()
 void MenuManager::setCurrentMenu(menuType newCurrentMenu)
 {
 	currentMenu = newCurrentMenu;
-}
-
-void MenuManager::rightClickPos(sf::Vector2i pos)
-{
-	for (Menu* menu : menuVec)
-		if (menu->getMenuName() == currentMenu)
-		{
-			menu->rightClick(pos);
-			break;
-		}
 }
