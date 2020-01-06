@@ -15,6 +15,30 @@ sf::Sprite Grid::getGridSpr()
 	return gridSpr;
 }
 
+// mouse events and positions
+void Grid::whichTileIsTheMouseOn(sf::Vector2i* pos)
+{
+	for (std::array<sf::Sprite, 9>& row : tiles)
+		for (sf::Sprite& tile : row)
+		{
+
+		}
+}
+
+// tiles
+void Grid::draw(sf::RenderWindow* window)
+{
+	window->draw(gridSpr);
+	for (us i = 0; i < 9; i++)
+		for (us j = 0; j < 9; j++)
+			window->draw(tiles.at(i).at(j));
+}
+void Grid::setHurtTileTexture(us, us)
+{
+
+}
+
+// utility functions
 void Grid::setTilesTexArray()
 {
 	tilesTex.at(1).loadFromFile("Grid/tiles/L1.png");
@@ -30,17 +54,6 @@ void Grid::setDefaultTilesTexturs()
 				this->getPosition().y + (j * tilesTex.at(0).getSize().y + j*2)* this->getScale().y));
 		}
 }
-void Grid::draw(sf::RenderWindow* window)
-{
-	window->draw(gridSpr);
-	for (us i = 0; i < 9; i++)
-		for (us j = 0; j < 9; j++)
-			window->draw(tiles.at(i).at(j));
-}
-void Grid::setHurtTileTexture(us, us)
-{
-
-}
 void Grid::setTilesScale(const sf::Vector2f& scale)
 {
 	for (us i = 0; i < 9; i++)
@@ -48,7 +61,7 @@ void Grid::setTilesScale(const sf::Vector2f& scale)
 			tiles.at(i).at(j).setScale(scale.x, scale.y);
 }
 
-
+// sfml methodes
 void Grid::setFillColor(const sf::Color& color)
 {
 	gridSpr.setColor(color);

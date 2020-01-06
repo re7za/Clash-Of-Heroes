@@ -3,7 +3,6 @@
 #include <iostream>
 #include <sfml/Graphics.hpp>
 #include "Menus/MenuManager.h"
-#include "Player/PlayerManager.h"
 
 
 int main()
@@ -12,7 +11,6 @@ int main()
 		sf::VideoMode::getDesktopMode().height), "Clash Of BASU", sf::Style::Fullscreen);
 	
 	MenuManager menuManager;
-	PlayerManager playerManager;
 
 
 	sf::Event evnt;
@@ -38,7 +36,6 @@ int main()
 		window.clear(sf::Color::White);
 		//////////draw your trashes here
 		menuManager.displayCurrentMenu(&window);
-		playerManager.displayPlayerInfo(&window, menuManager);
 		////////////////////////////////
 		window.display();
 

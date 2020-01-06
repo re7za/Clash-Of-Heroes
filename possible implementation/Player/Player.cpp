@@ -9,13 +9,7 @@ Player::Player()
 
 }
 
-void Player::display(sf::RenderWindow* window, MenuManager& menuManager)
+void Player::display(sf::RenderWindow* window)
 {
-	switch (menuManager.getCurrentMenu())
-	{
-	case menuType::heroSelection:
-	{
 		grid.draw(window);
-	}
-	}
 }

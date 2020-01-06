@@ -17,3 +17,9 @@ void Menu::setGamelabel()
 	gamelabel.setFillColor(sf::Color(255, 255, 255, 220));
 	gamelabel.setCharacterSize(100);
 }
+
+// player manager
+/*void Menu::playerDisplayManager(sf::RenderWindow* window, PlayerManager& playerManager)
+{
+	playerManager.displayPlayerInfo(window);
+}*/

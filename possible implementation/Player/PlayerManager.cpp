@@ -9,8 +9,9 @@ PlayerManager::PlayerManager()
 	else
 		playerTurn = Players::P2;	// حواست باشه منوی هیرو سلکشن نباید بصورت رندوم باشه
 		
-
-
+	// playerVec
+	playerVec.push_back(&player1);
+	playerVec.push_back(&player2);
 }
 
 void PlayerManager::changeTheTurn()
@@ -26,11 +27,10 @@ Players PlayerManager::getTheTurn()
 	return playerTurn;
 }
 
-void PlayerManager::displayPlayerInfo(sf::RenderWindow* window, MenuManager& menuManager)
+void PlayerManager::displayPlayerInfo(sf::RenderWindow* window)
 {
 	if (getTheTurn() == Players::P1)
-		player1.display(window, menuManager);
+		player1.display(window);
 	else
-		player2.display(window, menuManager);
-
+		player2.display(window);
 }

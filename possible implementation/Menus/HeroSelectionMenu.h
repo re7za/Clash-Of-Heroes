@@ -31,7 +31,7 @@ class HeroSelectionMenu : public Menu
 {
 public:
 	HeroSelectionMenu();
-	void display(sf::RenderWindow*);
+	void display(sf::RenderWindow*, PlayerManager&);
 	void drawHerosCard(sf::RenderWindow*);
 
 	// mouse events and positions
@@ -70,6 +70,8 @@ private:
 	ROBICard ROBICard;
 	SniperCard sniperCard;
 	SybilCard sybilCard;
+
+	//
 };
 
 

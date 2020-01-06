@@ -5,6 +5,7 @@
 #include "SFML/Graphics.hpp"
 #include "Menu.h"
 #include "HeroSelectionMenu.h"
+#include "../Player/PlayerManager.h"
 #include "../generalDef.h"
 #include <vector>
 
@@ -26,6 +27,10 @@ private:
 	menuType currentMenu;
 	std::vector <Menu*> menuVec;
 	HeroSelectionMenu heroSelectionMenu;
+
+	// each player plays in menu actually
+	PlayerManager playerManager;	// نباید توی منو ها تعریف بشه چون برای هر منو یدونه ساخته میشه
+
 };
 
 

@@ -15,6 +15,9 @@ public:
 	Grid();
 	sf::Sprite getGridSpr();
 
+	// mouse hover
+	void whichTileIsTheMouseOn(sf::Vector2i*);
+
 	// tiles
 	void setHurtTileTexture(us, us);
 	void draw(sf::RenderWindow* window);

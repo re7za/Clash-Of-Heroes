@@ -5,13 +5,13 @@
 
 #include "SFML/Graphics.hpp"
 #include "../Grid/Grid.h"
-#include "../Menus/MenuManager.h"
+//#include "../Menus/MenuManager.h"
 
 class Player
 {
 public:
 	Player();
-	void display(sf::RenderWindow*, MenuManager&);
+	void display(sf::RenderWindow*);
 	
 
 private:

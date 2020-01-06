@@ -62,7 +62,7 @@ HeroSelectionMenu::HeroSelectionMenu()
 	
 }
 
-void HeroSelectionMenu::display(sf::RenderWindow* window)
+void HeroSelectionMenu::display(sf::RenderWindow* window, PlayerManager& playerManager)
 {
 	window->draw(menuSpr);
 	//////////////////////
@@ -75,6 +75,9 @@ void HeroSelectionMenu::display(sf::RenderWindow* window)
 	window->draw(nameInputLabelRect);
 	window->draw(nameInputLabelText);
 	window->draw(nameRect);
+
+	// player manager
+	playerManager.displayPlayerInfo(window);
 
 	// hreos card
 	drawHerosCard(window);

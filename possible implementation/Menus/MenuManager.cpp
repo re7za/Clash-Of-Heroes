@@ -29,7 +29,6 @@ void MenuManager::rightClickPos(sf::Vector2i pos)
 		}
 }
 
-
 void MenuManager::displayCurrentMenu(sf::RenderWindow* window)
 {
 	// frame refreshing
@@ -37,7 +36,7 @@ void MenuManager::displayCurrentMenu(sf::RenderWindow* window)
 	for (Menu* menu : menuVec)
 		if (menu->getMenuName() == currentMenu)
 		{
-			menu->display(window);
+			menu->display(window, playerManager);
 			break;
 		}
 }
