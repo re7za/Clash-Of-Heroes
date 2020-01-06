@@ -5,6 +5,7 @@ CommanderCard::CommanderCard()
 {
 	setCardSpr();
 	setDefaulProperties();
+	SprOrginalColor = heroCardSpr.getColor();
 
 	// hero name
 	heroNameTxt.setString("Commander");

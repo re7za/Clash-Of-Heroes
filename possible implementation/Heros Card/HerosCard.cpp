@@ -4,6 +4,10 @@
 
 void HerosCard::setDefaulProperties()
 {
+	// hero SprColor
+	heroCardSpr.setColor(sf::Color(heroCardSpr.getColor().r - 40, heroCardSpr.getColor().g - 40,
+		heroCardSpr.getColor().b - 40, 255));
+
 	// hero name
 	nameFont.loadFromFile("Font/fighting spirit TBS.ttf");
 	heroNameTxt.setFont(nameFont);
@@ -26,6 +30,15 @@ void HerosCard::setDefaulProperties()
 		heroCardSpr.getPosition().y + 33));
 }
 
+void HerosCard::setColor(sf::Color color)
+{
+	heroCardSpr.setColor(color);
+}
+sf::Color HerosCard::getSprOrginalColor()
+{
+	return SprOrginalColor;
+}
+
 void HerosCard::setCardName(std::string cardName)
 {
 	this->cardName = cardName;
@@ -34,4 +47,24 @@ void HerosCard::setCardName(std::string cardName)
 std::string HerosCard::getCardName()
 {
 	return cardName;
+}
+
+sf::Vector2f HerosCard::getPosition()
+{
+	return heroCardSpr.getPosition();
+}
+
+sf::FloatRect HerosCard::getGlobalBound()
+{
+	return heroCardSpr.getGlobalBounds();
+}
+
+void HerosCard::setCardSelection(bool newBool)
+{
+	cardSelection = newBool;
+}
+
+bool HerosCard::isCardSelected()
+{
+	return cardSelection;
 }

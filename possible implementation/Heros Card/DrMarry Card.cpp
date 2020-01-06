@@ -5,6 +5,7 @@ DrMarryCard::DrMarryCard()
 {
 	setCardSpr();
 	setDefaulProperties();
+	SprOrginalColor = heroCardSpr.getColor();
 
 	// hero name
 	heroNameTxt.setString("Dr.Marry");

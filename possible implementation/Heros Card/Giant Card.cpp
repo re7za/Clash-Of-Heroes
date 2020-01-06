@@ -5,6 +5,7 @@ GiantCard::GiantCard()
 {
 	setCardSpr();
 	setDefaulProperties();
+	SprOrginalColor = heroCardSpr.getColor();
 
 	// hero name
 	heroNameTxt.setString("Giant");

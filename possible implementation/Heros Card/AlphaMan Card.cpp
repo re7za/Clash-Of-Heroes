@@ -5,7 +5,8 @@ AlphaManCard::AlphaManCard()
 {
 	setCardSpr();
 	setDefaulProperties();
-
+	SprOrginalColor = heroCardSpr.getColor();
+	
 	// hero name
 	heroNameTxt.setString("AlphaMan");
 	heroNameTxt.setCharacterSize(18);

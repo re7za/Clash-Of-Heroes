@@ -5,6 +5,7 @@ RickKhonsariCard::RickKhonsariCard()
 {
 	setCardSpr();
 	setDefaulProperties();
+	SprOrginalColor = heroCardSpr.getColor();
 
 	// hero name
 	heroNameTxt.setString("Ramin");

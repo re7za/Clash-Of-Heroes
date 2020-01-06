@@ -46,6 +46,19 @@ HeroSelectionMenu::HeroSelectionMenu()
 	nameInputLabelText.setPosition(sf::Vector2f(nameInputLabelRect.getPosition().x + 25,
 		nameInputLabelRect.getPosition().y + 10));
 
+	// push_back in heroCard
+	heroCardVec.push_back(&alphaManCard);
+	heroCardVec.push_back(&commanderCard);
+	heroCardVec.push_back(&drMarryCard);
+	heroCardVec.push_back(&giantCard);
+	heroCardVec.push_back(&kratosCard);
+	heroCardVec.push_back(&leonCard);
+	heroCardVec.push_back(&mrsGhostCard);
+	heroCardVec.push_back(&professorCard);
+	heroCardVec.push_back(&rickKhonsariCard);
+	heroCardVec.push_back(&ROBICard);
+	heroCardVec.push_back(&sniperCard);
+	heroCardVec.push_back(&sybilCard);
 	
 }
 
@@ -70,9 +83,19 @@ void HeroSelectionMenu::display(sf::RenderWindow* window)
 void HeroSelectionMenu::mouseHover(sf::RenderWindow* window)
 {
 	backBtn.onMouseOver();
+
 }
 
 void HeroSelectionMenu::rightClick(sf::Vector2i pos)
+{
+	// back button
+	rightClickBackBtn(pos);
+
+	// each hero card
+	rightClickHeroEachCard(pos);
+}
+
+void HeroSelectionMenu::rightClickBackBtn(sf::Vector2i pos)
 {
 	if (pos.x >= nameRectLeft - nameRectWidth && pos.x <= nameRectLeft + nameRectWidth
 		&& pos.y >= nameRectTop && pos.y <= nameRectTop + nameRectHeight)
@@ -93,18 +116,33 @@ void HeroSelectionMenu::rightClick(sf::Vector2i pos)
 	}
 }
 
+void HeroSelectionMenu::rightClickHeroEachCard(sf::Vector2i pos)
+{
+	for (HerosCard* card : heroCardVec)
+		if (pos.x >=  card->getGlobalBound().left && pos.x <= card->getPosition().x + 150
+			&& pos.y >= card->getGlobalBound().top && pos.y <= card->getPosition().y + 230)
+		{
+			if (!card->isCardSelected())
+			{
+				card->setCardSelection(true);
+				card->setColor(sf::Color(card->getSprOrginalColor().r + 40, card->getSprOrginalColor().g + 30,
+					card->getSprOrginalColor().b + 30, 255));
+			}
+		}
+		else
+		{
+			if (card->isCardSelected())
+			{
+				card->setCardSelection(false);
+				card->setColor(sf::Color(card->getSprOrginalColor().r, card->getSprOrginalColor().g,
+					card->getSprOrginalColor().b, 255));
+			}
+		}
+} 
+
 void HeroSelectionMenu::drawHerosCard(sf::RenderWindow* window)
 {
-	alphaManCard.draw(window);
-	commanderCard.draw(window);
-	drMarryCard.draw(window);
-	giantCard.draw(window);
-	kratosCard.draw(window);
-	leonCard.draw(window);
-	mrsGhostCard.draw(window);
-	professorCard.draw(window);
-	rickKhonsariCard.draw(window);
-	ROBICard.draw(window);
-	sniperCard.draw(window);
-	sybilCard.draw(window);
+	for (HerosCard* card : heroCardVec)
+		card->draw(window);
+		
 }

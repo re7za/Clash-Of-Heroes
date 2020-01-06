@@ -36,7 +36,7 @@ int main()
 		window.clear(sf::Color::White);
 		//////////draw your trashes here
 		menuManager.displayCurrentMenu(&window);
-		playerManager.displayPlayerInfo(&window, menuManager);s
+		playerManager.displayPlayerInfo(&window, menuManager);
 		////////////////////////////////
 		window.display();
 

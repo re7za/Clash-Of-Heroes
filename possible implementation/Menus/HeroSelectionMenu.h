@@ -6,6 +6,9 @@
 #include "Menu.h"
 #include "../Button/Button.h"
 #include "../Textbox/Textbox.h"
+#include <vector>
+// heros Card
+#include "../Heros Card/HerosCard.h"
 #include "../Heros Card/AlphaMan Card.h"
 #include "../Heros Card/Commander Card.h"
 #include "../Heros Card/DrMarry Card.h"
@@ -30,8 +33,11 @@ public:
 	HeroSelectionMenu();
 	void display(sf::RenderWindow*);
 	void mouseHover(sf::RenderWindow*);
-	void rightClick(sf::Vector2i);
 	void drawHerosCard(sf::RenderWindow*);
+	void rightClick(sf::Vector2i);
+	void rightClickBackBtn(sf::Vector2i);
+	void rightClickHeroEachCard(sf::Vector2i);
+
 
 private:
 	Button backBtn;
@@ -46,6 +52,7 @@ private:
 	sf::Text nameInputLabelText;
 	
 	// heros Cards
+	std::vector<HerosCard*> heroCardVec;
 	AlphaManCard alphaManCard;
 	CommanderCard commanderCard;
 	DrMarryCard drMarryCard;

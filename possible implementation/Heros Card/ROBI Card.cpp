@@ -5,7 +5,8 @@ ROBICard::ROBICard()
 {
 	setCardSpr();
 	setDefaulProperties();
-
+	SprOrginalColor = heroCardSpr.getColor();
+	
 	// hero name
 	heroNameTxt.setString("ROBI");
 	heroNameTxt.setCharacterSize(20);

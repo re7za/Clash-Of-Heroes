@@ -5,6 +5,7 @@ ProfessorCard::ProfessorCard()
 {
 	setCardSpr();
 	setDefaulProperties();
+	SprOrginalColor = heroCardSpr.getColor();
 
 	// hero name
 	heroNameTxt.setString("Professor");
