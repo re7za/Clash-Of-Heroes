@@ -4,6 +4,7 @@
 #define HEROSELECTIONMENU_H
 
 #include "Menu.h"
+#include "../Grid/Grid.h"
 #include "../Button/Button.h"
 #include "../Textbox/Textbox.h"
 #include <vector>
@@ -31,21 +32,24 @@ class HeroSelectionMenu : public Menu
 {
 public:
 	HeroSelectionMenu();
-	void display(sf::RenderWindow*, PlayerManager&);
+	void display(sf::RenderWindow*);
 	void drawHerosCard(sf::RenderWindow*);
 
 	// mouse events and positions
-	void mousePosition(sf::Vector2i);
-	void rightClick(sf::Vector2i);
+	//void mousePosition(sf::Vector2i&);
+	void rightClick(sf::Vector2i&);
 
 	// utility functions of mouse envents and positions
 	void mouseHover(sf::RenderWindow*);
-	void rightClickBackBtn(sf::Vector2i);
-	void rightClickHeroEachCard(sf::Vector2i);
+	void rightClickBackBtn(sf::Vector2i&);
+	void rightClickHeroEachCard(sf::Vector2i&);
 
 
 private:
 	Button backBtn;
+
+	// each player has a grid
+	Grid grid;
 
 	// nameBox
 	Textbox nameBox;

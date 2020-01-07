@@ -5,24 +5,27 @@
 
 #include "SFML/Graphics.hpp"
 #include "../generalDef.h"
+#include "Tile.h"
 #include <array>
-
-enum class tileType { L1, L2, L3 };
+#include <iostream>
 
 class Grid
 {
 public:
 	Grid();
+
+	// fill the grid by tiles
+	void fillTheGrid();
+	void setTilesPosition();
+
+	// draw
+	void draw(sf::RenderWindow*);
+
+	// click on tiles
+	void gridClicked(sf::Vector2i&);
+
+	// sfml 
 	sf::Sprite getGridSpr();
-
-	// mouse hover
-	void whichTileIsTheMouseOn(sf::Vector2i*);
-
-	// tiles
-	void setHurtTileTexture(us, us);
-	void draw(sf::RenderWindow* window);
-
-	// sfml methodes
 	void setFillColor(const sf::Color&);
 	void setPosition(const sf::Vector2f&);
 	void setScale(const sf::Vector2f&);
@@ -34,15 +37,11 @@ public:
 
 private:
 	//utility functions
-	void setTilesTexArray();
-	void setDefaultTilesTexturs();
 	void setTilesScale(const sf::Vector2f&);
 
 	sf::Texture gridTex;
 	sf::Sprite gridSpr;
-	std::array<std::array<sf::Sprite, 9>, 9> tiles;
-	std::array<sf::Texture, 3> tilesTex;
-	tileType tileStatus = tileType::L1;
+	std::array<std::array<Tile*, 9>, 9> tiles;
 };
 
 

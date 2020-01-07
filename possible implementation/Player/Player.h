@@ -16,9 +16,6 @@ public:
 
 private:
 
-	// each player has a grid
-	Grid grid;
-
 };
 
 

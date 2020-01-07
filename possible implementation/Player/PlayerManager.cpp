@@ -12,6 +12,7 @@ PlayerManager::PlayerManager()
 	// playerVec
 	playerVec.push_back(&player1);
 	playerVec.push_back(&player2);
+
 }
 
 void PlayerManager::changeTheTurn()

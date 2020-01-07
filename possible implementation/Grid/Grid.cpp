@@ -6,23 +6,26 @@ Grid::Grid()
 {
 	gridTex.loadFromFile("Grid/base/download.png");
 	gridSpr.setTexture(gridTex);
-	setTilesTexArray();
-	setDefaultTilesTexturs();
+	fillTheGrid();
 }
 
-sf::Sprite Grid::getGridSpr()
-{
-	return gridSpr;
-}
 
-// mouse events and positions
-void Grid::whichTileIsTheMouseOn(sf::Vector2i* pos)
-{
-	for (std::array<sf::Sprite, 9>& row : tiles)
-		for (sf::Sprite& tile : row)
-		{
-
-		}
+void Grid::gridClicked(sf::Vector2i& pos)
+{/*
+	for (us i = 0; i < 9; i++)
+		for (us j = 0; j < 9; j++)
+			if (pos.x >= tiles.at(i).at(j).getPosition().x + i*76
+				&& pos.x < tiles.at(i).at(j).getPosition().x + i*76 + 76
+				&& pos.x < tiles.at(i).at(j).getPosition().x + j * 76
+				&& pos.x < tiles.at(i).at(j).getPosition().x + j * 76 + 76)
+			{
+				std::cout << pos.x << " " << tiles.at(i).at(j).getPosition().x + i*76 << std::endl;
+				tiles.at(i).at(j).setTexture(tilesTex.at(0));
+			}
+			else
+				tiles.at(i).at(j).setColor(sf::Color(gridOrginalColor.r, gridOrginalColor.g,
+					gridOrginalColor.b, 255));*/
+	// چرا کار نمیکنه .. اگه رنگش عوض نشد برو واس اینکه هیرو هارو ادد کنی
 }
 
 // tiles
@@ -31,34 +34,40 @@ void Grid::draw(sf::RenderWindow* window)
 	window->draw(gridSpr);
 	for (us i = 0; i < 9; i++)
 		for (us j = 0; j < 9; j++)
-			window->draw(tiles.at(i).at(j));
-}
-void Grid::setHurtTileTexture(us, us)
-{
-
+			tiles.at(i).at(j)->draw(window);
 }
 
-// utility functions
-void Grid::setTilesTexArray()
+sf::Sprite Grid::getGridSpr()
 {
-	tilesTex.at(1).loadFromFile("Grid/tiles/L1.png");
-	tilesTex.at(2).loadFromFile("Grid/tiles/L2.png");
+	return gridSpr;
 }
-void Grid::setDefaultTilesTexturs()
+void Grid::fillTheGrid()
+{
+	for (std::array<Tile*, 9>& row : tiles)
+		for (Tile*& tile : row)
+			tile = new Tile();
+}
+
+void Grid::setTilesPosition()
 {
 	for (us i = 0; i < 9; i++)
 		for (us j = 0; j < 9; j++)
 		{
-			tiles.at(i).at(j).setTexture(tilesTex.at(0));
-			tiles.at(i).at(j).setPosition(sf::Vector2f(gridSpr.getPosition().x + (i * tilesTex.at(0).getSize().x + i*1.5) * this->getScale().x,
-				this->getPosition().y + (j * tilesTex.at(0).getSize().y + j*2)* this->getScale().y));
+			tiles.at(i).at(j)->setPosition(sf::Vector2f(this->getPosition().x + (j * (tiles.at(i).at(j)->getGlobalBound().width) + j * 1.5) * this->getScale().x,
+				this->getPosition().y + (i * (tiles.at(i).at(j)->getGlobalBound().height) + i * 2) * this->getScale().y));
+			std::cout << this->getPosition().x << 
+				" " << this->getPosition().x + (j * (tiles.at(i).at(j)->getGlobalBound().width) + j * 1.5) * this->getScale().x <<
+				" " << this->getPosition().y + (i * (tiles.at(i).at(j)->getGlobalBound().height) + i * 2) * this->getScale().y << std::endl;
 		}
 }
+
+///////////////////////////////////////
+// utility functions
 void Grid::setTilesScale(const sf::Vector2f& scale)
 {
 	for (us i = 0; i < 9; i++)
 		for (us j = 0; j < 9; j++)
-			tiles.at(i).at(j).setScale(scale.x, scale.y);
+			tiles.at(i).at(j)->setScale(scale);
 }
 
 // sfml methodes
@@ -69,13 +78,12 @@ void Grid::setFillColor(const sf::Color& color)
 void Grid::setPosition(const sf::Vector2f& position)
 {
 	gridSpr.setPosition(position);
-	setDefaultTilesTexturs();
+	setTilesPosition();
 }
 void Grid::setScale(const sf::Vector2f& scale)
 {
 	gridSpr.setScale(scale);
 	setTilesScale(sf::Vector2f(this->getScale().x, this->getScale().y));
-	setDefaultTilesTexturs();
 }
 sf::FloatRect Grid::getGlobalBound()
 {

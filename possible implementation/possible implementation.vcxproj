@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="Button\Button.cpp" />
     <ClCompile Include="Grid\Grid.cpp" />
+    <ClCompile Include="Grid\Tile.cpp" />
     <ClCompile Include="Heros Card\AlphaMan Card.cpp" />
     <ClCompile Include="Heros Card\Commander Card.cpp" />
     <ClCompile Include="Heros Card\DrMarry Card.cpp" />
@@ -59,6 +60,7 @@
     <ClInclude Include="Button\Button.h" />
     <ClInclude Include="generalDef.h" />
     <ClInclude Include="Grid\Grid.h" />
+    <ClInclude Include="Grid\Tile.h" />
     <ClInclude Include="Heros Card\AlphaMan Card.h" />
     <ClInclude Include="Heros Card\Commander Card.h" />
     <ClInclude Include="Heros Card\DrMarry Card.h" />

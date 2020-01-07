@@ -19,6 +19,11 @@ HeroSelectionMenu::HeroSelectionMenu()
 	setGamelabel();
 	gamelabel.setPosition(menuSpr.getGlobalBounds().left + 70,
 		menuSpr.getGlobalBounds().height * 2 / 3);
+	
+	// grid
+	grid.setPosition(sf::Vector2f(sf::VideoMode::getDesktopMode().width / 2 + 100,
+		sf::VideoMode::getDesktopMode().height * 1 / 3 - 30));
+
 
 	// back button
 	backBtn.setString("back");
@@ -62,7 +67,7 @@ HeroSelectionMenu::HeroSelectionMenu()
 	
 }
 
-void HeroSelectionMenu::display(sf::RenderWindow* window, PlayerManager& playerManager)
+void HeroSelectionMenu::display(sf::RenderWindow* window)
 {
 	window->draw(menuSpr);
 	//////////////////////
@@ -76,25 +81,23 @@ void HeroSelectionMenu::display(sf::RenderWindow* window, PlayerManager& playerM
 	window->draw(nameInputLabelText);
 	window->draw(nameRect);
 
-	// player manager
-	playerManager.displayPlayerInfo(window);
+	// grid
+	grid.draw(window);
 
 	// hreos card
 	drawHerosCard(window);
 }
 
 // mouse events and positions
-void HeroSelectionMenu::mousePosition(sf::Vector2i pos)
-{
-	
-}
-void HeroSelectionMenu::rightClick(sf::Vector2i pos)
+void HeroSelectionMenu::rightClick(sf::Vector2i& pos)
 {
 	// back button
 	rightClickBackBtn(pos);
 
 	// each hero card
 	rightClickHeroEachCard(pos);
+
+	grid.gridClicked(pos);
 }
 
 // utility functions of mouse envents and positions
@@ -102,7 +105,7 @@ void HeroSelectionMenu::mouseHover(sf::RenderWindow* window)
 {
 	backBtn.onMouseOver();
 }
-void HeroSelectionMenu::rightClickBackBtn(sf::Vector2i pos)
+void HeroSelectionMenu::rightClickBackBtn(sf::Vector2i& pos)
 {
 	if (pos.x >= nameRectLeft - nameRectWidth && pos.x <= nameRectLeft + nameRectWidth
 		&& pos.y >= nameRectTop && pos.y <= nameRectTop + nameRectHeight)
@@ -122,7 +125,7 @@ void HeroSelectionMenu::rightClickBackBtn(sf::Vector2i pos)
 		}
 	}
 }
-void HeroSelectionMenu::rightClickHeroEachCard(sf::Vector2i pos)
+void HeroSelectionMenu::rightClickHeroEachCard(sf::Vector2i& pos)
 {
 	for (HerosCard* card : heroCardVec)
 		if (pos.x >=  card->getGlobalBound().left && pos.x <= card->getPosition().x + 150

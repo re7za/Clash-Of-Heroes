@@ -10,15 +10,6 @@ MenuManager::MenuManager()
 	menuVec.push_back(&heroSelectionMenu);
 }
 
-void MenuManager::getMousePosition(sf::Vector2i pos)
-{
-	for (Menu* menu : menuVec)
-		if (menu->getMenuName() == currentMenu)
-		{
-			menu->mousePosition(pos);
-			break;
-		}
-}
 void MenuManager::rightClickPos(sf::Vector2i pos)
 {
 	for (Menu* menu : menuVec)
@@ -36,7 +27,7 @@ void MenuManager::displayCurrentMenu(sf::RenderWindow* window)
 	for (Menu* menu : menuVec)
 		if (menu->getMenuName() == currentMenu)
 		{
-			menu->display(window, playerManager);
+			menu->display(window);
 			break;
 		}
 }

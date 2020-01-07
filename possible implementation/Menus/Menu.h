@@ -4,16 +4,16 @@
 #define MENU_H
 
 #include "SFML/Graphics.hpp"
-#include "../generalDef.h"
 #include "../Player/PlayerManager.h"
+#include "../generalDef.h"
 
 static class Menu
 {
 public:
-	virtual void display(sf::RenderWindow*, PlayerManager&) = 0;
+	virtual void display(sf::RenderWindow*) = 0;
 	virtual void mouseHover(sf::RenderWindow*) = 0;
-	virtual void mousePosition(sf::Vector2i) = 0;
-	virtual void rightClick(sf::Vector2i) = 0;
+	//virtual void mousePosition(sf::Vector2i&) = 0;
+	virtual void rightClick(sf::Vector2i&) = 0;
 	menuType getMenuName();
 	menuType getPreviousMenu();
 
@@ -32,6 +32,9 @@ protected:
 	sf::Font gameLabelFont;
 	sf::Text gamelabel;
 	
+	// unfortunately have to define playerManager here.. for now
+	static PlayerManager playerManager;
+
 };
 
 #endif

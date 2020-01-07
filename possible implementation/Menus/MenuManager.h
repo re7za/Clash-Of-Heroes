@@ -20,16 +20,13 @@ public:
 	void setCurrentMenu(menuType);
 
 	// events and positions
-	void getMousePosition(sf::Vector2i);
+	//void getMousePosition(sf::Vector2i);
 	void rightClickPos(sf::Vector2i);
 
 private:
 	menuType currentMenu;
 	std::vector <Menu*> menuVec;
 	HeroSelectionMenu heroSelectionMenu;
-
-	// each player plays in menu actually
-	PlayerManager playerManager;	// نباید توی منو ها تعریف بشه چون برای هر منو یدونه ساخته میشه
 
 };
 
