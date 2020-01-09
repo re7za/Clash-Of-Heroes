@@ -7,7 +7,7 @@ Tile::Tile()
 	tileSpr.setTexture(tileTex);
 	tileSpr.getGlobalBounds();
 	// set default color : opacity = 0
-	tileSpr.setColor(sf::Color(255, 255, 255, 180));
+	tileSpr.setColor(sf::Color(100, 0, 180, 0));
 	tileOrginalColor = tileSpr.getColor();
 }
 

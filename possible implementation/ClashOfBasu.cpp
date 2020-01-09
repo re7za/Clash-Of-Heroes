@@ -14,10 +14,15 @@ int main()
 	MenuManager menuManager;
 	
 
+	
+
+	bool LeftClickPression = false;
+	sf::Vector2i mousePosAtPression;
+
 	sf::Event evnt;
 	while (window.isOpen())
 	{
-		//menuManager.getMousePosition(sf::Mouse::getPosition());
+		// menuManager.getMousePosition(sf::Mouse::getPosition());
 
 		while (window.pollEvent(evnt))
 		{
@@ -25,10 +30,21 @@ int main()
 				|| evnt.key.code == sf::Keyboard::Escape)
 				window.close();
 
-			//sending the mouse events and positions to menuManager
+			// sending the mouse events and positions to menuManager
+			if (evnt.type == sf::Event::MouseButtonPressed)
+				if (evnt.mouseButton.button == sf::Mouse::Left)
+				{
+					LeftClickPression = true;
+					mousePosAtPression = sf::Mouse::getPosition();
+				}
 			if (evnt.type == sf::Event::MouseButtonReleased)
 				if (evnt.mouseButton.button == sf::Mouse::Left)
-					menuManager.rightClickPos(sf::Mouse::getPosition());
+					if (LeftClickPression == true)
+						if (mousePosAtPression == sf::Mouse::getPosition())
+						{
+							LeftClickPression = false;
+							menuManager.rightClickPos(sf::Mouse::getPosition());
+						}
 
 			//if (evnt.type == sf::Event::TextEntered)
 				

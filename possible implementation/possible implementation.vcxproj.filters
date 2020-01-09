@@ -165,6 +165,9 @@
     <ClCompile Include="Grid\Tile.cpp">
       <Filter>Source Files\Grid</Filter>
     </ClCompile>
+    <ClCompile Include="Heros Card\HeroCardManager.cpp">
+      <Filter>Source Files\Heros Card</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Menus\Menu.h">
@@ -274,6 +277,9 @@
     </ClInclude>
     <ClInclude Include="Grid\Tile.h">
       <Filter>Header Files\Grid</Filter>
+    </ClInclude>
+    <ClInclude Include="Heros Card\HeroCardManager.h">
+      <Filter>Header Files\Heros Card</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

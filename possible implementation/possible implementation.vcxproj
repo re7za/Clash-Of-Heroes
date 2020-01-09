@@ -26,6 +26,7 @@
     <ClCompile Include="Heros Card\Commander Card.cpp" />
     <ClCompile Include="Heros Card\DrMarry Card.cpp" />
     <ClCompile Include="Heros Card\Giant Card.cpp" />
+    <ClCompile Include="Heros Card\HeroCardManager.cpp" />
     <ClCompile Include="Heros Card\HerosCard.cpp" />
     <ClCompile Include="Heros Card\Kratos Card.cpp" />
     <ClCompile Include="Heros Card\Leon Card.cpp" />
@@ -65,6 +66,7 @@
     <ClInclude Include="Heros Card\Commander Card.h" />
     <ClInclude Include="Heros Card\DrMarry Card.h" />
     <ClInclude Include="Heros Card\Giant Card.h" />
+    <ClInclude Include="Heros Card\HeroCardManager.h" />
     <ClInclude Include="Heros Card\HerosCard.h" />
     <ClInclude Include="Heros Card\Kratos Card.h" />
     <ClInclude Include="Heros Card\Leon Card.h" />

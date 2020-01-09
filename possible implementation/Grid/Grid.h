@@ -22,7 +22,8 @@ public:
 	void draw(sf::RenderWindow*);
 
 	// click on tiles
-	void gridClicked(sf::Vector2i&);
+	void gridClicked(sf::Vector2i&, heros&);		// heroSelectionMenu version
+	// void gridClicked(sf::... another version..
 
 	// sfml 
 	sf::Sprite getGridSpr();
@@ -36,7 +37,7 @@ public:
 
 
 private:
-	//utility functions
+	// utility functions
 	void setTilesScale(const sf::Vector2f&);
 
 	sf::Texture gridTex;

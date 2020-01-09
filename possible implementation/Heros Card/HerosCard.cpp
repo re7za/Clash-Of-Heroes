@@ -1,7 +1,6 @@
 
 #include "HerosCard.h"
 
-
 void HerosCard::setDefaulProperties()
 {
 	// hero SprColor
@@ -54,11 +53,11 @@ sf::FloatRect HerosCard::getGlobalBound()
 	return heroCardSpr.getGlobalBounds();
 }
 
+// card selection
 void HerosCard::setCardSelection(bool newBool)
 {
 	cardSelection = newBool;
 }
-
 bool HerosCard::isCardSelected()
 {
 	return cardSelection;

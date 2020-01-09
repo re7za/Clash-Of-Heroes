@@ -21,7 +21,8 @@ enum heros
 	professor,
 	commander,
 	rickKhonsari,
-	sybil
+	sybil,
+	none
 };
 
 enum class menuType {

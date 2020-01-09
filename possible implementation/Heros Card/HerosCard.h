@@ -17,11 +17,16 @@ public:
 	heros getCardName();
 	sf::Vector2f getPosition();
 	sf::FloatRect getGlobalBound();
+
+
+	// card selection
 	void setCardSelection(bool);
 	bool isCardSelected();
-	
+
 protected:
 	void setDefaulProperties();
+
+	bool cardSelection = false;
 
 	heros cardName;
 
@@ -35,9 +40,6 @@ protected:
 	sf::Text heroNameTxt;
 	sf::Text healthTxt;
 	sf::Text damageTxt;
-
-	bool cardSelection = false;
-
 };
 
 #endif

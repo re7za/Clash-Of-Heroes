@@ -10,22 +10,24 @@ Grid::Grid()
 }
 
 
-void Grid::gridClicked(sf::Vector2i& pos)
-{/*
+void Grid::gridClicked(sf::Vector2i& pos, heros& heroCard)
+{
 	for (us i = 0; i < 9; i++)
 		for (us j = 0; j < 9; j++)
-			if (pos.x >= tiles.at(i).at(j).getPosition().x + i*76
-				&& pos.x < tiles.at(i).at(j).getPosition().x + i*76 + 76
-				&& pos.x < tiles.at(i).at(j).getPosition().x + j * 76
-				&& pos.x < tiles.at(i).at(j).getPosition().x + j * 76 + 76)
+			if (pos.x >= tiles.at(i).at(j)->getPosition().x
+				&& pos.x < tiles.at(i).at(j)->getPosition().x + tiles.at(i).at(j)->getGlobalBound().width
+				&& pos.y >= tiles.at(i).at(j)->getPosition().y
+				&& pos.y < tiles.at(i).at(j)->getPosition().y + tiles.at(i).at(j)->getGlobalBound().height)
 			{
-				std::cout << pos.x << " " << tiles.at(i).at(j).getPosition().x + i*76 << std::endl;
-				tiles.at(i).at(j).setTexture(tilesTex.at(0));
+				//std::cout << heroCard << std::endl;
+				heroCard = heros::none;
 			}
 			else
-				tiles.at(i).at(j).setColor(sf::Color(gridOrginalColor.r, gridOrginalColor.g,
-					gridOrginalColor.b, 255));*/
-	// چرا کار نمیکنه .. اگه رنگش عوض نشد برو واس اینکه هیرو هارو ادد کنی
+			{
+				heroCard = heros::none;
+
+			}
+
 }
 
 // tiles
@@ -52,13 +54,8 @@ void Grid::setTilesPosition()
 {
 	for (us i = 0; i < 9; i++)
 		for (us j = 0; j < 9; j++)
-		{
 			tiles.at(i).at(j)->setPosition(sf::Vector2f(this->getPosition().x + (j * (tiles.at(i).at(j)->getGlobalBound().width) + j * 1.5) * this->getScale().x,
 				this->getPosition().y + (i * (tiles.at(i).at(j)->getGlobalBound().height) + i * 2) * this->getScale().y));
-			std::cout << this->getPosition().x << 
-				" " << this->getPosition().x + (j * (tiles.at(i).at(j)->getGlobalBound().width) + j * 1.5) * this->getScale().x <<
-				" " << this->getPosition().y + (i * (tiles.at(i).at(j)->getGlobalBound().height) + i * 2) * this->getScale().y << std::endl;
-		}
 }
 
 ///////////////////////////////////////
