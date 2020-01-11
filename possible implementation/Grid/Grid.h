@@ -22,7 +22,7 @@ public:
 	void draw(sf::RenderWindow*);
 
 	// click on tiles
-	void gridClicked(sf::Vector2i&, heros&);		// heroSelectionMenu version
+	void gridClicked(sf::Vector2i&,heros&);		// heroSelectionMenu version
 	// void gridClicked(sf::... another version..
 
 	// sfml 

@@ -3,8 +3,10 @@
 #ifndef HEROSELECTIONMENU_H
 #define HEROSELECTIONMENU_H
 
+#include "../generalDef.h"
 #include "Menu.h"
 #include "../Heros Card/HeroCardManager.h"
+#include "../Heros Card/HerosCard.h"
 #include "../Grid/Grid.h"
 #include "../Button/Button.h"
 #include "../Textbox/Textbox.h"

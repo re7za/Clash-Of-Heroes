@@ -10,7 +10,7 @@ Grid::Grid()
 }
 
 
-void Grid::gridClicked(sf::Vector2i& pos, heros& heroCard)
+void Grid::gridClicked(sf::Vector2i& pos,heros& heroCard)
 {
 	for (us i = 0; i < 9; i++)
 		for (us j = 0; j < 9; j++)
@@ -20,12 +20,11 @@ void Grid::gridClicked(sf::Vector2i& pos, heros& heroCard)
 				&& pos.y < tiles.at(i).at(j)->getPosition().y + tiles.at(i).at(j)->getGlobalBound().height)
 			{
 				//std::cout << heroCard << std::endl;
+				tiles.at(i).at(j)->setOrRemoveHeroSpr(heroCard);
 				heroCard = heros::none;
 			}
 			else
 			{
-				heroCard = heros::none;
-
 			}
 
 }

@@ -28,8 +28,8 @@ void HeroCardManager::drawHerosCard(sf::RenderWindow* window)
 
 void HeroCardManager::rightClickHeroEachCard(sf::Vector2i& pos)
 {
-	static int a = 0;
-	for (HerosCard* card : heroCardVec)
+	// checking wether a card is clicked
+	for (HerosCard* & card : heroCardVec)
 	{
 		// set default color
 		card->setCardSelection(false);
@@ -49,6 +49,19 @@ void HeroCardManager::rightClickHeroEachCard(sf::Vector2i& pos)
 			}
 		}
 	}
+
+	/* checking another NULL area :)
+	us cardCounter = 0;
+	for (HerosCard*& card : heroCardVec)
+		if (pos.x >= card->getGlobalBound().left && pos.x <= card->getPosition().x + 150
+			&& pos.y >= card->getGlobalBound().top && pos.y <= card->getPosition().y + 230
+			&& pos.x >= tiles.at(i).at(j)->getPosition().x
+			&& pos.x < tiles.at(i).at(j)->getPosition().x + tiles.at(i).at(j)->getGlobalBound().width
+			&& pos.y >= tiles.at(i).at(j)->getPosition().y
+			&& pos.y < tiles.at(i).at(j)->getPosition().y + tiles.at(i).at(j)->getGlobalBound().height)
+			// میخوایم چک کنیم کع اگه پوزیشن کلیک شده چیزی جز کارت ها و گریده سلکت کارت مساوی نان بشه
+	*/
+
 }
 
 // card selection

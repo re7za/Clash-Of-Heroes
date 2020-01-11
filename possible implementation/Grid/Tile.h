@@ -4,6 +4,8 @@
 #define TILE_H
 
 #include "SFML/Graphics.hpp"
+#include "../generalDef.h"
+#include "iostream"
 
 enum class tileType { L1, L2, L3 };
 
@@ -26,15 +28,23 @@ public:
 	const sf::Vector2f& getPosition();
 	const sf::Vector2f& getScale();
 
+	// set hero and the others
+	void setOrRemoveHeroSpr(const heros&);
 
 
 private:
-	sf::Texture tileTex;
-	sf::Sprite tileSpr;
+	// area modes
+	sf::Texture tileModTex;
+	sf::Sprite tileModSpr;
+	sf::Color tileModOrginalColor;
+	tileType tileModStatus = tileType::L1;
 
-	sf::Color tileOrginalColor;
-
-	tileType tileStatus = tileType::L1;
+	// area heroSpr
+	bool isHeroSpr = false;
+	heros currentHero = heros::none;
+	sf::Texture* heroTex;
+	sf::Sprite* heroSpr;
+	
 };
 
 

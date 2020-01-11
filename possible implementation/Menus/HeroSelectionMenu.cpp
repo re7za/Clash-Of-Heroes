@@ -80,7 +80,7 @@ void HeroSelectionMenu::rightClick(sf::Vector2i& pos)
 	heroCardManager.rightClickHeroEachCard(pos);
 
 	// grid
-	std::cout << heroCardManager.getSelectedCard() << std::endl;
+	//std::cout << heroCardManager.getSelectedCard() << std::endl;
 	grid.gridClicked(pos, heroCardManager.getSelectedCardByRefrence());
 
 
@@ -113,5 +113,4 @@ void HeroSelectionMenu::rightClickBackBtn(sf::Vector2i& pos)
 		}
 	}
 }
-
 
