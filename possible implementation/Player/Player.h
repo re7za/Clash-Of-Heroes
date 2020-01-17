@@ -4,15 +4,32 @@
 #define PLAYER_H
 
 #include "SFML/Graphics.hpp"
-#include "../Grid/Grid.h"
+#include "../Heros/AlphaMan.h"
+#include "../Heros/Commander.h"
+#include "../Heros/DrMarry.h"
+#include "../Heros/Giant.h"
+#include "../Heros/Kratos.h"
+#include "../Heros/Leon.h"
+#include "../Heros/MrsGhost.h"
+#include "../Heros/Professor.h"
+#include "../Heros/RickKhonsari.h"
+#include "../Heros/ROBI.h"
+#include "../Heros/Sniper.h"
+#include "../Heros/Sybil.h"
+#include "../Heros/Hero.h"
+#include <vector>
+
+
 //#include "../Menus/MenuManager.h"
 
 class Player
 {
 public:
 	Player();
-	void display(sf::RenderWindow*);
-	
+
+	// player vector
+	std::vector <Hero*> playerHerosVec;
+
 
 private:
 

@@ -19,12 +19,12 @@ void Grid::gridClicked(sf::Vector2i& pos,heros& heroCard)
 				&& pos.y >= tiles.at(i).at(j)->getPosition().y
 				&& pos.y < tiles.at(i).at(j)->getPosition().y + tiles.at(i).at(j)->getGlobalBound().height)
 			{
-				//std::cout << heroCard << std::endl;
+				// update player vector
+
+
+				// update the grid
 				tiles.at(i).at(j)->setOrRemoveHeroSpr(heroCard);
 				heroCard = heros::none;
-			}
-			else
-			{
 			}
 
 }

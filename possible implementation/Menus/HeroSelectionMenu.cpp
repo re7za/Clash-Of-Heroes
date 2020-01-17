@@ -76,12 +76,11 @@ void HeroSelectionMenu::display(sf::RenderWindow* window)
 // mouse events and positions
 void HeroSelectionMenu::rightClick(sf::Vector2i& pos)
 {
+	// grid.. it must be before the herocard part
+	grid.gridClicked(pos, heroCardManager.getSelectedCardByRefrence());
+
 	// each hero card
 	heroCardManager.rightClickHeroEachCard(pos);
-
-	// grid
-	//std::cout << heroCardManager.getSelectedCard() << std::endl;
-	grid.gridClicked(pos, heroCardManager.getSelectedCardByRefrence());
 
 
 	// back button

@@ -3,8 +3,5 @@
 
 Player::Player()
 {
-}
 
-void Player::display(sf::RenderWindow* window)
-{
 }

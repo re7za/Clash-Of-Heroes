@@ -19,11 +19,13 @@ public:
 	Players getTheTurn();
 	void displayPlayerInfo(sf::RenderWindow*);
 
+	// players
+	std::vector<Player*> playerVec;
+
 private:
 	// difine two player
 	Player player1;
 	Player player2;
-	std::vector<Player*> playerVec;
 
 	Players playerTurn;
 	
