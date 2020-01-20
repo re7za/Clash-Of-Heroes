@@ -218,3 +218,8 @@ bool Tile::IsHeroSpr()
 {
 	return isHeroSpr;
 }
+
+heros Tile::getHeroCardName()
+{
+	return currentHero;
+}

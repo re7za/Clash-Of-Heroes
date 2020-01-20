@@ -20,7 +20,6 @@ void PlayerManager::headsOrTails()
 		playerTurn = Players::P2;	// حواست باشه منوی هیرو سلکشن نباید بصورت رندوم باشه
 
 }
-
 void PlayerManager::changeTheTurn()
 {
 	if (playerTurn == Players::P1)

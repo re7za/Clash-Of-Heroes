@@ -27,18 +27,14 @@ void Grid::gridClicked(const sf::Vector2i& pos, PlayerManager& playerManager, he
 				if (heroCard == heros::none)
 				{
 					if (tiles.at(i).at(j)->IsHeroSpr())
-					{
-						clearTile(tiles.at(i).at(j));
-
-					}
-					//std::cout << heroCard << " if" << std::endl;
+						clearTile(tiles.at(i).at(j), playerManager);
 				}
 				else
 				{
 					// update the grid
 					//std::cout << heroCard << " else" << std::endl;
 					if (tiles.at(i).at(j)->IsHeroSpr())
-						clearTile(tiles.at(i).at(j));
+						clearTile(tiles.at(i).at(j), playerManager);
 
 					tiles.at(i).at(j)->setHeroSpr(heroCard);
 				}
@@ -50,11 +46,19 @@ void Grid::gridClicked(const sf::Vector2i& pos, PlayerManager& playerManager, he
 				heroCard = heros::none;
 			}
 
+	for (Hero* i : playerManager.playerArr.at(0)->playerHerosVec)
+		std::cout << i->getId() << "    ";
+	std::cout << std::endl;
 }
 
-void Grid::clearTile(Tile*& tile)
+void Grid::clearTile(Tile*& tile ,PlayerManager& playerManager)
 {
+	// graphic side
 	tile->removeHeroSpr();
+
+	// logic side
+	playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))
+		->removeHero(tile->getHeroCardName());
 }
 
 void Grid::setThePlayerHerosVec(PlayerManager& playerManager, heros& heroCard)

@@ -27,6 +27,9 @@ class Player
 public:
 	Player();
 
+	// remove hero
+	void removeHero(heros);
+
 	// player vector
 	std::vector <Hero*> playerHerosVec;
 

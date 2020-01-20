@@ -32,6 +32,8 @@ public:
 	void setHeroSpr(const heros&);
 	void removeHeroSpr();
 	bool IsHeroSpr();
+	// logic side
+	heros getHeroCardName();
 
 
 private:
