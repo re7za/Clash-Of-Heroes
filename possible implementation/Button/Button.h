@@ -23,9 +23,10 @@ public:
 	unsigned short getCharacterSize();
 
 private:
-
 	sf::Font btnFont;
 	sf::Text btnTxt;
+
+	bool isClicked = false;
 };
 
 #endif // !1

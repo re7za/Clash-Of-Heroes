@@ -8,6 +8,7 @@ Grid::Grid()
 	gridSpr.setTexture(gridTex);
 	fillTheGrid();
 	setFillColor(sf::Color(80, 0, 20));
+
 }
 
 
@@ -52,18 +53,16 @@ void Grid::gridClicked(const sf::Vector2i& pos, PlayerManager& playerManager, he
 						->playerHerosVec.size() == 5)
 					{
 						std::cout << " you can't select more than 5 hero!!!" << std::endl;
-					}*/
-					
+					}*/					
 				}
-
-
+				
 				// the last part
 				heroCard = heros::none;
 			}
-
+	/*
 	for (Hero* i : playerManager.playerArr.at(0)->playerHerosVec)
 		std::cout << i->getId() << "    ";
-	std::cout << std::endl;
+	std::cout << std::endl;*/
 }
 
 void Grid::clearTile(Tile*& tile ,PlayerManager& playerManager)

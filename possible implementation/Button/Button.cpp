@@ -14,13 +14,12 @@ void Button::draw(sf::RenderWindow* window)
 {
 	window->draw(btnTxt);
 }
-
 void Button::onMouseOver()
 {
 	if (sf::Mouse::getPosition().x > btnTxt.getPosition().x
 		&& sf::Mouse::getPosition().x < btnTxt.getPosition().x + btnTxt.getLocalBounds().width
-		&& sf::Mouse::getPosition().y > btnTxt.getPosition().y
-		&& sf::Mouse::getPosition().y < btnTxt.getPosition().y + btnTxt.getLocalBounds().height)
+		&& sf::Mouse::getPosition().y > btnTxt.getGlobalBounds().top
+		&& sf::Mouse::getPosition().y < btnTxt.getGlobalBounds().top + btnTxt.getLocalBounds().height)
 	{
 		btnTxt.setFillColor(sf::Color::White);
 	}
@@ -29,6 +28,7 @@ void Button::onMouseOver()
 		btnTxt.setFillColor(sf::Color(230, 230, 230, 200));
 	}
 }
+
 
 
 void Button::setFillColor(const sf::Color& color)

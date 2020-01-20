@@ -10,12 +10,12 @@ MenuManager::MenuManager()
 	menuVec.push_back(&heroSelectionMenu);
 }
 
-void MenuManager::rightClickPos(sf::Vector2i pos)
+void MenuManager::clickPos(sf::Vector2i pos)
 {
 	for (Menu* menu : menuVec)
 		if (menu->getMenuName() == currentMenu)
 		{
-			menu->rightClick(pos);
+			menu->click(pos);
 			break;
 		}
 }

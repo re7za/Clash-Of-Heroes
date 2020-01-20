@@ -22,13 +22,14 @@ public:
 	HeroSelectionMenu();
 	void display(sf::RenderWindow*);
 
-	// mouse events and positions
-	//void mousePosition(sf::Vector2i&);
-	void rightClick(sf::Vector2i&);
+	////////////////////// mouse events and positions
+	void click(sf::Vector2i&);
+
+	// clicking on the nameBox
+	//void clickNameBox(sf::Vector2i&);
 
 	// utility functions of mouse envents and positions
 	void mouseHover(sf::RenderWindow*);
-	void rightClickBackBtn(sf::Vector2i&);
 
 
 private:
@@ -41,6 +42,7 @@ private:
 
 	// another bullShits
 	Button backBtn;
+	Button nextBtn;		// for this menu its "done" at first for P1 and then it changes to "start"
 
 	// nameBox
 	Textbox nameBox;

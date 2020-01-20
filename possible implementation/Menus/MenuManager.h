@@ -21,7 +21,7 @@ public:
 
 	// events and positions
 	//void getMousePosition(sf::Vector2i);
-	void rightClickPos(sf::Vector2i);
+	void clickPos(sf::Vector2i);
 
 private:
 	menuType currentMenu;

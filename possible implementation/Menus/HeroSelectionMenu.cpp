@@ -24,10 +24,13 @@ HeroSelectionMenu::HeroSelectionMenu()
 	grid.setPosition(sf::Vector2f(sf::VideoMode::getDesktopMode().width / 2 + 100,
 		sf::VideoMode::getDesktopMode().height * 1 / 3 - 30));
 
-	// back button.. nameBox and...
+	//////////// back button.. nameBox and...
 	// back button
 	backBtn.setString("back");
 	backBtn.setPosition(sf::Vector2f(sf::VideoMode::getDesktopMode().width - 150, 20));
+	// next button
+	nextBtn.setString("done");
+	nextBtn.setPosition(sf::Vector2f(sf::VideoMode::getDesktopMode().width - 150, 90));
 
 	// name box
 	nameRect.setFillColor(sf::Color(20, 20, 20, 200));
@@ -42,14 +45,15 @@ HeroSelectionMenu::HeroSelectionMenu()
 	nameInputLabelRect.setSize(sf::Vector2f(nameRectWidth , nameRectHeight));
 	nameInputLabelRect.setPosition(sf::Vector2f(nameRectLeft - nameRectWidth, nameRectTop));
 	if (!nameInputLabelFont.loadFromFile("Font/Button.otf"))
-		std::cout << "fuuuuuuuuck" << std::endl;
+		std::cout << "nameInputLabelFont doesn't open" << std::endl;
 	nameInputLabelText.setString("Enter your name");
 	nameInputLabelText.setCharacterSize(38);
 	nameInputLabelText.setFont(nameInputLabelFont);
 	nameInputLabelText.setFillColor(sf::Color::White);
 	nameInputLabelText.setPosition(sf::Vector2f(nameInputLabelRect.getPosition().x + 25,
-		nameInputLabelRect.getPosition().y + 10));
-	
+		nameInputLabelRect.getPosition().y + 10));	
+
+
 }
 
 void HeroSelectionMenu::display(sf::RenderWindow* window)
@@ -58,6 +62,7 @@ void HeroSelectionMenu::display(sf::RenderWindow* window)
 	//////////////////////
 	window->draw(gamelabel);
 	backBtn.draw(window);
+	nextBtn.draw(window);
 	mouseHover(window);
 
 	// input name
@@ -74,7 +79,7 @@ void HeroSelectionMenu::display(sf::RenderWindow* window)
 }
 
 // mouse events and positions
-void HeroSelectionMenu::rightClick(sf::Vector2i& pos)
+void HeroSelectionMenu::click(sf::Vector2i& pos)
 {
 	// grid.. it must be before the herocard part
 	grid.gridClicked(pos, playerManager, heroCardManager.getSelectedCardByRefrence());
@@ -82,16 +87,48 @@ void HeroSelectionMenu::rightClick(sf::Vector2i& pos)
 	// each hero card
 	heroCardManager.rightClickHeroEachCard(pos);
 
-	// back button
-	rightClickBackBtn(pos);
+	// name box
+	//clickNameBox(pos);
+	if (pos.x >= nameRectLeft - nameRectWidth && pos.x <= nameRectLeft + nameRectWidth
+		&& pos.y >= nameRectTop && pos.y <= nameRectTop + nameRectHeight)
+	{
+		if (!nameBox.isItSelected())
+		{
+			nameRect.setFillColor(sf::Color(50, 50, 50, 230));
+			nameBox.setSelected(true);
+		}
+	}
+	else
+	{
+		if (nameBox.isItSelected())
+		{
+			nameRect.setFillColor(sf::Color(20, 20, 20, 200));
+			nameBox.setSelected(false);
+		}
+	}
+
+	//////// buttons
+	/* backButton
+	if (pos.x > backBtn.getGlobalBound().left
+		&& pos.x < backBtn.getGlobalBound().left + backBtn.getGlobalBound().width
+		&& pos.y > backBtn.getGlobalBound().top
+		&& pos.y < backBtn.getGlobalBound().top + backBtn.getGlobalBound().height)
+		// هر کاری ک باید برای دکمه بک باشه
+		*/
+		// nextButton
+	if (pos.x > backBtn.getGlobalBound().left
+		&& pos.x < backBtn.getGlobalBound().left + backBtn.getGlobalBound().width
+		&& pos.y > backBtn.getGlobalBound().top
+		&& pos.y < backBtn.getGlobalBound().top + backBtn.getGlobalBound().height)
+	{
+		if (playerManager.getTheTurn() == Players::P1)
+			// clean the grid gui and other thing about P1 and preparing the
+			
+	}
 }
 
-// utility functions of mouse envents and positions
-void HeroSelectionMenu::mouseHover(sf::RenderWindow* window)
-{
-	backBtn.onMouseOver();
-}
-void HeroSelectionMenu::rightClickBackBtn(sf::Vector2i& pos)
+/*	// هزینه صدا زدن هر تابع بیشتر از پایین اومدن خوانایی کده
+void HeroSelectionMenu::clickNameBox(sf::Vector2i& pos)
 {
 	if (pos.x >= nameRectLeft - nameRectWidth && pos.x <= nameRectLeft + nameRectWidth
 		&& pos.y >= nameRectTop && pos.y <= nameRectTop + nameRectHeight)
@@ -111,4 +148,11 @@ void HeroSelectionMenu::rightClickBackBtn(sf::Vector2i& pos)
 		}
 	}
 }
+*/
 
+// utility functions of mouse envents and positions
+void HeroSelectionMenu::mouseHover(sf::RenderWindow* window)
+{
+	backBtn.onMouseOver();
+	nextBtn.onMouseOver();
+}

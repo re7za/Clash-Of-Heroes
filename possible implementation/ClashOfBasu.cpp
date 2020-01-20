@@ -44,7 +44,7 @@ int main()
 						if (mousePosAtPression == sf::Mouse::getPosition())
 						{
 							LeftClickPression = false;
-							menuManager.rightClickPos(sf::Mouse::getPosition());
+							menuManager.clickPos(sf::Mouse::getPosition());
 						}
 
 			//if (evnt.type == sf::Event::TextEntered)

@@ -44,7 +44,6 @@ public:
 	void clearTile(Tile*&, PlayerManager&);
 	void setThePlayerHerosVec(PlayerManager&, heros&);
 
-
 	// sfml 
 	sf::Sprite getGridSpr();
 	void setFillColor(const sf::Color&);
@@ -63,6 +62,7 @@ private:
 	sf::Texture gridTex;
 	sf::Sprite gridSpr;
 	std::array<std::array<Tile*, 9>, 9> tiles;
+
 };
 
 
