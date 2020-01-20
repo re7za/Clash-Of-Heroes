@@ -3,12 +3,15 @@
 #include "MrsGhost.h"
 
 
-MrsGhost::MrsGhost()
+MrsGhost::MrsGhost(const sf::Vector2i& pos)
 {
 	heroId = mrsGhost;		//enum heros::mrsGhost = 0
 	damage = 3;
 	health = 15;
 	//it needs to pushBack itself in a vector
+
+	// hero position in grid
+	setHeroPosition(pos);
 }
 
 void MrsGhost::attack()

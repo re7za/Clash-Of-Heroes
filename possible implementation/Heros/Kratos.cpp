@@ -3,12 +3,15 @@
 #include "Kratos.h"
 
 
-Kratos::Kratos()
+Kratos::Kratos(const sf::Vector2i& pos)
 {
 	heroId = kratos;
 	damage = 3;
 	health = 15;
 	//it needs to pushBack itself in a vector
+
+	// hero position in grid
+	setHeroPosition(pos);
 }
 
 const us Kratos::getId()

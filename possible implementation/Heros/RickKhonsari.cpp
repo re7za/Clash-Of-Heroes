@@ -3,12 +3,15 @@
 #include "RickKhonsari.h"
 
 
-RickKhonsari::RickKhonsari()
+RickKhonsari::RickKhonsari(const sf::Vector2i& pos)
 {
 	heroId = rickKhonsari;
 	damage = 3;
 	health = 10;
 	//it needs to pushBack itself in a vector
+
+	// hero position in grid
+	setHeroPosition(pos);
 }
 
 const us RickKhonsari::getId()

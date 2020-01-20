@@ -3,12 +3,15 @@
 #include "Sybil.h"
 
 
-Sybil::Sybil()
+Sybil::Sybil(const sf::Vector2i& pos)
 {
 	heroId = sybil;
 	damage = 2;
 	health = 12;
 	//it needs to pushBack itself in a vector
+
+	// hero position in grid
+	setHeroPosition(pos);
 }
 
 const us Sybil::getId()

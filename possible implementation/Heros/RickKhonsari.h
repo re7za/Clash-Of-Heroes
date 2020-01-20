@@ -10,7 +10,7 @@
 class RickKhonsari : public Hero
 {
 public:
-	RickKhonsari();
+	RickKhonsari(const sf::Vector2i&);
 	void attack();
 	const us getId();
 	const us getDamage();

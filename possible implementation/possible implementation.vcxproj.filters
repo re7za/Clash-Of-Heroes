@@ -159,13 +159,13 @@
     <ClCompile Include="Heros Card\Sniper Card.cpp">
       <Filter>Source Files\Heros Card</Filter>
     </ClCompile>
-    <ClCompile Include="Heros Card\Sybil.cpp">
-      <Filter>Source Files\Heros Card</Filter>
-    </ClCompile>
     <ClCompile Include="Grid\Tile.cpp">
       <Filter>Source Files\Grid</Filter>
     </ClCompile>
     <ClCompile Include="Heros Card\HeroCardManager.cpp">
+      <Filter>Source Files\Heros Card</Filter>
+    </ClCompile>
+    <ClCompile Include="Heros Card\Sybil Card.cpp">
       <Filter>Source Files\Heros Card</Filter>
     </ClCompile>
   </ItemGroup>

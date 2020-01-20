@@ -14,8 +14,8 @@ Grid::Grid()
 
 void Grid::gridClicked(const sf::Vector2i& pos, PlayerManager& playerManager, heros& heroCard)
 {
-	for (us i = 0; i < 9; i++)
-		for (us j = 0; j < 9; j++)
+	for (us i = 0; i < 9; i++)			// row
+		for (us j = 0; j < 9; j++)		// column
 			if (pos.x >= tiles.at(i).at(j)->getPosition().x
 				&& pos.x < tiles.at(i).at(j)->getPosition().x + tiles.at(i).at(j)->getGlobalBound().width
 				&& pos.y >= tiles.at(i).at(j)->getPosition().y
@@ -43,7 +43,7 @@ void Grid::gridClicked(const sf::Vector2i& pos, PlayerManager& playerManager, he
 							tiles.at(i).at(j)->setHeroSpr(heroCard);
 
 							// update player vector
-							setThePlayerHerosVec(playerManager, heroCard);
+							setThePlayerHerosVec(playerManager, heroCard, sf::Vector2i(i,j));
 						}
 					}
 					/*else
@@ -61,7 +61,7 @@ void Grid::gridClicked(const sf::Vector2i& pos, PlayerManager& playerManager, he
 			}
 	/*
 	for (Hero* i : playerManager.playerArr.at(0)->playerHerosVec)
-		std::cout << i->getId() << "    ";
+		std::cout << i->getHeroPosition().x << " " << i->getHeroPosition().y << "    ";
 	std::cout << std::endl;*/
 }
 
@@ -83,68 +83,68 @@ void Grid::clearTileAndHero(Tile*& tile ,PlayerManager& playerManager)
 		->removeHero(tile->getHeroCardName());
 }
 
-void Grid::setThePlayerHerosVec(PlayerManager& playerManager, heros& heroCard)
+void Grid::setThePlayerHerosVec(PlayerManager& playerManager, heros& heroCard,const sf::Vector2i& pos)
 {
 	switch (heroCard)
 	{
 	case heros::mrsGhost:
 	{
-		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new MrsGhost());
+		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new MrsGhost(pos));
 		break;
 	}
 	case heros::robi:
 	{
-		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new ROBI());
+		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new ROBI(pos));
 		break;
 	}
 	case heros::leon:
 	{
-		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new Leon());
+		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new Leon(pos));
 		break;
 	}
 	case heros::drMarry:
 	{
-		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new DrMarry());
+		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new DrMarry(pos));
 		break;
 	}
 	case heros::sniper:
 	{
-		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new Sniper());
+		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new Sniper(pos));
 		break;
 	}
 	case heros::kratos:
 	{
-		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new Kratos());
+		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new Kratos(pos));
 		break;
 	}
 	case heros::giant:
 	{
-		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new Giant());
+		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new Giant(pos));
 		break;
 	}
 	case heros::alphaMan:
 	{
-		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new AlphaMan());
+		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new AlphaMan(pos));
 		break;
 	}
 	case heros::professor:
 	{
-		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new Professor());
+		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new Professor(pos));
 		break;
 	}
 	case heros::commander:
 	{
-		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new Commander());
+		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new Commander(pos));
 		break;
 	}
 	case heros::rickKhonsari:
 	{
-		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new RickKhonsari());
+		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new RickKhonsari(pos));
 		break;
 	}
 	case heros::sybil:
 	{
-		//playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new Sybil());
+		//playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new Sybil(pos));
 		break;
 	}
 	}

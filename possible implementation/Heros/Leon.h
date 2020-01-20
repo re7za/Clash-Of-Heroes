@@ -10,7 +10,7 @@
 class Leon : public Hero
 {
 public:
-	Leon();
+	Leon(const sf::Vector2i&);
 	void attack();
 	const us getId();
 	const us getDamage();

@@ -10,7 +10,7 @@
 class DrMarry : public Hero
 {
 public:
-	DrMarry();
+	DrMarry(const sf::Vector2i&);
 	void attack();
 	const us getId();
 	const us getDamage();

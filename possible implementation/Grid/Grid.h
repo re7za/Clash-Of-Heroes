@@ -43,7 +43,7 @@ public:
 	// set or remove this tile
 	void clearAllTiles();
 	void clearTileAndHero(Tile*&, PlayerManager&);
-	void setThePlayerHerosVec(PlayerManager&, heros&);
+	void setThePlayerHerosVec(PlayerManager&, heros&,const sf::Vector2i&);
 
 	// sfml 
 	sf::Sprite getGridSpr();

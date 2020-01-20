@@ -3,12 +3,15 @@
 #include "Professor.h"
 
 
-Professor::Professor()
+Professor::Professor(const sf::Vector2i& pos)
 {
 	heroId = professor;
 	damage = 3;
 	health = 11;
 	//it needs to pushBack itself in a vector
+
+	// hero position in grid
+	setHeroPosition(pos);
 }
 
 const us Professor::getId()

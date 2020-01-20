@@ -10,7 +10,7 @@
 class AlphaMan : public Hero
 {
 public:
-	AlphaMan();
+	AlphaMan(const sf::Vector2i&);
 	void attack();
 
 private:

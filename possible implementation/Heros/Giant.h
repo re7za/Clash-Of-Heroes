@@ -10,7 +10,7 @@
 class Giant : public Hero
 {
 public:
-	Giant();
+	Giant(const sf::Vector2i&);
 	void attack();
 	const us getId();
 	const us getDamage();

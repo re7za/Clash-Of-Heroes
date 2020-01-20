@@ -10,7 +10,7 @@
 class Sniper : public Hero
 {
 public:
-	Sniper();
+	Sniper(const sf::Vector2i&);
 	void attack();
 	const us getId();
 	const us getDamage();

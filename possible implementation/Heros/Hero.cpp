@@ -66,3 +66,13 @@ bool Hero::isReady()
 	return this->readiness;
 }
 
+// hero position in grid
+void Hero::setHeroPosition(const sf::Vector2i &pos)
+{
+	heroPos = pos;
+}
+sf::Vector2i Hero::getHeroPosition()
+{
+	return heroPos;
+}
+

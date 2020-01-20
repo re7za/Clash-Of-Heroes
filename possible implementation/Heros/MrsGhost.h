@@ -10,7 +10,7 @@
 class MrsGhost : public Hero
 {
 public:
-	MrsGhost();
+	MrsGhost(const sf::Vector2i&);
 	void attack();
 	const us getId();
 	const us getDamage();

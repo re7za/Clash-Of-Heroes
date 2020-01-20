@@ -143,12 +143,13 @@ void HeroSelectionMenu::click(sf::Vector2i& pos, menuType& currentMenu)
 			std::cout << static_cast<int> (playerManager.getTheTurn()) << std::endl;
 			if (playerManager.playerArr.at(0)->isPlayerHeroVecFull())
 			{
+				/*grid.clearAllTiles();
 				for (Hero* i : playerManager.playerArr.at(0)->playerHerosVec)
 					std::cout << i->getId() << "    ";
 				std::cout << std::endl;
 				for (Hero* i : playerManager.playerArr.at(1)->playerHerosVec)
 					std::cout << i->getId() << "    ";
-				std::cout << std::endl << std::endl;
+				std::cout << std::endl << std::endl;*/
 			}
 			else
 			{

@@ -3,12 +3,15 @@
 #include "ROBI.h"
 
 
-ROBI::ROBI()
+ROBI::ROBI(const sf::Vector2i& pos)
 {
 	heroId = robi;
 	damage = 2;
 	health = 12;
 	//it needs to pushBack itself in a vector
+
+	// hero position in grid
+	setHeroPosition(pos);
 }
 
 const us ROBI::getId()

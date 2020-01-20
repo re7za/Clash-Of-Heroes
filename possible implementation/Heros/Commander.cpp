@@ -3,12 +3,15 @@
 #include "Commander.h"
 
 
-Commander::Commander()
+Commander::Commander(const sf::Vector2i& pos)
 {
 	heroId = commander;
 	damage = 3;
 	health = 7;
 	//it needs to pushBack itself in a vector
+
+	// hero position in grid
+	setHeroPosition(pos);
 }
 
 const us Commander::getId()

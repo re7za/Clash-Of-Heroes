@@ -35,7 +35,7 @@
     <ClCompile Include="Heros Card\RickKhonsari Card.cpp" />
     <ClCompile Include="Heros Card\ROBI Card.cpp" />
     <ClCompile Include="Heros Card\Sniper Card.cpp" />
-    <ClCompile Include="Heros Card\Sybil.cpp" />
+    <ClCompile Include="Heros Card\Sybil Card.cpp" />
     <ClCompile Include="Heros\AlphaMan.cpp" />
     <ClCompile Include="Heros\Commander.cpp" />
     <ClCompile Include="Heros\DrMarry.cpp" />

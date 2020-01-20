@@ -10,7 +10,7 @@
 class Sybil : public Hero
 {
 public:
-	Sybil();
+	Sybil(const sf::Vector2i&);
 	void attack();
 	const us getId();
 	const us getDamage();

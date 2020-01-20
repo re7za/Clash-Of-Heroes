@@ -5,7 +5,9 @@
 #ifndef HERO_H
 #define HERO_H
 
+#include "SFML/Graphics.hpp"
 #include "../generalDef.h"
+#include <iostream>
 
 class Hero
 {
@@ -25,6 +27,11 @@ public:
 	void setReadiness(bool);
 	bool isReady();
 
+	// hero position in grid
+	void setHeroPosition(const sf::Vector2i&);
+	sf::Vector2i getHeroPosition();
+
+
 	virtual ~Hero();
 
 protected:
@@ -35,6 +42,8 @@ protected:
 	bool hiding = false;	//true means hidden
 	bool readiness = true;
 	
+	// hero position in grid
+	sf::Vector2i heroPos;
 };
 
 

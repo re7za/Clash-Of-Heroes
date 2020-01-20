@@ -10,7 +10,7 @@
 class Commander : public Hero
 {
 public:
-	Commander();
+	Commander(const sf::Vector2i&);
 	void attack();
 	const us getId();
 	const us getDamage();

@@ -10,7 +10,7 @@
 class Professor : public Hero
 {
 public:
-	Professor();
+	Professor(const sf::Vector2i&);
 	void attack();
 	const us getId();
 	const us getDamage();
