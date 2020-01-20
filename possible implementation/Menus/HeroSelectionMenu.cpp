@@ -79,7 +79,7 @@ void HeroSelectionMenu::display(sf::RenderWindow* window)
 }
 
 // mouse events and positions
-void HeroSelectionMenu::click(sf::Vector2i& pos)
+void HeroSelectionMenu::click(sf::Vector2i& pos, menuType& currentMenu)
 {
 	// grid.. it must be before the herocard part
 	grid.gridClicked(pos, playerManager, heroCardManager.getSelectedCardByRefrence());
@@ -116,14 +116,48 @@ void HeroSelectionMenu::click(sf::Vector2i& pos)
 		// هر کاری ک باید برای دکمه بک باشه
 		*/
 		// nextButton
-	if (pos.x > backBtn.getGlobalBound().left
-		&& pos.x < backBtn.getGlobalBound().left + backBtn.getGlobalBound().width
-		&& pos.y > backBtn.getGlobalBound().top
-		&& pos.y < backBtn.getGlobalBound().top + backBtn.getGlobalBound().height)
+	if (pos.x > nextBtn.getGlobalBound().left
+		&& pos.x < nextBtn.getGlobalBound().left + nextBtn.getGlobalBound().width
+		&& pos.y > nextBtn.getGlobalBound().top
+		&& pos.y < nextBtn.getGlobalBound().top + nextBtn.getGlobalBound().height)
 	{
 		if (playerManager.getTheTurn() == Players::P1)
-			// clean the grid gui and other thing about P1 and preparing the
-			
+		{
+			std::cout << static_cast<int> (playerManager.getTheTurn()) << std::endl;
+			if (playerManager.playerArr.at(0)->isPlayerHeroVecFull())
+			{
+				grid.clearAllTiles();
+				nextBtn.setString("start");
+
+				// at last
+				playerManager.changeTheTurn();
+
+			}
+			else
+			{
+				std::cout << "u have to choose more" << std::endl;
+			}
+		}
+		else
+		{
+			std::cout << static_cast<int> (playerManager.getTheTurn()) << std::endl;
+			if (playerManager.playerArr.at(0)->isPlayerHeroVecFull())
+			{
+				for (Hero* i : playerManager.playerArr.at(0)->playerHerosVec)
+					std::cout << i->getId() << "    ";
+				std::cout << std::endl;
+				for (Hero* i : playerManager.playerArr.at(1)->playerHerosVec)
+					std::cout << i->getId() << "    ";
+				std::cout << std::endl << std::endl;
+			}
+			else
+			{
+				std::cout << "u have to choose more" << std::endl;
+			}
+
+			// at last
+			// currentMenu = menuType::PlayRoom Menu;
+		}
 	}
 }
 

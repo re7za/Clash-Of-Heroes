@@ -41,7 +41,8 @@ public:
 	void gridClicked(const sf::Vector2i&, PlayerManager&, heros&);		// heroSelectionMenu version
 
 	// set or remove this tile
-	void clearTile(Tile*&, PlayerManager&);
+	void clearAllTiles();
+	void clearTileAndHero(Tile*&, PlayerManager&);
 	void setThePlayerHerosVec(PlayerManager&, heros&);
 
 	// sfml 

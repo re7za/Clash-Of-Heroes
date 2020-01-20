@@ -25,7 +25,7 @@ void Grid::gridClicked(const sf::Vector2i& pos, PlayerManager& playerManager, he
 				if (heroCard == heros::none)		// remove
 				{
 					if (tiles.at(i).at(j)->IsHeroSpr())
-						clearTile(tiles.at(i).at(j), playerManager);
+						clearTileAndHero(tiles.at(i).at(j), playerManager);
 				}
 				else								// set
 				{
@@ -33,11 +33,11 @@ void Grid::gridClicked(const sf::Vector2i& pos, PlayerManager& playerManager, he
 					if (!playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))
 						->isHeroExistInVec(heroCard))
 					{
-						if (playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))
-							->playerHerosVec.size() < 5)		// preventing defining more than 5 hero
+						if (!playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))
+							->isPlayerHeroVecFull() || tiles.at(i).at(j)->IsHeroSpr())		// preventing defining more than 5 hero
 						{
 							if (tiles.at(i).at(j)->IsHeroSpr())
-								clearTile(tiles.at(i).at(j), playerManager);
+								clearTileAndHero(tiles.at(i).at(j), playerManager);
 
 							// update the grid
 							tiles.at(i).at(j)->setHeroSpr(heroCard);
@@ -65,7 +65,15 @@ void Grid::gridClicked(const sf::Vector2i& pos, PlayerManager& playerManager, he
 	std::cout << std::endl;*/
 }
 
-void Grid::clearTile(Tile*& tile ,PlayerManager& playerManager)
+void Grid::clearAllTiles()
+{
+	for (std::array<Tile*, 9>& row : tiles)
+		for (Tile*& tile : row)
+			if (tile->IsHeroSpr())
+				tile->removeHeroSpr();
+}
+
+void Grid::clearTileAndHero(Tile*& tile ,PlayerManager& playerManager)
 {
 	// graphic side
 	tile->removeHeroSpr();

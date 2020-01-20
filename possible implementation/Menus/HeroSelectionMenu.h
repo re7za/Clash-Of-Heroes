@@ -23,7 +23,7 @@ public:
 	void display(sf::RenderWindow*);
 
 	////////////////////// mouse events and positions
-	void click(sf::Vector2i&);
+	void click(sf::Vector2i&, menuType&);
 
 	// clicking on the nameBox
 	//void clickNameBox(sf::Vector2i&);

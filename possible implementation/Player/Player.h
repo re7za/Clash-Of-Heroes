@@ -18,6 +18,7 @@
 #include "../Heros/Sybil.h"
 #include "../Heros/Hero.h"
 #include <vector>
+#include <iostream>
 
 
 //#include "../Menus/MenuManager.h"
@@ -32,6 +33,9 @@ public:
 
 	// remove hero
 	void removeHero(heros);
+
+	// the end of selection menu
+	bool isPlayerHeroVecFull();
 
 	// player vector
 	std::vector <Hero*> playerHerosVec;

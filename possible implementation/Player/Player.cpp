@@ -25,3 +25,11 @@ void Player::removeHero(heros heroName)
 		}
 	playerHerosVec.shrink_to_fit();
 }
+
+bool Player::isPlayerHeroVecFull()
+{
+	if (playerHerosVec.size() == 5)
+		return true;
+
+	return false;
+}

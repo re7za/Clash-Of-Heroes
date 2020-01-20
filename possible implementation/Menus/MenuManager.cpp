@@ -15,7 +15,7 @@ void MenuManager::clickPos(sf::Vector2i pos)
 	for (Menu* menu : menuVec)
 		if (menu->getMenuName() == currentMenu)
 		{
-			menu->click(pos);
+			menu->click(pos, currentMenu);
 			break;
 		}
 }
