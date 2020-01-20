@@ -27,6 +27,9 @@ class Player
 public:
 	Player();
 
+	// set hero
+	bool isHeroExistInVec(heros);
+
 	// remove hero
 	void removeHero(heros);
 
