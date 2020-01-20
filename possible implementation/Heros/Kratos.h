@@ -16,8 +16,6 @@ public:
 	const us getDamage();
 
 private:
-	const us heroId = kratos;
-	const us damage = 3;
 
 };
 

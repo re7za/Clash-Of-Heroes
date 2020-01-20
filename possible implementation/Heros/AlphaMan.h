@@ -12,12 +12,8 @@ class AlphaMan : public Hero
 public:
 	AlphaMan();
 	void attack();
-	const us getId();
-	const us getDamage();
 
 private:
-	const us heroId = alphaMan;
-	const us damage = 2;
 
 };
 

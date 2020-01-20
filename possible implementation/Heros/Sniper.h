@@ -16,8 +16,6 @@ public:
 	const us getDamage();
 
 private:
-	const us heroId = sniper;
-	const us damage = 4;
 
 };
 

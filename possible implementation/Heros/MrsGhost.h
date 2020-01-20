@@ -17,8 +17,6 @@ public:
 	void setHiding(bool) override;
 
 private:
-	const us heroId = mrsGhost;		//enum heros::mrsGhost = 0
-	const us damage = 3;
 	bool invisibleShield = true;
 
 };

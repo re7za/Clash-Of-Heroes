@@ -5,6 +5,8 @@
 
 Leon::Leon()
 {
+	heroId = leon;
+	damage = 3;
 	health = 10;
 	//it needs to pushBack itself in a vector
 }

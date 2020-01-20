@@ -5,26 +5,26 @@
 
 Hero::~Hero() {}
 
-const us Hero::getId()
+heros Hero::getId()
 {
 	return this->heroId;
 }
-const us Hero::getDamage()
+us Hero::getDamage()
 {
 	return this->damage;
 }
+us Hero::getHealth()
+{
+	return this->health;
+}
 
 void Hero::decreaseHealth(us damage)
-{
+{// ریدی با این تابع.. چک کن اگه مصلا یکه صفر شه
 	if (this->health <= maxHealth)
 	{
 		this->health -= damage;
 		checkAliveness();
 	}
-}
-us Hero::getHealth()
-{
-	return this->health;
 }
 
 void Hero::checkAliveness()
@@ -65,5 +65,4 @@ bool Hero::isReady()
 {
 	return this->readiness;
 }
-
 

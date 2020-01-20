@@ -5,6 +5,8 @@
 
 DrMarry::DrMarry()
 {
+	heroId = drMarry;
+	damage = 2;
 	health = 8;
 	//it needs to pushBack itself in a vector
 }

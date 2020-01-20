@@ -5,18 +5,12 @@
 
 AlphaMan::AlphaMan()
 {
+	heroId = alphaMan;
+	damage = 2;
 	health = 13;
 	//it needs to pushBack itself in a vector
 }
 
-const us AlphaMan::getId()
-{
-	return this->heroId;
-}
-const us AlphaMan::getDamage()
-{
-	return this->damage;
-}
 
 void AlphaMan::attack()
 {

@@ -5,6 +5,8 @@
 
 Kratos::Kratos()
 {
+	heroId = kratos;
+	damage = 3;
 	health = 15;
 	//it needs to pushBack itself in a vector
 }

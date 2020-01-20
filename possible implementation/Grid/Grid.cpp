@@ -7,10 +7,11 @@ Grid::Grid()
 	gridTex.loadFromFile("Grid/base/download.png");
 	gridSpr.setTexture(gridTex);
 	fillTheGrid();
+	setFillColor(sf::Color(80, 0, 20));
 }
 
 
-void Grid::gridClicked(sf::Vector2i& pos,heros& heroCard)
+void Grid::gridClicked(const sf::Vector2i& pos, PlayerManager& playerManager, heros& heroCard)
 {
 	for (us i = 0; i < 9; i++)
 		for (us j = 0; j < 9; j++)
@@ -19,14 +20,87 @@ void Grid::gridClicked(sf::Vector2i& pos,heros& heroCard)
 				&& pos.y >= tiles.at(i).at(j)->getPosition().y
 				&& pos.y < tiles.at(i).at(j)->getPosition().y + tiles.at(i).at(j)->getGlobalBound().height)
 			{
-				// update player vector
+				// checking for PlayerHeroSize
 
+
+				// deelte and erase this tile
+				//clearTile();
+
+				// update player vector
+				setThePlayerHerosVec(pos, playerManager, heroCard);
 
 				// update the grid
 				tiles.at(i).at(j)->setOrRemoveHeroSpr(heroCard);
 				heroCard = heros::none;
 			}
 
+}
+
+void Grid::setThePlayerHerosVec(const sf::Vector2i& arrayPos, PlayerManager& playerManager, heros& heroCard)
+{
+	switch (heroCard)
+	{
+	case heros::mrsGhost:
+	{
+		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new MrsGhost());
+		break;
+	}
+	case heros::robi:
+	{
+		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new ROBI());
+		break;
+	}
+	case heros::leon:
+	{
+		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new Leon());
+		break;
+	}
+	case heros::drMarry:
+	{
+		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new DrMarry());
+		break;
+	}
+	case heros::sniper:
+	{
+		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new Sniper());
+		break;
+	}
+	case heros::kratos:
+	{
+		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new Kratos());
+		break;
+	}
+	case heros::giant:
+	{
+		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new Giant());
+		break;
+	}
+	case heros::alphaMan:
+	{
+		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new AlphaMan());
+		break;
+	}
+	case heros::professor:
+	{
+		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new Professor());
+		break;
+	}
+	case heros::commander:
+	{
+		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new Commander());
+		break;
+	}
+	case heros::rickKhonsari:
+	{
+		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new RickKhonsari());
+		break;
+	}
+	case heros::sybil:
+	{
+		//playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new Sybil());
+		break;
+	}
+	}
 }
 
 // tiles

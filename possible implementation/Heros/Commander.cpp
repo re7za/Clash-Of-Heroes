@@ -5,6 +5,8 @@
 
 Commander::Commander()
 {
+	heroId = commander;
+	damage = 3;
 	health = 7;
 	//it needs to pushBack itself in a vector
 }

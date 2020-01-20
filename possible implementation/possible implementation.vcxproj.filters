@@ -212,9 +212,6 @@
     <ClInclude Include="Heros\Sniper.h">
       <Filter>Header Files\heros</Filter>
     </ClInclude>
-    <ClInclude Include="Heros\Sybil.h">
-      <Filter>Header Files\heros</Filter>
-    </ClInclude>
     <ClInclude Include="Menus\HeroSelectionMenu.h">
       <Filter>Header Files\menus</Filter>
     </ClInclude>
@@ -280,6 +277,9 @@
     </ClInclude>
     <ClInclude Include="Heros Card\HeroCardManager.h">
       <Filter>Header Files\Heros Card</Filter>
+    </ClInclude>
+    <ClInclude Include="Heros\Sybil.h">
+      <Filter>Header Files\heros</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

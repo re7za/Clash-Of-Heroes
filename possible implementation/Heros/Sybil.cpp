@@ -5,6 +5,8 @@
 
 Sybil::Sybil()
 {
+	heroId = sybil;
+	damage = 2;
 	health = 12;
 	//it needs to pushBack itself in a vector
 }

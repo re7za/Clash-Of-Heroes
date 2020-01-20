@@ -1,7 +1,7 @@
 //Clash Of BASU
 
 #include <iostream>
-#include <sfml/Graphics.hpp>
+#include "SFML/Graphics.hpp"
 #include "Menus/MenuManager.h"
 #include "Player/PlayerManager.h"
 
@@ -14,8 +14,9 @@ int main()
 	MenuManager menuManager;
 	
 
-	
 
+
+	// its necessary for clicking process.. leave it alone
 	bool LeftClickPression = false;
 	sf::Vector2i mousePosAtPression;
 
@@ -51,7 +52,7 @@ int main()
 		}
 		
 		window.clear(sf::Color::White);
-		//////////draw your trashes here
+		///////// draw your trashes here
 		menuManager.displayCurrentMenu(&window);
 		////////////////////////////////
 		window.display();

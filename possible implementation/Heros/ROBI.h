@@ -16,8 +16,6 @@ public:
 	const us getDamage();
 
 private:
-	const us heroId = robi;
-	const us damage = 2;
 
 };
 

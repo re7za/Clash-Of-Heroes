@@ -16,10 +16,7 @@ public:
 	const us getDamage();
 
 private:
-	const us heroId = sybil;
-	const us damage = 2;
 
 };
 
-
-#endif // !Sybil
+#endif 

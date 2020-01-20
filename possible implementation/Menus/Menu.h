@@ -33,7 +33,7 @@ protected:
 	sf::Text gamelabel;
 	
 	// unfortunately have to define playerManager here.. for now
-	//static PlayerManager playerManager;
+	PlayerManager playerManager;
 
 };
 

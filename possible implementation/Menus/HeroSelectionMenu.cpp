@@ -77,11 +77,10 @@ void HeroSelectionMenu::display(sf::RenderWindow* window)
 void HeroSelectionMenu::rightClick(sf::Vector2i& pos)
 {
 	// grid.. it must be before the herocard part
-	grid.gridClicked(pos, heroCardManager.getSelectedCardByRefrence());
+	grid.gridClicked(pos, playerManager, heroCardManager.getSelectedCardByRefrence());
 
 	// each hero card
 	heroCardManager.rightClickHeroEachCard(pos);
-
 
 	// back button
 	rightClickBackBtn(pos);

@@ -5,6 +5,8 @@
 
 MrsGhost::MrsGhost()
 {
+	heroId = mrsGhost;		//enum heros::mrsGhost = 0
+	damage = 3;
 	health = 15;
 	//it needs to pushBack itself in a vector
 }

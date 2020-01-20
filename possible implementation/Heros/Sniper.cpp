@@ -5,6 +5,8 @@
 
 Sniper::Sniper()
 {
+	heroId = sniper;
+	damage = 4;
 	health = 9;
 	//it needs to pushBack itself in a vector
 }
