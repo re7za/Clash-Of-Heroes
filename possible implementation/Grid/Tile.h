@@ -28,8 +28,10 @@ public:
 	const sf::Vector2f& getPosition();
 	const sf::Vector2f& getScale();
 
-	// set hero and the others
-	void setOrRemoveHeroSpr(const heros&);
+	// set and remove hero and the others
+	void setHeroSpr(const heros&);
+	void removeHeroSpr();
+	bool IsHeroSpr();
 
 
 private:

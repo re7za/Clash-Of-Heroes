@@ -20,7 +20,7 @@ void Tile::tileClicked()
 void Tile::draw(sf::RenderWindow* window)
 {
 	window->draw(tileModSpr);
-	if (heroSpr != NULL)
+	if (isHeroSpr)
 		window->draw(*heroSpr);
 
 }
@@ -56,11 +56,10 @@ const sf::Vector2f& Tile::getScale()
 }
 
 
-// set hero and the others
-void Tile::setOrRemoveHeroSpr(const heros& heroName)
+// set and remove hero and the others
+void Tile::setHeroSpr(const heros& heroName)
 {
 	if (!isHeroSpr)
-	{
 		switch (heroName)
 		{
 		case heros::mrsGhost:
@@ -71,6 +70,8 @@ void Tile::setOrRemoveHeroSpr(const heros& heroName)
 			heroTex->loadFromFile("Grid/heroIcon/mrs_ghost icon.png");
 			heroSpr->setTexture(*heroTex);
 			heroSpr->setPosition(sf::Vector2f(this->getPosition().x + 4, this->getPosition().y + 2));
+
+			isHeroSpr = true;
 			break;
 		}
 		case heros::robi:
@@ -81,6 +82,8 @@ void Tile::setOrRemoveHeroSpr(const heros& heroName)
 			heroTex->loadFromFile("Grid/heroIcon/robi icon.png");
 			heroSpr->setTexture(*heroTex);
 			heroSpr->setPosition(sf::Vector2f(this->getPosition().x + 4, this->getPosition().y + 2));
+
+			isHeroSpr = true;
 			break;
 		}
 		case heros::leon:
@@ -91,6 +94,8 @@ void Tile::setOrRemoveHeroSpr(const heros& heroName)
 			heroTex->loadFromFile("Grid/heroIcon/leon icon.png");
 			heroSpr->setTexture(*heroTex);
 			heroSpr->setPosition(sf::Vector2f(this->getPosition().x + 4, this->getPosition().y + 2));
+
+			isHeroSpr = true;
 			break;
 		}
 		case heros::drMarry:
@@ -101,6 +106,8 @@ void Tile::setOrRemoveHeroSpr(const heros& heroName)
 			heroTex->loadFromFile("Grid/heroIcon/dr_marry icon.png");
 			heroSpr->setTexture(*heroTex);
 			heroSpr->setPosition(sf::Vector2f(this->getPosition().x + 4, this->getPosition().y + 2));
+
+			isHeroSpr = true;
 			break;
 		}
 		case heros::sniper:
@@ -111,6 +118,8 @@ void Tile::setOrRemoveHeroSpr(const heros& heroName)
 			heroTex->loadFromFile("Grid/heroIcon/sniper icon.png");
 			heroSpr->setTexture(*heroTex);
 			heroSpr->setPosition(sf::Vector2f(this->getPosition().x + 4, this->getPosition().y + 2));
+
+			isHeroSpr = true;
 			break;
 		}
 		case heros::kratos:
@@ -121,6 +130,8 @@ void Tile::setOrRemoveHeroSpr(const heros& heroName)
 			heroTex->loadFromFile("Grid/heroIcon/kratos icon.png");
 			heroSpr->setTexture(*heroTex);
 			heroSpr->setPosition(sf::Vector2f(this->getPosition().x + 4, this->getPosition().y + 2));
+
+			isHeroSpr = true;
 			break;
 		}
 		case heros::giant:
@@ -131,6 +142,8 @@ void Tile::setOrRemoveHeroSpr(const heros& heroName)
 			heroTex->loadFromFile("Grid/heroIcon/giant icon.png");
 			heroSpr->setTexture(*heroTex);
 			heroSpr->setPosition(sf::Vector2f(this->getPosition().x + 4, this->getPosition().y + 2));
+
+			isHeroSpr = true;
 			break;
 		}
 		case heros::alphaMan:
@@ -141,6 +154,8 @@ void Tile::setOrRemoveHeroSpr(const heros& heroName)
 			heroTex->loadFromFile("Grid/heroIcon/alpha_man icon.png");
 			heroSpr->setTexture(*heroTex);
 			heroSpr->setPosition(sf::Vector2f(this->getPosition().x + 4, this->getPosition().y + 2));
+
+			isHeroSpr = true;
 			break;
 		}
 		case heros::professor:
@@ -151,6 +166,8 @@ void Tile::setOrRemoveHeroSpr(const heros& heroName)
 			heroTex->loadFromFile("Grid/heroIcon/professor icon.png");
 			heroSpr->setTexture(*heroTex);
 			heroSpr->setPosition(sf::Vector2f(this->getPosition().x + 4, this->getPosition().y + 2));
+
+			isHeroSpr = true;
 			break;
 		}
 		case heros::commander:
@@ -161,6 +178,8 @@ void Tile::setOrRemoveHeroSpr(const heros& heroName)
 			heroTex->loadFromFile("Grid/heroIcon/commander icon.png");
 			heroSpr->setTexture(*heroTex);
 			heroSpr->setPosition(sf::Vector2f(this->getPosition().x + 4, this->getPosition().y + 2));
+
+			isHeroSpr = true;
 			break;
 		}
 		case heros::rickKhonsari:
@@ -171,6 +190,8 @@ void Tile::setOrRemoveHeroSpr(const heros& heroName)
 			heroTex->loadFromFile("Grid/heroIcon/rick_konsari icon.png");
 			heroSpr->setTexture(*heroTex);
 			heroSpr->setPosition(sf::Vector2f(this->getPosition().x + 4, this->getPosition().y + 2));
+
+			isHeroSpr = true;
 			break;
 		}
 		case heros::sybil:
@@ -181,14 +202,19 @@ void Tile::setOrRemoveHeroSpr(const heros& heroName)
 			heroTex->loadFromFile("Grid/heroIcon/sybil icon.png");
 			heroSpr->setTexture(*heroTex);
 			heroSpr->setPosition(sf::Vector2f(this->getPosition().x + 4, this->getPosition().y + 2));
+
+			isHeroSpr = true;
 			break;
 		}
 		}
-	}
-	else
-	{
-		delete heroTex;
-		delete heroSpr;
-		std::cout << "jfdkj" << std::endl;
-	}
+}
+void Tile::removeHeroSpr()
+{
+	delete heroTex;
+	delete heroSpr;
+	isHeroSpr = false;
+}
+bool Tile::IsHeroSpr()
+{
+	return isHeroSpr;
 }

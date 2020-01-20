@@ -23,20 +23,41 @@ void Grid::gridClicked(const sf::Vector2i& pos, PlayerManager& playerManager, he
 				// checking for PlayerHeroSize
 
 
-				// deelte and erase this tile
-				//clearTile();
+				// delete and erase this tile
+				if (heroCard == heros::none)
+				{
+					if (tiles.at(i).at(j)->IsHeroSpr())
+					{
+						clearTile(tiles.at(i).at(j));
+
+					}
+					//std::cout << heroCard << " if" << std::endl;
+				}
+				else
+				{
+					// update the grid
+					//std::cout << heroCard << " else" << std::endl;
+					if (tiles.at(i).at(j)->IsHeroSpr())
+						clearTile(tiles.at(i).at(j));
+
+					tiles.at(i).at(j)->setHeroSpr(heroCard);
+				}
 
 				// update player vector
-				setThePlayerHerosVec(pos, playerManager, heroCard);
+				setThePlayerHerosVec(playerManager, heroCard);
 
-				// update the grid
-				tiles.at(i).at(j)->setOrRemoveHeroSpr(heroCard);
+				// the last part
 				heroCard = heros::none;
 			}
 
 }
 
-void Grid::setThePlayerHerosVec(const sf::Vector2i& arrayPos, PlayerManager& playerManager, heros& heroCard)
+void Grid::clearTile(Tile*& tile)
+{
+	tile->removeHeroSpr();
+}
+
+void Grid::setThePlayerHerosVec(PlayerManager& playerManager, heros& heroCard)
 {
 	switch (heroCard)
 	{

@@ -39,8 +39,8 @@ public:
 
 	// click on tiles
 	void gridClicked(const sf::Vector2i&, PlayerManager&, heros&);		// heroSelectionMenu version
-	//void clearTile();
-	void setThePlayerHerosVec(const sf::Vector2i&, PlayerManager&, heros&);
+	void clearTile(Tile*&);
+	void setThePlayerHerosVec(PlayerManager&, heros&);
 
 
 	// sfml 
