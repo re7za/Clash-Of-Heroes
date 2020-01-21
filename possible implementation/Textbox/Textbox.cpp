@@ -22,7 +22,6 @@ Textbox::Textbox(us size, bool sel)
 }
 
 
-
 void Textbox::inputLogic(int charTyped)
 {
 	if (charTyped != DELETE_KEY && charTyped != ENTER_KEY && charTyped != ESCAPE_KEY)

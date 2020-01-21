@@ -29,6 +29,10 @@ void HerosCard::setDefaulProperties()
 		heroCardSpr.getPosition().y + 33));
 }
 
+HerosCard::~HerosCard()
+{
+}
+
 void HerosCard::setColor(sf::Color color)
 {
 	heroCardSpr.setColor(color);

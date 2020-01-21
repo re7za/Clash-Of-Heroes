@@ -10,6 +10,8 @@
 static class Menu
 {
 public:
+	virtual ~Menu();
+
 	virtual void display(sf::RenderWindow*) = 0;
 	virtual void mouseHover(sf::RenderWindow*) = 0;
 	//virtual void mousePosition(sf::Vector2i&) = 0;

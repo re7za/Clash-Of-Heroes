@@ -20,6 +20,7 @@ void Player::removeHero(heros heroName)
 	for (us i = 0; i < playerHerosVec.size(); i++)
 		if (playerHerosVec.at(i)->getId() == heroName)
 		{
+			delete playerHerosVec.at(i);
 			playerHerosVec.erase(playerHerosVec.begin() + i);
 			break;
 		}

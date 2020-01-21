@@ -14,8 +14,6 @@ int main()
 	MenuManager menuManager;
 	
 
-
-
 	// its necessary for clicking process.. leave it alone
 	bool LeftClickPression = false;
 	sf::Vector2i mousePosAtPression;

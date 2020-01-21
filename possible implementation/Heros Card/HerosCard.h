@@ -9,6 +9,8 @@
 class HerosCard
 {
 public:
+	virtual ~HerosCard();
+
 	virtual void draw(sf::RenderWindow*) = 0;
 	virtual void setCardSpr() = 0;
 	void setColor(sf::Color);

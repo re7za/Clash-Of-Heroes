@@ -57,9 +57,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ClashOfBasu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Heros\AlphaMan.cpp">
       <Filter>Source Files\heros</Filter>
     </ClCompile>
@@ -167,6 +164,9 @@
     </ClCompile>
     <ClCompile Include="Heros Card\Sybil Card.cpp">
       <Filter>Source Files\Heros Card</Filter>
+    </ClCompile>
+    <ClCompile Include="Clash of Heroes.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

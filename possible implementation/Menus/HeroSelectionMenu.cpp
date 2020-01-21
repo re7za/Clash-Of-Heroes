@@ -39,7 +39,7 @@ HeroSelectionMenu::HeroSelectionMenu()
 	nameBox.setCharacterSize(37);
 	nameBox.setPosition(sf::Vector2f(nameRectLeft, nameRectTop));
 	nameBox.setSelected(false);
-	nameBox.setString("player 1");
+	//nameBox.setString("player 1");
 
 	// name input label
 	nameInputLabelRect.setFillColor(sf::Color(5, 5, 5, 200));
@@ -47,7 +47,7 @@ HeroSelectionMenu::HeroSelectionMenu()
 	nameInputLabelRect.setPosition(sf::Vector2f(nameRectLeft - nameRectWidth, nameRectTop));
 	if (!nameInputLabelFont.loadFromFile("Font/Button.otf"))
 		std::cout << "nameInputLabelFont doesn't open" << std::endl;
-	nameInputLabelText.setString("enter your name :");
+	nameInputLabelText.setString("     player 1 :");
 	nameInputLabelText.setCharacterSize(38);
 	nameInputLabelText.setFont(nameInputLabelFont);
 	nameInputLabelText.setFillColor(sf::Color::White);
@@ -71,6 +71,7 @@ void HeroSelectionMenu::display(sf::RenderWindow* window)
 	window->draw(nameInputLabelRect);
 	window->draw(nameInputLabelText);
 	window->draw(nameRect);
+	//nameBox.draw(window);
 
 	// hreos card
 	heroCardManager.drawHerosCard(window);
@@ -109,13 +110,12 @@ void HeroSelectionMenu::click(sf::Vector2i& pos, menuType& currentMenu)
 	}
 
 	//////// buttons
-	/* backButton
-	if (pos.x > backBtn.getGlobalBound().left
-		&& pos.x < backBtn.getGlobalBound().left + backBtn.getGlobalBound().width
-		&& pos.y > backBtn.getGlobalBound().top
-		&& pos.y < backBtn.getGlobalBound().top + backBtn.getGlobalBound().height)
+	// backButton
+	if (backBtn.getGlobalBound().contains(static_cast<sf::Vector2f>(pos)))
+	{
 		// هر کاری ک باید برای دکمه بک باشه
-		*/
+	}
+
 		// nextButton
 	if (nextBtn.getGlobalBound().contains(static_cast<sf::Vector2f>(pos)))
 	{
@@ -126,7 +126,8 @@ void HeroSelectionMenu::click(sf::Vector2i& pos, menuType& currentMenu)
 			{
 				grid.clearAllTiles();
 				nextBtn.setString("start");
-				nameBox.setString("Player 2");
+				nameInputLabelText.setString("     player 2 :");
+				//nameBox.setString("Player 2");
 
 				// at last
 				playerManager.changeTheTurn();
@@ -142,13 +143,8 @@ void HeroSelectionMenu::click(sf::Vector2i& pos, menuType& currentMenu)
 			std::cout << static_cast<int> (playerManager.getTheTurn()) << std::endl;
 			if (playerManager.playerArr.at(0)->isPlayerHeroVecFull())
 			{
-				/*grid.clearAllTiles();
-				for (Hero* i : playerManager.playerArr.at(0)->playerHerosVec)
-					std::cout << i->getId() << "    ";
-				std::cout << std::endl;
-				for (Hero* i : playerManager.playerArr.at(1)->playerHerosVec)
-					std::cout << i->getId() << "    ";
-				std::cout << std::endl << std::endl;*/
+				grid.clearAllTiles();
+				currentMenu = menuType::battleGround;
 			}
 			else
 			{
