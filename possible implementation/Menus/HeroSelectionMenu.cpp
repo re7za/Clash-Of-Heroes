@@ -6,12 +6,12 @@ using namespace std;
 
 HeroSelectionMenu::HeroSelectionMenu()
 {
+	// set the name and others
 	menuName = menuType::heroSelection;
 	previousMenu = menuType::mainMenu;
 
 	// texture
 	backgroundTex.loadFromFile("Menus/background/mainMenu.png");
-
 	// sprite
 	menuSpr.setTexture(backgroundTex);
 
@@ -60,7 +60,7 @@ HeroSelectionMenu::HeroSelectionMenu()
 void HeroSelectionMenu::display(sf::RenderWindow* window)
 {
 	window->draw(menuSpr);
-	//////////////////////
+	////////////////////// and the other
 	window->draw(gamelabel);
 	backBtn.draw(window);
 	nextBtn.draw(window);
@@ -144,7 +144,7 @@ void HeroSelectionMenu::click(sf::Vector2i& pos, menuType& currentMenu)
 			if (playerManager.playerArr.at(0)->isPlayerHeroVecFull())
 			{
 				grid.clearAllTiles();
-				currentMenu = menuType::battleGround;
+				currentMenu = menuType::battlefield;
 			}
 			else
 			{

@@ -11,6 +11,7 @@ int main()
 	sf::RenderWindow window(sf::VideoMode(sf::VideoMode::getDesktopMode().width,
 		sf::VideoMode::getDesktopMode().height), "Clash Of BASU", sf::Style::Fullscreen);
 	
+	srand(static_cast<size_t>(time(NULL)));
 	MenuManager menuManager;
 	
 

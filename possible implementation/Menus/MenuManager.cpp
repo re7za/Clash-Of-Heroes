@@ -8,6 +8,7 @@ MenuManager::MenuManager()
 {
 	currentMenu = menuType::heroSelection;	// for now
 	menuVec.push_back(&heroSelectionMenu);
+	menuVec.push_back(&battlefield);
 }
 
 void MenuManager::clickPos(sf::Vector2i pos)

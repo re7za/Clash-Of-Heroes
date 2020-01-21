@@ -168,6 +168,9 @@
     <ClCompile Include="Clash of Heroes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Menus\Battlefield.cpp">
+      <Filter>Source Files\menus</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Menus\Menu.h">
@@ -280,6 +283,9 @@
     </ClInclude>
     <ClInclude Include="Heros\Sybil.h">
       <Filter>Header Files\heros</Filter>
+    </ClInclude>
+    <ClInclude Include="Menus\Battlefield.h">
+      <Filter>Header Files\menus</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
