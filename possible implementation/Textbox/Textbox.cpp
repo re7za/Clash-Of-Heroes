@@ -21,6 +21,8 @@ Textbox::Textbox(us size, bool sel)
 
 }
 
+
+
 void Textbox::inputLogic(int charTyped)
 {
 	if (charTyped != DELETE_KEY && charTyped != ENTER_KEY && charTyped != ESCAPE_KEY)
@@ -96,6 +98,11 @@ void Textbox::setFillColor(sf::Color color)
 void Textbox::setCharacterSize(us size)
 {
 	textbox.setCharacterSize(size);
+}
+
+void Textbox::setString(const std::string& text)
+{
+	textbox.setString(text);
 }
 
 std::string Textbox::getText()

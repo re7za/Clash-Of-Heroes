@@ -16,10 +16,7 @@ void Button::draw(sf::RenderWindow* window)
 }
 void Button::onMouseOver()
 {
-	if (sf::Mouse::getPosition().x > btnTxt.getPosition().x
-		&& sf::Mouse::getPosition().x < btnTxt.getPosition().x + btnTxt.getLocalBounds().width
-		&& sf::Mouse::getPosition().y > btnTxt.getGlobalBounds().top
-		&& sf::Mouse::getPosition().y < btnTxt.getGlobalBounds().top + btnTxt.getLocalBounds().height)
+	if (btnTxt.getGlobalBounds().contains(static_cast<sf::Vector2f>(sf::Mouse::getPosition())))
 	{
 		btnTxt.setFillColor(sf::Color::White);
 	}

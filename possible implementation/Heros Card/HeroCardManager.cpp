@@ -26,7 +26,7 @@ void HeroCardManager::drawHerosCard(sf::RenderWindow* window)
 
 }
 
-void HeroCardManager::rightClickHeroEachCard(sf::Vector2i& pos)
+void HeroCardManager::clickHeroEachCard(sf::Vector2i& pos)
 {
 	// checking wether a card is clicked
 	selectedCard = heros::none;
@@ -37,8 +37,7 @@ void HeroCardManager::rightClickHeroEachCard(sf::Vector2i& pos)
 		card->setColor(sf::Color(card->getSprOrginalColor().r, card->getSprOrginalColor().g,
 			card->getSprOrginalColor().b, 255));
 
-		if (pos.x >= card->getGlobalBound().left && pos.x <= card->getPosition().x + 150
-			&& pos.y >= card->getGlobalBound().top && pos.y <= card->getPosition().y + 230)
+		if (card->getGlobalBound().contains(static_cast<sf::Vector2f>(pos)))
 		{
 			if (!card->isCardSelected())
 			{
@@ -49,22 +48,7 @@ void HeroCardManager::rightClickHeroEachCard(sf::Vector2i& pos)
 					card->getSprOrginalColor().b + 20, 255));
 			}
 		}
-
 	}
-
-	/*// checking another NULL area :)
-	us cardCounter = 0;
-	for (HerosCard*& card : heroCardVec)
-		if (pos.x >= card->getGlobalBound().left && pos.x <= card->getPosition().x + 150
-			&& pos.y >= card->getGlobalBound().top && pos.y <= card->getPosition().y + 230
-			&& pos.x >= tiles.at(i).at(j)->getPosition().x
-			&& pos.x < tiles.at(i).at(j)->getPosition().x + tiles.at(i).at(j)->getGlobalBound().width
-			&& pos.y >= tiles.at(i).at(j)->getPosition().y
-			&& pos.y < tiles.at(i).at(j)->getPosition().y + tiles.at(i).at(j)->getGlobalBound().height)
-			// خب یکاری کن ک فقط روی گرید نباشه سلکت نان بشه2
-			// میخوایم چک کنیم کع اگه پوزیشن کلیک شده چیزی جز کارت ها و گریده سلکت کارت مساوی نان بشه1
-	*/
-
 }
 
 // card selection

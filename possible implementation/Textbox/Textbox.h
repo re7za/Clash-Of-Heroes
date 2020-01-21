@@ -26,6 +26,7 @@ public:
 	bool isItSelected();
 	void setFillColor(sf::Color);
 	void setCharacterSize(us);
+	void setString(const std::string&);
 	std::string getText();
 	void draw(sf::RenderWindow*);
 	void typedOn(sf::Event);

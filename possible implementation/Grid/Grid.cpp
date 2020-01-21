@@ -16,10 +16,7 @@ void Grid::gridClicked(const sf::Vector2i& pos, PlayerManager& playerManager, he
 {
 	for (us i = 0; i < 9; i++)			// row
 		for (us j = 0; j < 9; j++)		// column
-			if (pos.x >= tiles.at(i).at(j)->getPosition().x
-				&& pos.x < tiles.at(i).at(j)->getPosition().x + tiles.at(i).at(j)->getGlobalBound().width
-				&& pos.y >= tiles.at(i).at(j)->getPosition().y
-				&& pos.y < tiles.at(i).at(j)->getPosition().y + tiles.at(i).at(j)->getGlobalBound().height)
+			if (tiles.at(i).at(j)->getGlobalBound().contains(static_cast<sf::Vector2f>(pos)))
 			{
 				// set or remove this tile
 				if (heroCard == heros::none)		// remove
@@ -62,7 +59,8 @@ void Grid::gridClicked(const sf::Vector2i& pos, PlayerManager& playerManager, he
 	/*
 	for (Hero* i : playerManager.playerArr.at(0)->playerHerosVec)
 		std::cout << i->getHeroPosition().x << " " << i->getHeroPosition().y << "    ";
-	std::cout << std::endl;*/
+	std::cout << std::endl;
+	*/
 }
 
 void Grid::clearAllTiles()

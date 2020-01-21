@@ -39,6 +39,7 @@ HeroSelectionMenu::HeroSelectionMenu()
 	nameBox.setCharacterSize(37);
 	nameBox.setPosition(sf::Vector2f(nameRectLeft, nameRectTop));
 	nameBox.setSelected(false);
+	nameBox.setString("player 1");
 
 	// name input label
 	nameInputLabelRect.setFillColor(sf::Color(5, 5, 5, 200));
@@ -46,7 +47,7 @@ HeroSelectionMenu::HeroSelectionMenu()
 	nameInputLabelRect.setPosition(sf::Vector2f(nameRectLeft - nameRectWidth, nameRectTop));
 	if (!nameInputLabelFont.loadFromFile("Font/Button.otf"))
 		std::cout << "nameInputLabelFont doesn't open" << std::endl;
-	nameInputLabelText.setString("Enter your name");
+	nameInputLabelText.setString("enter your name :");
 	nameInputLabelText.setCharacterSize(38);
 	nameInputLabelText.setFont(nameInputLabelFont);
 	nameInputLabelText.setFillColor(sf::Color::White);
@@ -85,7 +86,7 @@ void HeroSelectionMenu::click(sf::Vector2i& pos, menuType& currentMenu)
 	grid.gridClicked(pos, playerManager, heroCardManager.getSelectedCardByRefrence());
 
 	// each hero card
-	heroCardManager.rightClickHeroEachCard(pos);
+	heroCardManager.clickHeroEachCard(pos);
 
 	// name box
 	//clickNameBox(pos);
@@ -116,10 +117,7 @@ void HeroSelectionMenu::click(sf::Vector2i& pos, menuType& currentMenu)
 		// هر کاری ک باید برای دکمه بک باشه
 		*/
 		// nextButton
-	if (pos.x > nextBtn.getGlobalBound().left
-		&& pos.x < nextBtn.getGlobalBound().left + nextBtn.getGlobalBound().width
-		&& pos.y > nextBtn.getGlobalBound().top
-		&& pos.y < nextBtn.getGlobalBound().top + nextBtn.getGlobalBound().height)
+	if (nextBtn.getGlobalBound().contains(static_cast<sf::Vector2f>(pos)))
 	{
 		if (playerManager.getTheTurn() == Players::P1)
 		{
@@ -128,6 +126,7 @@ void HeroSelectionMenu::click(sf::Vector2i& pos, menuType& currentMenu)
 			{
 				grid.clearAllTiles();
 				nextBtn.setString("start");
+				nameBox.setString("Player 2");
 
 				// at last
 				playerManager.changeTheTurn();
