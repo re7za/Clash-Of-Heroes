@@ -12,7 +12,7 @@ Grid::Grid()
 }
 
 
-void Grid::SelectionClicked(const sf::Vector2i& pos, PlayerManager& playerManager, heros& heroCard)
+void Grid::SelectionClicked(const sf::Vector2i& pos, PlayerManager* playerManager, heros& heroCard)
 {
 	for (us i = 0; i < 9; i++)			// row
 		for (us j = 0; j < 9; j++)		// column
@@ -27,10 +27,10 @@ void Grid::SelectionClicked(const sf::Vector2i& pos, PlayerManager& playerManage
 				else								// set
 				{
 					// preventing redefining a hero
-					if (!playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))
+					if (!playerManager->playerArr.at(static_cast<us> (playerManager->getTheTurn()))
 						->isHeroExistInVec(heroCard))
 					{
-						if (!playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))
+						if (!playerManager->playerArr.at(static_cast<us> (playerManager->getTheTurn()))
 							->isPlayerHeroVecFull() || tiles.at(i).at(j)->IsHeroSpr())		// preventing defining more than 5 hero
 						{
 							if (tiles.at(i).at(j)->IsHeroSpr())
@@ -64,15 +64,19 @@ void Grid::SelectionClicked(const sf::Vector2i& pos, PlayerManager& playerManage
 	*/
 }
 
-void Grid::battlefieldClicked(const sf::Vector2i& pos, PlayerManager& playerManager, heros heroIcon)
+void Grid::battlefieldClicked(const sf::Vector2i& pos, PlayerManager* playerManager, heros heroIcon)
 {
 	for (us i = 0; i < 9; i++)			// row
 		for (us j = 0; j < 9; j++)		// column
 			if (tiles.at(i).at(j)->getGlobalBound().contains(static_cast<sf::Vector2f>(pos)))
 			{
-				std::cout << i << "  " << j << "    i  j" << std::endl;
+				for (auto p : playerManager->playerArr.at(0)->playerHerosVec)
+					std::cout << p->getId() << "  ";
+				std::cout << std::endl;
+				for (auto p : playerManager->playerArr.at(1)->playerHerosVec)
+					std::cout << p->getId() << "  ";
+				std::cout << std::endl;
 
-				return;
 			}
 }
 
@@ -84,78 +88,78 @@ void Grid::clearAllTiles()
 				tile->removeHeroSpr();
 }
 
-void Grid::clearTileAndHero(Tile*& tile ,PlayerManager& playerManager)
+void Grid::clearTileAndHero(Tile*& tile ,PlayerManager* playerManager)
 {
 	// graphic side
 	tile->removeHeroSpr();
 
 	// logic side
-	playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))
+	playerManager->playerArr.at(static_cast<us> (playerManager->getTheTurn()))
 		->removeHero(tile->getHeroCardName());
 }
 
-void Grid::setThePlayerHerosVec(PlayerManager& playerManager, heros& heroCard,const sf::Vector2i& pos)
+void Grid::setThePlayerHerosVec(PlayerManager* playerManager, heros& heroCard,const sf::Vector2i& pos)
 {
 	switch (heroCard)
 	{
 	case heros::mrsGhost:
 	{
-		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new MrsGhost(pos));
+		playerManager->playerArr.at(static_cast<us> (playerManager->getTheTurn()))->playerHerosVec.push_back(new MrsGhost(pos));
 		break;
 	}
 	case heros::robi:
 	{
-		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new ROBI(pos));
+		playerManager->playerArr.at(static_cast<us> (playerManager->getTheTurn()))->playerHerosVec.push_back(new ROBI(pos));
 		break;
 	}
 	case heros::leon:
 	{
-		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new Leon(pos));
+		playerManager->playerArr.at(static_cast<us> (playerManager->getTheTurn()))->playerHerosVec.push_back(new Leon(pos));
 		break;
 	}
 	case heros::drMarry:
 	{
-		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new DrMarry(pos));
+		playerManager->playerArr.at(static_cast<us> (playerManager->getTheTurn()))->playerHerosVec.push_back(new DrMarry(pos));
 		break;
 	}
 	case heros::sniper:
 	{
-		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new Sniper(pos));
+		playerManager->playerArr.at(static_cast<us> (playerManager->getTheTurn()))->playerHerosVec.push_back(new Sniper(pos));
 		break;
 	}
 	case heros::kratos:
 	{
-		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new Kratos(pos));
+		playerManager->playerArr.at(static_cast<us> (playerManager->getTheTurn()))->playerHerosVec.push_back(new Kratos(pos));
 		break;
 	}
 	case heros::giant:
 	{
-		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new Giant(pos));
+		playerManager->playerArr.at(static_cast<us> (playerManager->getTheTurn()))->playerHerosVec.push_back(new Giant(pos));
 		break;
 	}
 	case heros::alphaMan:
 	{
-		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new AlphaMan(pos));
+		playerManager->playerArr.at(static_cast<us> (playerManager->getTheTurn()))->playerHerosVec.push_back(new AlphaMan(pos));
 		break;
 	}
 	case heros::professor:
 	{
-		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new Professor(pos));
+		playerManager->playerArr.at(static_cast<us> (playerManager->getTheTurn()))->playerHerosVec.push_back(new Professor(pos));
 		break;
 	}
 	case heros::commander:
 	{
-		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new Commander(pos));
+		playerManager->playerArr.at(static_cast<us> (playerManager->getTheTurn()))->playerHerosVec.push_back(new Commander(pos));
 		break;
 	}
 	case heros::rickKhonsari:
 	{
-		playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new RickKhonsari(pos));
+		playerManager->playerArr.at(static_cast<us> (playerManager->getTheTurn()))->playerHerosVec.push_back(new RickKhonsari(pos));
 		break;
 	}
 	case heros::sybil:
 	{
-		//playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))->playerHerosVec.push_back(new Sybil(pos));
+		//playerManager->playerArr.at(static_cast<us> (playerManager->getTheTurn()))->playerHerosVec.push_back(new Sybil(pos));
 		break;
 	}
 	}

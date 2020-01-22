@@ -20,7 +20,10 @@ public:
 	menuType getPreviousMenu();
 
 	// player manager
-	//void playerDisplayManager(sf::RenderWindow*, PlayerManager&);
+	//void playerDisplayManager(sf::RenderWindow*, PlayerManager*);
+	void badSetPManager(PlayerManager*);
+	PlayerManager* badGetPManager();
+
 
 protected:
 	void setGamelabel();
@@ -35,7 +38,7 @@ protected:
 	sf::Text gamelabel;
 	
 	// unfortunately have to define playerManager here.. for now
-	PlayerManager playerManager;
+	PlayerManager* playerManager = new PlayerManager();
 
 };
 

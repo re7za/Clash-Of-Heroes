@@ -116,13 +116,13 @@ void HeroSelectionMenu::click(sf::Vector2i& pos, menuType& currentMenu)
 		// هر کاری ک باید برای دکمه بک باشه
 	}
 
-		// nextButton
+	// nextButton
 	if (nextBtn.getGlobalBound().contains(static_cast<sf::Vector2f>(pos)))
 	{
-		if (playerManager.getTheTurn() == Players::P1)
+		if (playerManager->getTheTurn() == Players::P1)
 		{
-			std::cout << static_cast<int> (playerManager.getTheTurn()) << std::endl;
-			if (playerManager.playerArr.at(0)->isPlayerHeroVecFull())
+			std::cout << static_cast<int> (playerManager->getTheTurn()) << std::endl;
+			if (playerManager->playerArr.at(0)->isPlayerHeroVecFull())
 			{
 				grid.clearAllTiles();
 				nextBtn.setString("start");
@@ -130,7 +130,7 @@ void HeroSelectionMenu::click(sf::Vector2i& pos, menuType& currentMenu)
 				//nameBox.setString("Player 2");
 
 				// at last
-				playerManager.changeTheTurn();
+				playerManager->changeTheTurn();
 
 			}
 			else
@@ -140,8 +140,8 @@ void HeroSelectionMenu::click(sf::Vector2i& pos, menuType& currentMenu)
 		}
 		else
 		{
-			std::cout << static_cast<int> (playerManager.getTheTurn()) << std::endl;
-			if (playerManager.playerArr.at(0)->isPlayerHeroVecFull())
+			std::cout << static_cast<int> (playerManager->getTheTurn()) << std::endl;
+			if (playerManager->playerArr.at(0)->isPlayerHeroVecFull())
 			{
 				grid.clearAllTiles();
 				currentMenu = menuType::battlefield;
@@ -150,6 +150,7 @@ void HeroSelectionMenu::click(sf::Vector2i& pos, menuType& currentMenu)
 			{
 				std::cout << "u have to choose more" << std::endl;
 			}
+
 
 			// at last
 			// currentMenu = menuType::PlayRoom Menu;

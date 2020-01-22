@@ -26,6 +26,7 @@ public:
 
 private:
 	menuType currentMenu;
+	menuType _currentMenu;
 	std::vector <Menu*> menuVec;
 	HeroSelectionMenu heroSelectionMenu;
 	Battlefield battlefield;

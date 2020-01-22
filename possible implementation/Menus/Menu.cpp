@@ -13,6 +13,14 @@ menuType Menu::getPreviousMenu()
 {
 	return previousMenu;
 }
+void Menu::badSetPManager(PlayerManager* PManager)
+{
+	playerManager = PManager;
+}
+PlayerManager* Menu::badGetPManager()
+{
+	return playerManager;
+}
 void Menu::setGamelabel()
 {
 	gameLabelFont.loadFromFile("Font/fighting spirit TBS_bold.ttf");

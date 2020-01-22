@@ -38,13 +38,13 @@ public:
 	void draw(sf::RenderWindow*);
 
 	// click on tiles
-	void SelectionClicked(const sf::Vector2i&, PlayerManager&, heros&);		// heroSelectionMenu version
-	void battlefieldClicked(const sf::Vector2i&, PlayerManager&, heros);	// it's not supposed to be an overLoaded version
+	void SelectionClicked(const sf::Vector2i&, PlayerManager*, heros&);		// heroSelectionMenu version
+	void battlefieldClicked(const sf::Vector2i&, PlayerManager*, heros);	// it's not supposed to be an overLoaded version
 
 	// set or remove this tile
 	void clearAllTiles();
-	void clearTileAndHero(Tile*&, PlayerManager&);
-	void setThePlayerHerosVec(PlayerManager&, heros&,const sf::Vector2i&);
+	void clearTileAndHero(Tile*&, PlayerManager*);
+	void setThePlayerHerosVec(PlayerManager*, heros&,const sf::Vector2i&);
 
 	// sfml 
 	sf::Sprite getGridSpr();

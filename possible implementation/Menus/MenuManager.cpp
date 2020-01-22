@@ -6,7 +6,8 @@ using namespace std;
 
 MenuManager::MenuManager()
 {
-	currentMenu = menuType::battlefield;	// for now
+	currentMenu = menuType::heroSelection;	// for now
+	_currentMenu = currentMenu;
 	menuVec.push_back(&heroSelectionMenu);
 	menuVec.push_back(&battlefield);
 }
@@ -19,6 +20,14 @@ void MenuManager::clickPos(sf::Vector2i pos)
 			menu->click(pos, currentMenu);
 			break;
 		}
+
+	// update the _currentMenu
+	if (_currentMenu == menuType::heroSelection
+		&& currentMenu == menuType::battlefield)
+	{
+		battlefield.badSetPManager(heroSelectionMenu.badGetPManager());
+		_currentMenu = currentMenu;
+	}
 }
 
 void MenuManager::displayCurrentMenu(sf::RenderWindow* window)
