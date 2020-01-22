@@ -12,13 +12,12 @@ Grid::Grid()
 }
 
 
-void Grid::gridClicked(const sf::Vector2i& pos, PlayerManager& playerManager, heros& heroCard)
+void Grid::SelectionClicked(const sf::Vector2i& pos, PlayerManager& playerManager, heros& heroCard)
 {
 	for (us i = 0; i < 9; i++)			// row
 		for (us j = 0; j < 9; j++)		// column
 			if (tiles.at(i).at(j)->getGlobalBound().contains(static_cast<sf::Vector2f>(pos)))
 			{
-				std::cout << i << "   " << j << "i, j" << std::endl;
 				// set or remove this tile
 				if (heroCard == heros::none)		// remove
 				{
@@ -56,12 +55,25 @@ void Grid::gridClicked(const sf::Vector2i& pos, PlayerManager& playerManager, he
 				
 				// the last part
 				heroCard = heros::none;
+				return;
 			}
 	/*
 	for (Hero* i : playerManager.playerArr.at(0)->playerHerosVec)
 		std::cout << i->getHeroPosition().x << " " << i->getHeroPosition().y << "    ";
 	std::cout << std::endl;
 	*/
+}
+
+void Grid::battlefieldClicked(const sf::Vector2i& pos, PlayerManager& playerManager, heros heroIcon)
+{
+	for (us i = 0; i < 9; i++)			// row
+		for (us j = 0; j < 9; j++)		// column
+			if (tiles.at(i).at(j)->getGlobalBound().contains(static_cast<sf::Vector2f>(pos)))
+			{
+				std::cout << i << "  " << j << "    i  j" << std::endl;
+
+				return;
+			}
 }
 
 void Grid::clearAllTiles()
@@ -169,21 +181,23 @@ void Grid::fillTheGrid()
 			tile = new Tile();
 }
 
+///////////////////////////////////////
+// utility functions
 void Grid::setTilesPosition()
 {
 	for (us i = 0; i < 9; i++)
 		for (us j = 0; j < 9; j++)
-			tiles.at(i).at(j)->setPosition(sf::Vector2f(this->getPosition().x + (j * (tiles.at(i).at(j)->getGlobalBound().width) + j * 1.5) * this->getScale().x,
-				this->getPosition().y + (i * (tiles.at(i).at(j)->getGlobalBound().height) + i * 2) * this->getScale().y));
+			tiles.at(i).at(j)->setPosition(sf::Vector2f(this->getPosition().x + (j * (tiles.at(i).at(j)->getGlobalBound().width + 1.7 * this->getScale().x)) ,
+				this->getPosition().y + (i * (tiles.at(i).at(j)->getGlobalBound().height + 2 * this->getScale().y))));
 }
-
-///////////////////////////////////////
-// utility functions
 void Grid::setTilesScale(const sf::Vector2f& scale)
 {
 	for (us i = 0; i < 9; i++)
 		for (us j = 0; j < 9; j++)
 			tiles.at(i).at(j)->setScale(scale);
+
+	// update the position
+	setTilesPosition();
 }
 
 // sfml methodes
@@ -199,7 +213,7 @@ void Grid::setPosition(const sf::Vector2f& position)
 void Grid::setScale(const sf::Vector2f& scale)
 {
 	gridSpr.setScale(scale);
-	setTilesScale(sf::Vector2f(this->getScale().x, this->getScale().y));
+	setTilesScale(scale);
 }
 sf::FloatRect Grid::getGlobalBound()
 {
@@ -217,7 +231,6 @@ const sf::Vector2f& Grid::getScale()
 {
 	return gridSpr.getScale();
 }
-
 const sf::Color& Grid::getColor()
 {
 	return gridSpr.getColor();

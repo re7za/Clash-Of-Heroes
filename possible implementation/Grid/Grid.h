@@ -38,7 +38,8 @@ public:
 	void draw(sf::RenderWindow*);
 
 	// click on tiles
-	void gridClicked(const sf::Vector2i&, PlayerManager&, heros&);		// heroSelectionMenu version
+	void SelectionClicked(const sf::Vector2i&, PlayerManager&, heros&);		// heroSelectionMenu version
+	void battlefieldClicked(const sf::Vector2i&, PlayerManager&, heros);	// it's not supposed to be an overLoaded version
 
 	// set or remove this tile
 	void clearAllTiles();

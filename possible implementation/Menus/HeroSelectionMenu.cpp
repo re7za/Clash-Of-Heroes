@@ -84,7 +84,7 @@ void HeroSelectionMenu::display(sf::RenderWindow* window)
 void HeroSelectionMenu::click(sf::Vector2i& pos, menuType& currentMenu)
 {
 	// grid.. it must be before the herocard part
-	grid.gridClicked(pos, playerManager, heroCardManager.getSelectedCardByRefrence());
+	grid.SelectionClicked(pos, playerManager, heroCardManager.getSelectedCardByRefrence());
 
 	// each hero card
 	heroCardManager.clickHeroEachCard(pos);

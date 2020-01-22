@@ -12,13 +12,14 @@ Tile::Tile()
 }
 
 
-void Tile::tileClicked()
+void Tile::clicked()
 {
 
 }
 
 void Tile::draw(sf::RenderWindow* window)
 {
+	tileModSpr.setColor(sf::Color::Green);
 	window->draw(tileModSpr);
 	if (isHeroSpr)
 		window->draw(*heroSpr);

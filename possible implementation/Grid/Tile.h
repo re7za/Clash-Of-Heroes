@@ -15,7 +15,7 @@ public:
 	Tile();
 
 	// tiles
-	void tileClicked();
+	void clicked();
 	//void setHurtTile();
 	void draw(sf::RenderWindow* window);
 
@@ -34,7 +34,7 @@ public:
 	bool IsHeroSpr();
 	// logic side
 	heros getHeroCardName();
-
+	
 
 private:
 	// area modes
