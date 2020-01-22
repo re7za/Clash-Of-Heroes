@@ -37,7 +37,7 @@ private:
 	// HeroCardManager
 	HeroCardManager heroCardManager;
 
-	// menu grid
+	// selection grid
 	Grid grid;
 
 	// another bullShits

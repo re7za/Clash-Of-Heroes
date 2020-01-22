@@ -20,7 +20,7 @@ HeroSelectionMenu::HeroSelectionMenu()
 	gamelabel.setPosition(menuSpr.getGlobalBounds().left + 70,
 		menuSpr.getGlobalBounds().height * 2 / 3);
 	
-	// grid
+	// selection grid
 	grid.setPosition(sf::Vector2f(sf::VideoMode::getDesktopMode().width / 2 + 100,
 		sf::VideoMode::getDesktopMode().height * 1 / 3 - 30));
 

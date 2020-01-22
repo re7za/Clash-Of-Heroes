@@ -54,6 +54,7 @@ public:
 	const sf::Vector2f& getOrigin();
 	const sf::Vector2f& getPosition();
 	const sf::Vector2f& getScale();
+	const sf::Color& getColor();
 
 
 private:

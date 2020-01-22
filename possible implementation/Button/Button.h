@@ -22,9 +22,14 @@ public:
 	const sf::Vector2f& getPosition();
 	unsigned short getCharacterSize();
 
+	// rect
+	void setRectSize(const sf::Vector2f&);
+	void setRectColor(const sf::Color&);
+
 private:
 	sf::Font btnFont;
 	sf::Text btnTxt;
+	sf::RectangleShape btnRect;
 
 	bool isClicked = false;
 };

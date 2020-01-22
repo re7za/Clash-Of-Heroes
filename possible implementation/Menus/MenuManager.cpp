@@ -6,7 +6,7 @@ using namespace std;
 
 MenuManager::MenuManager()
 {
-	currentMenu = menuType::heroSelection;	// for now
+	currentMenu = menuType::battlefield;	// for now
 	menuVec.push_back(&heroSelectionMenu);
 	menuVec.push_back(&battlefield);
 }

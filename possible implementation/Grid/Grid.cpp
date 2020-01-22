@@ -18,6 +18,7 @@ void Grid::gridClicked(const sf::Vector2i& pos, PlayerManager& playerManager, he
 		for (us j = 0; j < 9; j++)		// column
 			if (tiles.at(i).at(j)->getGlobalBound().contains(static_cast<sf::Vector2f>(pos)))
 			{
+				std::cout << i << "   " << j << "i, j" << std::endl;
 				// set or remove this tile
 				if (heroCard == heros::none)		// remove
 				{
@@ -215,4 +216,9 @@ const sf::Vector2f& Grid::getPosition()
 const sf::Vector2f& Grid::getScale()
 {
 	return gridSpr.getScale();
+}
+
+const sf::Color& Grid::getColor()
+{
+	return gridSpr.getColor();
 }
