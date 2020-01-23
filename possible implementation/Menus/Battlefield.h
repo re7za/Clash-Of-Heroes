@@ -5,9 +5,9 @@
 
 #include "../generalDef.h"
 #include "Menu.h"
-#include "../Heros Card/HeroCardManager.h"
 #include "../Grid/Grid.h"
 #include "../Button/Button.h"
+
 
 class Battlefield : public Menu
 {
@@ -32,6 +32,7 @@ private:
 
 	// button
 	Button pauseBtn;
+
 
 };
 

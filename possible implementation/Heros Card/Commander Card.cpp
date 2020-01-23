@@ -15,6 +15,7 @@ CommanderCard::CommanderCard()
 	heroNameTxt.setCharacterSize(16);
 	heroNameTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 33,
 		heroCardSpr.getPosition().y + 15));
+	heroNameTxt.setFillColor(sf::Color(174, 32, 49));
 
 	//hero health
 	healthTxt.setString("hlt 7");

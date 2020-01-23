@@ -15,6 +15,7 @@ ProfessorCard::ProfessorCard()
 	heroNameTxt.setCharacterSize(15);
 	heroNameTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 37,
 		heroCardSpr.getPosition().y + 15));
+	heroNameTxt.setFillColor(sf::Color(185, 214, 124));
 
 	//hero health
 	healthTxt.setString("hlt 11");

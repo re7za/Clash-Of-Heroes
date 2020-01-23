@@ -9,7 +9,6 @@ Battlefield::Battlefield()
 	// texture and sprite
 	changeBackground();
 
-
 	// battle grid
 	grid.setScale(sf::Vector2f(1.2f, 1.2f));
 	grid.setPosition(sf::Vector2f(sf::VideoMode::getDesktopMode().width * 1/2,
@@ -19,11 +18,11 @@ Battlefield::Battlefield()
 		* grid.getScale().x / 2, grid.getPosition().y));
 	grid.setFillColor(sf::Color(grid.getColor().r, grid.getColor().g, grid.getColor().b, 255));
 
-
 	//pause button
 	pauseBtn.setString("pause");
 	pauseBtn.setPosition(sf::Vector2f(sf::VideoMode::getDesktopMode().width - 150, 20));
 
+	//
 
 }
 
@@ -35,8 +34,10 @@ void Battlefield::display(sf::RenderWindow* window)
 	pauseBtn.draw(window);
 	mouseHover(window);
 
+
 	// battle grid
 	grid.draw(window);
+
 }
 
 // mouse events and positions

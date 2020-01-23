@@ -55,6 +55,12 @@
     <Filter Include="Source Files\Heros Card">
       <UniqueIdentifier>{68555a64-f97c-4b6d-b80a-793469f2bd09}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Heroes Battle Card">
+      <UniqueIdentifier>{072ccd6b-7071-4bb5-9037-722a37fbc81e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Heroes Battle Card">
+      <UniqueIdentifier>{fa349da2-29b8-4c92-ab08-632aef6734c6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Heros\AlphaMan.cpp">
@@ -171,6 +177,45 @@
     <ClCompile Include="Menus\Battlefield.cpp">
       <Filter>Source Files\menus</Filter>
     </ClCompile>
+    <ClCompile Include="Heroes Battle Card\BattleCard.cpp">
+      <Filter>Source Files\Heroes Battle Card</Filter>
+    </ClCompile>
+    <ClCompile Include="Heroes Battle Card\AlphaManBattleCard.cpp">
+      <Filter>Source Files\Heroes Battle Card</Filter>
+    </ClCompile>
+    <ClCompile Include="Heroes Battle Card\CommanderBattleCard.cpp">
+      <Filter>Source Files\Heroes Battle Card</Filter>
+    </ClCompile>
+    <ClCompile Include="Heroes Battle Card\DrMarryBattleCard.cpp">
+      <Filter>Source Files\Heroes Battle Card</Filter>
+    </ClCompile>
+    <ClCompile Include="Heroes Battle Card\GiantBattleCard.cpp">
+      <Filter>Source Files\Heroes Battle Card</Filter>
+    </ClCompile>
+    <ClCompile Include="Heroes Battle Card\KratosBattleCard.cpp">
+      <Filter>Source Files\Heroes Battle Card</Filter>
+    </ClCompile>
+    <ClCompile Include="Heroes Battle Card\LeonBattleCard.cpp">
+      <Filter>Source Files\Heroes Battle Card</Filter>
+    </ClCompile>
+    <ClCompile Include="Heroes Battle Card\MrsGhostBattleCard.cpp">
+      <Filter>Source Files\Heroes Battle Card</Filter>
+    </ClCompile>
+    <ClCompile Include="Heroes Battle Card\ProfessorBattleCard.cpp">
+      <Filter>Source Files\Heroes Battle Card</Filter>
+    </ClCompile>
+    <ClCompile Include="Heroes Battle Card\RickKhonsariBattleCard.cpp">
+      <Filter>Source Files\Heroes Battle Card</Filter>
+    </ClCompile>
+    <ClCompile Include="Heroes Battle Card\ROBIBattleCard.cpp">
+      <Filter>Source Files\Heroes Battle Card</Filter>
+    </ClCompile>
+    <ClCompile Include="Heroes Battle Card\SniperBattleCard.cpp">
+      <Filter>Source Files\Heroes Battle Card</Filter>
+    </ClCompile>
+    <ClCompile Include="Heroes Battle Card\SybilBattleCard.cpp">
+      <Filter>Source Files\Heroes Battle Card</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Menus\Menu.h">
@@ -286,6 +331,45 @@
     </ClInclude>
     <ClInclude Include="Menus\Battlefield.h">
       <Filter>Header Files\menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Heroes Battle Card\BattleCard.h">
+      <Filter>Header Files\Heroes Battle Card</Filter>
+    </ClInclude>
+    <ClInclude Include="Heroes Battle Card\AlphaManBattleCard.h">
+      <Filter>Header Files\Heroes Battle Card</Filter>
+    </ClInclude>
+    <ClInclude Include="Heroes Battle Card\CommanderBattleCard.h">
+      <Filter>Header Files\Heroes Battle Card</Filter>
+    </ClInclude>
+    <ClInclude Include="Heroes Battle Card\DrMarryBattleCard.h">
+      <Filter>Header Files\Heroes Battle Card</Filter>
+    </ClInclude>
+    <ClInclude Include="Heroes Battle Card\GiantBattleCard.h">
+      <Filter>Header Files\Heroes Battle Card</Filter>
+    </ClInclude>
+    <ClInclude Include="Heroes Battle Card\KratosBattleCard.h">
+      <Filter>Header Files\Heroes Battle Card</Filter>
+    </ClInclude>
+    <ClInclude Include="Heroes Battle Card\LeonBattleCard.h">
+      <Filter>Header Files\Heroes Battle Card</Filter>
+    </ClInclude>
+    <ClInclude Include="Heroes Battle Card\MrsGhostBattleCard.h">
+      <Filter>Header Files\Heroes Battle Card</Filter>
+    </ClInclude>
+    <ClInclude Include="Heroes Battle Card\ProfessorBattleCard.h">
+      <Filter>Header Files\Heroes Battle Card</Filter>
+    </ClInclude>
+    <ClInclude Include="Heroes Battle Card\RickKhonsariBattleCard.h">
+      <Filter>Header Files\Heroes Battle Card</Filter>
+    </ClInclude>
+    <ClInclude Include="Heroes Battle Card\ROBIBattleCard.h">
+      <Filter>Header Files\Heroes Battle Card</Filter>
+    </ClInclude>
+    <ClInclude Include="Heroes Battle Card\SniperBattleCard.h">
+      <Filter>Header Files\Heroes Battle Card</Filter>
+    </ClInclude>
+    <ClInclude Include="Heroes Battle Card\SybilBattleCard.h">
+      <Filter>Header Files\Heroes Battle Card</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

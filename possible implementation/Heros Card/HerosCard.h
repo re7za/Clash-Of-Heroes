@@ -13,6 +13,7 @@ public:
 
 	virtual void draw(sf::RenderWindow*) = 0;
 	virtual void setCardSpr() = 0;
+
 	void setColor(sf::Color);
 	sf::Color getSprOrginalColor();
 	

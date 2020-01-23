@@ -15,6 +15,7 @@ SybilCard::SybilCard()
 	heroNameTxt.setCharacterSize(20);
 	heroNameTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 48,
 		heroCardSpr.getPosition().y + 15));
+	heroNameTxt.setFillColor(sf::Color(180, 156, 130));
 
 	//hero health
 	healthTxt.setString("hlt 12");

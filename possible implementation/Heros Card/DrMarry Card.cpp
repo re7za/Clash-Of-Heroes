@@ -15,7 +15,8 @@ DrMarryCard::DrMarryCard()
 	heroNameTxt.setCharacterSize(18);
 	heroNameTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 36,
 		heroCardSpr.getPosition().y + 15));
-
+	heroNameTxt.setFillColor(sf::Color(99 + 40, 82 + 40, 193 + 40));
+	
 	//hero health
 	healthTxt.setString("hlt 8");
 

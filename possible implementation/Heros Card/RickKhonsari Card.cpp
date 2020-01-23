@@ -15,6 +15,7 @@ RickKhonsariCard::RickKhonsariCard()
 	heroNameTxt.setCharacterSize(20);
 	heroNameTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 48,
 		heroCardSpr.getPosition().y + 15));
+	heroNameTxt.setFillColor(sf::Color(137, 174, 199));
 
 	//hero health
 	healthTxt.setString("hlt 10");

@@ -15,6 +15,7 @@ LeonCard::LeonCard()
 	heroNameTxt.setCharacterSize(20);
 	heroNameTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 50,
 		heroCardSpr.getPosition().y + 13));
+	heroNameTxt.setFillColor(sf::Color(245, 96, 48));
 
 	//hero health
 	healthTxt.setString("hlt 10");

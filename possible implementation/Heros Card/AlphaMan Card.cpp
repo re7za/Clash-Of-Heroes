@@ -15,6 +15,7 @@ AlphaManCard::AlphaManCard()
 	heroNameTxt.setCharacterSize(18);
 	heroNameTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 33,
 		heroCardSpr.getPosition().y + 15));
+		heroNameTxt.setFillColor(sf::Color(23, 152, 255));
 
 	//hero health
 	healthTxt.setString("hlt 13");

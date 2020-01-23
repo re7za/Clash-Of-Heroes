@@ -70,12 +70,6 @@ void Grid::battlefieldClicked(const sf::Vector2i& pos, PlayerManager* playerMana
 		for (us j = 0; j < 9; j++)		// column
 			if (tiles.at(i).at(j)->getGlobalBound().contains(static_cast<sf::Vector2f>(pos)))
 			{
-				for (auto p : playerManager->playerArr.at(0)->playerHerosVec)
-					std::cout << p->getId() << "  ";
-				std::cout << std::endl;
-				for (auto p : playerManager->playerArr.at(1)->playerHerosVec)
-					std::cout << p->getId() << "  ";
-				std::cout << std::endl;
 
 			}
 }
@@ -159,7 +153,7 @@ void Grid::setThePlayerHerosVec(PlayerManager* playerManager, heros& heroCard,co
 	}
 	case heros::sybil:
 	{
-		//playerManager->playerArr.at(static_cast<us> (playerManager->getTheTurn()))->playerHerosVec.push_back(new Sybil(pos));
+		playerManager->playerArr.at(static_cast<us> (playerManager->getTheTurn()))->playerHerosVec.push_back(new Sybil(pos));
 		break;
 	}
 	}

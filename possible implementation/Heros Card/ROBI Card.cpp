@@ -15,6 +15,7 @@ ROBICard::ROBICard()
 	heroNameTxt.setCharacterSize(20);
 	heroNameTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 45,
 		heroCardSpr.getPosition().y + 15));
+	heroNameTxt.setFillColor(sf::Color(34, 167, 143));
 
 	//hero health
 	healthTxt.setString("hlt 9");
