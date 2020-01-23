@@ -13,10 +13,12 @@ menuType Menu::getPreviousMenu()
 {
 	return previousMenu;
 }
+
 void Menu::badSetPManager(PlayerManager* PManager)
 {
 	playerManager = PManager;
 }
+
 PlayerManager* Menu::badGetPManager()
 {
 	return playerManager;

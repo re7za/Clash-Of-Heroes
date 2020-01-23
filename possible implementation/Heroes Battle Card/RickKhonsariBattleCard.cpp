@@ -3,7 +3,7 @@
 
 RickKhonsariBattleCard::RickKhonsariBattleCard()
 {
-	cardName = heros::alphaMan;
+	cardName = heros::rickKhonsari;
 
 	// cardSpr
 	setCardSpr();
@@ -13,8 +13,6 @@ RickKhonsariBattleCard::RickKhonsariBattleCard()
 	// hero name
 	heroNameTxt.setString("Ramin");
 	heroNameTxt.setCharacterSize(24);
-	heroNameTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 30,
-		heroCardSpr.getPosition().y + 5));
 	heroNameTxt.setFillColor(sf::Color(137, 174, 199));
 
 	//hero health

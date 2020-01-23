@@ -3,7 +3,7 @@
 
 SniperBattleCard::SniperBattleCard()
 {
-	cardName = heros::alphaMan;
+	cardName = heros::sniper;
 
 	// cardSpr
 	setCardSpr();
@@ -13,8 +13,6 @@ SniperBattleCard::SniperBattleCard()
 	// hero name
 	heroNameTxt.setString("Sniper");
 	heroNameTxt.setCharacterSize(18);
-	heroNameTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 30,
-		heroCardSpr.getPosition().y + 5));
 	heroNameTxt.setFillColor(sf::Color(255, 198, 1));
 
 	//hero health

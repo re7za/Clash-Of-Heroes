@@ -3,7 +3,7 @@
 
 KratosBattleCard::KratosBattleCard()
 {
-	cardName = heros::alphaMan;
+	cardName = heros::kratos;
 
 	// cardSpr
 	setCardSpr();
@@ -13,8 +13,6 @@ KratosBattleCard::KratosBattleCard()
 	// hero name
 	heroNameTxt.setString("Kratos");
 	heroNameTxt.setCharacterSize(22);
-	heroNameTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 30,
-		heroCardSpr.getPosition().y + 5));
 	heroNameTxt.setFillColor(sf::Color(31, 170, 34));
 
 	//hero health

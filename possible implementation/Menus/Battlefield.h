@@ -7,6 +7,7 @@
 #include "Menu.h"
 #include "../Grid/Grid.h"
 #include "../Button/Button.h"
+#include "../Heroes Battle Card/BattleCardManager.h"
 
 
 class Battlefield : public Menu
@@ -15,6 +16,8 @@ public:
 	Battlefield();
 	void display(sf::RenderWindow*);
 
+	void startTheBattlefield();
+	
 	////////////////////// mouse events and positions
 	void click(sf::Vector2i&, menuType&);
 
@@ -25,13 +28,18 @@ public:
 	// background img
 	void changeBackground();
 
+
 private:
 
+	// BattleCardManager
+	BattleCardManager battleCardManager;
+	
 	// battle grid
 	Grid grid;
 
 	// button
 	Button pauseBtn;
+
 
 
 };

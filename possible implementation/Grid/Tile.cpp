@@ -36,6 +36,8 @@ void Tile::setPosition(const sf::Vector2f& position)
 void Tile::setScale(const sf::Vector2f& scale)
 {
 	tileModSpr.setScale(scale);
+	if (isHeroSpr)
+		heroSpr->setScale(scale);
 }
 sf::FloatRect Tile::getGlobalBound()
 {

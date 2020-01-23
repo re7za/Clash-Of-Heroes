@@ -13,8 +13,6 @@ AlphaManBattleCard::AlphaManBattleCard()
 	// hero name
 	heroNameTxt.setString("AlphaMan");
 	heroNameTxt.setCharacterSize(18);
-	heroNameTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 30,
-		heroCardSpr.getPosition().y + 5));
 	heroNameTxt.setFillColor(sf::Color(23, 152, 255));
 
 	//hero health

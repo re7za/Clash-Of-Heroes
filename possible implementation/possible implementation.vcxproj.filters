@@ -216,6 +216,9 @@
     <ClCompile Include="Heroes Battle Card\SybilBattleCard.cpp">
       <Filter>Source Files\Heroes Battle Card</Filter>
     </ClCompile>
+    <ClCompile Include="Heroes Battle Card\BattleCardManager.cpp">
+      <Filter>Source Files\Heroes Battle Card</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Menus\Menu.h">
@@ -332,10 +335,10 @@
     <ClInclude Include="Menus\Battlefield.h">
       <Filter>Header Files\menus</Filter>
     </ClInclude>
-    <ClInclude Include="Heroes Battle Card\BattleCard.h">
+    <ClInclude Include="Heroes Battle Card\AlphaManBattleCard.h">
       <Filter>Header Files\Heroes Battle Card</Filter>
     </ClInclude>
-    <ClInclude Include="Heroes Battle Card\AlphaManBattleCard.h">
+    <ClInclude Include="Heroes Battle Card\BattleCard.h">
       <Filter>Header Files\Heroes Battle Card</Filter>
     </ClInclude>
     <ClInclude Include="Heroes Battle Card\CommanderBattleCard.h">
@@ -369,6 +372,9 @@
       <Filter>Header Files\Heroes Battle Card</Filter>
     </ClInclude>
     <ClInclude Include="Heroes Battle Card\SybilBattleCard.h">
+      <Filter>Header Files\Heroes Battle Card</Filter>
+    </ClInclude>
+    <ClInclude Include="Heroes Battle Card\BattleCardManager.h">
       <Filter>Header Files\Heroes Battle Card</Filter>
     </ClInclude>
   </ItemGroup>

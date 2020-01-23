@@ -18,7 +18,9 @@ public:
 	void headsOrTails();
 	void changeTheTurn();
 	Players getTheTurn();
-	void displayPlayerInfo(sf::RenderWindow*);
+
+	void setTheChosenHeroes();
+	std::array<heros, 10> getTheChosenHeroes();
 
 	// players
 	std::array<Player*, 2> playerArr;
@@ -30,6 +32,7 @@ private:
 
 	Players playerTurn;
 	
+	std::array<heros, 10> chosenHeroes;
 
 };
 

@@ -3,7 +3,7 @@
 
 ProfessorBattleCard::ProfessorBattleCard()
 {
-	cardName = heros::alphaMan;
+	cardName = heros::professor;
 
 	// cardSpr
 	setCardSpr();
@@ -13,8 +13,6 @@ ProfessorBattleCard::ProfessorBattleCard()
 	// hero name
 	heroNameTxt.setString("Professor");
 	heroNameTxt.setCharacterSize(15);
-	heroNameTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 30,
-		heroCardSpr.getPosition().y + 5));
 	heroNameTxt.setFillColor(sf::Color(185, 214, 124));
 
 	//hero health

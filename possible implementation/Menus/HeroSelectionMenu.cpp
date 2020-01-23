@@ -47,7 +47,7 @@ HeroSelectionMenu::HeroSelectionMenu()
 	nameInputLabelRect.setPosition(sf::Vector2f(nameRectLeft - nameRectWidth, nameRectTop));
 	if (!nameInputLabelFont.loadFromFile("Font/Button.otf"))
 		std::cout << "nameInputLabelFont doesn't open" << std::endl;
-	nameInputLabelText.setString("     player 1 :");
+	nameInputLabelText.setString("     Hero 1 :");
 	nameInputLabelText.setCharacterSize(38);
 	nameInputLabelText.setFont(nameInputLabelFont);
 	nameInputLabelText.setFillColor(sf::Color::White);
@@ -84,7 +84,8 @@ void HeroSelectionMenu::display(sf::RenderWindow* window)
 void HeroSelectionMenu::click(sf::Vector2i& pos, menuType& currentMenu)
 {
 	// grid.. it must be before the herocard part
-	grid.SelectionClicked(pos, playerManager, heroCardManager.getSelectedCardByRefrence());
+	if (grid.getGlobalBound().contains(sf::Vector2f(pos)))
+		grid.SelectionClicked(pos, playerManager, heroCardManager.getSelectedCardByRefrence());
 
 	// each hero card
 	heroCardManager.clickHeroEachCard(pos);
@@ -126,7 +127,7 @@ void HeroSelectionMenu::click(sf::Vector2i& pos, menuType& currentMenu)
 			{
 				grid.clearAllTiles();
 				nextBtn.setString("start");
-				nameInputLabelText.setString("     player 2 :");
+				nameInputLabelText.setString("     Hero 2 :");
 				//nameBox.setString("Player 2");
 
 				// at last
@@ -143,6 +144,10 @@ void HeroSelectionMenu::click(sf::Vector2i& pos, menuType& currentMenu)
 			std::cout << static_cast<int> (playerManager->getTheTurn()) << std::endl;
 			if (playerManager->playerArr.at(0)->isPlayerHeroVecFull())
 			{
+				// save the chosen heroes
+				playerManager->setTheChosenHeroes();
+
+				// at last
 				grid.clearAllTiles();
 				currentMenu = menuType::battlefield;
 			}
@@ -150,10 +155,6 @@ void HeroSelectionMenu::click(sf::Vector2i& pos, menuType& currentMenu)
 			{
 				std::cout << "u have to choose more" << std::endl;
 			}
-
-
-			// at last
-			// currentMenu = menuType::PlayRoom Menu;
 		}
 	}
 }

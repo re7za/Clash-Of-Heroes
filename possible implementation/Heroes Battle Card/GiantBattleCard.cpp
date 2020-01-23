@@ -3,7 +3,7 @@
 
 GiantBattleCard::GiantBattleCard()
 {
-	cardName = heros::alphaMan;
+	cardName = heros::giant;
 
 	// cardSpr
 	setCardSpr();
@@ -13,8 +13,6 @@ GiantBattleCard::GiantBattleCard()
 	// hero name
 	heroNameTxt.setString("Giant");
 	heroNameTxt.setCharacterSize(22);
-	heroNameTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 30,
-		heroCardSpr.getPosition().y + 5));
 	heroNameTxt.setFillColor(sf::Color(244, 55, 53));
 
 	//hero health

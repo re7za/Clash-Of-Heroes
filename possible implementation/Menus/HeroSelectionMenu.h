@@ -31,7 +31,6 @@ public:
 	// utility functions of mouse envents and positions
 	void mouseHover(sf::RenderWindow*);
 
-
 private:
 
 	// HeroCardManager

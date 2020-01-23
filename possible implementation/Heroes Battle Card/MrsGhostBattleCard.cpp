@@ -3,7 +3,7 @@
 
 MrsGhostBattleCard::MrsGhostBattleCard()
 {
-	cardName = heros::alphaMan;
+	cardName = heros::mrsGhost;
 
 	// cardSpr
 	setCardSpr();
@@ -13,8 +13,6 @@ MrsGhostBattleCard::MrsGhostBattleCard()
 	// hero name
 	heroNameTxt.setString("Mrs.Ghost");
 	heroNameTxt.setCharacterSize(15);
-	heroNameTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 30,
-		heroCardSpr.getPosition().y + 5));
 	heroNameTxt.setFillColor(sf::Color(255, 226, 145));
 
 	//hero health

@@ -15,13 +15,19 @@ void BattleCard::setDefaulProperties()
 	damageTxt.setFont(propertiFont);
 	damageTxt.setCharacterSize(12);
 
-	//hero health
+
+	// hero name
+	heroNameTxt.setOrigin(sf::Vector2f(heroNameTxt.getGlobalBounds().width / 2, 0));
+	heroNameTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 65,
+		heroCardSpr.getPosition().y + 5));
+
+	// hero health
 	healthTxt.setCharacterSize(20);
 	healthTxt.setFillColor(sf::Color(170, 170, 170));
 	healthTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 20,
 		heroCardSpr.getPosition().y + 40));
 
-	//hero health
+	// hero health
 	damageTxt.setCharacterSize(20);
 	damageTxt.setFillColor(sf::Color(170, 170, 170));
 	damageTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 25,
@@ -31,6 +37,12 @@ void BattleCard::setDefaulProperties()
 void BattleCard::setColor(sf::Color color)
 {
 	heroCardSpr.setColor(color);
+}
+
+void BattleCard::setPosition(sf::Vector2f pos)
+{
+	heroCardSpr.setPosition(pos);
+	setDefaulProperties();
 }
 
 sf::Color BattleCard::getSprOrginalColor()
@@ -45,14 +57,20 @@ void BattleCard::horizontalFlip()
 		heroCardSpr.getGlobalBounds().width, heroCardSpr.getPosition().y));
 
 	// another changes
-	heroNameTxt.setOrigin(sf::Vector2f(heroNameTxt.getGlobalBounds().width / 2,
-		heroNameTxt.getGlobalBounds().top));
-	heroNameTxt.setPosition(sf::Vector2f(heroCardSpr.getGlobalBounds().width * 3/4 - 20,
+
+	heroNameTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x
+		- heroCardSpr.getGlobalBounds().width * 1/4 - 12,
 		heroCardSpr.getPosition().y + 10));
-	healthTxt.setPosition(sf::Vector2f(heroCardSpr.getGlobalBounds().width / 2 + 20,
+
+	healthTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x
+		- heroCardSpr.getGlobalBounds().width / 2 + 20,
 		heroCardSpr.getPosition().y + 40));
-	damageTxt.setPosition(sf::Vector2f(heroCardSpr.getGlobalBounds().width / 2 + 10,
+
+	damageTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x 
+		- heroCardSpr.getGlobalBounds().width / 2 + 12,
 		heroCardSpr.getPosition().y + 70));
+	
+	// it was toooooooooo fucking haaaard
 
 }
 
@@ -69,6 +87,11 @@ sf::Vector2f BattleCard::getPosition()
 sf::FloatRect BattleCard::getGlobalBounds()
 {
 	return heroCardSpr.getGlobalBounds();
+}
+
+sf::Vector2f BattleCard::getHeroNamePos()
+{
+	return heroNameTxt.getPosition();
 }
 
 void BattleCard::setCardSelection(bool newBool)

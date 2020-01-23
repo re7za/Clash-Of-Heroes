@@ -3,7 +3,7 @@
 
 SybilBattleCard::SybilBattleCard()
 {
-	cardName = heros::alphaMan;
+	cardName = heros::sybil;
 
 	// cardSpr
 	setCardSpr();
@@ -13,8 +13,6 @@ SybilBattleCard::SybilBattleCard()
 	// hero name
 	heroNameTxt.setString("Sybil");
 	heroNameTxt.setCharacterSize(20);
-	heroNameTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 30,
-		heroCardSpr.getPosition().y + 5));
 	heroNameTxt.setFillColor(sf::Color(180, 156, 130));
 
 	//hero health

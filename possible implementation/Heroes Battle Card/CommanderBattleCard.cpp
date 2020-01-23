@@ -3,7 +3,7 @@
 
 CommanderBattleCard::CommanderBattleCard()
 {
-	cardName = heros::alphaMan;
+	cardName = heros::commander;
 
 	// cardSpr
 	setCardSpr();
@@ -12,9 +12,7 @@ CommanderBattleCard::CommanderBattleCard()
 
 	// hero name
 	heroNameTxt.setString("Commander");
-	heroNameTxt.setCharacterSize(16);
-	heroNameTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 25,
-		heroCardSpr.getPosition().y + 5));
+	heroNameTxt.setCharacterSize(15);
 	heroNameTxt.setFillColor(sf::Color(174, 32, 49));
 
 	//hero health

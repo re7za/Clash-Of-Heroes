@@ -14,54 +14,50 @@ Grid::Grid()
 
 void Grid::SelectionClicked(const sf::Vector2i& pos, PlayerManager* playerManager, heros& heroCard)
 {
-	for (us i = 0; i < 9; i++)			// row
-		for (us j = 0; j < 9; j++)		// column
-			if (tiles.at(i).at(j)->getGlobalBound().contains(static_cast<sf::Vector2f>(pos)))
-			{
-				// set or remove this tile
-				if (heroCard == heros::none)		// remove
+	std::cout << "on it" << std::endl;
+		for (us i = 0; i < 9; i++)			// row
+			for (us j = 0; j < 9; j++)		// column
+				if (tiles.at(i).at(j)->getGlobalBound().contains(static_cast<sf::Vector2f>(pos)))
 				{
-					if (tiles.at(i).at(j)->IsHeroSpr())
-						clearTileAndHero(tiles.at(i).at(j), playerManager);
-				}
-				else								// set
-				{
-					// preventing redefining a hero
-					if (!playerManager->playerArr.at(static_cast<us> (playerManager->getTheTurn()))
-						->isHeroExistInVec(heroCard))
+					// set or remove this tile
+					if (heroCard == heros::none)		// remove
 					{
-						if (!playerManager->playerArr.at(static_cast<us> (playerManager->getTheTurn()))
-							->isPlayerHeroVecFull() || tiles.at(i).at(j)->IsHeroSpr())		// preventing defining more than 5 hero
-						{
-							if (tiles.at(i).at(j)->IsHeroSpr())
-								clearTileAndHero(tiles.at(i).at(j), playerManager);
-
-							// update the grid
-							tiles.at(i).at(j)->setHeroSpr(heroCard);
-
-							// update player vector
-							setThePlayerHerosVec(playerManager, heroCard, sf::Vector2i(i,j));
-						}
+						if (tiles.at(i).at(j)->IsHeroSpr())
+							clearTileAndHero(tiles.at(i).at(j), playerManager);
 					}
-					/*else
-						std::cout << "you can't select a hero twice!!!" << std::endl;
-
-					if (playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))
-						->playerHerosVec.size() == 5)
+					else								// set
 					{
-						std::cout << " you can't select more than 5 hero!!!" << std::endl;
-					}*/					
-				}
-				
-				// the last part
-				heroCard = heros::none;
-				return;
-			}
-	/*
-	for (Hero* i : playerManager.playerArr.at(0)->playerHerosVec)
-		std::cout << i->getHeroPosition().x << " " << i->getHeroPosition().y << "    ";
-	std::cout << std::endl;
-	*/
+						// preventing redefining a hero
+						if (!playerManager->playerArr.at(static_cast<us> (playerManager->getTheTurn()))
+							->isHeroExistInVec(heroCard))
+						{
+							if (!playerManager->playerArr.at(static_cast<us> (playerManager->getTheTurn()))
+								->isPlayerHeroVecFull() || tiles.at(i).at(j)->IsHeroSpr())		// preventing defining more than 5 hero
+							{
+								if (tiles.at(i).at(j)->IsHeroSpr())
+									clearTileAndHero(tiles.at(i).at(j), playerManager);
+
+								// update the grid
+								tiles.at(i).at(j)->setHeroSpr(heroCard);
+
+								// update player vector
+								setThePlayerHerosVec(playerManager, heroCard, sf::Vector2i(i, j));
+							}
+						}
+						/*else
+							std::cout << "you can't select a hero twice!!!" << std::endl;
+
+						if (playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))
+							->playerHerosVec.size() == 5)
+						{
+							std::cout << " you can't select more than 5 hero!!!" << std::endl;
+						}*/
+					}
+
+					// the last part
+					heroCard = heros::none;
+					return;
+				}		
 }
 
 void Grid::battlefieldClicked(const sf::Vector2i& pos, PlayerManager* playerManager, heros heroIcon)

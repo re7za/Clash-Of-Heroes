@@ -21,16 +21,15 @@ HeroCardManager::HeroCardManager()
 
 void HeroCardManager::drawHerosCard(sf::RenderWindow* window)
 {
-	for (HerosCard* card : heroCardVec)
+	for (HerosCard*& card : heroCardVec)
 		card->draw(window);
-
 }
 
 void HeroCardManager::clickHeroEachCard(sf::Vector2i& pos)
 {
 	// checking wether a card is clicked
 	selectedCard = heros::none;
-	for (HerosCard* & card : heroCardVec)
+	for (HerosCard*& card : heroCardVec)
 	{
 		// set default color
 		card->setCardSelection(false);

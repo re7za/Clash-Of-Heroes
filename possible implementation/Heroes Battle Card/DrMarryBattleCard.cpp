@@ -3,7 +3,7 @@
 
 DrMarryBattleCard::DrMarryBattleCard()
 {
-	cardName = heros::alphaMan;
+	cardName = heros::drMarry;
 
 	// cardSpr
 	setCardSpr();
@@ -13,8 +13,6 @@ DrMarryBattleCard::DrMarryBattleCard()
 	// hero name
 	heroNameTxt.setString("Dr.Marry");
 	heroNameTxt.setCharacterSize(16);
-	heroNameTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 30,
-		heroCardSpr.getPosition().y + 5));
 	heroNameTxt.setFillColor(sf::Color(99, 82, 193));
 
 	//hero health

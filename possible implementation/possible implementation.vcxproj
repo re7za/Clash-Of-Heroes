@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -24,6 +24,7 @@
     <ClCompile Include="Grid\Tile.cpp" />
     <ClCompile Include="Heroes Battle Card\AlphaManBattleCard.cpp" />
     <ClCompile Include="Heroes Battle Card\BattleCard.cpp" />
+    <ClCompile Include="Heroes Battle Card\BattleCardManager.cpp" />
     <ClCompile Include="Heroes Battle Card\CommanderBattleCard.cpp" />
     <ClCompile Include="Heroes Battle Card\DrMarryBattleCard.cpp" />
     <ClCompile Include="Heroes Battle Card\GiantBattleCard.cpp" />
@@ -78,6 +79,7 @@
     <ClInclude Include="Grid\Tile.h" />
     <ClInclude Include="Heroes Battle Card\AlphaManBattleCard.h" />
     <ClInclude Include="Heroes Battle Card\BattleCard.h" />
+    <ClInclude Include="Heroes Battle Card\BattleCardManager.h" />
     <ClInclude Include="Heroes Battle Card\CommanderBattleCard.h" />
     <ClInclude Include="Heroes Battle Card\DrMarryBattleCard.h" />
     <ClInclude Include="Heroes Battle Card\GiantBattleCard.h" />

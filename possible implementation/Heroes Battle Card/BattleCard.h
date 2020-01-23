@@ -5,6 +5,7 @@
 
 #include "SFML/Graphics.hpp"
 #include "../generalDef.h"
+#include <iostream>
 
 class BattleCard
 {
@@ -15,11 +16,13 @@ public:
 	virtual void setCardSpr() = 0;
 
 	void setColor(sf::Color);
+	void setPosition(sf::Vector2f);
 	sf::Color getSprOrginalColor();
 	void horizontalFlip();
 	heros getCardName();
 	sf::Vector2f getPosition();
 	sf::FloatRect getGlobalBounds();
+	sf::Vector2f getHeroNamePos();
 
 
 	// card selection

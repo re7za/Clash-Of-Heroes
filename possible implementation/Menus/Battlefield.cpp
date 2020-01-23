@@ -23,7 +23,7 @@ Battlefield::Battlefield()
 	pauseBtn.setPosition(sf::Vector2f(sf::VideoMode::getDesktopMode().width - 150, 20));
 
 	//
-
+	startTheBattlefield();
 }
 
 void Battlefield::display(sf::RenderWindow* window)
@@ -34,10 +34,22 @@ void Battlefield::display(sf::RenderWindow* window)
 	pauseBtn.draw(window);
 	mouseHover(window);
 
-
 	// battle grid
 	grid.draw(window);
 
+	// battle cards
+	battleCardManager.drawHerosCard(window);
+
+
+}
+
+void Battlefield::startTheBattlefield()
+{
+	// at first.. extract the chosenHeroes
+	battleCardManager.heroExtracter(playerManager->getTheChosenHeroes());
+
+	// and then set the cards position
+	battleCardManager.setGridsCardsPos(grid.getPosition(), grid.getGlobalBound());
 }
 
 // mouse events and positions

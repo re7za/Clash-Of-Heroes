@@ -3,7 +3,7 @@
 
 LeonBattleCard::LeonBattleCard()
 {
-	cardName = heros::alphaMan;
+	cardName = heros::leon;
 
 	// cardSpr
 	setCardSpr();
@@ -13,8 +13,6 @@ LeonBattleCard::LeonBattleCard()
 	// hero name
 	heroNameTxt.setString("Leon");
 	heroNameTxt.setCharacterSize(24);
-	heroNameTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 30,
-		heroCardSpr.getPosition().y + 5));
 	heroNameTxt.setFillColor(sf::Color(245, 96, 48));
 
 	//hero health
