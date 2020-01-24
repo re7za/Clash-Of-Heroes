@@ -13,11 +13,11 @@ void BattleCardManager::drawHerosCard(sf::RenderWindow* window)
 		card->draw(window);
 }
 
-void BattleCardManager::clickHeroEachCard(sf::Vector2i& pos)
+void BattleCardManager::clickHeroEachCard(const sf::Vector2i& pos)
 {
 	// checking wether a card is clicked
 	selectedCard = heros::none;
-	/*for (BattleCard*& card : BattleCardArr)
+	for (BattleCard* card : leftCardArr)
 	{
 		// set default color
 		card->setCardSelection(false);
@@ -35,8 +35,55 @@ void BattleCardManager::clickHeroEachCard(sf::Vector2i& pos)
 					card->getSprOrginalColor().b + 20, 255));
 			}
 		}
-	}*/
+	}
 }
+void BattleCardManager::hoverHeroEachCard(PlayerEnum p)
+{
+	if (p == PlayerEnum::P1)
+		for (BattleCard* card : leftCardArr)
+			if (card->getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition())))
+				card->setColor(sf::Color(card->getSprOrginalColor().r, card->getSprOrginalColor().g,
+					card->getSprOrginalColor().b, 255));
+			else
+				card->setColor(sf::Color(card->getSprOrginalColor().r - 60, card->getSprOrginalColor().g - 60,
+					card->getSprOrginalColor().b - 60, 255));
+	else
+		for (BattleCard* card : rightCardArr)
+			if (card->getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition())))
+				card->setColor(sf::Color(card->getSprOrginalColor().r, card->getSprOrginalColor().g,
+					card->getSprOrginalColor().b, 255));
+			else
+				card->setColor(sf::Color(card->getSprOrginalColor().r - 60, card->getSprOrginalColor().g - 60,
+					card->getSprOrginalColor().b - 60, 255));
+}
+void BattleCardManager::turnIsChanged(PlayerEnum p)
+{
+	if (p == PlayerEnum::P1)
+	{
+		// turn off the right cards
+		for (BattleCard* card : rightCardArr)
+			card->setColor(sf::Color(card->getSprOrginalColor().r - 80, card->getSprOrginalColor().g - 80,
+				card->getSprOrginalColor().b - 80, 220));
+
+		// turn on the left cards
+		for (BattleCard* card : leftCardArr)
+			card->setColor(sf::Color(card->getSprOrginalColor().r - 60, card->getSprOrginalColor().g - 60,
+				card->getSprOrginalColor().b - 60, 255));
+	}
+	else
+	{
+		// turn off the left cards
+		for (BattleCard* card : leftCardArr)
+			card->setColor(sf::Color(card->getSprOrginalColor().r - 100, card->getSprOrginalColor().g - 100,
+				card->getSprOrginalColor().b - 100, 220));
+
+		// turn on the right cards
+		for (BattleCard* card : rightCardArr)
+			card->setColor(sf::Color(card->getSprOrginalColor().r - 60, card->getSprOrginalColor().g - 60,
+				card->getSprOrginalColor().b - 60, 255));
+	}
+}
+
 
 void BattleCardManager::heroExtracter(std::array<heros, 10> chosenHeroes)
 {

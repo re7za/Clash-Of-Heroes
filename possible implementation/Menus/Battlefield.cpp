@@ -39,8 +39,6 @@ void Battlefield::display(sf::RenderWindow* window)
 
 	// battle cards
 	battleCardManager.drawHerosCard(window);
-
-
 }
 
 void Battlefield::startTheBattlefield()
@@ -55,12 +53,21 @@ void Battlefield::startTheBattlefield()
 // mouse events and positions
 void Battlefield::click(sf::Vector2i& pos, menuType& currentMenu)
 {
+	// grid
 	grid.battlefieldClicked(pos, playerManager, heros::giant);
+	
+	// cards
+	//	battleCardManager.clickHeroEachCard(pos, static_cast<PlayerEnum>(playerManager->getTheTurn()));
+	playerManager->changeTheTurn();
+	battleCardManager.turnIsChanged(static_cast<PlayerEnum>(playerManager->getTheTurn()));
 }
 
 void Battlefield::mouseHover(sf::RenderWindow*)
 {	
 	pauseBtn.onMouseOver();
+
+	// cards
+	battleCardManager.hoverHeroEachCard(static_cast<PlayerEnum>(playerManager->getTheTurn()));
 }
 
 // background img

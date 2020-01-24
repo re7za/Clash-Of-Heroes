@@ -3,6 +3,8 @@
 #ifndef BATTLECARDMANAGER_H
 #define BATTLECARDMANAGER_H
 
+enum class PlayerEnum {P1, P2};
+
 #include <iostream>
 #include "SFML/Graphics.hpp"
 #include <array>
@@ -26,7 +28,9 @@ class BattleCardManager
 public:
 	BattleCardManager();
 	void drawHerosCard(sf::RenderWindow*);
-	void clickHeroEachCard(sf::Vector2i&);
+	void clickHeroEachCard(const sf::Vector2i&);
+	void hoverHeroEachCard(PlayerEnum);
+	void turnIsChanged(PlayerEnum);
 
 	// extract heroes from the playerHeroVec
 	void heroExtracter(std::array<heros, 10>);

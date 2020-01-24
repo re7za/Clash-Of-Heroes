@@ -37,6 +37,10 @@ void BattleCard::setDefaulProperties()
 void BattleCard::setColor(sf::Color color)
 {
 	heroCardSpr.setColor(color);
+
+	healthTxt.setFillColor(color);
+	damageTxt.setFillColor(color);
+
 }
 
 void BattleCard::setPosition(sf::Vector2f pos)
