@@ -1,4 +1,5 @@
 #include "Tile.h"
+#include <iostream>
 
 Tile::Tile()
 {
@@ -37,7 +38,111 @@ void Tile::setScale(const sf::Vector2f& scale)
 {
 	tileModSpr.setScale(scale);
 	if (isHeroSpr)
-		heroSpr->setScale(scale);
+		if (scale.x != 1.2f)
+			heroSpr->setScale(scale);
+		else
+		{
+			delete heroSpr;
+			switch (currentHero)
+			{
+			case heros::mrsGhost:
+			{
+				heroSpr = new sf::Sprite();
+				heroTex->loadFromFile("Grid/heroIcon/1.2bigger/mrs_ghost icon.png");
+				heroSpr->setTexture(*heroTex);
+				heroSpr->setPosition(sf::Vector2f(this->getPosition().x + 4, this->getPosition().y + 2));
+				break;
+			}
+			case heros::robi:
+			{
+				heroSpr = new sf::Sprite();
+				heroTex->loadFromFile("Grid/heroIcon/1.2bigger/robi icon.png");
+				heroSpr->setTexture(*heroTex);
+				heroSpr->setPosition(sf::Vector2f(this->getPosition().x + 4, this->getPosition().y + 2));
+				break;
+			}
+			case heros::leon:
+			{
+				heroSpr = new sf::Sprite();
+				heroTex->loadFromFile("Grid/heroIcon/1.2bigger/leon icon.png");
+				heroSpr->setTexture(*heroTex);
+				heroSpr->setPosition(sf::Vector2f(this->getPosition().x + 4, this->getPosition().y + 2));
+				break;
+			}
+			case heros::drMarry:
+			{
+				heroSpr = new sf::Sprite();
+				heroTex->loadFromFile("Grid/heroIcon/1.2bigger/dr_marry icon.png");
+				heroSpr->setTexture(*heroTex);
+				heroSpr->setPosition(sf::Vector2f(this->getPosition().x + 4, this->getPosition().y + 2));
+				break;
+			}
+			case heros::sniper:
+			{
+				heroSpr = new sf::Sprite();
+				heroTex->loadFromFile("Grid/heroIcon/1.2bigger/sniper icon.png");
+				heroSpr->setTexture(*heroTex);
+				heroSpr->setPosition(sf::Vector2f(this->getPosition().x + 4, this->getPosition().y + 2));
+				break;
+			}
+			case heros::kratos:
+			{
+				heroSpr = new sf::Sprite();
+				heroTex->loadFromFile("Grid/heroIcon/1.2bigger/kratos icon.png");
+				heroSpr->setTexture(*heroTex);
+				heroSpr->setPosition(sf::Vector2f(this->getPosition().x + 4, this->getPosition().y + 2));
+				break;
+			}
+			case heros::giant:
+			{
+				heroSpr = new sf::Sprite();
+				heroTex->loadFromFile("Grid/heroIcon/1.2bigger/giant icon.png");
+				heroSpr->setTexture(*heroTex);
+				heroSpr->setPosition(sf::Vector2f(this->getPosition().x + 4, this->getPosition().y + 2));
+				break;
+			}
+			case heros::alphaMan:
+			{
+				heroSpr = new sf::Sprite();
+				heroTex->loadFromFile("Grid/heroIcon/1.2bigger/alpha_man icon.png");
+				heroSpr->setTexture(*heroTex);
+				heroSpr->setPosition(sf::Vector2f(this->getPosition().x + 4, this->getPosition().y + 2));
+				break;
+			}
+			case heros::professor:
+			{
+				heroSpr = new sf::Sprite();
+				heroTex->loadFromFile("Grid/heroIcon/1.2bigger/professor icon.png");
+				heroSpr->setTexture(*heroTex);
+				heroSpr->setPosition(sf::Vector2f(this->getPosition().x + 4, this->getPosition().y + 2));
+				break;
+			}
+			case heros::commander:
+			{
+				heroSpr = new sf::Sprite();
+				heroTex->loadFromFile("Grid/heroIcon/1.2bigger/commander icon.png");
+				heroSpr->setTexture(*heroTex);
+				heroSpr->setPosition(sf::Vector2f(this->getPosition().x + 4, this->getPosition().y + 2));
+				break;
+			}
+			case heros::rickKhonsari:
+			{
+				heroSpr = new sf::Sprite();
+				heroTex->loadFromFile("Grid/heroIcon/1.2bigger/rick_konsari icon.png");
+				heroSpr->setTexture(*heroTex);
+				heroSpr->setPosition(sf::Vector2f(this->getPosition().x + 4, this->getPosition().y + 2));
+				break;
+			}
+			case heros::sybil:
+			{
+				heroSpr = new sf::Sprite();
+				heroTex->loadFromFile("Grid/heroIcon/1.2bigger/sybil icon.png");
+				heroSpr->setTexture(*heroTex);
+				heroSpr->setPosition(sf::Vector2f(this->getPosition().x + 4, this->getPosition().y + 2));
+				break;
+			}
+			}
+		}
 }
 sf::FloatRect Tile::getGlobalBound()
 {

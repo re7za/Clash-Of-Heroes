@@ -89,8 +89,8 @@ void Battlefield::click(sf::Vector2i& pos, menuType& currentMenu)
 	if (grid.getGlobalBound().contains(sf::Vector2f(pos)) && battleCardManager.getSelectedCard() != heros::none)
 		grid.battlefieldClicked(pos, playerManager);
 
-	// attack prossecc
-	std::cout << playerManager->playerArr.at(1)->attackedHero << std::endl;
+	// attack prossecc by player.attackedPlayer and battleCard.selectedCard =))
+
 
 	// changing the turn
 	if (_p != playerManager->getTheTurn())
