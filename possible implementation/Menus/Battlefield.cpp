@@ -23,6 +23,19 @@ Battlefield::Battlefield()
 	pauseBtn.setString("pause");
 	pauseBtn.setPosition(sf::Vector2f(sf::VideoMode::getDesktopMode().width - 150, 20));
 
+
+	//////////////// test
+	playerManager->playerArr.at(0)->playerHerosVec.push_back(new AlphaMan(sf::Vector2i(3, 5)));
+	playerManager->playerArr.at(0)->playerHerosVec.push_back(new Kratos(sf::Vector2i(2, 6)));
+	playerManager->playerArr.at(0)->playerHerosVec.push_back(new Giant(sf::Vector2i(6, 4)));
+	playerManager->playerArr.at(0)->playerHerosVec.push_back(new MrsGhost(sf::Vector2i(5, 7)));
+	playerManager->playerArr.at(0)->playerHerosVec.push_back(new Professor(sf::Vector2i(7, 1)));
+	playerManager->playerArr.at(1)->playerHerosVec.push_back(new Sybil(sf::Vector2i(4, 2)));
+	playerManager->playerArr.at(1)->playerHerosVec.push_back(new Sniper(sf::Vector2i(3, 8)));
+	playerManager->playerArr.at(1)->playerHerosVec.push_back(new ROBI(sf::Vector2i(1, 6)));
+	playerManager->playerArr.at(1)->playerHerosVec.push_back(new Leon(sf::Vector2i(4, 4)));
+	playerManager->playerArr.at(1)->playerHerosVec.push_back(new DrMarry(sf::Vector2i(6, 7)));
+	//////////////////////
 	//
 	startTheBattlefield();
 }
@@ -52,14 +65,13 @@ void Battlefield::startTheBattlefield()
 
 	// planting the hero in the grid=
 	turnWasChanged(playerManager->getTheTurn());
-
-
 }
 
 void Battlefield::turnWasChanged(Players playerTurn)
 {
 	// changing the cards
 	battleCardManager.turnWasChanged(static_cast<PlayerEnum>(playerTurn));
+
 
 	// planting new heroes
 	if (playerTurn == Players::P1)
@@ -74,11 +86,19 @@ void Battlefield::click(sf::Vector2i& pos, menuType& currentMenu)
 {
 	// grid and check for turn changing =)))))))))))
 	Players _p = playerManager->getTheTurn();
-	grid.battlefieldClicked(pos, playerManager, heros::giant);
+	if (grid.getGlobalBound().contains(sf::Vector2f(pos)) && battleCardManager.getSelectedCard() != heros::none)
+		grid.battlefieldClicked(pos, playerManager);
+
+	// attack prossecc
+	std::cout << playerManager->playerArr.at(1)->attackedHero << std::endl;
+
+	// changing the turn
 	if (_p != playerManager->getTheTurn())
 		turnWasChanged(playerManager->getTheTurn());
 
-
+	// attackedHero must set to none before next attack
+	playerManager->playerArr.at(1)->attackedHero = heros::none;
+	
 	// cards
 	battleCardManager.clickHeroEachCard(pos, static_cast<PlayerEnum>(playerManager->getTheTurn()));
 }

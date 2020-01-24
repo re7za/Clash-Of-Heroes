@@ -18,6 +18,7 @@ public:
 	void headsOrTails();
 	void changeTheTurn();
 	Players getTheTurn();
+	Players getAttackedPlayer();
 
 	void setTheChosenHeroes();
 	std::array<heros, 10> getTheChosenHeroes();
@@ -31,6 +32,7 @@ private:
 	Player player2;
 
 	Players playerTurn;
+	Players attackedPlayer;
 	
 	std::array<heros, 10> chosenHeroes;
 

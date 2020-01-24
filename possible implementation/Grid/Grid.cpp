@@ -59,12 +59,18 @@ void Grid::SelectionClicked(const sf::Vector2i& pos, PlayerManager* playerManage
 				}		
 }
 
-void Grid::battlefieldClicked(const sf::Vector2i& pos, PlayerManager* playerManager, heros heroIcon)
+void Grid::battlefieldClicked(const sf::Vector2i& pos, PlayerManager* playerManager)
 {
 	for (us i = 0; i < 9; i++)			// row
 		for (us j = 0; j < 9; j++)		// column
 			if (tiles.at(i).at(j)->getGlobalBound().contains(static_cast<sf::Vector2f>(pos)))
 			{
+				// find under attack hero
+				for (Hero* hero : playerManager->playerArr.at(static_cast<us> (playerManager->getAttackedPlayer()))->playerHerosVec)
+					if (tiles.at(i).at(j)->getHeroCardName() == hero->getId())
+						playerManager->playerArr.at(static_cast<us> (playerManager->getAttackedPlayer()))->attackedHero = hero->getId();
+				
+				// at last
 				playerManager->changeTheTurn();
 			}
 }

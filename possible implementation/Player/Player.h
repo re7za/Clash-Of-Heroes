@@ -37,6 +37,9 @@ public:
 	// the end of selection menu
 	bool isPlayerHeroVecFull();
 
+	// it must be public
+	heros attackedHero = heros::none;
+
 	// player vector
 	std::vector <Hero*> playerHerosVec;
 

@@ -39,7 +39,7 @@ public:
 
 	// click on tiles
 	void SelectionClicked(const sf::Vector2i&, PlayerManager*, heros&);		// heroSelectionMenu version
-	void battlefieldClicked(const sf::Vector2i&, PlayerManager*, heros);	// it's not supposed to be an overLoaded version
+	void battlefieldClicked(const sf::Vector2i&, PlayerManager*);	// it's not supposed to be an overLoaded version
 	void plantingHeroes(const std::vector<Hero*>&);
 
 	// set or remove this tile

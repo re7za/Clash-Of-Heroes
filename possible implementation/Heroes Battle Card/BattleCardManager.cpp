@@ -117,6 +117,19 @@ void BattleCardManager::heroExtracter(std::array<heros, 10> chosenHeroes)
 	rightCardArr.at(4) = new SybilBattleCard();
 	*/
 	
+
+	///////////////// test
+	chosenHeroes.at(0) = heros::alphaMan;
+	chosenHeroes.at(1) = heros::kratos;
+	chosenHeroes.at(2) = heros::giant;
+	chosenHeroes.at(3) = heros::mrsGhost;
+	chosenHeroes.at(4) = heros::professor;
+	chosenHeroes.at(5) = heros::sybil;
+	chosenHeroes.at(6) = heros::sniper;
+	chosenHeroes.at(7) = heros::robi;
+	chosenHeroes.at(8) = heros::leon;
+	chosenHeroes.at(9) = heros::drMarry;
+
 	// fill the leftCardArr
 	for (us i = 0; i < 5; i++)
 		switch (chosenHeroes.at(i))

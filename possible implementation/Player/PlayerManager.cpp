@@ -8,27 +8,45 @@ PlayerManager::PlayerManager()
 
 	// default turn for selection menu
 	playerTurn = Players::P1;
+	attackedPlayer = Players::P2;
 }
 
 void PlayerManager::headsOrTails()
 {
 	// Heads or Tails
 	if (rand() % 2 == 0)
+	{
 		playerTurn = Players::P1;
+		attackedPlayer = Players::P2;
+	}
 	else
+	{
 		playerTurn = Players::P2;	// حواست باشه منوی هیرو سلکشن نباید بصورت رندوم باشه
+		attackedPlayer = Players::P1;
+	}
 
 }
 void PlayerManager::changeTheTurn()
 {
 	if (playerTurn == Players::P1)
+	{
 		playerTurn = Players::P2;
+		attackedPlayer = Players::P1;
+	}
 	else
+	{
 		playerTurn = Players::P1;
+		attackedPlayer = Players::P2;
+	}
 }
 Players PlayerManager::getTheTurn()
 {
 	return playerTurn;
+}
+
+Players PlayerManager::getAttackedPlayer()
+{
+	return attackedPlayer;
 }
 
 void PlayerManager::setTheChosenHeroes()
@@ -39,7 +57,7 @@ void PlayerManager::setTheChosenHeroes()
 
 	// P2
 	for (us i = 0; i < player2.playerHerosVec.size(); i++)
-		chosenHeroes.at(i + 5) = player2.playerHerosVec.at(i)->getId();
+		chosenHeroes.at(i + 5) = player2.playerHerosVec.at(i)->getId();	
 }
 
 std::array<heros, 10> PlayerManager::getTheChosenHeroes()
