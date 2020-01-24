@@ -50,10 +50,9 @@ void Battlefield::startTheBattlefield()
 	// and then set the cards position
 	battleCardManager.setGridsCardsPos(grid.getPosition(), grid.getGlobalBound());
 
-	// planting the hero in the grid
-	//std::cout << static_cast<int>(playerManager->getTheTurn()) << std::endl;
+	// planting the hero in the grid=
 	turnWasChanged(playerManager->getTheTurn());
-	std::cout << static_cast<int>(playerManager->getTheTurn()) << std::endl;
+
 
 }
 
@@ -73,13 +72,15 @@ void Battlefield::turnWasChanged(Players playerTurn)
 // mouse events and positions
 void Battlefield::click(sf::Vector2i& pos, menuType& currentMenu)
 {
-	// grid
+	// grid and check for turn changing =)))))))))))
+	Players _p = playerManager->getTheTurn();
 	grid.battlefieldClicked(pos, playerManager, heros::giant);
-	
+	if (_p != playerManager->getTheTurn())
+		turnWasChanged(playerManager->getTheTurn());
+
+
 	// cards
-	//	battleCardManager.clickHeroEachCard(pos, static_cast<PlayerEnum>(playerManager->getTheTurn()));
-	playerManager->changeTheTurn();
-	turnWasChanged(playerManager->getTheTurn());
+	battleCardManager.clickHeroEachCard(pos, static_cast<PlayerEnum>(playerManager->getTheTurn()));
 }
 
 void Battlefield::mouseHover(sf::RenderWindow*)

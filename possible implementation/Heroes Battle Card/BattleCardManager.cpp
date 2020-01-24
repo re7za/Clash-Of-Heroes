@@ -13,48 +13,65 @@ void BattleCardManager::drawHerosCard(sf::RenderWindow* window)
 		card->draw(window);
 }
 
-void BattleCardManager::clickHeroEachCard(const sf::Vector2i& pos)
+void BattleCardManager::clickHeroEachCard(const sf::Vector2i& pos, PlayerEnum p)
 {
 	// checking wether a card is clicked
 	selectedCard = heros::none;
-	for (BattleCard* card : leftCardArr)
-	{
-		// set default color
-		card->setCardSelection(false);
-		card->setColor(sf::Color(card->getSprOrginalColor().r, card->getSprOrginalColor().g,
-			card->getSprOrginalColor().b, 255));
-
-		if (card->getGlobalBounds().contains(static_cast<sf::Vector2f>(pos)))
+	if (p == PlayerEnum::P1)
+		for (BattleCard* card : leftCardArr)
 		{
-			if (!card->isCardSelected())
-			{
-				card->setCardSelection(true);
-				selectedCard = card->getCardName();
-				std::cout << card->getCardName() << std::endl;
-				card->setColor(sf::Color(card->getSprOrginalColor().r + 40, card->getSprOrginalColor().g + 20,
-					card->getSprOrginalColor().b + 20, 255));
-			}
+			// set default color
+			card->setCardSelection(false);
+			
+			if (card->getGlobalBounds().contains(static_cast<sf::Vector2f>(pos)))
+				if (!card->isCardSelected())
+				{
+					card->setCardSelection(true);
+					selectedCard = card->getCardName();
+				}
 		}
-	}
+	else
+		for(BattleCard * card : rightCardArr)
+		{
+			// set default color
+			card->setCardSelection(false);
+
+			if (card->getGlobalBounds().contains(static_cast<sf::Vector2f>(pos)))
+				if (!card->isCardSelected())
+				{
+					card->setCardSelection(true);
+					selectedCard = card->getCardName();
+				}
+		}
 }
 void BattleCardManager::hoverHeroEachCard(PlayerEnum p)
 {
 	if (p == PlayerEnum::P1)
 		for (BattleCard* card : leftCardArr)
 			if (card->getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition())))
+			{				
 				card->setColor(sf::Color(card->getSprOrginalColor().r, card->getSprOrginalColor().g,
 					card->getSprOrginalColor().b, 255));
+			}
 			else
-				card->setColor(sf::Color(card->getSprOrginalColor().r - 60, card->getSprOrginalColor().g - 60,
-					card->getSprOrginalColor().b - 60, 255));
+			{
+				if (card->getCardName() != selectedCard)
+					card->setColor(sf::Color(card->getSprOrginalColor().r - 60, card->getSprOrginalColor().g - 60,
+						card->getSprOrginalColor().b - 60, 255));
+			}
+
 	else
 		for (BattleCard* card : rightCardArr)
 			if (card->getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition())))
 				card->setColor(sf::Color(card->getSprOrginalColor().r, card->getSprOrginalColor().g,
 					card->getSprOrginalColor().b, 255));
 			else
-				card->setColor(sf::Color(card->getSprOrginalColor().r - 60, card->getSprOrginalColor().g - 60,
-					card->getSprOrginalColor().b - 60, 255));
+			{
+				if (card->getCardName() != selectedCard)
+					card->setColor(sf::Color(card->getSprOrginalColor().r - 60, card->getSprOrginalColor().g - 60,
+						card->getSprOrginalColor().b - 60, 255));
+			}
+			
 }
 void BattleCardManager::turnWasChanged(PlayerEnum p)
 {
@@ -62,8 +79,8 @@ void BattleCardManager::turnWasChanged(PlayerEnum p)
 	{
 		// turn off the right cards
 		for (BattleCard* card : rightCardArr)
-			card->setColor(sf::Color(card->getSprOrginalColor().r - 80, card->getSprOrginalColor().g - 80,
-				card->getSprOrginalColor().b - 80, 220));
+			card->setColor(sf::Color(card->getSprOrginalColor().r - 100, card->getSprOrginalColor().g - 100,
+				card->getSprOrginalColor().b - 100, 220));
 
 		// turn on the left cards
 		for (BattleCard* card : leftCardArr)

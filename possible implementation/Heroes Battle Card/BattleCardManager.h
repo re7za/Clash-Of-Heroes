@@ -27,7 +27,7 @@ class BattleCardManager
 public:
 	BattleCardManager();
 	void drawHerosCard(sf::RenderWindow*);
-	void clickHeroEachCard(const sf::Vector2i&);
+	void clickHeroEachCard(const sf::Vector2i&, PlayerEnum);
 	void hoverHeroEachCard(PlayerEnum);
 	void turnWasChanged(PlayerEnum);
 

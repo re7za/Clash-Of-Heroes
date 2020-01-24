@@ -65,7 +65,7 @@ void Grid::battlefieldClicked(const sf::Vector2i& pos, PlayerManager* playerMana
 		for (us j = 0; j < 9; j++)		// column
 			if (tiles.at(i).at(j)->getGlobalBound().contains(static_cast<sf::Vector2f>(pos)))
 			{
-
+				playerManager->changeTheTurn();
 			}
 }
 
