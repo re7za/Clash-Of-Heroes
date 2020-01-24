@@ -14,7 +14,6 @@ Grid::Grid()
 
 void Grid::SelectionClicked(const sf::Vector2i& pos, PlayerManager* playerManager, heros& heroCard)
 {
-	std::cout << "on it" << std::endl;
 		for (us i = 0; i < 9; i++)			// row
 			for (us j = 0; j < 9; j++)		// column
 				if (tiles.at(i).at(j)->getGlobalBound().contains(static_cast<sf::Vector2f>(pos)))
@@ -68,6 +67,22 @@ void Grid::battlefieldClicked(const sf::Vector2i& pos, PlayerManager* playerMana
 			{
 
 			}
+}
+
+void Grid::plantingHeroes(const std::vector<Hero*>& heroesVec)
+{
+	// clean the all tiles spr
+	clearAllTiles();
+
+	// planting the hero.. its spr
+	for (Hero* hero : heroesVec)
+		if (!hero->isHidden())
+		{
+			tiles.at(hero->getHeroPosition().x).at(hero->getHeroPosition().y)->setHeroSpr(hero->getId());
+			tiles.at(hero->getHeroPosition().x).at(hero->getHeroPosition().y)->setScale(this->getScale());
+		}
+		else
+			tiles.at(hero->getHeroPosition().x).at(hero->getHeroPosition().y)->removeHeroSpr();
 }
 
 void Grid::clearAllTiles()

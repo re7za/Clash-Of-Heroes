@@ -1,5 +1,4 @@
 #pragma once
-#include <iostream>
 #include "HeroSelectionMenu.h"
 
 using namespace std;
@@ -122,7 +121,6 @@ void HeroSelectionMenu::click(sf::Vector2i& pos, menuType& currentMenu)
 	{
 		if (playerManager->getTheTurn() == Players::P1)
 		{
-			std::cout << static_cast<int> (playerManager->getTheTurn()) << std::endl;
 			if (playerManager->playerArr.at(0)->isPlayerHeroVecFull())
 			{
 				grid.clearAllTiles();
@@ -136,24 +134,24 @@ void HeroSelectionMenu::click(sf::Vector2i& pos, menuType& currentMenu)
 			}
 			else
 			{
-				std::cout << "u have to choose more" << std::endl;
+				//std::cout << "u have to choose more" << std::endl;
 			}
 		}
 		else
 		{
-			std::cout << static_cast<int> (playerManager->getTheTurn()) << std::endl;
 			if (playerManager->playerArr.at(0)->isPlayerHeroVecFull())
 			{
 				// save the chosen heroes
 				playerManager->setTheChosenHeroes();
 
 				// at last
+				playerManager->changeTheTurn();
 				grid.clearAllTiles();
 				currentMenu = menuType::battlefield;
 			}
 			else
 			{
-				std::cout << "u have to choose more" << std::endl;
+				//std::cout << "u have to choose more" << std::endl;
 			}
 		}
 	}

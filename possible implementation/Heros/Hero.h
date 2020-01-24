@@ -7,7 +7,6 @@
 
 #include "SFML/Graphics.hpp"
 #include "../generalDef.h"
-#include <iostream>
 
 class Hero
 {
@@ -39,7 +38,7 @@ protected:
 	us health;
 	us damage;
 	bool aliveness = true;
-	bool hiding = false;	//true means hidden
+	bool hiding = false;	//true means its hidden
 	bool readiness = true;
 	
 	// hero position in grid

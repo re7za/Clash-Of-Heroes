@@ -1,4 +1,5 @@
 #include "Battlefield.h"
+#include <iostream>
 
 Battlefield::Battlefield()
 {
@@ -48,6 +49,25 @@ void Battlefield::startTheBattlefield()
 
 	// and then set the cards position
 	battleCardManager.setGridsCardsPos(grid.getPosition(), grid.getGlobalBound());
+
+	// planting the hero in the grid
+	//std::cout << static_cast<int>(playerManager->getTheTurn()) << std::endl;
+	turnWasChanged(playerManager->getTheTurn());
+	std::cout << static_cast<int>(playerManager->getTheTurn()) << std::endl;
+
+}
+
+void Battlefield::turnWasChanged(Players playerTurn)
+{
+	// changing the cards
+	battleCardManager.turnWasChanged(static_cast<PlayerEnum>(playerTurn));
+
+	// planting new heroes
+	if (playerTurn == Players::P1)
+		grid.plantingHeroes(playerManager->playerArr.at(static_cast<us>(Players::P2))->playerHerosVec);
+	else
+		grid.plantingHeroes(playerManager->playerArr.at(static_cast<us>(Players::P1))->playerHerosVec);
+
 }
 
 // mouse events and positions
@@ -59,7 +79,7 @@ void Battlefield::click(sf::Vector2i& pos, menuType& currentMenu)
 	// cards
 	//	battleCardManager.clickHeroEachCard(pos, static_cast<PlayerEnum>(playerManager->getTheTurn()));
 	playerManager->changeTheTurn();
-	battleCardManager.turnIsChanged(static_cast<PlayerEnum>(playerManager->getTheTurn()));
+	turnWasChanged(playerManager->getTheTurn());
 }
 
 void Battlefield::mouseHover(sf::RenderWindow*)

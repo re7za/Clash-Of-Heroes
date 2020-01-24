@@ -17,6 +17,7 @@ public:
 	void display(sf::RenderWindow*);
 
 	void startTheBattlefield();
+	void turnWasChanged(Players);
 	
 	////////////////////// mouse events and positions
 	void click(sf::Vector2i&, menuType&);

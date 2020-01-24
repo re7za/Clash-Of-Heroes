@@ -56,7 +56,7 @@ void BattleCardManager::hoverHeroEachCard(PlayerEnum p)
 				card->setColor(sf::Color(card->getSprOrginalColor().r - 60, card->getSprOrginalColor().g - 60,
 					card->getSprOrginalColor().b - 60, 255));
 }
-void BattleCardManager::turnIsChanged(PlayerEnum p)
+void BattleCardManager::turnWasChanged(PlayerEnum p)
 {
 	if (p == PlayerEnum::P1)
 	{
@@ -87,6 +87,7 @@ void BattleCardManager::turnIsChanged(PlayerEnum p)
 
 void BattleCardManager::heroExtracter(std::array<heros, 10> chosenHeroes)
 {
+	/*
 	leftCardArr.at(0) = new AlphaManBattleCard();
 	leftCardArr.at(1) = new KratosBattleCard();
 	leftCardArr.at(2) = new DrMarryBattleCard();
@@ -97,8 +98,8 @@ void BattleCardManager::heroExtracter(std::array<heros, 10> chosenHeroes)
 	rightCardArr.at(2) = new RickKhonsariBattleCard();
 	rightCardArr.at(3) = new SniperBattleCard();
 	rightCardArr.at(4) = new SybilBattleCard();
+	*/
 	
-	/*
 	// fill the leftCardArr
 	for (us i = 0; i < 5; i++)
 		switch (chosenHeroes.at(i))
@@ -182,7 +183,7 @@ void BattleCardManager::heroExtracter(std::array<heros, 10> chosenHeroes)
 			rightCardArr.at(i) = new SybilBattleCard();
 			break;
 		}
-	*/
+	
 }
 
 void BattleCardManager::setGridsCardsPos(sf::Vector2f gridPos, sf::FloatRect gridBounds)

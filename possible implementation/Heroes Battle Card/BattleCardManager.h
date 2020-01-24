@@ -5,7 +5,6 @@
 
 enum class PlayerEnum {P1, P2};
 
-#include <iostream>
 #include "SFML/Graphics.hpp"
 #include <array>
 #include "BattleCard.h"
@@ -30,7 +29,7 @@ public:
 	void drawHerosCard(sf::RenderWindow*);
 	void clickHeroEachCard(const sf::Vector2i&);
 	void hoverHeroEachCard(PlayerEnum);
-	void turnIsChanged(PlayerEnum);
+	void turnWasChanged(PlayerEnum);
 
 	// extract heroes from the playerHeroVec
 	void heroExtracter(std::array<heros, 10>);

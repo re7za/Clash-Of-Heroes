@@ -1,12 +1,11 @@
 
-#include <iostream>
 #include "MenuManager.h"
 
 using namespace std;
 
 MenuManager::MenuManager()
 {
-	currentMenu = menuType::battlefield;	// for now
+	currentMenu = menuType::heroSelection;	// for now
 	_currentMenu = currentMenu;
 	menuVec.push_back(&heroSelectionMenu);
 	menuVec.push_back(&battlefield);

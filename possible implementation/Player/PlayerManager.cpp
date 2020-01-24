@@ -34,14 +34,12 @@ Players PlayerManager::getTheTurn()
 void PlayerManager::setTheChosenHeroes()
 {
 	// P1
-	for (us i = 0; i < player1.playerHerosVec.size(); i++) {
+	for (us i = 0; i < player1.playerHerosVec.size(); i++)
 		chosenHeroes.at(i) = player1.playerHerosVec.at(i)->getId();
-	}
 
 	// P2
-	for (us i = 0; i < player2.playerHerosVec.size(); i++) {
+	for (us i = 0; i < player2.playerHerosVec.size(); i++)
 		chosenHeroes.at(i + 5) = player2.playerHerosVec.at(i)->getId();
-	}
 }
 
 std::array<heros, 10> PlayerManager::getTheChosenHeroes()
