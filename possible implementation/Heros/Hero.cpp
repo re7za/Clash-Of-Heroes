@@ -48,9 +48,9 @@ bool Hero::isAlive()
 	return this->aliveness;
 }
 
-void Hero::setHiding(bool newHidingSituation)
+void Hero::setHideness(bool newHideness)
 {
-	this->hiding = newHidingSituation;
+	this->hiding = newHideness;
 }
 bool Hero::isHidden()
 {

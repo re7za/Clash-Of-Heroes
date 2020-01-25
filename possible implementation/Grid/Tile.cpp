@@ -21,7 +21,8 @@ void Tile::draw(sf::RenderWindow* window)
 {
 	window->draw(tileModSpr);
 	if (isHeroSpr)
-		window->draw(*heroSpr);
+		if (isHeroTex)
+			window->draw(*heroSpr);
 
 }
 
@@ -178,6 +179,7 @@ void Tile::setHeroSpr(const heros& heroName)
 			heroSpr->setPosition(sf::Vector2f(this->getPosition().x + 4, this->getPosition().y + 2));
 
 			isHeroSpr = true;
+			isHeroTex = true;
 			break;
 		}
 		case heros::robi:
@@ -190,6 +192,7 @@ void Tile::setHeroSpr(const heros& heroName)
 			heroSpr->setPosition(sf::Vector2f(this->getPosition().x + 4, this->getPosition().y + 2));
 
 			isHeroSpr = true;
+			isHeroTex = true;
 			break;
 		}
 		case heros::leon:
@@ -202,6 +205,7 @@ void Tile::setHeroSpr(const heros& heroName)
 			heroSpr->setPosition(sf::Vector2f(this->getPosition().x + 4, this->getPosition().y + 2));
 
 			isHeroSpr = true;
+			isHeroTex = true;
 			break;
 		}
 		case heros::drMarry:
@@ -214,6 +218,7 @@ void Tile::setHeroSpr(const heros& heroName)
 			heroSpr->setPosition(sf::Vector2f(this->getPosition().x + 4, this->getPosition().y + 2));
 
 			isHeroSpr = true;
+			isHeroTex = true;
 			break;
 		}
 		case heros::sniper:
@@ -226,6 +231,7 @@ void Tile::setHeroSpr(const heros& heroName)
 			heroSpr->setPosition(sf::Vector2f(this->getPosition().x + 4, this->getPosition().y + 2));
 
 			isHeroSpr = true;
+			isHeroTex = true;
 			break;
 		}
 		case heros::kratos:
@@ -238,6 +244,7 @@ void Tile::setHeroSpr(const heros& heroName)
 			heroSpr->setPosition(sf::Vector2f(this->getPosition().x + 4, this->getPosition().y + 2));
 
 			isHeroSpr = true;
+			isHeroTex = true;
 			break;
 		}
 		case heros::giant:
@@ -250,6 +257,7 @@ void Tile::setHeroSpr(const heros& heroName)
 			heroSpr->setPosition(sf::Vector2f(this->getPosition().x + 4, this->getPosition().y + 2));
 
 			isHeroSpr = true;
+			isHeroTex = true;
 			break;
 		}
 		case heros::alphaMan:
@@ -262,6 +270,7 @@ void Tile::setHeroSpr(const heros& heroName)
 			heroSpr->setPosition(sf::Vector2f(this->getPosition().x + 4, this->getPosition().y + 2));
 
 			isHeroSpr = true;
+			isHeroTex = true;
 			break;
 		}
 		case heros::professor:
@@ -274,6 +283,7 @@ void Tile::setHeroSpr(const heros& heroName)
 			heroSpr->setPosition(sf::Vector2f(this->getPosition().x + 4, this->getPosition().y + 2));
 
 			isHeroSpr = true;
+			isHeroTex = true;
 			break;
 		}
 		case heros::commander:
@@ -286,6 +296,7 @@ void Tile::setHeroSpr(const heros& heroName)
 			heroSpr->setPosition(sf::Vector2f(this->getPosition().x + 4, this->getPosition().y + 2));
 
 			isHeroSpr = true;
+			isHeroTex = true;
 			break;
 		}
 		case heros::rickKhonsari:
@@ -298,6 +309,7 @@ void Tile::setHeroSpr(const heros& heroName)
 			heroSpr->setPosition(sf::Vector2f(this->getPosition().x + 4, this->getPosition().y + 2));
 
 			isHeroSpr = true;
+			isHeroTex = true;
 			break;
 		}
 		case heros::sybil:
@@ -310,6 +322,7 @@ void Tile::setHeroSpr(const heros& heroName)
 			heroSpr->setPosition(sf::Vector2f(this->getPosition().x + 4, this->getPosition().y + 2));
 
 			isHeroSpr = true;
+			isHeroTex = true;
 			break;
 		}
 		}
@@ -320,9 +333,17 @@ void Tile::removeHeroSpr()
 	delete heroSpr;
 	isHeroSpr = false;
 }
+void Tile::setHeroTex(bool mood)
+{
+	isHeroTex = mood;
+}
 bool Tile::IsHeroSpr()
 {
 	return isHeroSpr;
+}
+bool Tile::IsheroTex()
+{
+	return isHeroTex;
 }
 
 heros Tile::getHeroCardName()

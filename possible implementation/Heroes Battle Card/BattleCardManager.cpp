@@ -75,6 +75,8 @@ void BattleCardManager::hoverHeroEachCard(PlayerEnum p)
 }
 void BattleCardManager::turnWasChanged(PlayerEnum p)
 {
+	selectedCard = heros::none;
+
 	if (p == PlayerEnum::P1)
 	{
 		// turn off the right cards

@@ -31,7 +31,9 @@ public:
 	// set and remove hero and the others
 	void setHeroSpr(const heros&);
 	void removeHeroSpr();
+	void setHeroTex(bool);
 	bool IsHeroSpr();
+	bool IsheroTex();
 	// logic side
 	heros getHeroCardName();
 	
@@ -45,6 +47,7 @@ private:
 
 	// area heroSpr
 	bool isHeroSpr = false;
+	bool isHeroTex = false;
 	heros currentHero = heros::none;
 	sf::Texture* heroTex;
 	sf::Sprite* heroSpr;

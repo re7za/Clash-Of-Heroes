@@ -14,7 +14,7 @@ public:
 	void attack();
 	const us getId();
 	const us getDamage();
-	void setHiding(bool) override;
+	void setHideness(bool) override;
 
 private:
 	bool invisibleShield = true;

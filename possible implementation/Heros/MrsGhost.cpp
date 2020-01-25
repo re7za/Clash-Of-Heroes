@@ -28,7 +28,7 @@ const us MrsGhost::getDamage()
 	return this->damage;
 }
 
-void MrsGhost::setHiding(bool newHidingSituation)
+void MrsGhost::setHideness(bool Hideness)
 {
 	if (invisibleShield == true)
 	{
@@ -36,6 +36,6 @@ void MrsGhost::setHiding(bool newHidingSituation)
 		return;
 	}
 	else
-		this->hiding = newHidingSituation;
+		this->hiding = Hideness;
 }
 

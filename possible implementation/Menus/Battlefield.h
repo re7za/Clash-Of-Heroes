@@ -16,15 +16,17 @@ public:
 	Battlefield();
 	void display(sf::RenderWindow*);
 
-	void startTheBattlefield();
-	void turnWasChanged(Players);
-	
 	////////////////////// mouse events and positions
 	void click(sf::Vector2i&, menuType&);
 
 	// utility functions of mouse envents and positions
 	void mouseHover(sf::RenderWindow*);
 	//////////////////////
+
+	void startTheBattlefield();
+	void turnWasChanged(Players);
+	void attackProcess();
+	
 
 	// background img
 	void changeBackground();

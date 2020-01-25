@@ -59,7 +59,7 @@ void Grid::SelectionClicked(const sf::Vector2i& pos, PlayerManager* playerManage
 				}		
 }
 
-void Grid::battlefieldClicked(const sf::Vector2i& pos, PlayerManager* playerManager)
+void Grid::battlefieldClicked(const sf::Vector2i& pos, PlayerManager* playerManager, bool& isTurnChange)
 {
 	for (us i = 0; i < 9; i++)			// row
 		for (us j = 0; j < 9; j++)		// column
@@ -69,9 +69,9 @@ void Grid::battlefieldClicked(const sf::Vector2i& pos, PlayerManager* playerMana
 				for (Hero* hero : playerManager->playerArr.at(static_cast<us> (playerManager->getAttackedPlayer()))->playerHerosVec)
 					if (tiles.at(i).at(j)->getHeroCardName() == hero->getId())
 						playerManager->playerArr.at(static_cast<us> (playerManager->getAttackedPlayer()))->attackedHero = hero->getId();
-				
-				// at last
-				playerManager->changeTheTurn();
+
+
+				isTurnChange = true;
 			}
 }
 
@@ -82,13 +82,19 @@ void Grid::plantingHeroes(const std::vector<Hero*>& heroesVec)
 
 	// planting the hero.. its spr
 	for (Hero* hero : heroesVec)
-		if (!hero->isHidden())
-		{
-			tiles.at(hero->getHeroPosition().x).at(hero->getHeroPosition().y)->setHeroSpr(hero->getId());
-			tiles.at(hero->getHeroPosition().x).at(hero->getHeroPosition().y)->setScale(this->getScale());
-		}
-		else
-			tiles.at(hero->getHeroPosition().x).at(hero->getHeroPosition().y)->removeHeroSpr();
+	{
+		tiles.at(hero->getHeroPosition().x).at(hero->getHeroPosition().y)->setHeroSpr(hero->getId());
+		tiles.at(hero->getHeroPosition().x).at(hero->getHeroPosition().y)->setScale(this->getScale());
+
+		setHideness(hero);
+	}
+}
+void Grid::setHideness(Hero* hero)
+{
+	if (!hero->isHidden())		// its not hidden
+		tiles.at(hero->getHeroPosition().x).at(hero->getHeroPosition().y)->setHeroTex(true);
+	else
+		tiles.at(hero->getHeroPosition().x).at(hero->getHeroPosition().y)->setHeroTex(false);
 }
 
 void Grid::clearAllTiles()

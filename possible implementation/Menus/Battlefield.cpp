@@ -55,6 +55,38 @@ void Battlefield::display(sf::RenderWindow* window)
 	battleCardManager.drawHerosCard(window);
 }
 
+/////// mouse events and positions
+void Battlefield::click(sf::Vector2i& pos, menuType& currentMenu)
+{
+	// grid and check for turn changing =)))))))))))
+	bool isTurnChange = false;
+	if (grid.getGlobalBound().contains(sf::Vector2f(pos)) && battleCardManager.getSelectedCard() != heros::none)
+		grid.battlefieldClicked(pos, playerManager, isTurnChange);
+
+	if (isTurnChange)
+	{
+		// attack prossecc by player.attackedPlayer and battleCard.selectedCard =))
+		attackProcess();
+
+		// changing the turn.. it must be after attack process
+		playerManager->changeTheTurn();
+		turnWasChanged(playerManager->getTheTurn());
+	}
+	
+	// cards
+	battleCardManager.clickHeroEachCard(pos, static_cast<PlayerEnum>(playerManager->getTheTurn()));
+}
+
+void Battlefield::mouseHover(sf::RenderWindow*)
+{	
+	pauseBtn.onMouseOver();
+
+	// cards
+	battleCardManager.hoverHeroEachCard(static_cast<PlayerEnum>(playerManager->getTheTurn()));
+}
+//////////////////////////////////
+
+// background img
 void Battlefield::startTheBattlefield()
 {
 	// at first.. extract the chosenHeroes
@@ -72,6 +104,9 @@ void Battlefield::turnWasChanged(Players playerTurn)
 	// changing the cards
 	battleCardManager.turnWasChanged(static_cast<PlayerEnum>(playerTurn));
 
+	// attackedHero must set to none before next attack.. and 'don't change the index'!
+	playerManager->playerArr.at(static_cast<us>(playerManager->getTheTurn()))->attackedHero = heros::none;
+	playerManager->playerArr.at(static_cast<us>(playerManager->getAttackedPlayer()))->attackedHero = heros::none;
 
 	// planting new heroes
 	if (playerTurn == Players::P1)
@@ -81,37 +116,41 @@ void Battlefield::turnWasChanged(Players playerTurn)
 
 }
 
-// mouse events and positions
-void Battlefield::click(sf::Vector2i& pos, menuType& currentMenu)
+void Battlefield::attackProcess()
 {
-	// grid and check for turn changing =)))))))))))
-	Players _p = playerManager->getTheTurn();
-	if (grid.getGlobalBound().contains(sf::Vector2f(pos)) && battleCardManager.getSelectedCard() != heros::none)
-		grid.battlefieldClicked(pos, playerManager);
-
-	// attack prossecc by player.attackedPlayer and battleCard.selectedCard =))
-
-
-	// changing the turn
-	if (_p != playerManager->getTheTurn())
-		turnWasChanged(playerManager->getTheTurn());
-
-	// attackedHero must set to none before next attack
-	playerManager->playerArr.at(1)->attackedHero = heros::none;
+	// variables check
+		//don't delete this comment
+	std::cout << "get the turn              : " << static_cast <int> (playerManager->getTheTurn()) << std::endl;
+	std::cout << "get attacked player       : " << static_cast <int> (playerManager->getAttackedPlayer()) << std::endl;
+	std::cout << "selected card (attacher)  : " << static_cast <int> (battleCardManager.getSelectedCard()) << std::endl;
+	std::cout << "attacked Hero             : " << static_cast <int> (playerManager->playerArr
+		.at(static_cast <int> (playerManager->getAttackedPlayer()))->attackedHero) << std::endl;
+	std::cout << "//////////////////////////////////" << std::endl;
 	
-	// cards
-	battleCardManager.clickHeroEachCard(pos, static_cast<PlayerEnum>(playerManager->getTheTurn()));
+
+	/////////////Prevent multiple calling functions
+	// attacked player properties..
+	Players attackedPlayer = playerManager->getAttackedPlayer();
+	heros attackedHeroName = playerManager->playerArr.at(static_cast<us>(attackedPlayer))->attackedHero;
+	std::vector<Hero*>& attackedHeroesVec = playerManager->playerArr.at(static_cast<us>(attackedPlayer))->playerHerosVec;
+	Hero* attackedHero = attackedHeroesVec.at(0);		// just preventing errors.. or maybe causing serious errors.. carefull
+	for (Hero* hero : attackedHeroesVec)
+		if (hero->getId() == attackedHeroName)
+		{
+			attackedHero = hero;
+			break;
+		}
+	// attacker player properties...
+	Players attackerPlayer = playerManager->getTheTurn();
+
+	///////////////////////////////////////////////
+
+	// start the war
+	if (attackedHeroName != heros::none)
+		attackedHero->setHideness(false);
+
 }
 
-void Battlefield::mouseHover(sf::RenderWindow*)
-{	
-	pauseBtn.onMouseOver();
-
-	// cards
-	battleCardManager.hoverHeroEachCard(static_cast<PlayerEnum>(playerManager->getTheTurn()));
-}
-
-// background img
 void Battlefield::changeBackground()
 {
 	switch (rand() % 8)

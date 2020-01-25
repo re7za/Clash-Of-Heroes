@@ -21,7 +21,7 @@ public:
 	void checkAliveness();	//set the aliveness to false if getHealth == 0
 	void setAliveness(bool);	//to die suddenly.. for ex by sniper
 	bool isAlive();
-	virtual void setHiding(bool);
+	virtual void setHideness(bool);
 	bool isHidden();
 	void setReadiness(bool);
 	bool isReady();
@@ -38,7 +38,7 @@ protected:
 	us health;
 	us damage;
 	bool aliveness = true;
-	bool hiding = false;	//true means its hidden
+	bool hiding = true;	//true means its hidden
 	bool readiness = true;
 	
 	// hero position in grid
