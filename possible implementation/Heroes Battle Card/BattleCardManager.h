@@ -7,6 +7,7 @@ enum class PlayerEnum {P1, P2};
 
 #include "SFML/Graphics.hpp"
 #include <array>
+#include <vector>
 #include "BattleCard.h"
 #include "AlphaManBattleCard.h"
 #include "CommanderBattleCard.h"

@@ -98,6 +98,32 @@ sf::Vector2f BattleCard::getHeroNamePos()
 	return heroNameTxt.getPosition();
 }
 
+void BattleCard::setReadiness(bool newReadiness)
+{
+	if (aliveness)
+		readiness = newReadiness;
+	else
+		readiness = false;
+}
+
+bool BattleCard::isReady()
+{
+	if (aliveness)
+		return readiness;
+	else
+		return false;
+}
+
+void BattleCard::setAliveness(bool newAliveness)
+{
+	this->aliveness = newAliveness;
+}
+
+bool BattleCard::isAlive()
+{
+	return aliveness;
+}
+
 void BattleCard::setCardSelection(bool newBool)
 {
 	cardSelection = newBool;

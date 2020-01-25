@@ -23,7 +23,10 @@ public:
 	sf::Vector2f getPosition();
 	sf::FloatRect getGlobalBounds();
 	sf::Vector2f getHeroNamePos();
-
+	void setReadiness(bool);
+	bool isReady();
+	void setAliveness(bool);
+	bool isAlive();
 
 	// card selection
 	void setCardSelection(bool);
@@ -46,6 +49,9 @@ protected:
 	sf::Text heroNameTxt;
 	sf::Text healthTxt;
 	sf::Text damageTxt;
+
+	bool aliveness = true;
+	bool readiness = true;
 };
 
 
