@@ -24,6 +24,15 @@ void MrsGhost::setHideness(bool Hideness)
 		this->hideness = Hideness;
 }
 
+void MrsGhost::forcedToShow(bool newHideness)
+{
+	if (newHideness == false)
+	{
+		invisibleShield = false;
+		hideness = false;
+	}
+}
+
 
 void MrsGhost::attack(Hero* attackedHero, std::vector<Hero*>& attackedHeroesVec)
 {

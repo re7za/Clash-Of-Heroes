@@ -45,5 +45,17 @@ void ROBI::specialPower(std::vector<Hero*>& attackedHeroesVec, sf::Vector2i atta
 			attacked->setHideness(false);
 		else if (attacked->getHeroPosition() == sf::Vector2i(attackPos.x + 1, attackPos.y + 1))
 			attacked->setHideness(false);
+
+		if (attacked->getId() == heros::mrsGhost)	// special case : Mrs.Ghost
+		{
+			if (attacked->getHeroPosition() == sf::Vector2i(attackPos.x - 1, attackPos.y - 1))
+				attacked->setHideness(false);
+			else if (attacked->getHeroPosition() == sf::Vector2i(attackPos.x + 1, attackPos.y - 1))
+				attacked->setHideness(false);
+			else if (attacked->getHeroPosition() == sf::Vector2i(attackPos.x - 1, attackPos.y + 1))
+				attacked->setHideness(false);
+			else if (attacked->getHeroPosition() == sf::Vector2i(attackPos.x + 1, attackPos.y + 1))
+				attacked->setHideness(false);
+		}
 	}
 }

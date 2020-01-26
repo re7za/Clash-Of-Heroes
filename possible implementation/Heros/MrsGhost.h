@@ -14,6 +14,7 @@ public:
 	void attack(Hero* attackedHero, std::vector<Hero*>& attackedHeroesVec);
 
 	void setHideness(bool) override;
+	void forcedToShow(bool);
 
 private:
 	bool invisibleShield = true;

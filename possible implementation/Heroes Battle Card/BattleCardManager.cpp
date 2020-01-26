@@ -132,7 +132,7 @@ void BattleCardManager::heroExtracter(std::array<heros, 10> chosenHeroes)
 
 	///////////////// test
 	chosenHeroes.at(0) = heros::alphaMan;
-	chosenHeroes.at(1) = heros::kratos;
+	chosenHeroes.at(1) = heros::rickKhonsari;
 	chosenHeroes.at(2) = heros::giant;
 	chosenHeroes.at(3) = heros::mrsGhost;
 	chosenHeroes.at(4) = heros::professor;

@@ -13,8 +13,10 @@ public:
 	Sniper(const sf::Vector2i&);
 	void attack(Hero* attackedHero, std::vector<Hero*>& attackedHeroesVec);
 
+	us getFatalHit();
 
 private:
+	us fatalHit = 1;		// sniper special power
 
 };
 

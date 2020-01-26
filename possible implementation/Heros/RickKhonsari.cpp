@@ -14,6 +14,16 @@ RickKhonsari::RickKhonsari(const sf::Vector2i& pos)
 	setHeroPosition(pos);
 }
 
+us RickKhonsari::getSpecialShots()
+{
+	return specialShots;
+}
+
+void RickKhonsari::specialShots__()
+{
+	if (specialShots > 0)
+		specialShots--;
+}
 
 
 void RickKhonsari::attack(Hero* attackedHero, std::vector<Hero*>& attackedHeroesVec)

@@ -14,13 +14,14 @@ Sniper::Sniper(const sf::Vector2i& pos)
 	setHeroPosition(pos);
 }
 
+us Sniper::getFatalHit()
+{
+	return fatalHit;
+}
+
 
 void Sniper::attack(Hero* attackedHero, std::vector<Hero*>& attackedHeroesVec)
 {
-	///////////////// general hits
-	attackedHero->setHideness(false);
-	attackedHero->decreaseHealth(this->damage);
-
 	///////////////// abnormal under attack heroes
 	// Leon special property
 	if (attackedHero->getId() == heros::leon)
@@ -31,4 +32,14 @@ void Sniper::attack(Hero* attackedHero, std::vector<Hero*>& attackedHeroesVec)
 		this->hideness = false;
 
 	///////////////// attacker special power
+	if (fatalHit == 1)
+		if (attackedHero->isHidden())
+		{
+			attackedHero->setAliveness(false);
+			fatalHit = 0;
+			return;
+		}
+	///////////////// general hits
+	attackedHero->setHideness(false);
+	attackedHero->decreaseHealth(this->damage);	
 }

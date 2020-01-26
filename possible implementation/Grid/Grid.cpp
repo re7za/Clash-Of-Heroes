@@ -68,7 +68,12 @@ void Grid::battlefieldClicked(const sf::Vector2i& pos, PlayerManager* playerMana
 				// find under attack hero
 				for (Hero* hero : playerManager->playerArr.at(static_cast<us> (playerManager->getAttackedPlayer()))->playerHerosVec)
 					if (tiles.at(i).at(j)->getHeroCardName() == hero->getId())
-						playerManager->playerArr.at(static_cast<us> (playerManager->getAttackedPlayer()))->attackedHero = hero->getId();
+					{
+						if (hero->isAlive())
+							playerManager->playerArr.at(static_cast<us> (playerManager->getAttackedPlayer()))->attackedHero = hero->getId();
+						else
+							return;
+					}
 
 				playerManager->playerArr.at(static_cast<us> (playerManager->getTheTurn()))->setAttackPos(sf::Vector2i(i, j));
 

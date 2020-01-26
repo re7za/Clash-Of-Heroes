@@ -23,10 +23,10 @@ Battlefield::Battlefield()
 	pauseBtn.setString("pause");
 	pauseBtn.setPosition(sf::Vector2f(sf::VideoMode::getDesktopMode().width - 150, 20));
 
-
+	
 	//////////////// test
 	playerManager->playerArr.at(0)->playerHerosVec.push_back(new AlphaMan(sf::Vector2i(3, 5)));
-	playerManager->playerArr.at(0)->playerHerosVec.push_back(new Kratos(sf::Vector2i(2, 6)));
+	playerManager->playerArr.at(0)->playerHerosVec.push_back(new RickKhonsari(sf::Vector2i(2, 6)));
 	playerManager->playerArr.at(0)->playerHerosVec.push_back(new Giant(sf::Vector2i(6, 4)));
 	playerManager->playerArr.at(0)->playerHerosVec.push_back(new MrsGhost(sf::Vector2i(5, 7)));
 	playerManager->playerArr.at(0)->playerHerosVec.push_back(new Professor(sf::Vector2i(7, 1)));
@@ -145,6 +145,7 @@ void Battlefield::attackProcess()
 						// در ادامه اینجا احتمالا باید تغییرات اعمالی روی هیرو تحت اتک.. روی کارتش هم اعمال بشه پراببلی.. شایدم اینجا نه
 						break;
 					}
+
 				break;
 			}
 
@@ -168,6 +169,50 @@ void Battlefield::attackProcess()
 				alphaMan->specialPower(attackedHeroesVec, attackPos);
 				break;
 			}
+
+	// ramin
+	if (attackerHeroName == heros::rickKhonsari)
+		for (Hero* attackerHero : attackerHeroesVec)
+			if (attackerHero->getId() == attackerHeroName)
+			{
+				RickKhonsari* ramin = dynamic_cast<RickKhonsari*>(attackerHero);
+				if (ramin->getSpecialShots() > 0)
+					for (Hero* attacked : attackedHeroesVec)
+						if (attacked->getId() == attackedHeroName)	// checks whether the attacking is successful or not
+						{
+							if (attacked->getHeroPosition() == attackPos)
+							{
+								// special power starts here =|
+								sf::Vector2i tile1 = sf::Vector2i(rand() % 9, rand() % 9);
+								sf::Vector2i tile2;
+								while (true)
+								{
+									tile2 = sf::Vector2i(rand() % 9, rand() % 9);
+									if (tile2 != tile1)
+										break;
+								}
+								// we have a couple different position now
+
+								for (Hero* attackeddd : attackedHeroesVec)
+									if (attackeddd->getHeroPosition() == tile1
+										|| attackeddd->getHeroPosition() == tile2)
+									{
+										attackeddd->setHideness(false);
+										// جلوه های گرافیکی هم میخواد
+									}
+							}
+
+
+							ramin->specialShots__();
+							std::cout << ramin->getSpecialShots() << std::endl;
+							break;
+						}
+					
+
+				break;
+			}
+				
+	// sybil
 
 	////////////////////////////// Log
 		//don't delete this comment
