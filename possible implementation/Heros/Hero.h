@@ -13,7 +13,7 @@ class Hero
 {
 public:
 	virtual void attack(Hero* attackedHero, std::vector<Hero*>& attackedHeroesVec) = 0;
-	// construct a 'void specialPower()' for some heroes that have special power... like sniper.. robi.. etc
+	// create a 'void specialPower()' for some heroes that have special power... like sniper.. robi.. etc
 	heros getId();
 	us getDamage();
 	us getHealth();

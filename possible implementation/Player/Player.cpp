@@ -34,3 +34,13 @@ bool Player::isPlayerHeroVecFull()
 
 	return false;
 }
+
+void Player::setAttackPos(sf::Vector2i pos)
+{
+		attackPos = pos;
+}
+
+sf::Vector2i Player::getAttackPos()
+{
+	return attackPos;
+}

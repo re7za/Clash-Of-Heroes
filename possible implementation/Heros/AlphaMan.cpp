@@ -28,8 +28,20 @@ void AlphaMan::attack(Hero* attackedHero, std::vector<Hero*>& attackedHeroesVec)
 	// Professor special property
 	if (attackedHero->getId() == heros::professor)
 		this->hideness = false;
-
-	///////////////// attacker special power
-
 }
-	
+
+void AlphaMan::specialPower(std::vector<Hero*>& attackedHeroesVec, sf::Vector2i attackPos)
+{
+	///////////////// attacker special power : Turn on corner houses
+	for (Hero* attacked : attackedHeroesVec)
+	{
+		if (attacked->getHeroPosition() == sf::Vector2i(attackPos.x, attackPos.y - 1))
+			attacked->decreaseHealth(1);
+		else if (attacked->getHeroPosition() == sf::Vector2i(attackPos.x, attackPos.y + 1))
+			attacked->decreaseHealth(1);
+		else if (attacked->getHeroPosition() == sf::Vector2i(attackPos.x - 1, attackPos.y))
+			attacked->decreaseHealth(1);
+		else if (attacked->getHeroPosition() == sf::Vector2i(attackPos.x + 1, attackPos.y))
+			attacked->decreaseHealth(1);
+	}
+}

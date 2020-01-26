@@ -43,8 +43,15 @@ public:
 	// player vector
 	std::vector <Hero*> playerHerosVec;
 
+	// attack pos methods
+	void setAttackPos(sf::Vector2i);
+	sf::Vector2i getAttackPos();
 
 private:
+
+	// attack position.. هیج دلیلی ندارم برای پرایوت تعریف کردنش وقتی هیج چکینگی قرار نیس روش انجام شه.. هزینه الکیه
+	sf::Vector2i attackPos;
+
 
 };
 

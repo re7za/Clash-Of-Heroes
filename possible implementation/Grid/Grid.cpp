@@ -70,6 +70,7 @@ void Grid::battlefieldClicked(const sf::Vector2i& pos, PlayerManager* playerMana
 					if (tiles.at(i).at(j)->getHeroCardName() == hero->getId())
 						playerManager->playerArr.at(static_cast<us> (playerManager->getAttackedPlayer()))->attackedHero = hero->getId();
 
+				playerManager->playerArr.at(static_cast<us> (playerManager->getTheTurn()))->setAttackPos(sf::Vector2i(i, j));
 
 				isTurnChange = true;
 			}

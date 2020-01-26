@@ -118,15 +118,6 @@ void Battlefield::turnWasChanged(Players playerTurn)
 
 void Battlefield::attackProcess()
 {
-	// variables check
-		//don't delete this comment
-	std::cout << "get the turn              : " << static_cast <int> (playerManager->getTheTurn()) << std::endl;
-	std::cout << "get attacked player       : " << static_cast <int> (playerManager->getAttackedPlayer()) << std::endl;
-	std::cout << "selected card (attacher)  : " << static_cast <int> (battleCardManager.getSelectedCard()) << std::endl;
-	std::cout << "attacked Hero             : " << static_cast <int> (playerManager->playerArr
-		.at(static_cast <int> (playerManager->getAttackedPlayer()))->attackedHero) << std::endl;
-	std::cout << "//////////////////////////////////" << std::endl;
-
 	/////////////Prevent multiple calling functions
 	// attacked player properties..
 	Players attackedPlayer = playerManager->getAttackedPlayer();
@@ -137,10 +128,11 @@ void Battlefield::attackProcess()
 	Players attackerPlayer = playerManager->getTheTurn();
 	heros attackerHeroName = battleCardManager.getSelectedCard();
 	std::vector<Hero*>& attackerHeroesVec = playerManager->playerArr.at(static_cast<us>(attackerPlayer))->playerHerosVec;
-
+	sf::Vector2i attackPos = playerManager->playerArr.at(static_cast<us> (attackerPlayer))->getAttackPos();
 	///////////////////////////////////////////////
 
 	// start the war
+	//////////////////// basic attack
 	if (attackedHeroName != heros::none)
 		for (Hero* attackerHero : attackerHeroesVec)
 			if (attackerHero->getId() == attackerHeroName)
@@ -150,11 +142,53 @@ void Battlefield::attackProcess()
 					{
 						attackerHero->attack(attackedHero, attackedHeroesVec);
 
-						// در ادامه اینجا احتمالا باید تغییرات اعمالی روی هیرو تحت اتک.. روی کارتش هم اعمال بشه پراببلی
+						// در ادامه اینجا احتمالا باید تغییرات اعمالی روی هیرو تحت اتک.. روی کارتش هم اعمال بشه پراببلی.. شایدم اینجا نه
 						break;
 					}
 				break;
 			}
+
+	////////////////// special powers
+	// robi
+	if (attackerHeroName == heros::robi)
+		for (Hero* attackerHero : attackerHeroesVec)
+			if (attackerHero->getId() == attackerHeroName)
+			{
+				ROBI* robi = dynamic_cast<ROBI*>(attackerHero);
+				robi->specialPower(attackedHeroesVec, attackPos);
+				break;
+			}
+
+	// alpha man
+	if (attackerHeroName == heros::alphaMan)
+		for (Hero* attackerHero : attackerHeroesVec)
+			if (attackerHero->getId() == attackerHeroName)
+			{
+				AlphaMan* alphaMan = dynamic_cast<AlphaMan*>(attackerHero);
+				alphaMan->specialPower(attackedHeroesVec, attackPos);
+				break;
+			}
+
+	////////////////////////////// Log
+		//don't delete this comment
+	std::cout << "get the turn              : " << static_cast <int> (playerManager->getTheTurn()) << std::endl;
+	std::cout << "get attacked player       : " << static_cast <int> (playerManager->getAttackedPlayer()) << std::endl;
+	std::cout << "selected card (attacher)  : " << static_cast <int> (battleCardManager.getSelectedCard()) << std::endl;
+	std::cout << "attacked Hero             : " << static_cast <int> (playerManager->playerArr
+		.at(static_cast <int> (playerManager->getAttackedPlayer()))->attackedHero) << std::endl;
+
+	std::cout << "//////attacked player :" << std::endl;
+	for (Hero* attacked : attackedHeroesVec)
+		std::cout << "Id : " << attacked->getId() << "   hlt : " << attacked->getHealth() << "   dmg : " << attacked->getDamage()
+		<< "   isHidden : " << attacked->isHidden() << "   isAlive : " << attacked->isAlive() << std::endl;
+
+	std::cout << "//////attacker player :" << std::endl;
+	for (Hero* attacker : attackerHeroesVec)
+		std::cout << "Id : " << attacker->getId() << "   hlt : " << attacker->getHealth() << "   dmg : " << attacker->getDamage()
+		<< "   isHidden : " << attacker->isHidden() << "   isAlive : " << attacker->isAlive() << std::endl;
+
+	std::cout << "//////////////////////////////////" << std::endl;
+
 
 }
 
