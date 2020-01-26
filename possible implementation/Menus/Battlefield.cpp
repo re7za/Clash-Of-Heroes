@@ -213,6 +213,49 @@ void Battlefield::attackProcess()
 			}
 				
 	// sybil
+	if (attackerHeroName == heros::sybil)
+		for (Hero* attackerHero : attackerHeroesVec)
+			if (attackerHero->getId() == attackerHeroName)
+			{
+				Sybil* sybil = dynamic_cast<Sybil*>(attackerHero);
+				if (sybil->getSpecialPower() > 0)
+					if (sybil->getSpecialPower() == 2)
+					{
+						sybil->specialPower__();
+						break;
+					}
+
+					for (Hero* attacked : attackedHeroesVec)
+						if (attacked->getId() == attackedHeroName)	// checks whether the attacking is successful or not
+						{
+							bool key = true;
+							while (key)
+							{
+								us deads = 0;
+								for (Hero* deadHeroes : attackedHeroesVec)
+									if (deadHeroes->getId() != attackedHeroName)
+										if (!deadHeroes->isAlive())
+											deads++;
+
+								if (deads == 4)
+									key = false;
+
+								//
+								us r = rand() % 5;
+								if (attackedHeroesVec.at(r)->isAlive())
+									if (attackedHeroesVec.at(r)->getId() != attackedHeroName)
+									{
+										attackedHeroesVec.at(r)->decreaseHealth(attacked->getDamage());
+										key = false;
+									}
+							}
+
+							sybil->specialPower__();
+							break;
+						}
+				break;
+			}
+
 
 	////////////////////////////// Log
 		//don't delete this comment

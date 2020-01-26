@@ -32,3 +32,14 @@ void Sybil::attack(Hero* attackedHero, std::vector<Hero*>& attackedHeroesVec)
 
 	///////////////// attacker special power
 }
+
+us Sybil::getSpecialPower()
+{
+	return specialPower;
+}
+
+void Sybil::specialPower__()
+{
+	if (specialPower > 0)
+		specialPower--;
+}
