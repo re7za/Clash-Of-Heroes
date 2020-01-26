@@ -7,17 +7,19 @@
 
 #include "SFML/Graphics.hpp"
 #include "../generalDef.h"
+#include <iostream>
 
 class Hero
 {
 public:
-	virtual void attack() = 0;
+	virtual void attack(Hero* attackedHero, std::vector<Hero*>& attackedHeroesVec) = 0;
+	// construct a 'void specialPower()' for some heroes that have special power... like sniper.. robi.. etc
 	heros getId();
 	us getDamage();
 	us getHealth();
 
 	void decreaseHealth(us damage);
-	//it isn't unsigned.. maybe sometimes we need it to be a increaseHealth() =)
+	//it isn't unsigned.. maybe sometimes we need it to be an increaseHealth() =)
 	void checkAliveness();	//set the aliveness to false if getHealth == 0
 	void setAliveness(bool);	//to die suddenly.. for ex by sniper
 	bool isAlive();
@@ -38,7 +40,7 @@ protected:
 	us health;
 	us damage;
 	bool aliveness = true;
-	bool hiding = true;	//true means its hidden
+	bool hideness = true;	//true means its hidden
 	bool readiness = true;
 	
 	// hero position in grid

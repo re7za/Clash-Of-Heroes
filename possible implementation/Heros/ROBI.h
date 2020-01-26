@@ -11,9 +11,8 @@ class ROBI : public Hero
 {
 public:
 	ROBI(const sf::Vector2i&);
-	void attack();
-	const us getId();
-	const us getDamage();
+	void attack(Hero* attackedHero, std::vector<Hero*>& attackedHeroesVec);
+
 
 private:
 

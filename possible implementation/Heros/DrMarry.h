@@ -11,9 +11,8 @@ class DrMarry : public Hero
 {
 public:
 	DrMarry(const sf::Vector2i&);
-	void attack();
-	const us getId();
-	const us getDamage();
+	void attack(Hero* attackedHero, std::vector<Hero*>& attackedHeroesVec);
+
 
 private:
 

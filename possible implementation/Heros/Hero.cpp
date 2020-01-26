@@ -19,7 +19,7 @@ us Hero::getHealth()
 }
 
 void Hero::decreaseHealth(us damage)
-{// ریدی با این تابع.. چک کن اگه مصلا یکه صفر شه
+{
 	if (this->health <= maxHealth)
 	{
 		this->health -= damage;
@@ -34,7 +34,7 @@ void Hero::checkAliveness()
 	{
 		this->health = 0;
 		this->aliveness = false;
-		this->hiding = false;	//its not hidden anymore
+		this->hideness = false;	//its not hidden anymore
 		this->readiness = false;
 	}
 }
@@ -50,11 +50,11 @@ bool Hero::isAlive()
 
 void Hero::setHideness(bool newHideness)
 {
-	this->hiding = newHideness;
+	this->hideness = newHideness;
 }
 bool Hero::isHidden()
 {
-	return this->hiding;
+	return this->hideness;
 }
 
 void Hero::setReadiness(bool newReadiness)

@@ -14,16 +14,22 @@ Kratos::Kratos(const sf::Vector2i& pos)
 	setHeroPosition(pos);
 }
 
-const us Kratos::getId()
-{
-	return this->heroId;
-}
-const us Kratos::getDamage()
-{
-	return this->damage;
-}
 
-void Kratos::attack()
+void Kratos::attack(Hero* attackedHero, std::vector<Hero*>& attackedHeroesVec)
 {
+	///////////////// general hits
+	attackedHero->setHideness(false);
+	attackedHero->decreaseHealth(this->damage);
+
+	///////////////// abnormal under attack heroes
+	// Leon special property
+	if (attackedHero->getId() == heros::leon)
+		this->decreaseHealth(2);
+
+	// Professor special property
+	if (attackedHero->getId() == heros::professor)
+		this->hideness = false;
+
+	///////////////// attacker special power
 
 }

@@ -11,7 +11,8 @@ class AlphaMan : public Hero
 {
 public:
 	AlphaMan(const sf::Vector2i&);
-	void attack();
+	void attack(Hero* attackedHero, std::vector<Hero*>& attackedHeroesVec);
+
 
 private:
 

@@ -10,20 +10,6 @@
 #include <array>
 #include <vector>
 
-// heros headers
-#include "../Heros/Hero.h"
-#include "../Heros/AlphaMan.h"
-#include "../Heros/Commander.h"
-#include "../Heros/DrMarry.h"
-#include "../Heros/Giant.h"
-#include "../Heros/Kratos.h"
-#include "../Heros/Leon.h"
-#include "../Heros/MrsGhost.h"
-#include "../Heros/Professor.h"
-#include "../Heros/RickKhonsari.h"
-#include "../Heros/ROBI.h"
-#include "../Heros/Sniper.h"
-#include "../Heros/Sybil.h"
 
 class Grid
 {

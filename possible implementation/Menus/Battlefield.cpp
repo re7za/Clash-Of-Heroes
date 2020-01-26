@@ -127,16 +127,30 @@ void Battlefield::attackProcess()
 		.at(static_cast <int> (playerManager->getAttackedPlayer()))->attackedHero) << std::endl;
 	std::cout << "//////////////////////////////////" << std::endl;
 
+	/////////////Prevent multiple calling functions
+	// attacked player properties..
+	Players attackedPlayer = playerManager->getAttackedPlayer();
+	heros attackedHeroName = playerManager->playerArr.at(static_cast<us>(attackedPlayer))->attackedHero;
+	std::vector<Hero*>& attackedHeroesVec = playerManager->playerArr.at(static_cast<us>(attackedPlayer))->playerHerosVec;
+
+	// attacker player properties...
+	Players attackerPlayer = playerManager->getTheTurn();
+	heros attackerHeroName = battleCardManager.getSelectedCard();
+	std::vector<Hero*>& attackerHeroesVec = playerManager->playerArr.at(static_cast<us>(attackerPlayer))->playerHerosVec;
+
+	///////////////////////////////////////////////
 
 	// start the war
-	if (playerManager->playerArr.at(static_cast<us>(playerManager->getAttackedPlayer()))->attackedHero != heros::none)
-		for (Hero* attackerHero : playerManager->playerArr.at(static_cast<us>(playerManager->getTheTurn()))->playerHerosVec)
-			if (attackerHero->getId() == battleCardManager.getSelectedCard())
+	if (attackedHeroName != heros::none)
+		for (Hero* attackerHero : attackerHeroesVec)
+			if (attackerHero->getId() == attackerHeroName)
 			{
-				for (Hero* attackedHero : playerManager->playerArr.at(static_cast<us>(playerManager->getAttackedPlayer()))->playerHerosVec)
-					if (attackedHero->getId() == playerManager->playerArr.at(static_cast<us>(playerManager->getAttackedPlayer()))->attackedHero)
+				for (Hero* attackedHero : attackedHeroesVec)
+					if (attackedHero->getId() == attackedHeroName)
 					{
+						attackerHero->attack(attackedHero, attackedHeroesVec);
 
+						// در ادامه اینجا احتمالا باید تغییرات اعمالی روی هیرو تحت اتک.. روی کارتش هم اعمال بشه پراببلی
 						break;
 					}
 				break;
@@ -145,3 +159,42 @@ void Battlefield::attackProcess()
 }
 
 void Battlefield::changeBackground()
+{
+	switch (rand() % 8)
+	{
+	case 0:
+		backgroundTex.loadFromFile("Menus/background/game1.png");
+		grid.setFillColor(sf::Color(100, 50, 0, 255));
+		break;
+	case 1:
+		backgroundTex.loadFromFile("Menus/background/game2.png");
+		grid.setFillColor(sf::Color(100, 100, 150, 255));
+		break;
+	case 2:
+		backgroundTex.loadFromFile("Menus/background/game3.jpg");
+		grid.setFillColor(sf::Color(100, 30, 0, 255));
+		break;
+	case 3:
+		backgroundTex.loadFromFile("Menus/background/game4.png");
+		grid.setFillColor(sf::Color(70, 80, 65, 255));
+		break;
+	case 4:
+		backgroundTex.loadFromFile("Menus/background/game5.png");
+		grid.setFillColor(sf::Color(70, 50, 50, 255));
+		break;
+	case 5:
+		backgroundTex.loadFromFile("Menus/background/game5.png");
+		grid.setFillColor(sf::Color(70, 50, 50, 255));
+		break;
+	case 6:
+		backgroundTex.loadFromFile("Menus/background/game6.jpg");
+		grid.setFillColor(sf::Color(80, 0, 20, 255));
+		break;
+	case 7:
+		backgroundTex.loadFromFile("Menus/background/game6.jpg");
+		grid.setFillColor(sf::Color(80, 0, 20, 255));
+		break;
+	}
+
+	menuSpr.setTexture(backgroundTex);
+}

@@ -8,24 +8,9 @@ MrsGhost::MrsGhost(const sf::Vector2i& pos)
 	heroId = mrsGhost;		//enum heros::mrsGhost = 0
 	damage = 3;
 	health = 15;
-	//it needs to pushBack itself in a vector
 
 	// hero position in grid
 	setHeroPosition(pos);
-}
-
-void MrsGhost::attack()
-{
-	
-}
-
-const us MrsGhost::getId()
-{
-	return this->heroId;
-}
-const us MrsGhost::getDamage()
-{
-	return this->damage;
 }
 
 void MrsGhost::setHideness(bool Hideness)
@@ -36,6 +21,24 @@ void MrsGhost::setHideness(bool Hideness)
 		return;
 	}
 	else
-		this->hiding = Hideness;
+		this->hideness = Hideness;
 }
 
+
+void MrsGhost::attack(Hero* attackedHero, std::vector<Hero*>& attackedHeroesVec)
+{
+	///////////////// general hits
+	attackedHero->setHideness(false);
+	attackedHero->decreaseHealth(this->damage);
+
+	///////////////// abnormal under attack heroes
+	// Leon special property
+	if (attackedHero->getId() == heros::leon)
+		this->decreaseHealth(2);
+
+	// Professor special property
+	if (attackedHero->getId() == heros::professor)
+		this->hideness = false;
+
+	///////////////// attacker special power
+}
