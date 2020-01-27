@@ -74,6 +74,25 @@ void Grid::battlefieldClicked(const sf::Vector2i& pos, PlayerManager* playerMana
 						else
 							return;
 					}
+				
+				///////////////////////// changing and saving the tile status
+				tiles.at(i).at(j)->wasAttacked();
+				attacekPosStatus newPosStat;
+				newPosStat.pos = sf::Vector2i(i, j);
+				newPosStat.status = tiles.at(i).at(j)->getStatus();
+
+				if (newPosStat.status == tileType::L2)		// new pos..
+					playerManager->playerArr.at(static_cast<us> (playerManager->getTheTurn()))->attackPosStatucVec.push_back(newPosStat);
+
+				else if (newPosStat.status == tileType::L3)
+					for (attacekPosStatus& posStat : playerManager->playerArr.at(static_cast<us> (playerManager->getTheTurn()))->attackPosStatucVec)
+						if (posStat.pos == newPosStat.pos)
+						{
+							posStat.status = tileType::L3;
+
+							break;
+						}
+				////////////////////////////////////////////////////////////
 
 				playerManager->playerArr.at(static_cast<us> (playerManager->getTheTurn()))->setAttackPos(sf::Vector2i(i, j));
 
@@ -81,17 +100,29 @@ void Grid::battlefieldClicked(const sf::Vector2i& pos, PlayerManager* playerMana
 			}
 }
 
-void Grid::plantingHeroes(const std::vector<Hero*>& heroesVec)
+void Grid::plantingHeroes(const std::vector<Hero*>& heroesVec, const std::vector<attacekPosStatus>& attackPosStatucVec)
 {
 	// clean the all tiles spr
 	clearAllTiles();
+
+	// set the tile status
+	for (us i = 0; i < 9; i++)			// row
+		for (us j = 0; j < 9; j++)		// column
+			for (const attacekPosStatus& posStat : attackPosStatucVec)
+				if (sf::Vector2i(i, j) == posStat.pos)
+				{
+					tiles.at(i).at(j)->setStatus(posStat.status);
+
+					break;
+				}
+
 
 	// planting the hero.. its spr
 	for (Hero* hero : heroesVec)
 	{
 		tiles.at(hero->getHeroPosition().x).at(hero->getHeroPosition().y)->setHeroSpr(hero->getId());
 		tiles.at(hero->getHeroPosition().x).at(hero->getHeroPosition().y)->setScale(this->getScale());
-
+		
 		setHideness(hero);
 	}
 }
@@ -107,8 +138,12 @@ void Grid::clearAllTiles()
 {
 	for (std::array<Tile*, 9>& row : tiles)
 		for (Tile*& tile : row)
+		{
 			if (tile->IsHeroSpr())
 				tile->removeHeroSpr();
+
+			tile->setStatus(tileType::L1);
+		}
 }
 
 void Grid::clearTileAndHero(Tile*& tile ,PlayerManager* playerManager)

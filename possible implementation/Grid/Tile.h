@@ -7,8 +7,6 @@
 #include "../generalDef.h"
 #include "iostream"
 
-enum class tileType { L1, L2, L3 };
-
 class Tile
 {
 public:
@@ -16,8 +14,12 @@ public:
 
 	// tiles
 	void clicked();
-	//void setHurtTile();
 	void draw(sf::RenderWindow* window);
+
+	// tile status
+	void wasAttacked();
+	void setStatus(tileType);
+	tileType getStatus();
 
 	// sfml methodes
 	void setFillColor(const sf::Color&);

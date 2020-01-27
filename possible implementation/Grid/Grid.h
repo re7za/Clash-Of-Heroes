@@ -26,13 +26,14 @@ public:
 	// click on tiles
 	void SelectionClicked(const sf::Vector2i&, PlayerManager*, heros&);		// heroSelectionMenu version
 	void battlefieldClicked(const sf::Vector2i&, PlayerManager*, bool&);	// it's not supposed to be an overLoaded version
-	void plantingHeroes(const std::vector<Hero*>&);
+	void plantingHeroes(const std::vector<Hero*>&, const std::vector<attacekPosStatus>&);
 	void setHideness(Hero*);
 
 	// set or remove this tile
 	void clearAllTiles();
 	void clearTileAndHero(Tile*&, PlayerManager*);
 	void setThePlayerHerosVec(PlayerManager*, heros&,const sf::Vector2i&);
+	
 
 	// sfml 
 	sf::Sprite getGridSpr();

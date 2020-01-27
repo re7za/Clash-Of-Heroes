@@ -21,7 +21,12 @@
 #include <iostream>
 
 
-//#include "../Menus/MenuManager.h"
+struct attacekPosStatus
+{
+	sf::Vector2i pos;
+	tileType status = tileType::L1;
+};
+
 
 class Player
 {
@@ -42,6 +47,8 @@ public:
 
 	// player vector
 	std::vector <Hero*> playerHerosVec;
+	// attaced positions
+	std::vector<attacekPosStatus> attackPosStatucVec;
 
 	// attack pos methods
 	void setAttackPos(sf::Vector2i);

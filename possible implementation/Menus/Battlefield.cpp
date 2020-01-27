@@ -110,9 +110,11 @@ void Battlefield::turnWasChanged(Players playerTurn)
 
 	// planting new heroes
 	if (playerTurn == Players::P1)
-		grid.plantingHeroes(playerManager->playerArr.at(static_cast<us>(Players::P2))->playerHerosVec);
+		grid.plantingHeroes(playerManager->playerArr.at(static_cast<us>(Players::P2))->playerHerosVec,
+			playerManager->playerArr.at(static_cast<us>(playerTurn))->attackPosStatucVec);
 	else
-		grid.plantingHeroes(playerManager->playerArr.at(static_cast<us>(Players::P1))->playerHerosVec);
+		grid.plantingHeroes(playerManager->playerArr.at(static_cast<us>(Players::P1))->playerHerosVec,
+			playerManager->playerArr.at(static_cast<us>(playerTurn))->attackPosStatucVec);
 
 }
 
@@ -256,7 +258,7 @@ void Battlefield::attackProcess()
 				break;
 			}
 
-
+	
 	////////////////////////////// Log
 		//don't delete this comment
 	std::cout << "get the turn              : " << static_cast <int> (playerManager->getTheTurn()) << std::endl;
@@ -276,7 +278,7 @@ void Battlefield::attackProcess()
 		<< "   isHidden : " << attacker->isHidden() << "   isAlive : " << attacker->isAlive() << std::endl;
 
 	std::cout << "//////////////////////////////////" << std::endl;
-
+	/////////////////////////////////////*/
 
 }
 

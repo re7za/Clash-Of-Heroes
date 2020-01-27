@@ -3,11 +3,11 @@
 
 Tile::Tile()
 {
-	tileModTex.loadFromFile("Grid/tiles/L0.png");
+	tileModTex.loadFromFile("Grid/tiles/white_trans_x76.png");
 	tileModSpr.setTexture(tileModTex);
 	tileModSpr.getGlobalBounds();
 	// set default color : opacity = 0
-	tileModSpr.setColor(sf::Color(100, 0, 180, 0));
+	tileModSpr.setColor(sf::Color(tileModSpr.getColor().r, tileModSpr.getColor().g, tileModSpr.getColor().b, 0));
 	tileModOrginalColor = tileModSpr.getColor();
 }
 
@@ -15,6 +15,30 @@ Tile::Tile()
 void Tile::clicked()
 {
 
+}
+
+void Tile::wasAttacked()
+{
+	if (tileModStatus == tileType::L1)
+		tileModStatus = tileType::L2;
+	else if (tileModStatus == tileType::L2)
+		tileModStatus = tileType::L3;
+}
+
+void Tile::setStatus(tileType newStatus)
+{
+	tileModStatus = newStatus;
+
+	if (newStatus == tileType::L1)
+		tileModSpr.setColor(sf::Color(tileModOrginalColor.r, tileModOrginalColor.g, tileModOrginalColor.b, tileModOrginalColor.a));
+	else if (newStatus == tileType::L2)
+		tileModSpr.setColor(sf::Color(255, 150, 20, 200));
+	else if (newStatus == tileType::L3)
+		tileModSpr.setColor(sf::Color(255, 20, 30, 200));
+}
+tileType Tile::getStatus()
+{
+	return tileModStatus;
 }
 
 void Tile::draw(sf::RenderWindow* window)

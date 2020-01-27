@@ -31,6 +31,9 @@ enum class menuType {
 	battlefield
 };
 
+enum class tileType { L1, L2, L3 };
+
+
 
 
 #endif
