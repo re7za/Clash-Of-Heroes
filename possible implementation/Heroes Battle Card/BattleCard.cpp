@@ -117,12 +117,22 @@ bool BattleCard::isReady()
 void BattleCard::setAliveness(bool newAliveness)
 {
 	this->aliveness = newAliveness;
+	if (!aliveness)		// its dead
+		readiness = false;
+
 }
 
 bool BattleCard::isAlive()
 {
 	return aliveness;
 }
+
+void BattleCard::setHealthTxt(std::string health)
+{
+	healthTxt.setString(health);
+}
+
+
 
 void BattleCard::setCardSelection(bool newBool)
 {

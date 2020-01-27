@@ -108,6 +108,7 @@ void Grid::plantingHeroes(const std::vector<Hero*>& heroesVec, const std::vector
 	// set the tile status
 	for (us i = 0; i < 9; i++)			// row
 		for (us j = 0; j < 9; j++)		// column
+		{
 			for (const attacekPosStatus& posStat : attackPosStatucVec)
 				if (sf::Vector2i(i, j) == posStat.pos)
 				{
@@ -116,7 +117,8 @@ void Grid::plantingHeroes(const std::vector<Hero*>& heroesVec, const std::vector
 					break;
 				}
 
-
+		}
+	
 	// planting the hero.. its spr
 	for (Hero* hero : heroesVec)
 	{

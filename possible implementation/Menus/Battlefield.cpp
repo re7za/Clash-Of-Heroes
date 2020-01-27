@@ -68,8 +68,13 @@ void Battlefield::click(sf::Vector2i& pos, menuType& currentMenu)
 		// attack prossecc by player.attackedPlayer and battleCard.selectedCard =))
 		attackProcess();
 
+		// update card's info
+		battleCardManager.updateInfo(playerManager->playerArr.at(static_cast<us> (Players::P1))->playerHerosVec,
+			playerManager->playerArr.at(static_cast<us> (Players::P2))->playerHerosVec);
+
 		// changing the turn.. it must be after attack process
 		playerManager->changeTheTurn();
+		
 		turnWasChanged(playerManager->getTheTurn());
 	}
 

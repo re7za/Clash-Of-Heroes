@@ -91,25 +91,29 @@ void BattleCardManager::turnWasChanged(PlayerEnum p)
 	{
 		// turn off the right cards
 		for (BattleCard* card : rightCardArr)
-			card->setColor(sf::Color(card->getSprOrginalColor().r - 100, card->getSprOrginalColor().g - 100,
-				card->getSprOrginalColor().b - 100, 220));
+			if (card->isAlive())
+				card->setColor(sf::Color(card->getSprOrginalColor().r - 100, card->getSprOrginalColor().g - 100,
+					card->getSprOrginalColor().b - 100, 220));
 
 		// turn on the left cards
 		for (BattleCard* card : leftCardArr)
-			card->setColor(sf::Color(card->getSprOrginalColor().r - 60, card->getSprOrginalColor().g - 60,
-				card->getSprOrginalColor().b - 60, 255));
+			if (card->isAlive())
+				card->setColor(sf::Color(card->getSprOrginalColor().r - 60, card->getSprOrginalColor().g - 60,
+					card->getSprOrginalColor().b - 60, 255));
 	}
 	else
 	{
 		// turn off the left cards
 		for (BattleCard* card : leftCardArr)
-			card->setColor(sf::Color(card->getSprOrginalColor().r - 100, card->getSprOrginalColor().g - 100,
-				card->getSprOrginalColor().b - 100, 220));
+			if (card->isAlive())
+				card->setColor(sf::Color(card->getSprOrginalColor().r - 100, card->getSprOrginalColor().g - 100,
+					card->getSprOrginalColor().b - 100, 220));
 
 		// turn on the right cards
 		for (BattleCard* card : rightCardArr)
-			card->setColor(sf::Color(card->getSprOrginalColor().r - 60, card->getSprOrginalColor().g - 60,
-				card->getSprOrginalColor().b - 60, 255));
+			if (card->isAlive())
+				card->setColor(sf::Color(card->getSprOrginalColor().r - 60, card->getSprOrginalColor().g - 60,
+					card->getSprOrginalColor().b - 60, 255));
 	}
 }
 
@@ -264,4 +268,58 @@ heros BattleCardManager::getSelectedCard()
 heros& BattleCardManager::getSelectedCardByRefrence()
 {
 	return selectedCard;
+}
+
+void BattleCardManager::updateInfo(const std::vector<Hero*>& leftHeroesVec, const std::vector<Hero*>& rightHeroesVec)
+{
+	for (BattleCard* card : leftCardArr)
+		for (Hero* hero : leftHeroesVec)
+			if (hero->getId() == card->getCardName())
+			{
+				if (card->getCardName() != heros::mrsGhost)		// exception : Mrs.Ghost
+					card->setHealthTxt("hlt " + std::to_string(hero->getHealth()));
+				else
+				{
+					if (hero->isHidden())
+						card->setHealthTxt("hlt  X");
+					else		// she's hide
+						card->setHealthTxt("hlt " + std::to_string(hero->getHealth()));
+				}
+
+
+				if (!hero->isAlive())
+				{
+					card->setAliveness(false);
+					card->setColor(sf::Color(card->getSprOrginalColor().r - 180, card->getSprOrginalColor().g - 180,
+						card->getSprOrginalColor().b - 180, 220));
+				}
+
+				break;
+			}
+
+	for (BattleCard* card : rightCardArr)
+		for (Hero* hero : rightHeroesVec)
+			if (hero->getId() == card->getCardName())
+			{
+				if (card->getCardName() != heros::mrsGhost)		// exception : Mrs.Ghost
+					card->setHealthTxt("hlt " + std::to_string(hero->getHealth()));
+				else
+				{
+					if (hero->isHidden())
+						card->setHealthTxt("hlt  X");
+					else		// she's hide
+						card->setHealthTxt("hlt " + std::to_string(hero->getHealth()));
+				}
+
+
+				if (!hero->isAlive())
+				{
+					card->setAliveness(false);
+					card->setColor(sf::Color(card->getSprOrginalColor().r - 150, card->getSprOrginalColor().g - 150,
+						card->getSprOrginalColor().b - 150, 180));
+				}
+
+				break;
+			}
+
 }

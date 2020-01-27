@@ -20,9 +20,15 @@ void Tile::clicked()
 void Tile::wasAttacked()
 {
 	if (tileModStatus == tileType::L1)
+	{
 		tileModStatus = tileType::L2;
+		tileModSpr.setColor(sf::Color(255, 150, 20, 200));
+	}
 	else if (tileModStatus == tileType::L2)
+	{
 		tileModStatus = tileType::L3;
+		tileModSpr.setColor(sf::Color(255, 20, 30, 200));
+	}
 }
 
 void Tile::setStatus(tileType newStatus)

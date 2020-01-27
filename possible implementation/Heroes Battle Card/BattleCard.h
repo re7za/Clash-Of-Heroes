@@ -27,6 +27,7 @@ public:
 	bool isReady();
 	void setAliveness(bool);
 	bool isAlive();
+	void setHealthTxt(std::string);
 
 	// card selection
 	void setCardSelection(bool);

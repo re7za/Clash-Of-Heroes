@@ -8,6 +8,7 @@ enum class PlayerEnum {P1, P2};
 #include "SFML/Graphics.hpp"
 #include <array>
 #include <vector>
+#include "../Heros/Hero.h"
 #include "BattleCard.h"
 #include "AlphaManBattleCard.h"
 #include "CommanderBattleCard.h"
@@ -42,6 +43,9 @@ public:
 	void setSelectedCard(heros);
 	heros getSelectedCard();
 	heros& getSelectedCardByRefrence();
+
+	// update card's info
+	void updateInfo(const std::vector<Hero*>&, const std::vector<Hero*>&);
 
 private:
 
