@@ -132,8 +132,6 @@ void BattleCard::setHealthTxt(std::string health)
 	healthTxt.setString(health);
 }
 
-
-
 void BattleCard::setCardSelection(bool newBool)
 {
 	cardSelection = newBool;

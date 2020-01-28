@@ -13,8 +13,14 @@ public:
 	void setCardSpr();
 	void draw(sf::RenderWindow*);
 
+	void anotherClick();
+	us getTheClickSituation();
+	void resetTheClickSituation();
+
 private:
 
+	// special power : Instead of attacking..
+	us secondClick = 0;
 };
 
 

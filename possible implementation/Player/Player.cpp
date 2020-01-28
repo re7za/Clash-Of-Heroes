@@ -44,3 +44,4 @@ sf::Vector2i Player::getAttackPos()
 {
 	return attackPos;
 }
+

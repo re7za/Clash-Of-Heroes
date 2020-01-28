@@ -13,8 +13,12 @@ public:
 	void setCardSpr();
 	void draw(sf::RenderWindow*);
 
-private:
+	// attack for twice
+	bool getSpecialPower();
+	void ChangeSpecialPower();
 
+private:
+	bool specialPower = true;
 };
 
 

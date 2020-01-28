@@ -61,6 +61,12 @@
     <Filter Include="Source Files\Heroes Battle Card">
       <UniqueIdentifier>{fa349da2-29b8-4c92-ab08-632aef6734c6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Panel">
+      <UniqueIdentifier>{49740c9d-32e4-4ce5-8146-f1c72a5cd965}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Panel">
+      <UniqueIdentifier>{174a872c-7816-4605-bfe2-3b7942e25345}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Heros\AlphaMan.cpp">
@@ -219,6 +225,9 @@
     <ClCompile Include="Heroes Battle Card\BattleCardManager.cpp">
       <Filter>Source Files\Heroes Battle Card</Filter>
     </ClCompile>
+    <ClCompile Include="Panel\Panel.cpp">
+      <Filter>Source Files\Panel</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Menus\Menu.h">
@@ -376,6 +385,9 @@
     </ClInclude>
     <ClInclude Include="Heroes Battle Card\BattleCardManager.h">
       <Filter>Header Files\Heroes Battle Card</Filter>
+    </ClInclude>
+    <ClInclude Include="Panel\Panel.h">
+      <Filter>Header Files\Panel</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -19,9 +19,27 @@ Battlefield::Battlefield()
 		* grid.getScale().x / 2, grid.getPosition().y));
 	grid.setFillColor(sf::Color(grid.getColor().r, grid.getColor().g, grid.getColor().b, 255));
 
-	//pause button
+	// pause button
 	pauseBtn.setString("pause");
 	pauseBtn.setPosition(sf::Vector2f(sf::VideoMode::getDesktopMode().width - 150, 20));
+
+	// panel
+	panelP1.setString("Hero I");
+	panelP1.setCharacterSize(60);
+	panelP1.setOutlineThinkness(20);
+	panelP1.setOutlineColor(sf::Color(0, 0, 0, 200));
+	panelP1.setFillColor(sf::Color(255, 0, 0, 200));
+	panelP1.setOrginalFillColor(panelP1.getFillColor());
+	panelP1.setPosition(sf::Vector2f(grid.getPosition().x + 50, 25));
+
+	panelP2.setString("Hero II");
+	panelP2.setCharacterSize(60);
+	panelP2.setOutlineThinkness(20);
+	panelP2.setOutlineColor(sf::Color(0, 0, 0, 200));
+	panelP2.setFillColor(sf::Color(255, 0, 0, 200));
+	panelP2.setOrginalFillColor(panelP2.getFillColor());
+	panelP2.setPosition(sf::Vector2f(grid.getPosition().x + grid.getGlobalBound().width
+		- panelP2.getGlobalBounds().width - 50, 25));
 
 	
 	//////////////// test
@@ -29,12 +47,12 @@ Battlefield::Battlefield()
 	playerManager->playerArr.at(0)->playerHerosVec.push_back(new RickKhonsari(sf::Vector2i(2, 6)));
 	playerManager->playerArr.at(0)->playerHerosVec.push_back(new Giant(sf::Vector2i(6, 4)));
 	playerManager->playerArr.at(0)->playerHerosVec.push_back(new MrsGhost(sf::Vector2i(5, 7)));
-	playerManager->playerArr.at(0)->playerHerosVec.push_back(new Professor(sf::Vector2i(7, 1)));
-	playerManager->playerArr.at(1)->playerHerosVec.push_back(new Sybil(sf::Vector2i(4, 2)));
+	playerManager->playerArr.at(0)->playerHerosVec.push_back(new Commander(sf::Vector2i(7, 1)));
+	playerManager->playerArr.at(1)->playerHerosVec.push_back(new Kratos(sf::Vector2i(4, 2)));
 	playerManager->playerArr.at(1)->playerHerosVec.push_back(new Sniper(sf::Vector2i(3, 8)));
 	playerManager->playerArr.at(1)->playerHerosVec.push_back(new ROBI(sf::Vector2i(1, 6)));
 	playerManager->playerArr.at(1)->playerHerosVec.push_back(new Leon(sf::Vector2i(4, 4)));
-	playerManager->playerArr.at(1)->playerHerosVec.push_back(new DrMarry(sf::Vector2i(6, 7)));
+	playerManager->playerArr.at(1)->playerHerosVec.push_back(new Professor(sf::Vector2i(6, 7)));
 	//////////////////////
 	//
 	startTheBattlefield();
@@ -50,6 +68,10 @@ void Battlefield::display(sf::RenderWindow* window)
 
 	// battle grid
 	grid.draw(window);
+
+	// panel
+	panelP1.draw(window);
+	panelP2.draw(window);
 
 	// battle cards
 	battleCardManager.drawHerosCard(window);
@@ -72,14 +94,16 @@ void Battlefield::click(sf::Vector2i& pos, menuType& currentMenu)
 		battleCardManager.updateInfo(playerManager->playerArr.at(static_cast<us> (Players::P1))->playerHerosVec,
 			playerManager->playerArr.at(static_cast<us> (Players::P2))->playerHerosVec);
 
+
 		// changing the turn.. it must be after attack process
 		playerManager->changeTheTurn();
-		
 		turnWasChanged(playerManager->getTheTurn());
 	}
 
-	// cards
+	//////////////////////////////// cards
 	battleCardManager.clickHeroEachCard(pos, static_cast<PlayerEnum>(playerManager->getTheTurn()));
+
+
 }
 
 void Battlefield::mouseHover(sf::RenderWindow*)
@@ -112,6 +136,23 @@ void Battlefield::turnWasChanged(Players playerTurn)
 	// attackedHero must set to none before next attack.. and 'don't change the index'!
 	playerManager->playerArr.at(static_cast<us>(playerManager->getTheTurn()))->attackedHero = heros::none;
 	playerManager->playerArr.at(static_cast<us>(playerManager->getAttackedPlayer()))->attackedHero = heros::none;
+
+	// panel
+	if (playerTurn == Players::P1)
+	{
+		panelP1.setFillColor(sf::Color(panelP1.getOrginalFillColor().r, panelP1.getOrginalFillColor().g,
+			panelP1.getOrginalFillColor().b, panelP1.getOrginalFillColor().a));
+
+		panelP2.setFillColor(sf::Color(90, 0, 0, panelP2.getOrginalFillColor().a));
+	}
+	else
+	{
+		panelP1.setFillColor(sf::Color(90, 0, 0, panelP1.getOrginalFillColor().a));
+
+		panelP2.setFillColor(sf::Color(panelP2.getOrginalFillColor().r, panelP2.getOrginalFillColor().g,
+			panelP2.getOrginalFillColor().b, panelP2.getOrginalFillColor().a));
+	}
+	
 
 	// planting new heroes
 	if (playerTurn == Players::P1)

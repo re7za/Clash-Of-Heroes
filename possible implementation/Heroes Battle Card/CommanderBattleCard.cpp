@@ -35,3 +35,17 @@ void CommanderBattleCard::draw(sf::RenderWindow * window)
 	window->draw(healthTxt);
 	window->draw(damageTxt);
 }
+
+bool CommanderBattleCard::getSpecialPower()
+{
+	return specialPower;
+}
+
+void CommanderBattleCard::ChangeSpecialPower()
+{
+	if (specialPower == true)
+		specialPower = false;
+	else
+		specialPower = true;
+}
+

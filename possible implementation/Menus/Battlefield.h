@@ -8,6 +8,7 @@
 #include "../Grid/Grid.h"
 #include "../Button/Button.h"
 #include "../Heroes Battle Card/BattleCardManager.h"
+#include "../Panel/Panel.h"
 
 
 class Battlefield : public Menu
@@ -27,7 +28,6 @@ public:
 	void turnWasChanged(Players);
 	void attackProcess();
 	
-
 	// background img
 	void changeBackground();
 
@@ -40,10 +40,12 @@ private:
 	// battle grid
 	Grid grid;
 
+	// players turn panel
+	Panel panelP1;
+	Panel panelP2;
+
 	// button
 	Button pauseBtn;
-
-
 
 };
 

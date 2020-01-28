@@ -35,3 +35,23 @@ void GiantBattleCard::draw(sf::RenderWindow * window)
 	window->draw(healthTxt);
 	window->draw(damageTxt);
 }
+
+void GiantBattleCard::anotherClick()
+{
+	if (secondClick == 0)
+		secondClick++;
+	else if (secondClick == 1)
+		secondClick++;
+	else
+		secondClick = 0;
+}
+
+us GiantBattleCard::getTheClickSituation()
+{
+	return secondClick;
+}
+
+void GiantBattleCard::resetTheClickSituation()
+{
+	secondClick = 0;
+}

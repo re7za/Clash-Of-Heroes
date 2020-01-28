@@ -68,6 +68,7 @@
     <ClCompile Include="Menus\HeroSelectionMenu.cpp" />
     <ClCompile Include="Menus\Menu.cpp" />
     <ClCompile Include="Menus\MenuManager.cpp" />
+    <ClCompile Include="Panel\Panel.cpp" />
     <ClCompile Include="Player\Player.cpp" />
     <ClCompile Include="Player\PlayerManager.cpp" />
     <ClCompile Include="Textbox\Textbox.cpp" />
@@ -122,6 +123,7 @@
     <ClInclude Include="Menus\HeroSelectionMenu.h" />
     <ClInclude Include="Menus\Menu.h" />
     <ClInclude Include="Menus\MenuManager.h" />
+    <ClInclude Include="Panel\Panel.h" />
     <ClInclude Include="Player\Player.h" />
     <ClInclude Include="Player\PlayerManager.h" />
     <ClInclude Include="Textbox\Textbox.h" />

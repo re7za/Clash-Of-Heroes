@@ -29,9 +29,46 @@ void BattleCardManager::clickHeroEachCard(const sf::Vector2i& pos, PlayerEnum p)
 					{
 						card->setCardSelection(true);
 						selectedCard = card->getCardName();
+
+						// kratos specialPower
+						if (card->getCardName() == heros::kratos)
+						{
+							KratosBattleCard* kratosCard = dynamic_cast<KratosBattleCard*> (card);
+							if (kratosCard->getTheClickSituation() == 0)		// not selected
+								kratosCard->anotherClick();
+							else if (kratosCard->getTheClickSituation() == 1)	// selected
+								kratosCard->anotherClick();
+							else if (kratosCard->getTheClickSituation() == 2)	// green
+								kratosCard->resetTheClickSituation();
+						}
+						else
+							for (BattleCard* card : leftCardArr)
+								if (card->getCardName() == heros::kratos)
+								{
+									KratosBattleCard* kratosCard = dynamic_cast<KratosBattleCard*> (card);
+									kratosCard->resetTheClickSituation();
+								}
+						// giant specialPower
+						if (card->getCardName() == heros::giant)
+						{
+							GiantBattleCard* giantCard = dynamic_cast<GiantBattleCard*> (card);
+							if (giantCard->getTheClickSituation() == 0)
+								giantCard->anotherClick();
+							else if (giantCard->getTheClickSituation() == 1)
+								giantCard->anotherClick();
+							else if (giantCard->getTheClickSituation() == 2)
+								giantCard->resetTheClickSituation();
+						}
+						else
+							for (BattleCard* card : leftCardArr)
+								if (card->getCardName() == heros::giant)
+								{
+									GiantBattleCard* giantCard = dynamic_cast<GiantBattleCard*> (card);
+									giantCard->resetTheClickSituation();
+								}
 					}
 		}
-	else
+	else if (p == PlayerEnum::P2)
 		for(BattleCard * card : rightCardArr)
 		{
 			// set default color
@@ -43,6 +80,43 @@ void BattleCardManager::clickHeroEachCard(const sf::Vector2i& pos, PlayerEnum p)
 					{
 						card->setCardSelection(true);
 						selectedCard = card->getCardName();
+
+						// kratos specialPower
+						if (card->getCardName() == heros::kratos)
+						{
+							KratosBattleCard* kratosCard = dynamic_cast<KratosBattleCard*> (card);
+							if (kratosCard->getTheClickSituation() == 0)		// not selected
+								kratosCard->anotherClick();
+							else if (kratosCard->getTheClickSituation() == 1)	// selected
+								kratosCard->anotherClick();
+							else if (kratosCard->getTheClickSituation() == 2)	// green
+								kratosCard->resetTheClickSituation();
+						}
+						else
+							for (BattleCard* card : rightCardArr)
+								if (card->getCardName() == heros::kratos)
+								{
+									KratosBattleCard* kratosCard = dynamic_cast<KratosBattleCard*> (card);
+									kratosCard->resetTheClickSituation();
+								}
+						// giant specialPower
+						if (card->getCardName() == heros::giant)
+						{
+							GiantBattleCard* giantCard = dynamic_cast<GiantBattleCard*> (card);
+							if (giantCard->getTheClickSituation() == 0)		// not selected
+								giantCard->anotherClick();
+							else if (giantCard->getTheClickSituation() == 1)	// selected
+								giantCard->anotherClick();
+							else if (giantCard->getTheClickSituation() == 2)	// red
+								giantCard->resetTheClickSituation();
+						}
+						else
+							for (BattleCard* card : rightCardArr)
+								if (card->getCardName() == heros::giant)
+								{
+									GiantBattleCard* giantCard = dynamic_cast<GiantBattleCard*> (card);
+									giantCard->resetTheClickSituation();
+								}
 					}
 		}
 }
@@ -57,6 +131,20 @@ void BattleCardManager::hoverHeroEachCard(PlayerEnum p)
 				{				
 					card->setColor(sf::Color(card->getSprOrginalColor().r, card->getSprOrginalColor().g,
 						card->getSprOrginalColor().b, 255));
+
+					// special power
+					if (card->getCardName() == heros::kratos)
+					{
+						KratosBattleCard* kratosCard = dynamic_cast<KratosBattleCard*> (card);
+						if (kratosCard->getTheClickSituation() == 2)
+							kratosCard->setColor(sf::Color(100, 255, 100, 255));
+					}
+					if (card->getCardName() == heros::giant)
+					{
+						GiantBattleCard* giantCard = dynamic_cast<GiantBattleCard*> (card);
+						if (giantCard->getTheClickSituation() == 2)
+							giantCard->setColor(sf::Color(255, 100, 100, 255));
+					}
 				}
 				else
 				{
@@ -66,14 +154,30 @@ void BattleCardManager::hoverHeroEachCard(PlayerEnum p)
 				}
 			}
 	}
-	else
+	else if (p == PlayerEnum::P2)
 	{
 		for (BattleCard* card : rightCardArr)
 			if (card->isReady())
 			{
 				if (card->getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition())))
+				{
 					card->setColor(sf::Color(card->getSprOrginalColor().r, card->getSprOrginalColor().g,
 						card->getSprOrginalColor().b, 255));
+
+					// special power =_(
+					if (card->getCardName() == heros::kratos)
+					{
+						KratosBattleCard* kratosCard = dynamic_cast<KratosBattleCard*> (card);
+						if (kratosCard->getTheClickSituation() == 2)
+							kratosCard->setColor(sf::Color(100, 255, 100, 255));
+					}
+					if (card->getCardName() == heros::giant)
+					{
+						GiantBattleCard* giantCard = dynamic_cast<GiantBattleCard*> (card);
+						if (giantCard->getTheClickSituation() == 2)
+							giantCard->setColor(sf::Color(255, 100, 100, 255));
+					}
+				}
 				else
 				{
 					if (card->getCardName() != selectedCard)
@@ -97,11 +201,26 @@ void BattleCardManager::turnWasChanged(PlayerEnum p)
 
 		// turn on the left cards
 		for (BattleCard* card : leftCardArr)
+		{
 			if (card->isAlive())
 				card->setColor(sf::Color(card->getSprOrginalColor().r - 60, card->getSprOrginalColor().g - 60,
 					card->getSprOrginalColor().b - 60, 255));
+
+			// special power
+			if (card->getCardName() == heros::kratos)
+			{
+				KratosBattleCard* kratosCard = dynamic_cast<KratosBattleCard*> (card);
+				kratosCard->resetTheClickSituation();
+			}
+			if (card->getCardName() == heros::giant)
+			{
+				GiantBattleCard* giantCard = dynamic_cast<GiantBattleCard*> (card);
+				giantCard->resetTheClickSituation();
+			}
+		}
+
 	}
-	else
+	else if (p == PlayerEnum::P2)
 	{
 		// turn off the left cards
 		for (BattleCard* card : leftCardArr)
@@ -111,40 +230,39 @@ void BattleCardManager::turnWasChanged(PlayerEnum p)
 
 		// turn on the right cards
 		for (BattleCard* card : rightCardArr)
+		{
 			if (card->isAlive())
 				card->setColor(sf::Color(card->getSprOrginalColor().r - 60, card->getSprOrginalColor().g - 60,
 					card->getSprOrginalColor().b - 60, 255));
+
+			// special power
+			if (card->getCardName() == heros::kratos)
+			{
+				KratosBattleCard* kratosCard = dynamic_cast<KratosBattleCard*> (card);
+				kratosCard->resetTheClickSituation();
+			}
+			if (card->getCardName() == heros::giant)
+			{
+				GiantBattleCard* giantCard = dynamic_cast<GiantBattleCard*> (card);
+				giantCard->resetTheClickSituation();
+			}
+		}
 	}
 }
 
-
 void BattleCardManager::heroExtracter(std::array<heros, 10> chosenHeroes)
 {
-	/*
-	leftCardArr.at(0) = new AlphaManBattleCard();
-	leftCardArr.at(1) = new KratosBattleCard();
-	leftCardArr.at(2) = new DrMarryBattleCard();
-	leftCardArr.at(3) = new CommanderBattleCard();
-	leftCardArr.at(4) = new LeonBattleCard();
-	rightCardArr.at(0) = new MrsGhostBattleCard();
-	rightCardArr.at(1) = new ProfessorBattleCard();
-	rightCardArr.at(2) = new RickKhonsariBattleCard();
-	rightCardArr.at(3) = new SniperBattleCard();
-	rightCardArr.at(4) = new SybilBattleCard();
-	*/
-	
-
 	///////////////// test
 	chosenHeroes.at(0) = heros::alphaMan;
 	chosenHeroes.at(1) = heros::rickKhonsari;
 	chosenHeroes.at(2) = heros::giant;
 	chosenHeroes.at(3) = heros::mrsGhost;
-	chosenHeroes.at(4) = heros::professor;
-	chosenHeroes.at(5) = heros::sybil;
+	chosenHeroes.at(4) = heros::commander;
+	chosenHeroes.at(5) = heros::kratos;
 	chosenHeroes.at(6) = heros::sniper;
 	chosenHeroes.at(7) = heros::robi;
 	chosenHeroes.at(8) = heros::leon;
-	chosenHeroes.at(9) = heros::drMarry;
+	chosenHeroes.at(9) = heros::professor;
 
 	// fill the leftCardArr
 	for (us i = 0; i < 5; i++)
@@ -323,3 +441,4 @@ void BattleCardManager::updateInfo(const std::vector<Hero*>& leftHeroesVec, cons
 			}
 
 }
+
