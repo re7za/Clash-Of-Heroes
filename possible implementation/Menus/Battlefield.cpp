@@ -24,6 +24,7 @@ Battlefield::Battlefield()
 	pauseBtn.setPosition(sf::Vector2f(sf::VideoMode::getDesktopMode().width - 150, 20));
 
 	// panel
+	// panelP1
 	panelP1.setString("Hero I");
 	panelP1.setCharacterSize(60);
 	panelP1.setOutlineThinkness(20);
@@ -31,7 +32,7 @@ Battlefield::Battlefield()
 	panelP1.setFillColor(sf::Color(255, 0, 0, 200));
 	panelP1.setOrginalFillColor(panelP1.getFillColor());
 	panelP1.setPosition(sf::Vector2f(grid.getPosition().x + 50, 25));
-
+	// panelP2
 	panelP2.setString("Hero II");
 	panelP2.setCharacterSize(60);
 	panelP2.setOutlineThinkness(20);
@@ -39,7 +40,13 @@ Battlefield::Battlefield()
 	panelP2.setFillColor(sf::Color(255, 0, 0, 200));
 	panelP2.setOrginalFillColor(panelP2.getFillColor());
 	panelP2.setPosition(sf::Vector2f(grid.getPosition().x + grid.getGlobalBound().width
-		- panelP2.getGlobalBounds().width - 50, 25));
+		- panelP2.getGlobalBounds().width, 25));
+	// timer
+	timer.setFillColor(sf::Color(230, 230, 230, 255));
+	timer.setOutlineThinkness(8);
+	timer.setOutlineColor(sf::Color(20, 20, 20, 255));
+	timer.setPosition(sf::Vector2f(grid.getPosition().x + grid.getGlobalBound().width / 2
+		- timer.getGlobalBounds().width / 2 + 8, 10));
 
 	
 	//////////////// test
@@ -72,6 +79,7 @@ void Battlefield::display(sf::RenderWindow* window)
 	// panel
 	panelP1.draw(window);
 	panelP2.draw(window);
+	timer.draw(window);
 
 	// battle cards
 	battleCardManager.drawHerosCard(window);
@@ -87,6 +95,8 @@ void Battlefield::click(sf::Vector2i& pos, menuType& currentMenu)
 
 	if (isTurnChange)
 	{
+		timer.Start();
+
 		// attack process by player.attackedPlayer and battleCard.selectedCard =))
 		attackProcess();
 

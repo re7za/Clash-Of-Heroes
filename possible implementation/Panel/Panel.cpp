@@ -5,6 +5,7 @@ Panel::Panel()
 	txtFont.loadFromFile("Font/fighting spirit TBS.ttf");
 	txt.setFont(txtFont);
 	txt.setCharacterSize(30);
+	txt.setFillColor(sf::Color::White);
 	txt.setString("new text");
 }
 
@@ -54,6 +55,10 @@ void Panel::setString(const std::string& str)
 void Panel::setStyle(sf::Uint32 style)
 {
 	txt.setStyle(style);
+}
+void Panel::setOrigin(const sf::Vector2f& pos)
+{
+	txt.setOrigin(pos);
 }
 us Panel::getCharacterSize()
 {

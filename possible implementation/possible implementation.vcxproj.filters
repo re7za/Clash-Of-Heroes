@@ -67,6 +67,12 @@
     <Filter Include="Source Files\Heroes Battle Card">
       <UniqueIdentifier>{fa349da2-29b8-4c92-ab08-632aef6734c6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Timer">
+      <UniqueIdentifier>{4c82af1d-3efc-4746-a7d6-c260bccb710a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Timer">
+      <UniqueIdentifier>{52415957-1f80-405a-ba1c-200113fff36d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Heros\AlphaMan.cpp">
@@ -228,6 +234,9 @@
     <ClCompile Include="Panel\Panel.cpp">
       <Filter>Source Files\Panel</Filter>
     </ClCompile>
+    <ClCompile Include="Timer\Timer.cpp">
+      <Filter>Source Files\Timer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Menus\Menu.h">
@@ -388,6 +397,9 @@
     </ClInclude>
     <ClInclude Include="Panel\Panel.h">
       <Filter>Header Files\Panel</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer\Timer.h">
+      <Filter>Header Files\Timer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

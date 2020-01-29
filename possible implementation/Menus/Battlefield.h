@@ -9,6 +9,7 @@
 #include "../Button/Button.h"
 #include "../Heroes Battle Card/BattleCardManager.h"
 #include "../Panel/Panel.h"
+#include "../Timer/Timer.h"
 
 
 class Battlefield : public Menu
@@ -44,6 +45,7 @@ private:
 	// players turn panel
 	Panel panelP1;
 	Panel panelP2;
+	Timer timer;
 
 	// button
 	Button pauseBtn;

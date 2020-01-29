@@ -1,20 +1,30 @@
 #pragma once
 
-#ifndef PANEL_H
-#define PANEL_H
+#ifndef TIMER_H
+#define TIMER_H
 
 #include "SFML/Graphics.hpp"
-#include "../generalDef.h"
+#include "../Panel/Panel.h"
+#include <iomanip>
 
-class Panel
+struct timeT
+{
+	unsigned short minute;
+	unsigned short second;
+};
+
+class Timer
 {
 public:
-	Panel();
-	Panel(std::string str, us characterSize);
+	Timer();
 
 	void draw(sf::RenderWindow*);
-	
-	// sfml text function
+
+	// sfml clock methodes
+	sf::Time getElapsedTime();
+	sf::Time restart();
+
+	// sfml panel function
 	// setter
 	void setCharacterSize(const us&);
 	void setFillColor(const sf::Color&);
@@ -24,28 +34,29 @@ public:
 	void setPosition(const sf::Vector2f&);
 	void setString(const std::string&);
 	void setStyle(sf::Uint32 style);
-	void setOrigin(const sf::Vector2f&);
 	// getter
 	us getCharacterSize();
 	sf::Color getFillColor();
 	sf::FloatRect getGlobalBounds();
 	sf::Vector2f getPosition();
 
-	void setOrginalFillColor(const sf::Color&);
-	sf::Color getOrginalFillColor();
-
+	void Start();
 
 private:
-	
-	// background Sprite
-	sf::RectangleShape rect;
 
-	// text
-	sf::Font txtFont;
-	sf::Text txt;
+	// clock
+	sf::Clock clk;
+	void updateTimerPanel();
+	timeT Template;
 
-	sf::Color orginalColor;
+	bool start = false;
+
+	// panel
+	Panel timerPanel;
+	sf::Font clockFont;
+
+
 
 };
 
-#endif // !PANEL_H
+#endif // !TIMER_H
