@@ -13,6 +13,7 @@ public:
 	Giant(const sf::Vector2i&);
 	void attack(Hero* attackedHero, std::vector<Hero*>& attackedHeroesVec);
 
+	void HellBoyMode(Hero*);
 
 private:
 

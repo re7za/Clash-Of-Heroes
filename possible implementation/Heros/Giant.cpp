@@ -30,6 +30,12 @@ void Giant::attack(Hero* attackedHero, std::vector<Hero*>& attackedHeroesVec)
 	if (attackedHero->getId() == heros::professor)
 		this->hideness = false;
 
-	///////////////// attacker special power
+}
 
+void Giant::HellBoyMode(Hero* teammate)
+{
+	///////////////// attacker special power : Three units decrease his health and add to his teammate
+
+	this->decreaseHealth(3);
+	teammate->increaseHealth(3);
 }

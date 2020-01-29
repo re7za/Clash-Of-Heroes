@@ -27,6 +27,7 @@ public:
 	void startTheBattlefield();
 	void turnWasChanged(Players);
 	void attackProcess();
+	void helpingTeammates(std::array<heros, 2>&);
 	
 	// background img
 	void changeBackground();

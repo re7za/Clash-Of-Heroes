@@ -87,13 +87,12 @@ void Battlefield::click(sf::Vector2i& pos, menuType& currentMenu)
 
 	if (isTurnChange)
 	{
-		// attack prossecc by player.attackedPlayer and battleCard.selectedCard =))
+		// attack process by player.attackedPlayer and battleCard.selectedCard =))
 		attackProcess();
 
 		// update card's info
 		battleCardManager.updateInfo(playerManager->playerArr.at(static_cast<us> (Players::P1))->playerHerosVec,
 			playerManager->playerArr.at(static_cast<us> (Players::P2))->playerHerosVec);
-
 
 		// changing the turn.. it must be after attack process
 		playerManager->changeTheTurn();
@@ -101,9 +100,22 @@ void Battlefield::click(sf::Vector2i& pos, menuType& currentMenu)
 	}
 
 	//////////////////////////////// cards
-	battleCardManager.clickHeroEachCard(pos, static_cast<PlayerEnum>(playerManager->getTheTurn()));
+	std::array<heros, 2> AvatarModeSides = {heros::none, heros::none};	// (avatar, his teammate)
+	battleCardManager.clickHeroEachCard(pos, static_cast<PlayerEnum>(playerManager->getTheTurn()), AvatarModeSides);
 
+	if (AvatarModeSides.at(1) != heros::none)
+	{
+		// specialPower process
+		helpingTeammates(AvatarModeSides);
 
+		// update card's info
+		battleCardManager.updateInfo(playerManager->playerArr.at(static_cast<us> (Players::P1))->playerHerosVec,
+			playerManager->playerArr.at(static_cast<us> (Players::P2))->playerHerosVec);
+
+		// changing the turn.. it must be after attack process
+		playerManager->changeTheTurn();
+		turnWasChanged(playerManager->getTheTurn());
+	}
 }
 
 void Battlefield::mouseHover(sf::RenderWindow*)
@@ -326,6 +338,92 @@ void Battlefield::attackProcess()
 	std::cout << "//////////////////////////////////" << std::endl;
 	/////////////////////////////////////*/
 
+}
+
+void Battlefield::helpingTeammates(std::array<heros, 2>& AvatarModeSides)
+{
+
+	/////////////Prevent multiple calling functions
+	// attacker player properties...
+	Players attackerPlayer = playerManager->getTheTurn();
+	heros attackerHeroName = battleCardManager.getSelectedCard();
+	std::vector<Hero*>& attackerHeroesVec = playerManager->playerArr.at(static_cast<us>(attackerPlayer))->playerHerosVec;
+	sf::Vector2i attackPos = playerManager->playerArr.at(static_cast<us> (attackerPlayer))->getAttackPos();
+
+	heros& AvatarName = AvatarModeSides.at(0);
+	heros& teammateName = AvatarModeSides.at(1);
+	///////////////////////////////////////////////
+
+	std::cout << AvatarName << " " << teammateName << std::endl;
+	// 
+	switch (AvatarName)
+	{
+	case heros::kratos:
+	{
+		for (Hero* hero : attackerHeroesVec)
+			if (hero->getId() == heros::kratos)
+			{
+				Kratos* kratos = dynamic_cast<Kratos*> (hero);
+				for (Hero* teammateHero : attackerHeroesVec)
+					if (teammateHero->getId() == teammateName)
+					{
+						us i, j;
+						sf::Vector2i newPos;
+						while (true)	// generating a random empty position
+						{
+							us i = rand() % 9;
+							us j = rand() % 9;
+							newPos = sf::Vector2i(i, j);
+
+							bool repetitive = false;
+							for (Hero* ourHero : attackerHeroesVec)
+								if (ourHero->getHeroPosition() == newPos)
+								{
+									repetitive = true;
+									break;
+								}
+
+							// بعدا جعبه هارم باید ب این لیست اضافه کنی
+
+							if (repetitive == false)
+								break;
+						}
+						
+						kratos->AvatarMode(teammateHero, newPos);
+						break;
+					}
+
+				break;
+			}
+
+		break;
+	}
+
+	case heros::giant:
+	{
+		for (Hero* hero : attackerHeroesVec)
+			if (hero->getId() == heros::giant)
+			{
+				Giant* giant = dynamic_cast<Giant*> (hero);
+				for (Hero* teammateHero : attackerHeroesVec)
+					if (teammateHero->getId() == teammateName)
+					{
+						std::cout << "////////////////" << std::endl;
+						std::cout << hero->getId() << " " << teammateHero->getId() << std::endl;
+						std::cout << hero->getHealth() << " " << teammateHero->getHealth() << std::endl;
+						giant->HellBoyMode(teammateHero);
+						std::cout << hero->getHealth() << " " << teammateHero->getHealth() << std::endl;
+						std::cout << "////////////////" << std::endl;
+
+						break;
+					}
+
+				break;
+			}
+
+		break;
+	}
+	}
 }
 
 void Battlefield::changeBackground()

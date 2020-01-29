@@ -13,6 +13,7 @@ public:
 	Kratos(const sf::Vector2i&);
 	void attack(Hero* attackedHero, std::vector<Hero*>& attackedHeroesVec);
 
+	void AvatarMode(Hero*, sf::Vector2i);
 
 private:
 

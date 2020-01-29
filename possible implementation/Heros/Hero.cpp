@@ -27,6 +27,11 @@ void Hero::decreaseHealth(us damage)
 	}
 }
 
+void Hero::increaseHealth(us blood)
+{
+	this->health += blood;
+}
+
 void Hero::checkAliveness()
 {
 	if (this->health == 0 || this->health > maxHealth

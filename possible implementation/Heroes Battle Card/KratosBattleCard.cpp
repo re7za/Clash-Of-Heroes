@@ -38,12 +38,15 @@ void KratosBattleCard::draw(sf::RenderWindow * window)
 
 void KratosBattleCard::anotherClick()
 {
-	if (secondClick == 0)
-		secondClick++;
-	else if (secondClick == 1)
-		secondClick++;
-	else
-		secondClick = 0;
+	if (key == 1)
+	{
+		if (secondClick == 0)
+			secondClick++;
+		else if (secondClick == 1)
+			secondClick++;
+		else
+			secondClick = 0;
+	}
 }
 
 us KratosBattleCard::getTheClickSituation()
@@ -55,3 +58,9 @@ void KratosBattleCard::resetTheClickSituation()
 {
 	secondClick = 0;
 }
+
+void KratosBattleCard::usingKey()
+{
+	key = 0;
+}
+

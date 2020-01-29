@@ -38,12 +38,15 @@ void GiantBattleCard::draw(sf::RenderWindow * window)
 
 void GiantBattleCard::anotherClick()
 {
-	if (secondClick == 0)
-		secondClick++;
-	else if (secondClick == 1)
-		secondClick++;
-	else
-		secondClick = 0;
+	if (key == 1)
+	{
+		if (secondClick == 0)
+			secondClick++;
+		else if (secondClick == 1)
+			secondClick++;
+		else
+			secondClick = 0;
+	}
 }
 
 us GiantBattleCard::getTheClickSituation()
@@ -55,3 +58,9 @@ void GiantBattleCard::resetTheClickSituation()
 {
 	secondClick = 0;
 }
+
+void GiantBattleCard::usingKey()
+{
+	key = 0;
+}
+

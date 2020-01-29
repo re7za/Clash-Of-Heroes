@@ -19,6 +19,7 @@ public:
 	us getHealth();
 
 	void decreaseHealth(us damage);
+	void increaseHealth(us blood);
 	//it isn't unsigned.. maybe sometimes we need it to be an increaseHealth() =)
 	void checkAliveness();	//set the aliveness to false if getHealth == 0
 	void setAliveness(bool);	//to die suddenly.. for ex by sniper

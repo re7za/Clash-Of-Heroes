@@ -16,11 +16,13 @@ public:
 	void anotherClick();
 	us getTheClickSituation();
 	void resetTheClickSituation();
+	void usingKey();
 
 private:
 
 	// special power : Instead of attacking..
 	us secondClick = 0;
+	us key = 1;
 };
 
 
