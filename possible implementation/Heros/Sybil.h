@@ -13,10 +13,8 @@ public:
 	Sybil(const sf::Vector2i&);
 	void attack(Hero* attackedHero, std::vector<Hero*>& attackedHeroesVec);
 
-	us getSpecialPower();
-	void specialPower__();
 private:
-	us specialPower = 3;
+
 
 };
 

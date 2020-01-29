@@ -33,6 +33,8 @@ public:
 	void clearAllTiles();
 	void clearTileAndHero(Tile*&, PlayerManager*);
 	void setThePlayerHerosVec(PlayerManager*, heros&,const sf::Vector2i&);
+
+	tileType getTileStatus(const sf::Vector2i&);
 	
 
 	// sfml 

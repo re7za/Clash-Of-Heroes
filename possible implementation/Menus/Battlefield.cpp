@@ -50,7 +50,7 @@ Battlefield::Battlefield()
 
 	
 	//////////////// test
-	playerManager->playerArr.at(0)->playerHerosVec.push_back(new AlphaMan(sf::Vector2i(3, 5)));
+	playerManager->playerArr.at(0)->playerHerosVec.push_back(new Sybil(sf::Vector2i(3, 5)));
 	playerManager->playerArr.at(0)->playerHerosVec.push_back(new RickKhonsari(sf::Vector2i(2, 6)));
 	playerManager->playerArr.at(0)->playerHerosVec.push_back(new Giant(sf::Vector2i(6, 4)));
 	playerManager->playerArr.at(0)->playerHerosVec.push_back(new MrsGhost(sf::Vector2i(5, 7)));
@@ -268,7 +268,6 @@ void Battlefield::attackProcess()
 									if (repetitive == false)
 									{
 										_tiles.push_back(tile);
-										std::cout << tile.x << " " << tile.y << std::endl;
 
 										for (Hero* attackeddd : attackedHeroesVec)
 											if (attackeddd->getHeroPosition() == tile)
@@ -283,7 +282,6 @@ void Battlefield::attackProcess()
 										continue;
 									}
 								}
-								std::cout << std::endl;
 							}
 
 							break;
@@ -299,41 +297,33 @@ void Battlefield::attackProcess()
 			if (attackerHero->getId() == attackerHeroName)
 			{
 				Sybil* sybil = dynamic_cast<Sybil*>(attackerHero);
-				if (sybil->getSpecialPower() > 0)
-					if (sybil->getSpecialPower() == 2)
+				for (Hero* attacked : attackedHeroesVec)
+					if (attacked->getId() == attackedHeroName)	// checks whether the attacking is successful or not
 					{
-						sybil->specialPower__();
+						bool key = true;
+						while (key)
+						{
+							us deads = 0;
+							for (Hero* deadHeroes : attackedHeroesVec)
+								if (deadHeroes->getId() != attackedHeroName)
+									if (!deadHeroes->isAlive())
+										deads++;
+
+							if (deads == 4)
+								key = false;
+
+							//
+							us r = rand() % 5;
+							if (attackedHeroesVec.at(r)->isAlive())
+								if (attackedHeroesVec.at(r)->getId() != attackedHeroName)
+								{
+									attackedHeroesVec.at(r)->decreaseHealth(static_cast<us>(attacked->getDamage() / 2) + 1);
+									key = false;
+								}
+						}
+
 						break;
 					}
-
-					for (Hero* attacked : attackedHeroesVec)
-						if (attacked->getId() == attackedHeroName)	// checks whether the attacking is successful or not
-						{
-							bool key = true;
-							while (key)
-							{
-								us deads = 0;
-								for (Hero* deadHeroes : attackedHeroesVec)
-									if (deadHeroes->getId() != attackedHeroName)
-										if (!deadHeroes->isAlive())
-											deads++;
-
-								if (deads == 4)
-									key = false;
-
-								//
-								us r = rand() % 5;
-								if (attackedHeroesVec.at(r)->isAlive())
-									if (attackedHeroesVec.at(r)->getId() != attackedHeroName)
-									{
-										attackedHeroesVec.at(r)->decreaseHealth(attacked->getDamage());
-										key = false;
-									}
-							}
-
-							sybil->specialPower__();
-							break;
-						}
 				break;
 			}
 
@@ -386,13 +376,16 @@ void Battlefield::helpingTeammates(std::array<heros, 2>& AvatarModeSides)
 					{
 						us i, j;
 						sf::Vector2i newPos;
+						us antiHang = 100;
 						while (true)	// generating a random empty position
 						{
-							us i = rand() % 9;
-							us j = rand() % 9;
+							antiHang--;
+							us i = rand() % 2;
+							us j = rand() % 2;
 							newPos = sf::Vector2i(i, j);
 
 							bool repetitive = false;
+							bool redZone = false;
 							for (Hero* ourHero : attackerHeroesVec)
 								if (ourHero->getHeroPosition() == newPos)
 								{
@@ -400,9 +393,25 @@ void Battlefield::helpingTeammates(std::array<heros, 2>& AvatarModeSides)
 									break;
 								}
 
+							for (const attacekPosStatus& tileStatus : playerManager->playerArr
+								.at(static_cast<us> (playerManager->getAttackedPlayer()))->attackPosStatucVec)
+							{
+								if (newPos == tileStatus.pos)
+									if (tileStatus.status == tileType::L3)
+									{
+										redZone = true;
+										break;
+									}
+							
+							}
+
 							// بعدا جعبه هارم باید ب این لیست اضافه کنی
 
-							if (repetitive == false)
+							if (repetitive == false && redZone == false)
+								break;
+
+							// preventing infinitive loop
+							if (antiHang == 0)
 								break;
 						}
 						

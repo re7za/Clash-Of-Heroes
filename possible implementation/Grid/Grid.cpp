@@ -225,6 +225,12 @@ void Grid::setThePlayerHerosVec(PlayerManager* playerManager, heros& heroCard,co
 	}
 }
 
+tileType Grid::getTileStatus(const sf::Vector2i& pos)
+{
+	return tiles.at(pos.x).at(pos.y)->getStatus();
+}
+
+
 // tiles
 void Grid::draw(sf::RenderWindow* window)
 {
