@@ -199,7 +199,7 @@ void Battlefield::attackProcess()
 	heros attackerHeroName = battleCardManager.getSelectedCard();
 	std::vector<Hero*>& attackerHeroesVec = playerManager->playerArr.at(static_cast<us>(attackerPlayer))->playerHerosVec;
 	sf::Vector2i attackPos = playerManager->playerArr.at(static_cast<us> (attackerPlayer))->getAttackPos();
-	///////////////////////////////////////////////
+	/////////////////////////////////////////////*/
 
 	// start the war
 	//////////////////// basic attack
@@ -246,35 +246,46 @@ void Battlefield::attackProcess()
 			if (attackerHero->getId() == attackerHeroName)
 			{
 				RickKhonsari* ramin = dynamic_cast<RickKhonsari*>(attackerHero);
-				if (ramin->getSpecialShots() > 0)
 					for (Hero* attacked : attackedHeroesVec)
 						if (attacked->getId() == attackedHeroName)	// checks whether the attacking is successful or not
 						{
 							if (attacked->getHeroPosition() == attackPos)
 							{
 								// special power starts here =|
-								sf::Vector2i tile1 = sf::Vector2i(rand() % 9, rand() % 9);
-								sf::Vector2i tile2;
-								while (true)
+								sf::Vector2i tile;
+								std::vector<sf::Vector2i> _tiles;
+								for (us i = 0; i < ramin->getSpecialTimes(); i++)
 								{
-									tile2 = sf::Vector2i(rand() % 9, rand() % 9);
-									if (tile2 != tile1)
-										break;
-								}
-								// we have a couple different position now
+									tile = sf::Vector2i(rand() % 9, rand() % 9);
+									bool repetitive = false;
+									for (sf::Vector2i& _tile : _tiles)
+										if (tile == _tile)
+										{
+											repetitive = true;
+											break;
+										}
 
-								for (Hero* attackeddd : attackedHeroesVec)
-									if (attackeddd->getHeroPosition() == tile1
-										|| attackeddd->getHeroPosition() == tile2)
+									if (repetitive == false)
 									{
-										attackeddd->setHideness(false);
-										// جلوه های گرافیکی هم میخواد
+										_tiles.push_back(tile);
+										std::cout << tile.x << " " << tile.y << std::endl;
+
+										for (Hero* attackeddd : attackedHeroesVec)
+											if (attackeddd->getHeroPosition() == tile)
+											{
+												attackeddd->setHideness(false);
+												// جلوه های گرافیکی هم میخواد
+											}
 									}
+									else
+									{
+										i--;
+										continue;
+									}
+								}
+								std::cout << std::endl;
 							}
 
-
-							ramin->specialShots__();
-							std::cout << ramin->getSpecialShots() << std::endl;
 							break;
 						}
 					
@@ -327,7 +338,7 @@ void Battlefield::attackProcess()
 			}
 
 	
-	////////////////////////////// Log
+	/*///////////////////////////// Log
 		//don't delete this comment
 	std::cout << "get the turn              : " << static_cast <int> (playerManager->getTheTurn()) << std::endl;
 	std::cout << "get attacked player       : " << static_cast <int> (playerManager->getAttackedPlayer()) << std::endl;
@@ -467,3 +478,45 @@ void Battlefield::changeBackground()
 
 	menuSpr.setTexture(backgroundTex);
 }
+
+
+
+/*
+
+								sf::Vector2i tile2;
+								sf::Vector2i tile3;
+								sf::Vector2i tile4;
+								sf::Vector2i tile5;
+								while (true)
+								{
+									tile2 = sf::Vector2i(rand() % 9, rand() % 9);
+									if (tile2 != tile1)
+									{
+										while (true)
+										{
+											tile3 = sf::Vector2i(rand() % 9, rand() % 9);
+											if (tile3 != tile1 && tile3 != tile2)
+											{
+												while (true)
+												{
+													tile4 = sf::Vector2i(rand() % 9, rand() % 9);
+													if (tile4 != tile1 && tile4 != tile2 && tile4 != tile3)
+													{
+														while (true)
+														{
+															tile5 = sf::Vector2i(rand() % 9, rand() % 9);
+															if (tile5 != tile1 && tile5 != tile2 && tile5 != tile3 && tile5 != tile4)
+																break;
+
+														}
+														break;
+													}
+												}
+												break;
+											}
+										}
+										break;
+									}
+								}
+								// we have three different position now
+*/

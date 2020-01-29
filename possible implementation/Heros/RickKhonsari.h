@@ -13,11 +13,10 @@ public:
 	RickKhonsari(const sf::Vector2i&);
 	void attack(Hero* attackedHero, std::vector<Hero*>& attackedHeroesVec);
 
-	us getSpecialShots();
-	void specialShots__();
+	us getSpecialTimes();
 
 private:
-	us specialShots = 3;		// ramin special power
+	us specialTimes = 5;
 
 };
 

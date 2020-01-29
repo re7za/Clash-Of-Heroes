@@ -50,7 +50,7 @@ int main()
 				
 		}
 		
-		window.clear(sf::Color::White);
+		window.clear();
 		///////// draw your trashes here
 		menuManager.displayCurrentMenu(&window);
 		////////////////////////////////
