@@ -359,6 +359,7 @@ void Tile::setHeroSpr(const heros& heroName)
 }
 void Tile::removeHeroSpr()
 {
+	currentHero = heros::none;
 	delete heroTex;
 	delete heroSpr;
 	isHeroSpr = false;

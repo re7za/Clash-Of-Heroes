@@ -345,16 +345,12 @@ void Battlefield::helpingTeammates(std::array<heros, 2>& AvatarModeSides)
 
 	/////////////Prevent multiple calling functions
 	// attacker player properties...
-	Players attackerPlayer = playerManager->getTheTurn();
-	heros attackerHeroName = battleCardManager.getSelectedCard();
-	std::vector<Hero*>& attackerHeroesVec = playerManager->playerArr.at(static_cast<us>(attackerPlayer))->playerHerosVec;
-	sf::Vector2i attackPos = playerManager->playerArr.at(static_cast<us> (attackerPlayer))->getAttackPos();
+	std::vector<Hero*>& attackerHeroesVec = playerManager->playerArr.at(static_cast<us>(playerManager->getTheTurn()))->playerHerosVec;
 
 	heros& AvatarName = AvatarModeSides.at(0);
 	heros& teammateName = AvatarModeSides.at(1);
 	///////////////////////////////////////////////
 
-	std::cout << AvatarName << " " << teammateName << std::endl;
 	// 
 	switch (AvatarName)
 	{
@@ -408,12 +404,7 @@ void Battlefield::helpingTeammates(std::array<heros, 2>& AvatarModeSides)
 				for (Hero* teammateHero : attackerHeroesVec)
 					if (teammateHero->getId() == teammateName)
 					{
-						std::cout << "////////////////" << std::endl;
-						std::cout << hero->getId() << " " << teammateHero->getId() << std::endl;
-						std::cout << hero->getHealth() << " " << teammateHero->getHealth() << std::endl;
 						giant->HellBoyMode(teammateHero);
-						std::cout << hero->getHealth() << " " << teammateHero->getHealth() << std::endl;
-						std::cout << "////////////////" << std::endl;
 
 						break;
 					}
