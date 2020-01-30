@@ -11,8 +11,8 @@ GiantBattleCard::GiantBattleCard()
 	SprOrginalColor = heroCardSpr.getColor();
 
 	// hero name
-	heroNameTxt.setString("Giant");
-	heroNameTxt.setCharacterSize(22);
+	heroNameTxt.setString("HellBoy");
+	heroNameTxt.setCharacterSize(18);
 	heroNameTxt.setFillColor(sf::Color(244, 55, 53));
 
 	//hero health

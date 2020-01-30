@@ -237,6 +237,9 @@
     <ClCompile Include="Timer\Timer.cpp">
       <Filter>Source Files\Timer</Filter>
     </ClCompile>
+    <ClCompile Include="Menus\MainMenu.cpp">
+      <Filter>Source Files\menus</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Menus\Menu.h">
@@ -400,6 +403,9 @@
     </ClInclude>
     <ClInclude Include="Timer\Timer.h">
       <Filter>Header Files\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="Menus\MainMenu.h">
+      <Filter>Header Files\menus</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

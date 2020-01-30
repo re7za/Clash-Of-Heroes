@@ -5,10 +5,11 @@ using namespace std;
 
 MenuManager::MenuManager()
 {
-	currentMenu = menuType::battlefield;	// for now
+	currentMenu = menuType::mainMenu;	// for now
 	_currentMenu = currentMenu;
 	menuVec.push_back(&heroSelectionMenu);
 	menuVec.push_back(&battlefield);
+	menuVec.push_back(&mainMenu);
 }
 
 void MenuManager::clickPos(sf::Vector2i pos)

@@ -14,7 +14,6 @@ public:
 
 	virtual void display(sf::RenderWindow*) = 0;
 	virtual void mouseHover(sf::RenderWindow*) = 0;
-	//virtual void mousePosition(sf::Vector2i&) = 0;
 	virtual void click(sf::Vector2i&, menuType&) = 0;
 	menuType getMenuName();
 	menuType getPreviousMenu();

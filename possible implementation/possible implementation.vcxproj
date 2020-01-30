@@ -66,6 +66,7 @@
     <ClCompile Include="Clash of Heroes.cpp" />
     <ClCompile Include="Menus\Battlefield.cpp" />
     <ClCompile Include="Menus\HeroSelectionMenu.cpp" />
+    <ClCompile Include="Menus\MainMenu.cpp" />
     <ClCompile Include="Menus\Menu.cpp" />
     <ClCompile Include="Menus\MenuManager.cpp" />
     <ClCompile Include="Panel\Panel.cpp" />
@@ -122,6 +123,7 @@
     <ClInclude Include="Heros\Sybil.h" />
     <ClInclude Include="Menus\Battlefield.h" />
     <ClInclude Include="Menus\HeroSelectionMenu.h" />
+    <ClInclude Include="Menus\MainMenu.h" />
     <ClInclude Include="Menus\Menu.h" />
     <ClInclude Include="Menus\MenuManager.h" />
     <ClInclude Include="Panel\Panel.h" />

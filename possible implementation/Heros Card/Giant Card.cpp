@@ -11,9 +11,9 @@ GiantCard::GiantCard()
 	SprOrginalColor = heroCardSpr.getColor();
 
 	// hero name
-	heroNameTxt.setString("Giant");
-	heroNameTxt.setCharacterSize(20);
-	heroNameTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 48,
+	heroNameTxt.setString("HellBoy");
+	heroNameTxt.setCharacterSize(17);
+	heroNameTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 38,
 		heroCardSpr.getPosition().y + 15));
 	heroNameTxt.setFillColor(sf::Color(244, 55, 53));
 

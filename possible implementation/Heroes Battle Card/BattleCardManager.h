@@ -4,8 +4,6 @@
 #define BATTLECARDMANAGER_H
 
 enum class PlayerEnum {P1, P2};
-enum class queue {h1, h2, h3, h4, h5, none};
-
 #include "SFML/Graphics.hpp"
 #include <array>
 #include <vector>

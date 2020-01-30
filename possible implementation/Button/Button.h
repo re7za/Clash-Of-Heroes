@@ -18,6 +18,7 @@ public:
 	void setPosition(const sf::Vector2f&);
 	void setCharacterSize(unsigned short size);
 	void setString(const sf::String&);
+	void setFont(const sf::Font&);
 	sf::FloatRect getGlobalBound();
 	const sf::Vector2f& getPosition();
 	unsigned short getCharacterSize();

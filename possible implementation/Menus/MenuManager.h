@@ -7,6 +7,7 @@
 #include "Menu.h"
 #include "HeroSelectionMenu.h"
 #include "Battlefield.h"
+#include "MainMenu.h"
 #include "../Player/PlayerManager.h"
 #include <vector>
 
@@ -30,6 +31,8 @@ private:
 	std::vector <Menu*> menuVec;
 	HeroSelectionMenu heroSelectionMenu;
 	Battlefield battlefield;
+	MainMenu mainMenu;
+
 
 
 	// منو منیجر کارش اینه ک منو هارو مدیریت کنه..

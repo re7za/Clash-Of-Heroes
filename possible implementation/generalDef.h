@@ -26,6 +26,7 @@ enum heros
 };
 
 enum class menuType {
+	none,
 	mainMenu,
 	heroSelection,
 	battlefield

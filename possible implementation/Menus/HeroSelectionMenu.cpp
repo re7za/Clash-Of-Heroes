@@ -10,7 +10,7 @@ HeroSelectionMenu::HeroSelectionMenu()
 	previousMenu = menuType::mainMenu;
 
 	// texture
-	backgroundTex.loadFromFile("Menus/background/mainMenu.png");
+	backgroundTex.loadFromFile("Menus/background/MainMenu.jpg");
 	// sprite
 	menuSpr.setTexture(backgroundTex);
 
@@ -26,10 +26,11 @@ HeroSelectionMenu::HeroSelectionMenu()
 	//////////// back button.. nameBox and...
 	// back button
 	backBtn.setString("back");
-	backBtn.setPosition(sf::Vector2f(sf::VideoMode::getDesktopMode().width - 150, 20));
+	backBtn.setCharacterSize(60);
+	backBtn.setPosition(sf::Vector2f(sf::VideoMode::getDesktopMode().width - 180, 10));
 	// next button
 	nextBtn.setString("done");
-	nextBtn.setPosition(sf::Vector2f(sf::VideoMode::getDesktopMode().width - 150, 90));
+	nextBtn.setPosition(sf::Vector2f(sf::VideoMode::getDesktopMode().width - 180, 80));
 
 	// name box
 	nameRect.setFillColor(sf::Color(20, 20, 20, 200));
@@ -113,7 +114,8 @@ void HeroSelectionMenu::click(sf::Vector2i& pos, menuType& currentMenu)
 	// backButton
 	if (backBtn.getGlobalBound().contains(static_cast<sf::Vector2f>(pos)))
 	{
-		// هر کاری ک باید برای دکمه بک باشه
+		// just for now
+		currentMenu = menuType::mainMenu;
 	}
 
 	// nextButton
@@ -156,29 +158,6 @@ void HeroSelectionMenu::click(sf::Vector2i& pos, menuType& currentMenu)
 		}
 	}
 }
-
-/*	// هزینه صدا زدن هر تابع بیشتر از پایین اومدن خوانایی کده
-void HeroSelectionMenu::clickNameBox(sf::Vector2i& pos)
-{
-	if (pos.x >= nameRectLeft - nameRectWidth && pos.x <= nameRectLeft + nameRectWidth
-		&& pos.y >= nameRectTop && pos.y <= nameRectTop + nameRectHeight)
-	{
-		if (!nameBox.isItSelected())
-		{
-			nameRect.setFillColor(sf::Color(50, 50, 50, 230));
-			nameBox.setSelected(true);
-		}
-	}
-	else
-	{
-		if (nameBox.isItSelected())
-		{
-			nameRect.setFillColor(sf::Color(20, 20, 20, 200));
-			nameBox.setSelected(false);
-		}
-	}
-}
-*/
 
 // utility functions of mouse envents and positions
 void HeroSelectionMenu::mouseHover(sf::RenderWindow* window)

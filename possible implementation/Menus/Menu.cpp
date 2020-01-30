@@ -28,8 +28,10 @@ void Menu::setGamelabel()
 	gameLabelFont.loadFromFile("Font/fighting spirit TBS_bold.ttf");
 	gamelabel.setFont(gameLabelFont);
 	gamelabel.setString("     Clash Of\nHeroes");
-	gamelabel.setFillColor(sf::Color(255, 255, 255, 220));
+	gamelabel.setFillColor(sf::Color(180, 33, 51, 220));
 	gamelabel.setCharacterSize(100);
+	gamelabel.setOutlineThickness(4);
+	gamelabel.setOutlineColor(sf::Color(20, 20, 20, 255));
 }
 
 // player manager

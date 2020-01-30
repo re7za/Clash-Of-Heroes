@@ -21,7 +21,8 @@ Battlefield::Battlefield()
 
 	// pause button
 	pauseBtn.setString("pause");
-	pauseBtn.setPosition(sf::Vector2f(sf::VideoMode::getDesktopMode().width - 150, 20));
+	pauseBtn.setCharacterSize(60);
+	pauseBtn.setPosition(sf::Vector2f(sf::VideoMode::getDesktopMode().width - 180, 10));
 
 	// panel
 	// panelP1
