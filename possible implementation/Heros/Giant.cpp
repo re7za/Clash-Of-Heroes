@@ -7,7 +7,7 @@ Giant::Giant(const sf::Vector2i& pos)
 {
 	heroId = giant;
 	damage = 4;
-	health = 20;
+	health = 16;
 	//it needs to pushBack itself in a vector
 
 	// hero position in grid

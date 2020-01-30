@@ -15,6 +15,7 @@ void BattleCardManager::drawHerosCard(sf::RenderWindow* window)
 
 void BattleCardManager::clickHeroEachCard(const sf::Vector2i& pos, PlayerEnum p, std::array<heros, 2>& AvatarMode)
 {
+	heros roleHero = heros::none;
 	// checking wether a card is clicked
 	selectedCard = heros::none;
 	if (p == PlayerEnum::P1)
@@ -51,6 +52,7 @@ void BattleCardManager::clickHeroEachCard(const sf::Vector2i& pos, PlayerEnum p,
 										AvatarMode.at(0) = heros::kratos;
 										AvatarMode.at(1) = card->getCardName();
 										kratosCard->usingKey();
+										selectedCard = heros::kratos;
 										return;
 									}
 
@@ -78,6 +80,7 @@ void BattleCardManager::clickHeroEachCard(const sf::Vector2i& pos, PlayerEnum p,
 										AvatarMode.at(0) = heros::giant;
 										AvatarMode.at(1) = card->getCardName();
 										giantCard->usingKey();
+										selectedCard = heros::giant;
 										return;
 									}
 
@@ -121,6 +124,7 @@ void BattleCardManager::clickHeroEachCard(const sf::Vector2i& pos, PlayerEnum p,
 										AvatarMode.at(0) = heros::kratos;
 										AvatarMode.at(1) = card->getCardName();
 										kratosCard->usingKey();
+										selectedCard = heros::kratos;
 										return;
 									}
 
@@ -149,6 +153,7 @@ void BattleCardManager::clickHeroEachCard(const sf::Vector2i& pos, PlayerEnum p,
 										AvatarMode.at(0) = heros::giant;
 										AvatarMode.at(1) = card->getCardName();
 										giantCard->usingKey();
+										selectedCard = heros::giant;
 										return;
 									}
 
@@ -227,10 +232,24 @@ void BattleCardManager::hoverHeroEachCard(PlayerEnum p)
 }
 void BattleCardManager::turnWasChanged(PlayerEnum p)
 {
-	selectedCard = heros::none;
-
 	if (p == PlayerEnum::P1)
 	{
+		// right queue
+		for (BattleCard* card : rightCardArr)
+			if (card->getCardName() == selectedCard)
+				card->setReadiness(false);
+		// ringt queue
+		us notReadies = 0;
+		for (BattleCard* card : leftCardArr)
+			if (card->isReady() == false)
+				notReadies++;
+
+		if (notReadies == 5)
+			for (BattleCard* card : leftCardArr)
+				card->setReadiness(true);
+
+			
+
 		// turn off the right cards
 		for (BattleCard* card : rightCardArr)
 			if (card->isAlive())
@@ -240,6 +259,8 @@ void BattleCardManager::turnWasChanged(PlayerEnum p)
 		// turn on the left cards
 		for (BattleCard* card : leftCardArr)
 		{
+			
+
 			if (card->isAlive())
 				card->setColor(sf::Color(card->getSprOrginalColor().r - 60, card->getSprOrginalColor().g - 60,
 					card->getSprOrginalColor().b - 60, 255));
@@ -260,6 +281,21 @@ void BattleCardManager::turnWasChanged(PlayerEnum p)
 	}
 	else if (p == PlayerEnum::P2)
 	{
+		// left queue
+		for (BattleCard* card : leftCardArr)
+			if (card->getCardName() == selectedCard)
+				card->setReadiness(false);
+		// ringt queue
+		us notReadies = 0;
+		for (BattleCard* card : rightCardArr)
+			if (card->isReady() == false)
+				notReadies++;
+
+		if (notReadies == 5)
+			for (BattleCard* card : rightCardArr)
+				card->setReadiness(true);
+
+
 		// turn off the left cards
 		for (BattleCard* card : leftCardArr)
 			if (card->isAlive())
@@ -286,6 +322,9 @@ void BattleCardManager::turnWasChanged(PlayerEnum p)
 			}
 		}
 	}
+
+	///////////////////////////
+	selectedCard = heros::none;
 }
 
 void BattleCardManager::heroExtracter(std::array<heros, 10> chosenHeroes)

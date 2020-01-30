@@ -18,7 +18,7 @@ GiantCard::GiantCard()
 	heroNameTxt.setFillColor(sf::Color(244, 55, 53));
 
 	//hero health
-	healthTxt.setString("hlt 20");
+	healthTxt.setString("hlt 16");
 
 	//hero health
 	damageTxt.setString("dmg 4");

@@ -108,7 +108,7 @@ void Battlefield::click(sf::Vector2i& pos, menuType& currentMenu)
 		playerManager->changeTheTurn();
 		turnWasChanged(playerManager->getTheTurn());
 	}
-
+	
 	//////////////////////////////// cards
 	std::array<heros, 2> AvatarModeSides = {heros::none, heros::none};	// (avatar, his teammate)
 	battleCardManager.clickHeroEachCard(pos, static_cast<PlayerEnum>(playerManager->getTheTurn()), AvatarModeSides);
@@ -308,7 +308,6 @@ void Battlefield::attackProcess()
 								if (deadHeroes->getId() != attackedHeroName)
 									if (!deadHeroes->isAlive())
 										deads++;
-
 							if (deads == 4)
 								key = false;
 
@@ -316,10 +315,12 @@ void Battlefield::attackProcess()
 							us r = rand() % 5;
 							if (attackedHeroesVec.at(r)->isAlive())
 								if (attackedHeroesVec.at(r)->getId() != attackedHeroName)
-								{
-									attackedHeroesVec.at(r)->decreaseHealth(static_cast<us>(attacked->getDamage() / 2) + 1);
-									key = false;
-								}
+									if (rand() % 2 == 1)			// half chance
+									{
+										// with about half power
+										attackedHeroesVec.at(r)->decreaseHealth(static_cast<us>(attacked->getDamage() / 2) + 1);
+										key = false;
+									}
 						}
 
 						break;
@@ -449,7 +450,7 @@ void Battlefield::helpingTeammates(std::array<heros, 2>& AvatarModeSides)
 
 void Battlefield::changeBackground()
 {
-	switch (rand() % 8)
+	switch (2)
 	{
 	case 0:
 		backgroundTex.loadFromFile("Menus/background/game1.png");
@@ -460,8 +461,8 @@ void Battlefield::changeBackground()
 		grid.setFillColor(sf::Color(100, 100, 150, 255));
 		break;
 	case 2:
-		backgroundTex.loadFromFile("Menus/background/game3.jpg");
-		grid.setFillColor(sf::Color(100, 30, 0, 255));
+		backgroundTex.loadFromFile("Menus/background/game1.png");
+		grid.setFillColor(sf::Color(100, 50, 0, 255));
 		break;
 	case 3:
 		backgroundTex.loadFromFile("Menus/background/game4.png");
@@ -488,44 +489,3 @@ void Battlefield::changeBackground()
 	menuSpr.setTexture(backgroundTex);
 }
 
-
-
-/*
-
-								sf::Vector2i tile2;
-								sf::Vector2i tile3;
-								sf::Vector2i tile4;
-								sf::Vector2i tile5;
-								while (true)
-								{
-									tile2 = sf::Vector2i(rand() % 9, rand() % 9);
-									if (tile2 != tile1)
-									{
-										while (true)
-										{
-											tile3 = sf::Vector2i(rand() % 9, rand() % 9);
-											if (tile3 != tile1 && tile3 != tile2)
-											{
-												while (true)
-												{
-													tile4 = sf::Vector2i(rand() % 9, rand() % 9);
-													if (tile4 != tile1 && tile4 != tile2 && tile4 != tile3)
-													{
-														while (true)
-														{
-															tile5 = sf::Vector2i(rand() % 9, rand() % 9);
-															if (tile5 != tile1 && tile5 != tile2 && tile5 != tile3 && tile5 != tile4)
-																break;
-
-														}
-														break;
-													}
-												}
-												break;
-											}
-										}
-										break;
-									}
-								}
-								// we have three different position now
-*/
