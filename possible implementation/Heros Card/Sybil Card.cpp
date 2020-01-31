@@ -11,10 +11,10 @@ SybilCard::SybilCard()
 	SprOrginalColor = heroCardSpr.getColor();
 
 	// hero name
-	heroNameTxt.setString("Sybil");
-	heroNameTxt.setCharacterSize(20);
-	heroNameTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 48,
-		heroCardSpr.getPosition().y + 15));
+	heroNameTxt.setString("KENNA");
+	heroNameTxt.setCharacterSize(24);
+	heroNameTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 27,
+		heroCardSpr.getPosition().y + 17));
 	heroNameTxt.setFillColor(sf::Color(180, 156, 130));
 
 	//hero health

@@ -36,5 +36,5 @@ void Kratos::AvatarMode(Hero* teammate, sf::Vector2i newPos)
 {
 	///////////////// attacker special power : replace his timmate
 	teammate->setHeroPosition(newPos);
-	teammate->setHideness(true);
+	teammate->setHideness(false);
 }

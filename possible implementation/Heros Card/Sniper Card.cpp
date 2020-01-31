@@ -13,8 +13,8 @@ SniperCard::SniperCard()
 	// hero name
 	heroNameTxt.setString("Sniper");
 	heroNameTxt.setCharacterSize(24);
-	heroNameTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 40,
-		heroCardSpr.getPosition().y + 15));
+	heroNameTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 30,
+		heroCardSpr.getPosition().y + 17));
 	heroNameTxt.setFillColor(sf::Color(255, 198, 1));
 
 	//hero health

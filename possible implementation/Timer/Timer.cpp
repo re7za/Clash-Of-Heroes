@@ -2,7 +2,7 @@
 
 Timer::Timer()
 {
-	clockFont.loadFromFile("Font/POULTRYG.ttf");
+	clockFont.loadFromFile("Font/angrybirds-regular.ttf");
 	timerPanel.setFont(clockFont);
 	timerPanel.setCharacterSize(40);
 	timerPanel.setString("00 : 00");

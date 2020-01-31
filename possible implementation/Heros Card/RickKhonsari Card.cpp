@@ -11,10 +11,10 @@ RickKhonsariCard::RickKhonsariCard()
 	SprOrginalColor = heroCardSpr.getColor();
 
 	// hero name
-	heroNameTxt.setString("Ramin");
-	heroNameTxt.setCharacterSize(20);
-	heroNameTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 48,
-		heroCardSpr.getPosition().y + 15));
+	heroNameTxt.setString("RAMIN");
+	heroNameTxt.setCharacterSize(24);
+	heroNameTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 30,
+		heroCardSpr.getPosition().y + 17));
 	heroNameTxt.setFillColor(sf::Color(137, 174, 199));
 
 	//hero health

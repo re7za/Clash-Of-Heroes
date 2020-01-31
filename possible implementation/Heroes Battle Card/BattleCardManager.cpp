@@ -15,7 +15,6 @@ void BattleCardManager::drawHerosCard(sf::RenderWindow* window)
 
 void BattleCardManager::clickHeroEachCard(const sf::Vector2i& pos, PlayerEnum p, std::array<heros, 2>& AvatarMode)
 {
-	heros roleHero = heros::none;
 	// checking wether a card is clicked
 	selectedCard = heros::none;
 	if (p == PlayerEnum::P1)
@@ -26,6 +25,7 @@ void BattleCardManager::clickHeroEachCard(const sf::Vector2i& pos, PlayerEnum p,
 			
 			if (card->getGlobalBounds().contains(static_cast<sf::Vector2f>(pos)))
 				if (card->isReady())
+				{
 					if (!card->isCardSelected())
 					{
 						card->setCardSelection(true);
@@ -87,7 +87,58 @@ void BattleCardManager::clickHeroEachCard(const sf::Vector2i& pos, PlayerEnum p,
 									giantCard->resetTheClickSituation();
 									break;
 								}
+
 					}
+				}
+				else if (card->isAlive())
+				{
+					if (!card->isCardSelected())
+					{
+						card->setCardSelection(true);
+						selectedCard = card->getCardName();
+
+						// kratos specialPower
+						if (card->getCardName() != heros::kratos)
+							for (BattleCard* card2 : leftCardArr)
+								if (card2->getCardName() == heros::kratos)
+								{
+									KratosBattleCard* kratosCard = dynamic_cast<KratosBattleCard*> (card2);
+
+									if (kratosCard->getTheClickSituation() == 2)		// avatar mode is active
+									{
+										AvatarMode.at(0) = heros::kratos;
+										AvatarMode.at(1) = card->getCardName();
+										kratosCard->usingKey();
+
+										selectedCard = heros::kratos;
+										return;
+									}
+
+									kratosCard->resetTheClickSituation();
+									break;
+								}
+						// kratos specialPower
+						if (card->getCardName() != heros::giant)
+							for (BattleCard* card2 : leftCardArr)
+								if (card2->getCardName() == heros::giant)
+								{
+									GiantBattleCard* giantCard = dynamic_cast<GiantBattleCard*> (card2);
+
+									if (giantCard->getTheClickSituation() == 2)		// avatar mode is active
+									{
+										AvatarMode.at(0) = heros::giant;
+										AvatarMode.at(1) = card->getCardName();
+										giantCard->usingKey();
+
+										selectedCard = heros::giant;
+										return;
+									}
+
+									giantCard->resetTheClickSituation();
+									break;
+								}
+					}
+				}
 		}
 	else if (p == PlayerEnum::P2)
 		for(BattleCard * card : rightCardArr)
@@ -97,6 +148,7 @@ void BattleCardManager::clickHeroEachCard(const sf::Vector2i& pos, PlayerEnum p,
 
 			if (card->getGlobalBounds().contains(static_cast<sf::Vector2f>(pos)))
 				if (card->isReady())
+				{
 					if (!card->isCardSelected())
 					{
 						card->setCardSelection(true);
@@ -161,6 +213,57 @@ void BattleCardManager::clickHeroEachCard(const sf::Vector2i& pos, PlayerEnum p,
 									break;
 								}
 					}
+				}
+				else if (card->isAlive())
+				{
+
+					if (!card->isCardSelected())
+					{
+						card->setCardSelection(true);
+						selectedCard = card->getCardName();
+
+						// kratos specialPower
+						if (card->getCardName() != heros::kratos)
+							for (BattleCard* card2 : rightCardArr)
+								if (card2->getCardName() == heros::kratos)
+								{
+									KratosBattleCard* kratosCard = dynamic_cast<KratosBattleCard*> (card2);
+
+									if (kratosCard->getTheClickSituation() == 2)		// avatar mode is active
+									{
+										AvatarMode.at(0) = heros::kratos;
+										AvatarMode.at(1) = card->getCardName();
+										kratosCard->usingKey();
+
+										selectedCard = heros::kratos;
+										return;
+									}
+
+									kratosCard->resetTheClickSituation();
+									break;
+								}
+						// kratos specialPower
+						if (card->getCardName() != heros::giant)
+							for (BattleCard* card2 : rightCardArr)
+								if (card2->getCardName() == heros::giant)
+								{
+									GiantBattleCard* giantCard = dynamic_cast<GiantBattleCard*> (card2);
+
+									if (giantCard->getTheClickSituation() == 2)		// avatar mode is active
+									{
+										AvatarMode.at(0) = heros::giant;
+										AvatarMode.at(1) = card->getCardName();
+										giantCard->usingKey();
+
+										selectedCard = heros::giant;
+										return;
+									}
+
+									giantCard->resetTheClickSituation();
+									break;
+								}
+					}
+				}
 		}
 }
 void BattleCardManager::hoverHeroEachCard(PlayerEnum p)
@@ -258,24 +361,24 @@ void BattleCardManager::turnWasChanged(PlayerEnum p)
 
 		// turn on the left cards
 		for (BattleCard* card : leftCardArr)
+			if (card->isReady())
+				if (card->isAlive())
+					card->setColor(sf::Color(card->getSprOrginalColor().r - 60, card->getSprOrginalColor().g - 60,
+						card->getSprOrginalColor().b - 60, 255));
+
+		// special power
+		for (BattleCard* card : leftCardArr)
 		{
-			
-
-			if (card->isAlive())
-				card->setColor(sf::Color(card->getSprOrginalColor().r - 60, card->getSprOrginalColor().g - 60,
-					card->getSprOrginalColor().b - 60, 255));
-
-			// special power
-			if (card->getCardName() == heros::kratos)
-			{
-				KratosBattleCard* kratosCard = dynamic_cast<KratosBattleCard*> (card);
-				kratosCard->resetTheClickSituation();
-			}
-			if (card->getCardName() == heros::giant)
-			{
-				GiantBattleCard* giantCard = dynamic_cast<GiantBattleCard*> (card);
-				giantCard->resetTheClickSituation();
-			}
+				if (card->getCardName() == heros::kratos)
+				{
+					KratosBattleCard* kratosCard = dynamic_cast<KratosBattleCard*> (card);
+					kratosCard->resetTheClickSituation();
+				}
+				if (card->getCardName() == heros::giant)
+				{
+					GiantBattleCard* giantCard = dynamic_cast<GiantBattleCard*> (card);
+					giantCard->resetTheClickSituation();
+				}
 		}
 
 	}
@@ -304,12 +407,14 @@ void BattleCardManager::turnWasChanged(PlayerEnum p)
 
 		// turn on the right cards
 		for (BattleCard* card : rightCardArr)
-		{
-			if (card->isAlive())
-				card->setColor(sf::Color(card->getSprOrginalColor().r - 60, card->getSprOrginalColor().g - 60,
-					card->getSprOrginalColor().b - 60, 255));
+			if (card->isReady())
+				if (card->isAlive())
+					card->setColor(sf::Color(card->getSprOrginalColor().r - 60, card->getSprOrginalColor().g - 60,
+						card->getSprOrginalColor().b - 60, 255));
 
-			// special power
+		// special power
+		for (BattleCard* card : rightCardArr)
+		{
 			if (card->getCardName() == heros::kratos)
 			{
 				KratosBattleCard* kratosCard = dynamic_cast<KratosBattleCard*> (card);
@@ -334,10 +439,10 @@ void BattleCardManager::heroExtracter(std::array<heros, 10> chosenHeroes)
 	chosenHeroes.at(1) = heros::rickKhonsari;
 	chosenHeroes.at(2) = heros::giant;
 	chosenHeroes.at(3) = heros::mrsGhost;
-	chosenHeroes.at(4) = heros::commander;
+	chosenHeroes.at(4) = heros::kratos;
 	chosenHeroes.at(5) = heros::kratos;
 	chosenHeroes.at(6) = heros::sniper;
-	chosenHeroes.at(7) = heros::robi;
+	chosenHeroes.at(7) = heros::giant;
 	chosenHeroes.at(8) = heros::leon;
 	chosenHeroes.at(9) = heros::professor;
 

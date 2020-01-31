@@ -4,8 +4,8 @@
 void HerosCard::setDefaulProperties()
 {
 	// hero SprColor
-	heroCardSpr.setColor(sf::Color(heroCardSpr.getColor().r - 40, heroCardSpr.getColor().g - 40,
-		heroCardSpr.getColor().b - 40, 255));
+	heroCardSpr.setColor(sf::Color(heroCardSpr.getColor().r - 60, heroCardSpr.getColor().g - 60,
+		heroCardSpr.getColor().b - 60, 255));
 
 	// hero name
 	nameFont.loadFromFile("Font/fighting spirit TBS.ttf");
@@ -21,12 +21,12 @@ void HerosCard::setDefaulProperties()
 	//hero health
 	healthTxt.setCharacterSize(14);
 	healthTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 25,
-		heroCardSpr.getPosition().y + 33));
+		heroCardSpr.getPosition().y + 50));
 
 	//hero health
 	damageTxt.setCharacterSize(14);
 	damageTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 85,
-		heroCardSpr.getPosition().y + 33));
+		heroCardSpr.getPosition().y + 50));
 }
 
 HerosCard::~HerosCard() {}

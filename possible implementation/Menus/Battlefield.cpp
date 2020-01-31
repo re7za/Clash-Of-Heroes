@@ -22,7 +22,7 @@ Battlefield::Battlefield()
 	// pause button
 	pauseBtn.setString("pause");
 	pauseBtn.setCharacterSize(60);
-	pauseBtn.setPosition(sf::Vector2f(sf::VideoMode::getDesktopMode().width - 180, 10));
+	pauseBtn.setPosition(sf::Vector2f(sf::VideoMode::getDesktopMode().width - 200, 10));
 
 	// panel
 	// panelP1
@@ -55,10 +55,10 @@ Battlefield::Battlefield()
 	playerManager->playerArr.at(0)->playerHerosVec.push_back(new RickKhonsari(sf::Vector2i(2, 6)));
 	playerManager->playerArr.at(0)->playerHerosVec.push_back(new Giant(sf::Vector2i(6, 4)));
 	playerManager->playerArr.at(0)->playerHerosVec.push_back(new MrsGhost(sf::Vector2i(5, 7)));
-	playerManager->playerArr.at(0)->playerHerosVec.push_back(new Commander(sf::Vector2i(7, 1)));
+	playerManager->playerArr.at(0)->playerHerosVec.push_back(new Kratos(sf::Vector2i(7, 1)));
 	playerManager->playerArr.at(1)->playerHerosVec.push_back(new Kratos(sf::Vector2i(4, 2)));
 	playerManager->playerArr.at(1)->playerHerosVec.push_back(new Sniper(sf::Vector2i(3, 8)));
-	playerManager->playerArr.at(1)->playerHerosVec.push_back(new ROBI(sf::Vector2i(1, 6)));
+	playerManager->playerArr.at(1)->playerHerosVec.push_back(new Giant(sf::Vector2i(1, 6)));
 	playerManager->playerArr.at(1)->playerHerosVec.push_back(new Leon(sf::Vector2i(4, 4)));
 	playerManager->playerArr.at(1)->playerHerosVec.push_back(new Professor(sf::Vector2i(6, 7)));
 	//////////////////////
@@ -108,6 +108,7 @@ void Battlefield::click(sf::Vector2i& pos, menuType& currentMenu)
 		// changing the turn.. it must be after attack process
 		playerManager->changeTheTurn();
 		turnWasChanged(playerManager->getTheTurn());
+		return;
 	}
 	
 	//////////////////////////////// cards
@@ -126,6 +127,7 @@ void Battlefield::click(sf::Vector2i& pos, menuType& currentMenu)
 		// changing the turn.. it must be after attack process
 		playerManager->changeTheTurn();
 		turnWasChanged(playerManager->getTheTurn());
+		return;
 	}
 }
 
@@ -382,8 +384,8 @@ void Battlefield::helpingTeammates(std::array<heros, 2>& AvatarModeSides)
 						while (true)	// generating a random empty position
 						{
 							antiHang--;
-							us i = rand() % 2;
-							us j = rand() % 2;
+							us i = rand() % 9;
+							us j = rand() % 9;
 							newPos = sf::Vector2i(i, j);
 
 							bool repetitive = false;

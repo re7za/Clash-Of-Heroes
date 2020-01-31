@@ -66,13 +66,13 @@ void HeroSelectionMenu::display(sf::RenderWindow* window)
 	nextBtn.draw(window);
 	mouseHover(window);
 
-	// input name
+	/* input name
 	window->draw(nameRect);
 	window->draw(nameInputLabelRect);
 	window->draw(nameInputLabelText);
 	window->draw(nameRect);
 	//nameBox.draw(window);
-
+*/
 	// hreos card
 	heroCardManager.drawHerosCard(window);
 
@@ -121,6 +121,7 @@ void HeroSelectionMenu::click(sf::Vector2i& pos, menuType& currentMenu)
 	// nextButton
 	if (nextBtn.getGlobalBound().contains(static_cast<sf::Vector2f>(pos)))
 	{
+		currentMenu = menuType::battlefield;
 		if (playerManager->getTheTurn() == Players::P1)
 		{
 			if (playerManager->playerArr.at(0)->isPlayerHeroVecFull())
@@ -164,4 +165,7 @@ void HeroSelectionMenu::mouseHover(sf::RenderWindow* window)
 {
 	backBtn.onMouseOver();
 	nextBtn.onMouseOver();
+
+	// cards
+	heroCardManager.hoverHeroEachCard();
 }

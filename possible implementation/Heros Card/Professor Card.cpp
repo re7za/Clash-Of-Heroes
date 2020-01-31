@@ -12,9 +12,9 @@ ProfessorCard::ProfessorCard()
 
 	// hero name
 	heroNameTxt.setString("Professor");
-	heroNameTxt.setCharacterSize(15);
-	heroNameTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 37,
-		heroCardSpr.getPosition().y + 15));
+	heroNameTxt.setCharacterSize(18);
+	heroNameTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 22,
+		heroCardSpr.getPosition().y + 20));
 	heroNameTxt.setFillColor(sf::Color(185, 214, 124));
 
 	//hero health

@@ -26,6 +26,7 @@ public:
 	HeroCardManager();
 	void drawHerosCard(sf::RenderWindow*);
 	void clickHeroEachCard(sf::Vector2i& pos);
+	void hoverHeroEachCard();
 
 	// card selection
 	void setSelectedCard(heros);

@@ -12,9 +12,9 @@ ROBICard::ROBICard()
 	
 	// hero name
 	heroNameTxt.setString("ROBI");
-	heroNameTxt.setCharacterSize(20);
-	heroNameTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 45,
-		heroCardSpr.getPosition().y + 15));
+	heroNameTxt.setCharacterSize(24);
+	heroNameTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 33,
+		heroCardSpr.getPosition().y + 17));
 	heroNameTxt.setFillColor(sf::Color(34, 167, 143));
 
 	//hero health

@@ -50,6 +50,19 @@ void HeroCardManager::clickHeroEachCard(sf::Vector2i& pos)
 	}
 }
 
+void HeroCardManager::hoverHeroEachCard()
+{
+	for (HerosCard* card : heroCardVec)
+		if (card->getGlobalBound().contains(sf::Vector2f(sf::Mouse::getPosition())))
+		{
+			card->setColor(sf::Color::White);
+		}
+		else
+		{
+			card->setColor(card->getSprOrginalColor());
+		}
+}
+
 // card selection
 void HeroCardManager::setSelectedCard(heros cardName)
 {

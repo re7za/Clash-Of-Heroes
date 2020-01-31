@@ -11,10 +11,10 @@ LeonCard::LeonCard()
 	SprOrginalColor = heroCardSpr.getColor();
 
 	// hero name
-	heroNameTxt.setString("Leon");
-	heroNameTxt.setCharacterSize(20);
-	heroNameTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 50,
-		heroCardSpr.getPosition().y + 13));
+	heroNameTxt.setString("LEON");
+	heroNameTxt.setCharacterSize(24);
+	heroNameTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 33,
+		heroCardSpr.getPosition().y + 17));
 	heroNameTxt.setFillColor(sf::Color(245, 96, 48));
 
 	//hero health

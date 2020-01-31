@@ -12,9 +12,9 @@ KratosCard::KratosCard()
 
 	// hero name
 	heroNameTxt.setString("Kratos");
-	heroNameTxt.setCharacterSize(18);
-	heroNameTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 40,
-		heroCardSpr.getPosition().y + 15));
+	heroNameTxt.setCharacterSize(24);
+	heroNameTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 28,
+		heroCardSpr.getPosition().y + 17));
 	heroNameTxt.setFillColor(sf::Color(31, 170, 34));
 
 	//hero health

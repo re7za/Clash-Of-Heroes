@@ -12,9 +12,9 @@ GiantCard::GiantCard()
 
 	// hero name
 	heroNameTxt.setString("HellBoy");
-	heroNameTxt.setCharacterSize(17);
-	heroNameTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 38,
-		heroCardSpr.getPosition().y + 15));
+	heroNameTxt.setCharacterSize(21);
+	heroNameTxt.setPosition(sf::Vector2f(heroCardSpr.getPosition().x + 22,
+		heroCardSpr.getPosition().y + 20));
 	heroNameTxt.setFillColor(sf::Color(244, 55, 53));
 
 	//hero health

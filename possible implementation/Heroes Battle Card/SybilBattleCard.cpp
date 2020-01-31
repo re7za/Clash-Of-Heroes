@@ -11,7 +11,7 @@ SybilBattleCard::SybilBattleCard()
 	SprOrginalColor = heroCardSpr.getColor();
 
 	// hero name
-	heroNameTxt.setString("Sybil");
+	heroNameTxt.setString("Kenna");
 	heroNameTxt.setCharacterSize(20);
 	heroNameTxt.setFillColor(sf::Color(180, 156, 130));
 
