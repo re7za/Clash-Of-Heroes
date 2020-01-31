@@ -74,6 +74,7 @@
     <ClCompile Include="Player\PlayerManager.cpp" />
     <ClCompile Include="Textbox\Textbox.cpp" />
     <ClCompile Include="Timer\Timer.cpp" />
+    <ClCompile Include="Widget\Widget.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button\Button.h" />
@@ -131,6 +132,7 @@
     <ClInclude Include="Player\PlayerManager.h" />
     <ClInclude Include="Textbox\Textbox.h" />
     <ClInclude Include="Timer\Timer.h" />
+    <ClInclude Include="Widget\Widget.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

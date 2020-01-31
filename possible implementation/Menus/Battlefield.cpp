@@ -2,6 +2,7 @@
 #include <iostream>
 
 Battlefield::Battlefield()
+	:pauseWidget (new Widget("Main Menu", "New Game", "Restart"))
 {
 	// set the name and others
 	menuName = menuType::battlefield;
@@ -23,6 +24,7 @@ Battlefield::Battlefield()
 	pauseBtn.setString("pause");
 	pauseBtn.setCharacterSize(60);
 	pauseBtn.setPosition(sf::Vector2f(sf::VideoMode::getDesktopMode().width - 200, 10));
+	// its widget
 
 	// panel
 	// panelP1
@@ -84,59 +86,86 @@ void Battlefield::display(sf::RenderWindow* window)
 
 	// battle cards
 	battleCardManager.drawHerosCard(window);
+
+	// widgets
+	if (pauseWidget->activation == true)
+		pauseWidget->draw(window);
 }
 
 /////// mouse events and positions
 void Battlefield::click(sf::Vector2i& pos, menuType& currentMenu)
 {
-	// grid and check for turn changing =)))))))))))
-	bool isTurnChange = false;
-	if (grid.getGlobalBound().contains(sf::Vector2f(pos)) && battleCardManager.getSelectedCard() != heros::none)
-		grid.battlefieldClicked(pos, playerManager, isTurnChange);
-
-	if (isTurnChange)
+	if (pauseWidget->activation == false)
 	{
-		timer.Start();
+		// grid and check for turn changing =)))))))))))
+		bool isTurnChange = false;
+		if (grid.getGlobalBound().contains(sf::Vector2f(pos)) && battleCardManager.getSelectedCard() != heros::none)
+			grid.battlefieldClicked(pos, playerManager, isTurnChange);
 
-		// attack process by player.attackedPlayer and battleCard.selectedCard =))
-		attackProcess();
+		if (isTurnChange)
+		{
+			timer.Start();
 
-		// update card's info
-		battleCardManager.updateInfo(playerManager->playerArr.at(static_cast<us> (Players::P1))->playerHerosVec,
-			playerManager->playerArr.at(static_cast<us> (Players::P2))->playerHerosVec);
+			// attack process by player.attackedPlayer and battleCard.selectedCard =))
+			attackProcess();
 
-		// changing the turn.. it must be after attack process
-		playerManager->changeTheTurn();
-		turnWasChanged(playerManager->getTheTurn());
-		return;
-	}
+			// update card's info
+			battleCardManager.updateInfo(playerManager->playerArr.at(static_cast<us> (Players::P1))->playerHerosVec,
+				playerManager->playerArr.at(static_cast<us> (Players::P2))->playerHerosVec);
+
+			// changing the turn.. it must be after attack process
+			playerManager->changeTheTurn();
+			turnWasChanged(playerManager->getTheTurn());
+			return;
+		}
 	
-	//////////////////////////////// cards
-	std::array<heros, 2> AvatarModeSides = {heros::none, heros::none};	// (avatar, his teammate)
-	battleCardManager.clickHeroEachCard(pos, static_cast<PlayerEnum>(playerManager->getTheTurn()), AvatarModeSides);
+		//////////////////////////////// cards
+		std::array<heros, 2> AvatarModeSides = {heros::none, heros::none};	// (avatar, his teammate)
+		battleCardManager.clickHeroEachCard(pos, static_cast<PlayerEnum>(playerManager->getTheTurn()), AvatarModeSides);
 
-	if (AvatarModeSides.at(1) != heros::none)
+		if (AvatarModeSides.at(1) != heros::none)
+		{
+			// specialPower process
+			helpingTeammates(AvatarModeSides);
+
+			// update card's info
+			battleCardManager.updateInfo(playerManager->playerArr.at(static_cast<us> (Players::P1))->playerHerosVec,
+				playerManager->playerArr.at(static_cast<us> (Players::P2))->playerHerosVec);
+
+			// changing the turn.. it must be after attack process
+			playerManager->changeTheTurn();
+			turnWasChanged(playerManager->getTheTurn());
+			return;
+		}
+
+		//////////// pause btn
+		if (pauseBtn.getGlobalBound().contains(sf::Vector2f(pos)))
+			pauseWidget->activation = true;
+	}
+	else
 	{
-		// specialPower process
-		helpingTeammates(AvatarModeSides);
-
-		// update card's info
-		battleCardManager.updateInfo(playerManager->playerArr.at(static_cast<us> (Players::P1))->playerHerosVec,
-			playerManager->playerArr.at(static_cast<us> (Players::P2))->playerHerosVec);
-
-		// changing the turn.. it must be after attack process
-		playerManager->changeTheTurn();
-		turnWasChanged(playerManager->getTheTurn());
-		return;
+			// click pos is out of widget pos or not
+		if (!(pauseWidget->isClicked(sf::Vector2f(pos))))
+			pauseWidget->activation = false;
+		else
+		{
+			pauseWidget->clicked(sf::Vector2f(pos));		
+		}	
 	}
 }
 
 void Battlefield::mouseHover(sf::RenderWindow*)
 {	
-	pauseBtn.onMouseOver();
-
-	// cards
-	battleCardManager.hoverHeroEachCard(static_cast<PlayerEnum>(playerManager->getTheTurn()));
+	if (pauseWidget->activation == false)
+	{
+		pauseBtn.onMouseOver();
+		// cards
+		battleCardManager.hoverHeroEachCard(static_cast<PlayerEnum>(playerManager->getTheTurn()));
+	}
+	else
+	{
+		pauseWidget->onMouseHover();
+	}
 }
 //////////////////////////////////
 
@@ -453,7 +482,7 @@ void Battlefield::helpingTeammates(std::array<heros, 2>& AvatarModeSides)
 
 void Battlefield::changeBackground()
 {
-	switch (2)
+	switch (rand() % 8)
 	{
 	case 0:
 		backgroundTex.loadFromFile("Menus/background/game1.png");
@@ -491,4 +520,3 @@ void Battlefield::changeBackground()
 
 	menuSpr.setTexture(backgroundTex);
 }
-

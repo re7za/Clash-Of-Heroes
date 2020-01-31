@@ -7,6 +7,7 @@ Button::Button()
 	btnTxt.setFont(btnFont);
 	btnTxt.setFillColor(sf::Color(230, 230, 230, 255));
 	this->setCharacterSize(55);
+	btnTxt.setString("button");
 
 	// rect
 	//btnRect.setFillColor(sf::Color(5, 5, 5, 150));

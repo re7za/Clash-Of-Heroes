@@ -10,6 +10,7 @@
 #include "../Heroes Battle Card/BattleCardManager.h"
 #include "../Panel/Panel.h"
 #include "../Timer/Timer.h"
+#include "../Widget/Widget.h"
 
 
 class Battlefield : public Menu
@@ -20,6 +21,7 @@ public:
 
 	////////////////////// mouse events and positions
 	void click(sf::Vector2i&, menuType&);
+	void pauseBtnClick();
 
 	// utility functions of mouse envents and positions
 	void mouseHover(sf::RenderWindow*);
@@ -32,7 +34,6 @@ public:
 	
 	// background img
 	void changeBackground();
-
 
 private:
 
@@ -49,7 +50,8 @@ private:
 
 	// button
 	Button pauseBtn;
-
+	// Widgets
+	Widget* pauseWidget;
 };
 
 

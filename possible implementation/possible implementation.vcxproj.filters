@@ -73,6 +73,12 @@
     <Filter Include="Source Files\Timer">
       <UniqueIdentifier>{52415957-1f80-405a-ba1c-200113fff36d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Widget">
+      <UniqueIdentifier>{3e821115-6cc5-452f-b898-0800a1e7b5db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Widget">
+      <UniqueIdentifier>{f37b16b8-d206-4351-88f7-9b48bf662aef}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Heros\AlphaMan.cpp">
@@ -240,6 +246,9 @@
     <ClCompile Include="Menus\MainMenu.cpp">
       <Filter>Source Files\menus</Filter>
     </ClCompile>
+    <ClCompile Include="Widget\Widget.cpp">
+      <Filter>Source Files\Widget</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Menus\Menu.h">
@@ -406,6 +415,9 @@
     </ClInclude>
     <ClInclude Include="Menus\MainMenu.h">
       <Filter>Header Files\menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Widget\Widget.h">
+      <Filter>Header Files\Widget</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

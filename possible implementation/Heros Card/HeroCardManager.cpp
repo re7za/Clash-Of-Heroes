@@ -43,8 +43,7 @@ void HeroCardManager::clickHeroEachCard(sf::Vector2i& pos)
 				card->setCardSelection(true);
 				selectedCard = card->getCardName();
 				//std::cout << card->getCardName() << std::endl;
-				card->setColor(sf::Color(card->getSprOrginalColor().r + 40, card->getSprOrginalColor().g + 20,
-					card->getSprOrginalColor().b + 20, 255));
+				card->setColor(sf::Color::White);
 			}
 		}
 	}
@@ -53,13 +52,16 @@ void HeroCardManager::clickHeroEachCard(sf::Vector2i& pos)
 void HeroCardManager::hoverHeroEachCard()
 {
 	for (HerosCard* card : heroCardVec)
-		if (card->getGlobalBound().contains(sf::Vector2f(sf::Mouse::getPosition())))
+		if (!card->isCardSelected())
 		{
-			card->setColor(sf::Color::White);
-		}
-		else
-		{
-			card->setColor(card->getSprOrginalColor());
+			if (card->getGlobalBound().contains(sf::Vector2f(sf::Mouse::getPosition())))
+			{
+				card->setColor(sf::Color(230, 230, 230));
+			}
+			else
+			{
+				card->setColor(card->getSprOrginalColor());
+			}
 		}
 }
 
