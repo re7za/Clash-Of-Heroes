@@ -121,7 +121,7 @@ void HeroSelectionMenu::click(sf::Vector2i& pos, menuType& currentMenu)
 	// nextButton
 	if (nextBtn.getGlobalBound().contains(static_cast<sf::Vector2f>(pos)))
 	{
-		currentMenu = menuType::battlefield;
+		//currentMenu = menuType::battlefield;
 		if (playerManager->getTheTurn() == Players::P1)
 		{
 			if (playerManager->playerArr.at(0)->isPlayerHeroVecFull())
@@ -129,7 +129,7 @@ void HeroSelectionMenu::click(sf::Vector2i& pos, menuType& currentMenu)
 				grid.clearAllTiles();
 				nextBtn.setString("start");
 				nameInputLabelText.setString("     Hero 2 :");
-				//nameBox.setString("Player 2");
+				nameBox.setString("Player 2");
 
 				// at last
 				playerManager->changeTheTurn();

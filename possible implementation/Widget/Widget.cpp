@@ -9,20 +9,21 @@ Widget::Widget()
 	backgroundRect.setFillColor(sf::Color(0, 0, 0, 25));
 	
 	// message rect
-	messageRect.setSize(sf::Vector2f(700, 300));
-	//messageRect.setOrigin(messageRect.getGlobalBounds().width / 2, 0);
-	messageRect.setPosition(sf::Vector2f(sf::VideoMode::getDesktopMode().width / 2
-		- messageRect.getGlobalBounds().width / 2 , 300));
-	messageRect.setFillColor(sf::Color(0, 0, 0, 255));
+	backTex.loadFromFile("Widget/messageRect/base.png");
+	backSpr.setTexture(backTex);
+	backSpr.setPosition(sf::Vector2f(sf::VideoMode::getDesktopMode().width / 2
+		- backSpr.getGlobalBounds().width / 2 , 300));
+	backSpr.setColor(sf::Color(backSpr.getColor().r, backSpr.getColor().g,
+		backSpr.getColor().b, 180));
 
 	// message
 	messageFont.loadFromFile("Font/Button.otf");
 	messageTxt.setFont(messageFont);
 	messageTxt.setFillColor(sf::Color::White);
 	messageTxt.setString("your meesage");
-	messageTxt.setPosition(sf::Vector2f(messageRect.getPosition().x
-		+ messageRect.getGlobalBounds().width / 2 - messageTxt.getGlobalBounds().width / 2,
-		messageRect.getPosition().y + 50));	
+	messageTxt.setPosition(sf::Vector2f(backSpr.getPosition().x
+		+ backSpr.getGlobalBounds().width / 2 - messageTxt.getGlobalBounds().width / 2,
+		backSpr.getPosition().y + 50));	
 }
 
 Widget::Widget(const std::string& str)
@@ -31,9 +32,9 @@ Widget::Widget(const std::string& str)
 	buttonVec.push_back(new Button());
 	buttonVec.at(0)->setCharacterSize(40);
 	buttonVec.at(0)->setString(str);
-	buttonVec.at(0)->setPosition(sf::Vector2f(messageRect.getPosition().x
-		+ messageRect.getGlobalBounds().width / 2 - buttonVec.at(0)->getGlobalBound().width / 2,
-		messageRect.getPosition().y + messageRect.getGlobalBounds().height - 80));
+	buttonVec.at(0)->setPosition(sf::Vector2f(backSpr.getPosition().x
+		+ backSpr.getGlobalBounds().width / 2 - buttonVec.at(0)->getGlobalBound().width / 2,
+		backSpr.getPosition().y + backSpr.getGlobalBounds().height - 80));
 }
 
 Widget::Widget(const std::string& str1, const std::string& str2)
@@ -43,17 +44,17 @@ Widget::Widget(const std::string& str1, const std::string& str2)
 	buttonVec.push_back(new Button());
 	buttonVec.at(0)->setCharacterSize(40);
 	buttonVec.at(0)->setString(str1);
-	buttonVec.at(0)->setPosition(sf::Vector2f(messageRect.getPosition().x
-		+ messageRect.getGlobalBounds().width / 3 - buttonVec.at(0)->getGlobalBound().width / 2,
-		messageRect.getPosition().y + messageRect.getGlobalBounds().height - 80));
+	buttonVec.at(0)->setPosition(sf::Vector2f(backSpr.getPosition().x
+		+ backSpr.getGlobalBounds().width / 3 - buttonVec.at(0)->getGlobalBound().width / 2,
+		backSpr.getPosition().y + backSpr.getGlobalBounds().height - 80));
 
 	// btn2
 	buttonVec.push_back(new Button());
 	buttonVec.at(1)->setCharacterSize(40);
 	buttonVec.at(1)->setString(str2);
-	buttonVec.at(1)->setPosition(sf::Vector2f(messageRect.getPosition().x
-		+ messageRect.getGlobalBounds().width * 2/3 - buttonVec.at(1)->getGlobalBound().width / 2,
-		messageRect.getPosition().y + messageRect.getGlobalBounds().height - 80));
+	buttonVec.at(1)->setPosition(sf::Vector2f(backSpr.getPosition().x
+		+ backSpr.getGlobalBounds().width * 2/3 - buttonVec.at(1)->getGlobalBound().width / 2,
+		backSpr.getPosition().y + backSpr.getGlobalBounds().height - 80));
 
 }
 
@@ -64,24 +65,24 @@ Widget::Widget(const std::string& str1, const std::string& str2, const std::stri
 	buttonVec.push_back(new Button());
 	buttonVec.at(0)->setCharacterSize(30);
 	buttonVec.at(0)->setString(str1);
-	buttonVec.at(0)->setPosition(sf::Vector2f(messageRect.getPosition().x + 35,
-		messageRect.getPosition().y + messageRect.getGlobalBounds().height - 80));
+	buttonVec.at(0)->setPosition(sf::Vector2f(backSpr.getPosition().x + 35,
+		backSpr.getPosition().y + backSpr.getGlobalBounds().height - 80));
 
 	// btn2
 	buttonVec.push_back(new Button());
 	buttonVec.at(1)->setCharacterSize(30);
 	buttonVec.at(1)->setString(str2);
-	buttonVec.at(1)->setPosition(sf::Vector2f(messageRect.getPosition().x
-		+ messageRect.getGlobalBounds().width * 2 / 4 - buttonVec.at(1)->getGlobalBound().width / 2,
-		messageRect.getPosition().y + messageRect.getGlobalBounds().height - 80));
+	buttonVec.at(1)->setPosition(sf::Vector2f(backSpr.getPosition().x
+		+ backSpr.getGlobalBounds().width * 2 / 4 - buttonVec.at(1)->getGlobalBound().width / 2,
+		backSpr.getPosition().y + backSpr.getGlobalBounds().height - 80));
 
 	// btn3
 	buttonVec.push_back(new Button());
 	buttonVec.at(2)->setCharacterSize(30);
 	buttonVec.at(2)->setString(str3);
-	buttonVec.at(2)->setPosition(sf::Vector2f(messageRect.getPosition().x
-		+ messageRect.getGlobalBounds().width - buttonVec.at(2)->getGlobalBound().width - 35,
-		messageRect.getPosition().y + messageRect.getGlobalBounds().height - 80));
+	buttonVec.at(2)->setPosition(sf::Vector2f(backSpr.getPosition().x
+		+ backSpr.getGlobalBounds().width - buttonVec.at(2)->getGlobalBound().width - 35,
+		backSpr.getPosition().y + backSpr.getGlobalBounds().height - 80));
 
 }
 
@@ -92,7 +93,7 @@ void Widget::draw(sf::RenderWindow* window)
 	window->draw(backgroundRect);
 
 	// message rect
-	window->draw(messageRect);
+	window->draw(backSpr);
 
 	// message
 	window->draw(messageTxt);
@@ -125,26 +126,56 @@ void Widget::setMessageColor(const sf::Color& color)
 void Widget::setMessageString(const std::string& str)
 {
 	messageTxt.setString(str);
+	messageTxt.setPosition(sf::Vector2f(backSpr.getPosition().x
+		+ backSpr.getGlobalBounds().width / 2 - messageTxt.getGlobalBounds().width / 2,
+		backSpr.getPosition().y + 50));
 }
 void Widget::setMessagePosition(const sf::Vector2f& pos)
 {
 	messageTxt.setPosition(pos);
 }
-void Widget::setMessageCharacterSize(const unsigned short& size)
+void Widget::setMessageCharacterSize(const us& size)
 {
 	messageTxt.setCharacterSize(size);
 }
 
 bool Widget::isClicked(const sf::Vector2f& pos)
 {
-	if (messageRect.getGlobalBounds().contains(pos))
+	if (backSpr.getGlobalBounds().contains(pos))
 		return true;
 	else
 		return false;
 }
 
-void Widget::clicked(const sf::Vector2f& pos)
+void Widget::clicked(const sf::Vector2f& pos, menuType& currentMenu, menuType firstMenu, menuType secondMenu)
 {
+	if (buttonVec.at(0)->getGlobalBound().contains(pos))
+	{
+		currentMenu = firstMenu;
+	}
+	else if (buttonVec.at(0)->getGlobalBound().contains(pos))
+	{
+		currentMenu = secondMenu;
+	}
 
+	activation = false;
+}
+
+void Widget::clicked(const sf::Vector2f& pos, menuType& currentMenu, menuType firstMenu, menuType secondMenu, bool isRestartBtnExist)
+{
+	if (buttonVec.at(0)->getGlobalBound().contains(pos))	// firstMenu
+	{
+		currentMenu = firstMenu;
+	}
+	else if (buttonVec.at(1)->getGlobalBound().contains(pos))
+	{
+		currentMenu = secondMenu;
+	}
+	else if (buttonVec.at(2)->getGlobalBound().contains(pos))
+	{
+		// restartTheGame
+	}
+
+	activation = false;
 }
 

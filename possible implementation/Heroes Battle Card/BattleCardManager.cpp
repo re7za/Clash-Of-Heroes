@@ -434,7 +434,7 @@ void BattleCardManager::turnWasChanged(PlayerEnum p)
 
 void BattleCardManager::heroExtracter(std::array<heros, 10> chosenHeroes)
 {
-	///////////////// test
+	/*//////////////// test
 	chosenHeroes.at(0) = heros::sybil;
 	chosenHeroes.at(1) = heros::rickKhonsari;
 	chosenHeroes.at(2) = heros::giant;
@@ -445,6 +445,7 @@ void BattleCardManager::heroExtracter(std::array<heros, 10> chosenHeroes)
 	chosenHeroes.at(7) = heros::giant;
 	chosenHeroes.at(8) = heros::leon;
 	chosenHeroes.at(9) = heros::professor;
+	*/
 
 	// fill the leftCardArr
 	for (us i = 0; i < 5; i++)

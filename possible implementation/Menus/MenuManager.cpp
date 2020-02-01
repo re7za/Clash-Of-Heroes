@@ -5,7 +5,7 @@ using namespace std;
 
 MenuManager::MenuManager()
 {
-	currentMenu = menuType::battlefield;	// for now
+	currentMenu = menuType::mainMenu;	// for now
 	_currentMenu = currentMenu;
 	menuVec.push_back(&heroSelectionMenu);
 	menuVec.push_back(&battlefield);
@@ -21,12 +21,19 @@ void MenuManager::clickPos(sf::Vector2i pos)
 			break;
 		}
 
-	// update the _currentMenu
+	// switch from main menu to selection menu
+	if (_currentMenu == menuType::mainMenu
+		&& currentMenu == menuType::heroSelection)
+	{
+		_currentMenu = currentMenu;
+	}
+
+	// switch from selection menu to battlefield
 	if (_currentMenu == menuType::heroSelection
 		&& currentMenu == menuType::battlefield)
 	{
 		// copy the playerManager Address
-		//battlefield.badSetPManager(heroSelectionMenu.badGetPManager());
+		battlefield.badSetPManager(heroSelectionMenu.badGetPManager());
 		
 		//////////////// and also playermanager.heroExtracter() was changed and battlefield constructor and line 28 was commented
 

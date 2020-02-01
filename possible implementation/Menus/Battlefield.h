@@ -52,6 +52,9 @@ private:
 	Button pauseBtn;
 	// Widgets
 	Widget* pauseWidget;
+
+	// end widget
+	Widget* endingWidget;
 };
 
 

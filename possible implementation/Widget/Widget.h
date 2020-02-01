@@ -6,6 +6,7 @@
 #include "SFML/Graphics.hpp"
 #include <vector>
 #include "../Button/Button.h"
+#include "../generalDef.h"
 
 class Widget
 {
@@ -22,10 +23,14 @@ public:
 	void setMessageColor(const sf::Color&);
 	void setMessageString(const std::string&);
 	void setMessagePosition(const sf::Vector2f&);
-	void setMessageCharacterSize(const unsigned short&);
+	void setMessageCharacterSize(const us&);
 
 	bool isClicked(const sf::Vector2f& pos);
-	void clicked(const sf::Vector2f&);
+
+	void clicked(const sf::Vector2f&, menuType&, menuType, menuType);
+	// clicked 2 btn overload parameters : (clicked pos, currentMenu, firstMenu, secondMenu)
+	void clicked(const sf::Vector2f&, menuType&, menuType, menuType, bool);
+	// clicked 3 btn overload parameters : (clicked pos, currentMenu, firstMenu, secondMenu, isRestartbtnExist)
 	
 	// buttons
 	std::vector <Button*> buttonVec;
@@ -36,7 +41,8 @@ private:
 	
 	// bsckground
 	sf::RectangleShape backgroundRect;
-	sf::RectangleShape messageRect;
+	sf::Texture backTex;
+	sf::Sprite backSpr;
 
 	// message
 	sf::Font messageFont;

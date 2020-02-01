@@ -2,7 +2,8 @@
 #include <iostream>
 
 Battlefield::Battlefield()
-	:pauseWidget (new Widget("Main Menu", "New Game", "Restart"))
+	:pauseWidget (new Widget("Main Menu", "New Game", "Restart")),
+	endingWidget (new Widget("Main Menu", "New Game", "Restart"))
 {
 	// set the name and others
 	menuName = menuType::battlefield;
@@ -25,6 +26,7 @@ Battlefield::Battlefield()
 	pauseBtn.setCharacterSize(60);
 	pauseBtn.setPosition(sf::Vector2f(sf::VideoMode::getDesktopMode().width - 200, 10));
 	// its widget
+	pauseWidget->setMessageString("what do you want to do?");
 
 	// panel
 	// panelP1
@@ -52,18 +54,18 @@ Battlefield::Battlefield()
 		- timer.getGlobalBounds().width / 2 + 8, 10));
 
 	
-	//////////////// test
-	playerManager->playerArr.at(0)->playerHerosVec.push_back(new Sybil(sf::Vector2i(3, 5)));
-	playerManager->playerArr.at(0)->playerHerosVec.push_back(new RickKhonsari(sf::Vector2i(2, 6)));
-	playerManager->playerArr.at(0)->playerHerosVec.push_back(new Giant(sf::Vector2i(6, 4)));
-	playerManager->playerArr.at(0)->playerHerosVec.push_back(new MrsGhost(sf::Vector2i(5, 7)));
-	playerManager->playerArr.at(0)->playerHerosVec.push_back(new Kratos(sf::Vector2i(7, 1)));
-	playerManager->playerArr.at(1)->playerHerosVec.push_back(new Kratos(sf::Vector2i(4, 2)));
-	playerManager->playerArr.at(1)->playerHerosVec.push_back(new Sniper(sf::Vector2i(3, 8)));
-	playerManager->playerArr.at(1)->playerHerosVec.push_back(new Giant(sf::Vector2i(1, 6)));
-	playerManager->playerArr.at(1)->playerHerosVec.push_back(new Leon(sf::Vector2i(4, 4)));
-	playerManager->playerArr.at(1)->playerHerosVec.push_back(new Professor(sf::Vector2i(6, 7)));
-	//////////////////////
+	/*/////////////// test
+	playerManager->playerArr.at(0)->playerHerosVec.push_back(new Sybil(sf::Vector2i(0, 0)));
+	playerManager->playerArr.at(0)->playerHerosVec.push_back(new RickKhonsari(sf::Vector2i(0, 1)));
+	playerManager->playerArr.at(0)->playerHerosVec.push_back(new Giant(sf::Vector2i(0, 2)));
+	playerManager->playerArr.at(0)->playerHerosVec.push_back(new MrsGhost(sf::Vector2i(0, 3)));
+	playerManager->playerArr.at(0)->playerHerosVec.push_back(new Kratos(sf::Vector2i(0, 4)));
+	playerManager->playerArr.at(1)->playerHerosVec.push_back(new Kratos(sf::Vector2i(1, 0)));
+	playerManager->playerArr.at(1)->playerHerosVec.push_back(new Sniper(sf::Vector2i(1, 1)));
+	playerManager->playerArr.at(1)->playerHerosVec.push_back(new Giant(sf::Vector2i(1, 2)));
+	playerManager->playerArr.at(1)->playerHerosVec.push_back(new Leon(sf::Vector2i(1, 3)));
+	playerManager->playerArr.at(1)->playerHerosVec.push_back(new Professor(sf::Vector2i(1, 4)));
+	*//////////////////////
 	//
 	startTheBattlefield();
 }
@@ -90,12 +92,16 @@ void Battlefield::display(sf::RenderWindow* window)
 	// widgets
 	if (pauseWidget->activation == true)
 		pauseWidget->draw(window);
+
+	if (endingWidget->activation == true)
+		endingWidget->draw(window);
 }
 
 /////// mouse events and positions
 void Battlefield::click(sf::Vector2i& pos, menuType& currentMenu)
 {
-	if (pauseWidget->activation == false)
+	if (pauseWidget->activation == false
+		&& endingWidget->activation == false)
 	{
 		// grid and check for turn changing =)))))))))))
 		bool isTurnChange = false;
@@ -142,30 +148,48 @@ void Battlefield::click(sf::Vector2i& pos, menuType& currentMenu)
 		if (pauseBtn.getGlobalBound().contains(sf::Vector2f(pos)))
 			pauseWidget->activation = true;
 	}
-	else
+	else if (pauseWidget->activation == true)
 	{
-			// click pos is out of widget pos or not
+		// click pos is out of widget pos or not
 		if (!(pauseWidget->isClicked(sf::Vector2f(pos))))
 			pauseWidget->activation = false;
 		else
 		{
-			pauseWidget->clicked(sf::Vector2f(pos));		
+			pauseWidget->clicked(sf::Vector2f(pos), currentMenu, menuType::mainMenu, menuType::heroSelection, true);		
 		}	
+	}
+	else if (endingWidget->activation == true)
+	{
+		// click pos is out of widget pos or not
+		if (!(endingWidget->isClicked(sf::Vector2f(pos))))
+			endingWidget->activation = false;
+		else
+		{
+			endingWidget->clicked(sf::Vector2f(pos), currentMenu, menuType::mainMenu, menuType::heroSelection, true);
+		}
+
 	}
 }
 
 void Battlefield::mouseHover(sf::RenderWindow*)
 {	
-	if (pauseWidget->activation == false)
+	if (pauseWidget->activation == false
+		&& endingWidget->activation == false)
 	{
 		pauseBtn.onMouseOver();
 		// cards
 		battleCardManager.hoverHeroEachCard(static_cast<PlayerEnum>(playerManager->getTheTurn()));
 	}
-	else
+	else if (pauseWidget->activation == true)
 	{
 		pauseWidget->onMouseHover();
 	}
+	else if (endingWidget->activation == true)
+	{
+		endingWidget->onMouseHover();
+	}
+
+
 }
 //////////////////////////////////
 
@@ -215,6 +239,30 @@ void Battlefield::turnWasChanged(Players playerTurn)
 	else
 		grid.plantingHeroes(playerManager->playerArr.at(static_cast<us>(Players::P1))->playerHerosVec,
 			playerManager->playerArr.at(static_cast<us>(playerTurn))->attackPosStatucVec);
+
+	// end checking
+	// player1 checker
+	us player1deads = 0;
+	for (Hero* hero : playerManager->playerArr.at(0)->playerHerosVec)
+		if (!hero->isAlive())
+			player1deads++;
+	if (player1deads == 5)
+	{
+		endingWidget->setMessageString("Hero I is win!!");
+		endingWidget->activation = true;
+		
+	}
+	// player2 checker
+	us player2deads = 0;
+	for (Hero* hero : playerManager->playerArr.at(1)->playerHerosVec)
+		if (!hero->isAlive())
+			player2deads++;
+	if (player2deads == 5)
+	{
+		endingWidget->setMessageString("Hero II is win!!");
+		endingWidget->activation = true;
+	}
+
 
 }
 
