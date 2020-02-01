@@ -19,12 +19,14 @@ void Grid::SelectionClicked(const sf::Vector2i& pos, PlayerManager* playerManage
 				if (tiles.at(i).at(j)->getGlobalBound().contains(static_cast<sf::Vector2f>(pos)))
 				{
 					// set or remove this tile
-					if (heroCard == heros::none)		// remove
+
+					// remove
+					if (heroCard == heros::none)
 					{
 						if (tiles.at(i).at(j)->IsHeroSpr())
 							clearTileAndHero(tiles.at(i).at(j), playerManager);
 					}
-					else								// set
+					else				// set
 					{
 						// preventing redefining a hero
 						if (!playerManager->playerArr.at(static_cast<us> (playerManager->getTheTurn()))
@@ -45,7 +47,7 @@ void Grid::SelectionClicked(const sf::Vector2i& pos, PlayerManager* playerManage
 						}
 						/*else
 							std::cout << "you can't select a hero twice!!!" << std::endl;
-
+						
 						if (playerManager.playerArr.at(static_cast<us> (playerManager.getTheTurn()))
 							->playerHerosVec.size() == 5)
 						{
@@ -150,12 +152,13 @@ void Grid::clearAllTiles()
 
 void Grid::clearTileAndHero(Tile*& tile ,PlayerManager* playerManager)
 {
-	// graphic side
-	tile->removeHeroSpr();
-
 	// logic side
 	playerManager->playerArr.at(static_cast<us> (playerManager->getTheTurn()))
 		->removeHero(tile->getHeroCardName());
+
+	// graphic side
+	tile->removeHeroSpr();
+
 }
 
 void Grid::setThePlayerHerosVec(PlayerManager* playerManager, heros& heroCard,const sf::Vector2i& pos)

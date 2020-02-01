@@ -6,7 +6,7 @@ Widget::Widget()
 	backgroundRect.setSize(sf::Vector2f(sf::VideoMode::getDesktopMode().width,
 		sf::VideoMode::getDesktopMode().height));
 	backgroundRect.setPosition(sf::Vector2f(0, 0));
-	backgroundRect.setFillColor(sf::Color(0, 0, 0, 25));
+	backgroundRect.setFillColor(sf::Color(0, 0, 0, 75));
 	
 	// message rect
 	backTex.loadFromFile("Widget/messageRect/base.png");
@@ -14,7 +14,7 @@ Widget::Widget()
 	backSpr.setPosition(sf::Vector2f(sf::VideoMode::getDesktopMode().width / 2
 		- backSpr.getGlobalBounds().width / 2 , 300));
 	backSpr.setColor(sf::Color(backSpr.getColor().r, backSpr.getColor().g,
-		backSpr.getColor().b, 180));
+		backSpr.getColor().b, 230));
 
 	// message
 	messageFont.loadFromFile("Font/Button.otf");
