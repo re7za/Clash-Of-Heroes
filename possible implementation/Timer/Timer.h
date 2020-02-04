@@ -41,6 +41,7 @@ public:
 	sf::Vector2f getPosition();
 
 	void Start();
+	void Stop();
 
 private:
 
@@ -54,7 +55,6 @@ private:
 	// panel
 	Panel timerPanel;
 	sf::Font clockFont;
-
 
 
 };

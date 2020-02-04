@@ -161,6 +161,13 @@ void Battlefield::click(sf::Vector2i& pos, menuType& currentMenu)
 			// if the third btn clicked
 			if (isRestartBtnClicked == true)
 				restartTheGame();
+
+			// restart the timer
+			if (currentMenu != menuType::battlefield)
+			{
+				timer.restart();
+				timer.Stop();
+			}
 		}	
 	}
 	else if (endingWidget->activation == true)
@@ -173,6 +180,13 @@ void Battlefield::click(sf::Vector2i& pos, menuType& currentMenu)
 			// if the third btn clicked
 			if (isRestartBtnClicked == true)
 				restartTheGame();
+
+			// restart the timer
+			if (currentMenu != menuType::battlefield)
+			{
+				timer.restart();
+				timer.Stop();
+			}
 		}
 	}
 }
@@ -666,4 +680,8 @@ void Battlefield::restartTheGame()
 
 	playerManager->headsOrTails();
 	turnWasChanged(playerManager->getTheTurn());
+	
+	////////////////////////// restart the timer
+	timer.restart();
+	timer.Stop();
 }

@@ -83,6 +83,11 @@ void Timer::Start()
 		start = true;
 	}
 }
+void Timer::Stop()
+{
+	start = false;
+	timerPanel.setString("00 : 00");
+}
 void Timer::updateTimerPanel()
 {
 	if (start == true)
