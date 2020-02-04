@@ -66,13 +66,13 @@ void HeroSelectionMenu::display(sf::RenderWindow* window)
 	nextBtn.draw(window);
 	mouseHover(window);
 
-	/* input name
+	// input name
 	window->draw(nameRect);
 	window->draw(nameInputLabelRect);
 	window->draw(nameInputLabelText);
 	window->draw(nameRect);
 	//nameBox.draw(window);
-*/
+
 	// hreos card
 	heroCardManager.drawHerosCard(window);
 
@@ -115,6 +115,7 @@ void HeroSelectionMenu::click(sf::Vector2i& pos, menuType& currentMenu)
 	if (backBtn.getGlobalBound().contains(static_cast<sf::Vector2f>(pos)))
 	{
 		// just for now
+		resetSelectionMenuInformation();
 		currentMenu = menuType::mainMenu;
 	}
 
@@ -133,19 +134,19 @@ void HeroSelectionMenu::click(sf::Vector2i& pos, menuType& currentMenu)
 
 				// at last
 				playerManager->changeTheTurn();
-
 			}
 			else
 			{
 				//std::cout << "u have to choose more" << std::endl;
 			}
 		}
-		else
+		else if (playerManager->getTheTurn() == Players::P2)
 		{
-			if (playerManager->playerArr.at(0)->isPlayerHeroVecFull())
+			if (playerManager->playerArr.at(1)->isPlayerHeroVecFull())
 			{
 				// save the chosen heroes
 				playerManager->setTheChosenHeroes();
+				//playerManager->clearTheCHosenHeroes();
 
 				// at last
 				playerManager->changeTheTurn();
@@ -168,4 +169,25 @@ void HeroSelectionMenu::mouseHover(sf::RenderWindow* window)
 
 	// cards
 	heroCardManager.hoverHeroEachCard();
+}
+
+void HeroSelectionMenu::resetSelectionMenuInformation()
+{
+	// player's heroes
+	playerManager->clearPlayerMemory();
+	playerManager->clearheChosenHeroes();
+
+	// grid
+	grid.clearAllTiles();
+
+	// next button
+	nextBtn.setString("done");
+
+	// player turn
+	if (playerManager->getTheTurn() == Players::P2)
+		playerManager->changeTheTurn();
+
+	if (playerManager->getTheTurn() == Players::P1)
+		nameInputLabelText.setString("     Hero 1 :");
+
 }

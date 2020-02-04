@@ -38,6 +38,9 @@ public:
 
 	// remove hero
 	void removeHero(heros);
+	void clearHeroesVec();
+	void clearAttackPosStatusVec();
+
 
 	// the end of selection menu
 	bool isPlayerHeroVecFull();

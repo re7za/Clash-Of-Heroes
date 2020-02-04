@@ -161,7 +161,7 @@ void Widget::clicked(const sf::Vector2f& pos, menuType& currentMenu, menuType fi
 	activation = false;
 }
 
-void Widget::clicked(const sf::Vector2f& pos, menuType& currentMenu, menuType firstMenu, menuType secondMenu, bool isRestartBtnExist)
+void Widget::clicked(const sf::Vector2f& pos, menuType& currentMenu, menuType firstMenu, menuType secondMenu, bool& isRestartBtnClicked)
 {
 	if (buttonVec.at(0)->getGlobalBound().contains(pos))	// firstMenu
 	{
@@ -173,7 +173,7 @@ void Widget::clicked(const sf::Vector2f& pos, menuType& currentMenu, menuType fi
 	}
 	else if (buttonVec.at(2)->getGlobalBound().contains(pos))
 	{
-		// restartTheGame
+		isRestartBtnClicked = true;
 	}
 
 	activation = false;

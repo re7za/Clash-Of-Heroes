@@ -29,7 +29,7 @@ public:
 
 	void clicked(const sf::Vector2f&, menuType&, menuType, menuType);
 	// clicked 2 btn overload parameters : (clicked pos, currentMenu, firstMenu, secondMenu)
-	void clicked(const sf::Vector2f&, menuType&, menuType, menuType, bool);
+	void clicked(const sf::Vector2f&, menuType&, menuType, menuType, bool&);
 	// clicked 3 btn overload parameters : (clicked pos, currentMenu, firstMenu, secondMenu, isRestartbtnExist)
 	
 	// buttons

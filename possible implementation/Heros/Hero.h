@@ -12,6 +12,8 @@
 class Hero
 {
 public:
+	virtual ~Hero();
+
 	virtual void attack(Hero* attackedHero, std::vector<Hero*>& attackedHeroesVec) = 0;
 	// create a 'void specialPower()' for some heroes that have special power... like sniper.. robi.. etc
 	heros getId();
@@ -33,8 +35,6 @@ public:
 	void setHeroPosition(const sf::Vector2i&);
 	sf::Vector2i getHeroPosition();
 
-
-	virtual ~Hero();
 
 protected:
 	heros heroId;

@@ -60,6 +60,21 @@ void PlayerManager::setTheChosenHeroes()
 		chosenHeroes.at(i + 5) = player2.playerHerosVec.at(i)->getId();	
 }
 
+void PlayerManager::clearheChosenHeroes()
+{
+	for (heros heroName : chosenHeroes)
+		heroName = heros::none;
+}
+
+void PlayerManager::clearPlayerMemory()
+{
+	for (Player* player : playerArr)
+	{
+		player->clearHeroesVec();
+		player->clearAttackPosStatusVec();
+	}
+}
+
 std::array<heros, 10> PlayerManager::getTheChosenHeroes()
 {
 	return chosenHeroes;

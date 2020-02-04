@@ -31,6 +31,9 @@ public:
 	// utility functions of mouse envents and positions
 	void mouseHover(sf::RenderWindow*);
 
+	// switch from battlefield
+	void resetSelectionMenuInformation();
+
 private:
 
 	// HeroCardManager

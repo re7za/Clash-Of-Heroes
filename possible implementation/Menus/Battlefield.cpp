@@ -155,7 +155,14 @@ void Battlefield::click(sf::Vector2i& pos, menuType& currentMenu)
 			pauseWidget->activation = false;
 		else
 		{
-			pauseWidget->clicked(sf::Vector2f(pos), currentMenu, menuType::mainMenu, menuType::heroSelection, true);		
+			bool isRestartBtnClicked = false;
+			pauseWidget->clicked(sf::Vector2f(pos), currentMenu, menuType::mainMenu, menuType::heroSelection, isRestartBtnClicked);
+
+			// if the third btn clicked
+			if (isRestartBtnClicked == true)
+			{
+
+			}
 		}	
 	}
 	else if (endingWidget->activation == true)
@@ -165,9 +172,10 @@ void Battlefield::click(sf::Vector2i& pos, menuType& currentMenu)
 			endingWidget->activation = false;
 		else
 		{
-			endingWidget->clicked(sf::Vector2f(pos), currentMenu, menuType::mainMenu, menuType::heroSelection, true);
-		}
+			bool isRestartBtnClicked = false;
+			endingWidget->clicked(sf::Vector2f(pos), currentMenu, menuType::mainMenu, menuType::heroSelection, isRestartBtnClicked);
 
+		}
 	}
 }
 
@@ -248,7 +256,7 @@ void Battlefield::turnWasChanged(Players playerTurn)
 			player1deads++;
 	if (player1deads == 5)
 	{
-		endingWidget->setMessageString("Hero I is win!!");
+		endingWidget->setMessageString("Hero II is win!!");
 		endingWidget->activation = true;
 		
 	}
@@ -259,7 +267,7 @@ void Battlefield::turnWasChanged(Players playerTurn)
 			player2deads++;
 	if (player2deads == 5)
 	{
-		endingWidget->setMessageString("Hero II is win!!");
+		endingWidget->setMessageString("Hero I is win!!");
 		endingWidget->activation = true;
 	}
 

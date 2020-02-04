@@ -27,6 +27,22 @@ void Player::removeHero(heros heroName)
 	playerHerosVec.shrink_to_fit();
 }
 
+void Player::clearHeroesVec()
+{
+	// palyerHeroesVec
+	for (Hero* hero : playerHerosVec)
+		delete hero;
+	playerHerosVec.clear();
+	playerHerosVec.shrink_to_fit();	
+}
+
+void Player::clearAttackPosStatusVec()
+{
+	// attackPosStatus
+	attackPosStatucVec.clear();
+	attackPosStatucVec.shrink_to_fit();
+}
+
 bool Player::isPlayerHeroVecFull()
 {
 	if (playerHerosVec.size() == 5)

@@ -21,6 +21,8 @@ public:
 	Players getAttackedPlayer();
 
 	void setTheChosenHeroes();
+	void clearheChosenHeroes();
+	void clearPlayerMemory();
 	std::array<heros, 10> getTheChosenHeroes();
 
 	// players
