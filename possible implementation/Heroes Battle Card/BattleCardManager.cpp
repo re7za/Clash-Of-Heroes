@@ -533,6 +533,15 @@ void BattleCardManager::heroExtracter(std::array<heros, 10> chosenHeroes)
 	
 }
 
+void BattleCardManager::clearAllCards()
+{
+	for (BattleCard* card : leftCardArr)
+		delete card;
+
+	for (BattleCard* card : rightCardArr)
+		delete card;
+}
+
 void BattleCardManager::setGridsCardsPos(sf::Vector2f gridPos, sf::FloatRect gridBounds)
 {
 	

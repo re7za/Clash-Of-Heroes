@@ -152,13 +152,14 @@ void Widget::clicked(const sf::Vector2f& pos, menuType& currentMenu, menuType fi
 	if (buttonVec.at(0)->getGlobalBound().contains(pos))
 	{
 		currentMenu = firstMenu;
+		activation = false;
 	}
 	else if (buttonVec.at(0)->getGlobalBound().contains(pos))
 	{
 		currentMenu = secondMenu;
+		activation = false;
 	}
 
-	activation = false;
 }
 
 void Widget::clicked(const sf::Vector2f& pos, menuType& currentMenu, menuType firstMenu, menuType secondMenu, bool& isRestartBtnClicked)
@@ -166,16 +167,18 @@ void Widget::clicked(const sf::Vector2f& pos, menuType& currentMenu, menuType fi
 	if (buttonVec.at(0)->getGlobalBound().contains(pos))	// firstMenu
 	{
 		currentMenu = firstMenu;
+		activation = false;
 	}
 	else if (buttonVec.at(1)->getGlobalBound().contains(pos))
 	{
 		currentMenu = secondMenu;
+		activation = false;
 	}
 	else if (buttonVec.at(2)->getGlobalBound().contains(pos))
 	{
 		isRestartBtnClicked = true;
+		activation = false;
 	}
 
-	activation = false;
 }
 

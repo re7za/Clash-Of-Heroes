@@ -34,6 +34,7 @@ public:
 
 	// extract heroes from the playerHeroVec
 	void heroExtracter(std::array<heros, 10>);
+	void clearAllCards();
 
 	// set cards positions
 	void setGridsCardsPos(sf::Vector2f , sf::FloatRect);

@@ -160,21 +160,19 @@ void Battlefield::click(sf::Vector2i& pos, menuType& currentMenu)
 
 			// if the third btn clicked
 			if (isRestartBtnClicked == true)
-			{
-
-			}
+				restartTheGame();
 		}	
 	}
 	else if (endingWidget->activation == true)
 	{
-		// click pos is out of widget pos or not
-		if (!(endingWidget->isClicked(sf::Vector2f(pos))))
-			endingWidget->activation = false;
-		else
+		if (endingWidget->isClicked(sf::Vector2f(pos)))
 		{
 			bool isRestartBtnClicked = false;
 			endingWidget->clicked(sf::Vector2f(pos), currentMenu, menuType::mainMenu, menuType::heroSelection, isRestartBtnClicked);
 
+			// if the third btn clicked
+			if (isRestartBtnClicked == true)
+				restartTheGame();
 		}
 	}
 }
@@ -210,7 +208,8 @@ void Battlefield::startTheBattlefield()
 	// and then set the cards position
 	battleCardManager.setGridsCardsPos(grid.getPosition(), grid.getGlobalBound());
 
-	// planting the hero in the grid=
+	// planting the hero in the grid
+	playerManager->headsOrTails();
 	turnWasChanged(playerManager->getTheTurn());
 }
 
@@ -219,7 +218,7 @@ void Battlefield::turnWasChanged(Players playerTurn)
 	// changing the cards
 	battleCardManager.turnWasChanged(static_cast<PlayerEnum>(playerTurn));
 
-	// attackedHero must set to none before next attack.. and 'don't change the index'!
+	// attackedHero must set to none before next attack.. and "don't change the index"!
 	playerManager->playerArr.at(static_cast<us>(playerManager->getTheTurn()))->attackedHero = heros::none;
 	playerManager->playerArr.at(static_cast<us>(playerManager->getAttackedPlayer()))->attackedHero = heros::none;
 
@@ -256,7 +255,7 @@ void Battlefield::turnWasChanged(Players playerTurn)
 			player1deads++;
 	if (player1deads == 5)
 	{
-		endingWidget->setMessageString("Hero II is win!!");
+		endingWidget->setMessageString("Hero II wins!!");
 		endingWidget->activation = true;
 		
 	}
@@ -267,7 +266,7 @@ void Battlefield::turnWasChanged(Players playerTurn)
 			player2deads++;
 	if (player2deads == 5)
 	{
-		endingWidget->setMessageString("Hero I is win!!");
+		endingWidget->setMessageString("Hero I wins!!");
 		endingWidget->activation = true;
 	}
 
@@ -575,4 +574,96 @@ void Battlefield::changeBackground()
 	}
 
 	menuSpr.setTexture(backgroundTex);
+}
+
+void Battlefield::restartTheGame()
+{
+	///////////////////////// restart the grid
+	grid.clearAllTiles();
+
+	///////////////////////// restart the heroes
+	// at first make a backup from hero's positions
+	std::vector<sf::Vector2i> herosPos;
+	for (Player* player : playerManager->playerArr)
+		for (Hero* hero : player->playerHerosVec)
+			herosPos.push_back(hero->getHeroPosition());
+
+	// and then clear the hero's vec
+	playerManager->clearPlayerMemory();
+
+	// now ..make new hereos
+	for (us p = 0; p < playerManager->playerArr.size(); p++)
+		for (us j = 0; j < playerManager->getTheChosenHeroes().size() / 2; j++)
+		{
+			switch (playerManager->getTheChosenHeroes().at(j + p * (playerManager->getTheChosenHeroes().size() / 2)))
+			{
+			case heros::mrsGhost:
+			{
+				playerManager->playerArr.at(p)->playerHerosVec.push_back(new MrsGhost(herosPos.at(j + p * (playerManager->getTheChosenHeroes().size() / 2))));
+				break;
+			}
+			case heros::robi:
+			{
+				playerManager->playerArr.at(p)->playerHerosVec.push_back(new ROBI(herosPos.at(j + p * (playerManager->getTheChosenHeroes().size() / 2))));
+				break;
+			}
+			case heros::leon:
+			{
+				playerManager->playerArr.at(p)->playerHerosVec.push_back(new Leon(herosPos.at(j + p * (playerManager->getTheChosenHeroes().size() / 2))));
+				break;
+			}
+			case heros::drMarry:
+			{
+				playerManager->playerArr.at(p)->playerHerosVec.push_back(new DrMarry(herosPos.at(j + p * (playerManager->getTheChosenHeroes().size() / 2))));
+				break;
+			}
+			case heros::sniper:
+			{
+				playerManager->playerArr.at(p)->playerHerosVec.push_back(new Sniper(herosPos.at(j + p * (playerManager->getTheChosenHeroes().size() / 2))));
+				break;
+			}
+			case heros::kratos:
+			{
+				playerManager->playerArr.at(p)->playerHerosVec.push_back(new Kratos(herosPos.at(j + p * (playerManager->getTheChosenHeroes().size() / 2))));
+				break;
+			}
+			case heros::giant:
+			{
+				playerManager->playerArr.at(p)->playerHerosVec.push_back(new Giant(herosPos.at(j + p * (playerManager->getTheChosenHeroes().size() / 2))));
+				break;
+			}
+			case heros::alphaMan:
+			{
+				playerManager->playerArr.at(p)->playerHerosVec.push_back(new AlphaMan(herosPos.at(j + p * (playerManager->getTheChosenHeroes().size() / 2))));
+				break;
+			}
+			case heros::professor:
+			{
+				playerManager->playerArr.at(p)->playerHerosVec.push_back(new Professor(herosPos.at(j + p * (playerManager->getTheChosenHeroes().size() / 2))));
+				break;
+			}
+			case heros::commander:
+			{
+				playerManager->playerArr.at(p)->playerHerosVec.push_back(new Commander(herosPos.at(j + p * (playerManager->getTheChosenHeroes().size() / 2))));
+				break;
+			}
+			case heros::rickKhonsari:
+			{
+				playerManager->playerArr.at(p)->playerHerosVec.push_back(new RickKhonsari(herosPos.at(j + p * (playerManager->getTheChosenHeroes().size() / 2))));
+				break;
+			}
+			case heros::sybil:
+			{
+				playerManager->playerArr.at(p)->playerHerosVec.push_back(new Sybil(herosPos.at(j + p * (playerManager->getTheChosenHeroes().size() / 2))));
+				break;
+			}
+			}
+		}
+			
+	////////////////////////// restart the battle cards
+	battleCardManager.clearAllCards();
+	startTheBattlefield();
+
+	playerManager->headsOrTails();
+	turnWasChanged(playerManager->getTheTurn());
 }

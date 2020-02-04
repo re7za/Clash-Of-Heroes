@@ -21,7 +21,6 @@ public:
 
 	////////////////////// mouse events and positions
 	void click(sf::Vector2i&, menuType&);
-	void pauseBtnClick();
 
 	// utility functions of mouse envents and positions
 	void mouseHover(sf::RenderWindow*);
@@ -34,6 +33,10 @@ public:
 	
 	// background img
 	void changeBackground();
+
+	// restart
+	void restartTheGame();
+
 
 private:
 
